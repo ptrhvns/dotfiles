@@ -1,0 +1,56 @@
+#!/bin/bash
+
+export PATH=${PATH}:${HOME}/.cargo/bin
+
+if [ -s ~/.keychain/$(hostname)-sh ]; then
+    source ~/.keychain/$(hostname)-sh;
+fi
+
+export GREP_OPTIONS='--color=auto'
+
+if command -v rbenv 1>/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
+
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
+if command -v nodenv 1>/dev/null 2>&1; then
+    eval "$(nodenv init -)"
+fi
+
+alias be='bundle exec'
+alias k='keychain --nogui ~/.ssh/id_!(*.pub) && source ~/.keychain/$(hostname)-sh'
+alias ta='tmux att -t'
+alias td='tmux_new_session_pwd'
+alias tg='tmux_new_project_for_all_dirty_git'
+alias tk='tmux_kill_session'
+alias tl='tmux ls'
+alias tn='tmux_new_session'
+alias tp='tmux_new_project'
+
+function eg {
+    e $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')
+}
+
+function brew {
+    (
+        unset DYLD_LIBRARY_PATH
+        command brew $@
+    )
+}
+
+colors_tmux() {
+    for i in {0..255}; do
+        printf "\x1b[38;5;${i}mcolour${i}\n"
+    done
+}
+
+if [ -d /usr/local/etc/bash_completion.d ]; then
+    for f in /usr/local/etc/bash_completion.d/*; do
+        if ! ( echo $f | grep -q "ag.bashcomp.sh"); then
+            source $f
+        fi
+    done
+fi

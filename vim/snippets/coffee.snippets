@@ -1,0 +1,67 @@
+#
+# Symbols
+snippet #f
+	# FIXME ${1:[comment]}
+snippet #n
+	# NOTE ${1:[comment]}
+snippet #x
+	# XXX ${1:[comment]}
+snippet #=
+	#= require ${1:[file]}
+#
+# A
+snippet aft
+	afterEach ->
+#
+# B
+snippet bef
+	beforeEach ->
+#
+# C
+snippet cla
+	class window.${1:[Klass]}
+snippet clae
+	class window.${1:[Klass]} extends window.${2:[Klass]}
+snippet cona
+	console.assert(${1:[arg]}) # FIXME remove line
+snippet cond
+	console.dir(${1:[arg]}) # FIXME remove line
+snippet cone
+	console.error('${1:[arg]}') # FIXME remove line
+snippet congs
+	console.group('${1:[arg]}') # FIXME remove line
+snippet conge
+	console.groupEnd() # FIXME remove line
+snippet conl
+	console.log('${1:[arg]}') # FIXME remove line
+snippet conw
+	console.warn('${1:[arg]}') # FIXME remove line
+snippet ctx
+	constructor: () ->
+#
+# D
+snippet deb
+	debugger # FIXME remove line
+snippet des
+	describe "${1:[description]}", ->
+#
+# E
+snippet exp
+	expect(${1:[value]}).to${2}
+#
+# F
+snippet fit
+	fit "${1:[description]}", ->
+	  expect('pending spec').toEqual('implemented')
+#
+# I
+snippet it
+	it "${1:[description]}", ->
+	  expect('pending spec').toEqual('implemented')
+snippet iif # immediately invoked function
+	(->
+	)()
+#
+# X
+snippet xit
+	xit "${1:[description]}", ->

@@ -1,0 +1,52 @@
+snippet var
+	var ${1:identifier} ${2:type}
+snippet vai
+	${1:identifier} := ${2:value}
+snippet vas
+	${1:identifier} := []${2:type}{${3:values}}
+snippet vam
+	${1:identifier} := make(${2})
+snippet if
+	if ${1} {
+	}
+snippet ifs
+	if ${1:statement}; ${2:conditional} {
+	}
+snippet el
+	else {
+	}
+snippet imp
+	import "${1}"
+snippet pac
+	package ${1}
+snippet swi
+	switch ${1} {
+	}
+snippet for
+	for ${1} {
+	}
+snippet func
+	func ${1:identifier}(${2}) {
+	}
+snippet fn
+	func (${1}) {
+	}
+snippet funr
+	func (${1:receiver_identifier} ${2:receiver_type}) ${3:identifier}($4) {
+	}
+snippet ts
+	type ${1:identifier} struct {
+	}
+snippet ti
+	type ${1:identifier} interface {
+	}
+snippet sel
+	select {
+	}
+snippet cas
+	case ${1:expression}:
+snippet ran
+	${1:identifiers} := range ${2:expression}
+snippet gof
+	go func (${1}) {
+	}(${2})

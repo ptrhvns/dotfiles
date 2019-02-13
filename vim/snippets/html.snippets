@@ -1,0 +1,313 @@
+snippet <!
+	<!-- ${1} -->
+snippet <f
+	<!-- FIXME: ${1} -->
+snippet <t
+	<!-- TODO: ${1} -->
+snippet /f
+	/* FIXME ${1} */
+snippet @me
+	@media screen and (${1:max}-width: ${2:320}px) {
+	}
+snippet ie
+	<!--[if IE]>
+	<![endif]-->
+	<![if !IE]
+	<![endif]
+snippet i
+	<i>${1}</i>
+snippet doc
+	<!DOCTYPE html>
+	<html lang="en">
+	  <head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>${1}</title>
+	  </head>
+	  <body>
+	  </body>
+	</html>
+snippet doctype
+	<!DOCTYPE HTML>
+snippet a
+	<a>${1}</a>
+snippet abbr
+	<abbr>${1}</abbr>
+snippet address
+	<address>
+	</address>
+snippet area
+	<area />
+snippet article
+	<article>
+	</article>
+snippet aside
+	<aside>
+	</aside>
+snippet asider supprting information for the main content
+	<aside>
+	</aside>
+snippet audio
+	<audio controls="controls" src="${1:http://www.example.com}">
+	  Your software does not support this object.
+	</audio>
+snippet b
+	<b>${1}</b>
+snippet base
+	<base />
+snippet blockquote
+	<blockquote>
+	</blockquote>
+snippet body
+	<body>
+	</body>
+snippet br
+	<br />
+snippet button
+	<button type="button reset submit">${1}</button>
+snippet canvas
+	<canvas>
+	  Your software does not support this object.
+	</canvas>
+snippet caption
+	<caption>${1}</caption>
+snippet hcl
+	class="${1:class}"
+snippet command
+	<command>
+	</command>
+snippet datalist
+	<datalist>
+	</datalist>
+snippet dd
+	<dd>${1}</dd>
+snippet details
+	<details>
+	</details>
+snippet div
+	<div class="${1}">
+	</div>
+snippet divp
+	<div>
+	</div>
+snippet dl
+	<dl>
+	</dl>
+snippet dt
+	<dt>${1}</dt>
+snippet em
+	<em>${1}</em>
+snippet embed
+	<embed>
+snippet fieldset
+	<fieldset>
+	</fieldset>
+snippet figcaption
+	<figcaption>${1}</figcaption>
+snippet figure
+	<figure>
+	</figure>
+snippet footer
+	<footer>
+	</footer>
+snippet footerc contains metadata that applies to the parent document
+	<footer role="contentinfo">
+	</footer>
+snippet form
+	<form>
+	</form>
+snippet h1
+	<h1>${1}</h1>
+snippet h2
+	<h2>${1}</h2>
+snippet h3
+	<h3>${1}</h3>
+snippet h4
+	<h4>${1}</h4>
+snippet h5
+	<h5>${1}</h5>
+snippet h6
+	<h6>${1}</h6>
+snippet head
+	<head>
+	</head>
+snippet header
+	<header>
+	</header>
+snippet headerr prime heading or internal title of the page
+	<header role="banner">
+	</header>
+snippet hgroup
+	<hgroup>
+	</hgroup>
+snippet hr
+	<hr />
+snippet html
+	<html>
+	</html>
+snippet id
+	id="${1:[id]}"
+snippet iframe
+	<iframe />
+snippet img
+	<img />
+snippet input
+	<input
+	  accept=".doc,.pdf,audio/*,image/*,text/plain,video/*"
+	  autofocus
+	  checked
+	  disabled
+	  inputmode="numeric tel email url"
+	  max=""
+	  maxlength=""
+	  min=""
+	  multiple
+	  name=""
+	  pattern="<regex>"
+	  placeholder=""
+	  readonly
+	  required
+	  spellcheck
+	  src="<image URI>"
+	  step=""
+	  type="button checkbox color date datetime-local email file hidden image month number password radio range reset search submit tel text time url week"
+	  value=""
+	  width=""
+	/>
+snippet keygen
+	<keygen />
+snippet label
+	<label for="${1}">${2}</label>
+snippet legend
+	<legend>${1}</legend>
+snippet li
+	<li>${1}</li>
+snippet link
+	<link />
+snippet map
+	<map>
+	</map>
+snippet mark
+	<mark>${1}</mark>
+snippet menu
+	<menu>
+	</menu>
+snippet meta charset
+	<meta charset="${1:utf-8}" />
+snippet meta description
+	<meta name="description" content="${1}" />
+snippet meta http-equiv (generic)
+	<meta http-equiv="${1}" content="${2}" />
+snippet meta http-equiv for IE edge
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+snippet meta name
+	<meta name="${1}" content="${2}" />
+snippet meta viewport
+	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+snippet meter
+	<meter>${1}</meter>
+snippet nav
+	<nav>
+	</nav>
+snippet noscript
+	<noscript>
+	</noscript>
+snippet object
+	<object>
+	</object>
+snippet ol
+	<ol>
+	</ol>
+snippet optgroup
+	<optgroup>
+	</optgroup>
+snippet option
+	<option>${1}</option>
+snippet output
+	<output>${1}</output>
+snippet p
+	<p>
+	</p>
+snippet param
+	<param />
+snippet pre
+	<pre>
+	</pre>
+snippet progress
+	<progress>${1}</progress>
+snippet q
+	<q>${1}</q>
+snippet script inline statements
+	<script>
+	</script>
+snippet script external source
+	<script src="${1:http://www.example.com}"></script>
+snippet section
+	<section>
+	</section>
+snippet sectionr main content of the document
+	<section>
+	</section>
+snippet select
+	<select>
+	</select>
+snippet small
+	<small>${1}</small>
+snippet source
+	<source />
+snippet span
+	<span class="${1}"></span>
+snippet spanp
+	<span></span>
+snippet strong
+	<strong>${1}</strong>
+snippet sty
+	style="${1}"
+snippet style
+	<style>
+	</style>
+snippet sub
+	<sub>${1}</sub>
+snippet summary
+	<summary>${1}</summary>
+snippet sup
+	<sup>${1}</sup>
+snippet table
+	<table>
+	</table>
+snippet tbody
+	<tbody>
+	</tbody>
+snippet td
+	<td>${1}</td>
+snippet textarea
+	<textarea>
+	</textarea>
+snippet tfoot
+	<tfoot>
+	</tfoot>
+snippet th
+	<th>${1}</th>
+snippet thead
+	<thead>
+	</thead>
+snippet time
+	<time>${1}</time>
+snippet title
+	<title>${1}</title>
+snippet tr
+	<tr>
+	</tr>
+snippet ul
+	<ul>
+	</ul>
+snippet video
+	<video>
+	  Your software does not support this object.
+	</video>
+snippet jsv
+	javascript: void(0);
+snippet main
+	<main>
+	</main>

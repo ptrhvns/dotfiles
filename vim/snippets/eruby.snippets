@@ -1,0 +1,31 @@
+snippet %
+	<% ${1} %>
+snippet %e
+	<% ${1} %>
+	<% end %>
+snippet %b
+	<% ${1} do %>
+	<% end %>
+snippet %ba
+	<% ${1} do |${2}| %>
+	<% end %>
+snippet %=
+	<%= ${1} %>
+snippet %=b
+	<%= ${1} do %>
+	<% end %>
+snippet %=ba
+	<%= ${1} do |${2}| %>
+	<% end %>
+snippet %#
+	<%# ${1} %>
+snippet %formt
+	<%= form_tag ${1} do %>
+	  ${2}
+	<% end %>
+snippet %formf
+	<%= form_for ${1} do |f| %>
+	  ${2}
+	<% end %>
+snippet ngc
+	ng-controller="${1} as ${2}"

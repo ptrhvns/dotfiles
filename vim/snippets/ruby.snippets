@@ -1,0 +1,218 @@
+snippet #f
+	# FIXME${1}
+snippet #n
+	# NOTE${1}
+snippet #t
+	# TODO${1}
+snippet #@
+	#@@TODO${1}
+snippet #x
+	# XXX:${1}
+snippet des
+	describe '${1:description}' do
+	end
+snippet rde
+	RSpec.describe ${1:description} do
+	end
+snippet def
+	def ${1:method}
+	end
+snippet defi
+	def initialize(${1:argument})
+	  @${2:$1} = ${3:$1}
+	end
+	
+	private
+	
+	attr_reader :${4:$1}
+snippet defs
+	def self.${1:method}
+	end
+snippet it
+	it '${1:description}'
+snippet con
+	context '${1:description}' do
+	end
+snippet do
+	do
+	end
+snippet doa
+	do |${1:argument}|
+	end
+snippet exp
+	expect(${1:actual}).to ${2:matcher}
+snippet expn
+	expect(${1:acutual}).not_to ${2:matcher}
+snippet expb
+	expect { ${1:actual} }.to ${2:matcher}
+snippet expi
+	expect_any_instance_of(${1:class}).to ${2:matcher}
+snippet all
+	allow(${1:object}).to ${2:matcher}
+snippet alli
+	allow_any_instance_of(${1:object}).to ${2:matcher}
+snippet rec
+	receive(:${1:method})
+snippet recm
+	receive_message_chain(:${1:method}, :${2:method})
+snippet eq
+	eq(${1:value})
+snippet req
+	require '${1:library}'
+snippet reqd
+	require_dependency '${1:library}'
+snippet reqr
+	require_relative '${1:library}'
+snippet resd
+	respond_to(:${1:method})
+snippet ress
+	response
+snippet pry
+	binding.pry # FIXME
+snippet pryi
+	# FIXME
+	if ${1}
+	  binding.pry
+	end
+snippet pryr
+	Pry.rescue do # FIXME
+	end
+snippet let
+	let(:${1:name}) ${2:block}
+snippet bef
+	before do
+	end
+snippet mod
+	module ${1:mod}
+	end
+snippet cla
+	class ${1:klass}
+	end
+snippet clad
+	class_double('${1:klass}')
+snippet asc
+	as_stubbed_const
+snippet stuc
+	stub_const('${1:constant}', ${2:value})
+snippet insd
+	instance_double('${1:klass}')
+snippet havh
+	have_http_status(${1:status})
+snippet havk
+	have_key(${1:key})
+snippet havrc
+	have_received(:${1:method})
+snippet havrn
+	have_rendered(:${1:action})
+snippet havco
+	have_content(${1:content})
+snippet havcs
+	have_css('${1:selector}')
+snippet havcu
+	have_current_path(${1:path})
+snippet wit
+	with(${1:argument})
+snippet and
+	and_return(${1:value})
+snippet inc
+	include ${1:mod}
+snippet incc
+	include_context '${1}'
+snippet ince
+	include_examples '${1}'
+snippet dou
+	double('${1:klass}')
+snippet sub
+	subject(:${1:name}) ${2:block}
+snippet pen
+	pending # FIXME
+snippet ski
+	skip # FIXME
+snippet objd
+	object_double(${1:instance})
+snippet get
+	get ${1:action_or_path}, ${2:hash_params}
+snippet post
+	post ${1:action_or_path}, ${2:hash_params}
+snippet put
+	put ${1:action_or_path}, ${2:hash_params}
+snippet delete
+	delete ${1:action_or_path}, ${2:hash_params}
+snippet patch
+	patch ${1:action_or_path}, ${2:hash_params}
+snippet renp
+	render plain: '${1:FIXME}' # FIXME
+snippet red
+	redirect_to(${1:path})
+snippet beg
+	begin
+	end
+snippet rai
+	raise_error
+snippet pri
+	private
+snippet rfe
+	RSpec.feature '${1}:', type: :system do
+	end
+snippet sce
+	scenario '${1}' do
+	end
+snippet vis
+	visit ${1}
+snippet fil
+	fill_in '${1}', with: ${2}
+snippet clo
+	click_on '${1}'
+snippet clb
+	click_button '${1}'
+snippet cll
+	click_link '${1}'
+snippet sel
+	select '${1}', from: '${2}'
+snippet dris
+	driver: :selenium
+snippet driw
+	driver: :webkit
+snippet share
+	RSpec.shared_examples '${1}' do
+	end
+snippet sharc
+	RSpec.shared_context '${1}' do
+	end
+snippet cas
+	case ${1}
+	when ${2}
+	else
+	end
+snippet rh
+	raise 'hell' # FIXME
+snippet facg
+	FactoryBot.define do
+	  factory :${1} do
+	  end
+	end
+snippet loo
+	loop do
+	  break if ${1}
+	end
+snippet main
+	main if $PROGRAM_NAME == __FILE__
+snippet che
+	check '${1}'
+snippet bac
+	background do
+	end
+snippet jd
+	require 'ruby-debug'; debugger # FIXME
+snippet ext
+	extend ${1}
+snippet hea
+	head :${1}
+snippet bye
+	byebug
+snippet if
+	if ${1}
+	end
+snippet unl
+	unless ${1}
+	end

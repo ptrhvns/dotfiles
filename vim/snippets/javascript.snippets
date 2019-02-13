@@ -1,0 +1,209 @@
+snippet #!
+	#!/usr/bin/env node
+snippet /f
+	// FIXME
+snippet /t
+	// TODO
+snippet /x
+	// XXX
+snippet bef
+	before(() => {
+	});
+snippet mbef
+	before(function () {
+	});
+snippet mbee
+	beforeEach(function () {
+	});
+snippet bee
+	beforeEach(() => {
+	});
+snippet cas
+	case ${1}:
+	  break;
+snippet cona
+	console.assert(${1:value[, message][, ...args]}); // FIXME
+snippet cond
+	console.dir(${1:obj[, options]}); // FIXME
+snippet cone
+	console.error(${1});
+snippet coni
+	console.info(${1});
+snippet conl
+	console.log(${1});
+snippet conf
+	console.log(${1}); // FIXME
+snippet cont
+	console.trace(${1:[message][, ...args]}); // FIXME
+snippet conw
+	console.warn(${1}); // FIXME
+snippet jdes
+	describe('${1}', () => {
+	});
+snippet mdes
+	describe('${1}', function () {
+	});
+snippet jdese
+	describe.each([${1:table}])('${2:name}', (${3:args}) => {
+	});
+snippet jdess
+	describe.skip('${1}', () => {
+	  // FIXME
+	});
+snippet deb
+	debugger; // FIXME
+snippet exp
+	expect(${1}).${2:matcher}
+snippet expn
+	expect(${1}).not.${2:matcher}
+snippet fun
+	function${1}(${2}) {
+	}
+snippet afun
+	async function${1}(${2}) {
+	}
+snippet gfun
+	function*${1}(${2}) {
+	  yield;
+	}
+snippet fn
+	(${1}) => {}
+snippet afn
+	async (${1}) => {}
+snippet nfn
+	const ${1:name} = (${2}) => {
+	};
+snippet for
+	for (let ${1} = ${2}; ${3}; ${4}) {
+	}
+snippet fori
+	for (let ${1:variable} in ${2:object}) {
+	  if (${3:$2}.hasOwnProperty(${4:$1})) {
+	  }
+	}
+snippet foro
+	for (let ${1:variable} of ${2:iterable}) {
+	}
+snippet if
+	if (${1:condition}) ${2:statement}
+snippet els
+	else {
+	}
+snippet eli
+	else if (${1:condition}) {
+	}
+snippet jit
+	it('${1}', () => {
+	});
+snippet jits
+	it.skip('${1}', () => {
+	  // FIXME
+	});
+snippet mit
+	it('${1}');
+snippet mitf
+	it('${1}', function () {
+	});
+snippet ite
+	it.each([${1:table}])('${2:description}', (${3:args}) => {
+	});
+snippet mod
+	module.exports = ${1};
+snippet req
+	const ${1} = require('${2}');
+snippet swi
+	switch (${1}) {
+	}
+snippet try
+	try {
+	} catch (${1:error}) {
+	}
+snippet var
+	var ${1} = ${2};
+snippet con
+	const ${1} = ${2};
+snippet let
+	let ${1};
+snippet xde
+	xdescribe('${1}', () => {
+	});
+snippet xit
+	xit('${1}', () => {
+	});
+snippet iife
+	(() => {
+	})();
+snippet whi
+	while (${1}) {
+	}
+snippet do
+	do {
+	} while (${1});
+snippet afe
+	afterEach(() => {
+	});
+snippet aft
+	after(() => {
+	});
+snippet maft
+	after(function () {
+	});
+snippet mafe
+	afterEach(function () {
+	});
+snippet o
+	only
+snippet us
+	'use strict';
+snippet imp
+	import ${1} from '${2}';
+snippet test
+	test('${1}', () => {
+	});
+snippet vis
+	visit('${1}');
+snippet cli
+	click('${1}');
+snippet fil
+	fillIn('${1}', '${2}');
+snippet tri
+	triggerEvent('${1}', '${2}');
+snippet and
+	andThen(() => {
+	});
+snippet cla
+	class ${1} {
+	}
+snippet ret
+	return ${1};
+snippet ase
+	assert.equal(${1});
+snippet cons
+	constructor(${1}) {
+	}
+snippet meth
+	${1:method}(${2}) {
+	}
+snippet methb
+	${1:method} = (${2}) => {
+	};
+snippet get
+	get ${1}() {
+	  return ${2};
+	}
+snippet set
+	set ${1}(${2}) {
+	}
+snippet supr
+	super(${1});
+snippet t
+	this.${1}
+snippet ifm
+	function main() {
+	}
+	
+	if (require.main === module) main();
+snippet the
+	then((${1}) => {
+	}).catch((${2:err}) => {
+	});

@@ -1,0 +1,27 @@
+# #!/bin/bash
+snippet #f
+	# FIXME${1}
+snippet #t
+	# TODO${1}
+snippet #!
+	#!/usr/bin/env bash
+	
+snippet if
+	if ${1:condition}; then
+	fi
+snippet elif
+	elif ${1:condition}; then
+snippet for
+	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
+	done
+snippet wh
+	while ${1:condition}; do
+	done
+snippet until
+	until ${1:condition}; do
+	done
+snippet case
+	case ${1:expression} in
+	    *)
+	        ;;
+	esac

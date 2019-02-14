@@ -1,1 +1,1 @@
-Files related to my Vim setup.
+Run control, configuration, plugins, etc. for various programs.

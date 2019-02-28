@@ -106,7 +106,7 @@ cnoremap w!! w !sudo tee % >/dev/null<CR>
 nnoremap <Leader>w :set invwrap wrap?<CR>
 
 " Toggle highlight the current line of the cursor.
-nnoremap <Leader>u :setlocal list! cursorcolumn! cursorline!<CR>
+nnoremap <Leader>u :setlocal list! cursorcolumn! cursorline!<CR><C-l>
 
 " Toggle moving cursor to first non-blank of line and show result.
 vnoremap <Leader>s :sort u<CR>
@@ -225,7 +225,7 @@ function! FormatFile()
     elseif (&filetype == 'ruby')
         execute "!clear; rubocop --auto-correct " . t:file
     elseif (&filetype == 'rust')
-        execute "!clear; rustfmt --force --write-mode overwrite " . t:file
+        execute "!clear; rustfmt " . t:file
     elseif (&filetype == 'scss')
         execute "!clear; npx prettier --write " . t:file
     else

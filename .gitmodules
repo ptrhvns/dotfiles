@@ -16,9 +16,6 @@
 [submodule "vim/bundle/CamelCaseMotion"]
 	path = vim/bundle/CamelCaseMotion
 	url = https://github.com/bkad/CamelCaseMotion.git
-[submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline
 [submodule "vim/scss-syntax"]
 	path = vim/scss-syntax
 	url = https://github.com/cakebaker/scss-syntax.vim.git
@@ -67,9 +64,6 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/vim-airline-themes"]
-	path = vim/bundle/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "vim/bundle/gnupg"]
 	path = vim/bundle/gnupg
 	url = git@github.com:jamessan/vim-gnupg.git

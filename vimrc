@@ -527,12 +527,12 @@ nnoremap <Leader>es :tabedit $HOME/.vim/snippets/
 " airline settings
 " ----------------
 
-if has("multi_byte")
-    let g:airline_left_sep='▶'
-    let g:airline_right_sep='◀'
-end
+" if has("multi_byte")
+    " let g:airline_left_sep='▶'
+    " let g:airline_right_sep='◀'
+" end
 
-let g:airline_theme='solarized'
+" let g:airline_theme='solarized'
 
 " tabular settings
 " ----------------

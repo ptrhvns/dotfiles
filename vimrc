@@ -123,7 +123,7 @@ nnoremap <Up> :tabmove +1<CR><C-l>
 nnoremap K <Nop>
 
 " Edit my vimrc file.
-nnoremap <Leader>ev :split $MYVIMRC<CR>
+nnoremap <Leader>ev :tabedit $MYVIMRC<CR>
 
 " Align columns in a "table" (see tabular settings for conflicts).
 vnoremap <Leader>ac :!column -t<CR>
@@ -564,10 +564,10 @@ vmap <Leader>a{ :Tabularize /{<CR>
 " fugitive settings
 " -----------------
 
-nnoremap <Leader>gc :Gcommit --verbose<CR>
-nnoremap <Leader>gp :Gpush<CR>
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gw :Gwrite<CR>
+" nnoremap <Leader>gc :Gcommit --verbose<CR>
+" nnoremap <Leader>gp :Gpush<CR>
+" nnoremap <Leader>gs :Gstatus<CR>
+" nnoremap <Leader>gw :Gwrite<CR>
 
 " surround settings
 " -----------------
@@ -590,9 +590,9 @@ nnoremap <C-o> :CtrlPTag<CR>
 " Git Gutter settings
 " -------------------
 
-let g:gitgutter_enabled = 0
-nmap <Leader>gg :GitGutterToggle<CR>
-highlight clear SignColumn
+" let g:gitgutter_enabled = 0
+" nmap <Leader>gg :GitGutterToggle<CR>
+" highlight clear SignColumn
 
 " dragvisuals settings
 " --------------------

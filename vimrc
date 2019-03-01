@@ -364,6 +364,10 @@ augroup ag_all
     autocmd BufRead,BufNewFile .sequelizerc setlocal filetype=javascript
     autocmd BufRead,BufNewFile .simplecov setlocal filetype=ruby
     autocmd BufRead,BufNewFile Gemfile setlocal ft=ruby
+    autocmd BufRead,BufNewFile .zprofile setlocal filetype=zsh
+    autocmd BufRead,BufNewFile .zshrc setlocal filetype=zsh
+    autocmd BufRead,BufNewFile zprofile setlocal filetype=zsh
+    autocmd BufRead,BufNewFile zshrc setlocal filetype=zsh
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd FileType Gemfile setlocal expandtab
     autocmd FileType Gemfile setlocal shiftwidth=2

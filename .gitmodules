@@ -43,3 +43,6 @@
 [submodule "vim/bundle/gnupg"]
 	path = vim/bundle/gnupg
 	url = git@github.com:jamessan/vim-gnupg.git
+[submodule "vim/bundle/vim-smartinput"]
+	path = vim/bundle/vim-smartinput
+	url = git@github.com:kana/vim-smartinput.git

@@ -567,10 +567,12 @@ vmap <Leader>a{ :Tabularize /{<CR>
 " fugitive settings
 " -----------------
 
-" nnoremap <Leader>gc :Gcommit --verbose<CR>
-" nnoremap <Leader>gp :Gpush<CR>
-" nnoremap <Leader>gs :Gstatus<CR>
-" nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gc :Gcommit --verbose<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gw :Gwrite<CR>
 
 " surround settings
 " -----------------

@@ -281,8 +281,11 @@ function! RemoveFancyCharacters()
 endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
-nmap <Leader>rb :execute "!clear; cargo build"<CR>
-nmap <Leader>rr :execute "!clear; cargo run"<CR>
+" Run rust and cargo commands.
+nmap <Leader>cb :execute "!clear; cargo build"<CR>
+nmap <Leader>cc :execute "!clear; cargo check"<CR>
+nmap <Leader>cdo :execute "!clear; cargo doc --open"<CR>
+nmap <Leader>cr :execute "!clear; cargo run"<CR>
 
 " PATHOGEN SETUP
 " =============================================================

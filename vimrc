@@ -541,6 +541,11 @@ nnoremap <Leader>es :tabedit $HOME/.vim/snippets/
 
 " let g:airline_theme='solarized'
 
+" lightline
+" ---------
+
+let g:lightline = { 'colorscheme': 'solarized' }
+
 " tabular settings
 " ----------------
 

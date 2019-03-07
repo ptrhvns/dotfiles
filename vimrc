@@ -544,7 +544,16 @@ nnoremap <Leader>es :tabedit $HOME/.vim/snippets/
 " lightline
 " ---------
 
-let g:lightline = { 'colorscheme': 'solarized' }
+let g:lightline = {
+    \ 'colorscheme': 'solarized',
+    \ 'component_function': {
+    \   'filename': 'LightlineFilename',
+    \ }
+\ }
+
+function! LightlineFilename()
+  return expand('%:t') !=# '' ? @% : '[No Name]'
+endfunction
 
 " tabular settings
 " ----------------

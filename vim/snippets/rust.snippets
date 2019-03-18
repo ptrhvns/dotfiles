@@ -1,7 +1,9 @@
 snippet let
-	let ${1:var} = ${2:expr};
+	let ${1:identifier} = ${2:expression};
+snippet con
+	const ${1:identifier}: ${2:type} = ${3:expression};
 snippet fn
-	fn ${1:name}(${2})${3} {
+	fn ${1:identifier}(${2})${3} {
 	}
 snippet if
 	if ${1:condition} {
@@ -32,7 +34,7 @@ snippet ifl
 	if let ${1:pattern} = ${2:expression} {
 	}
 snippet str
-	struct ${1:Name} {
+	struct ${1:Identifier} {
 	}
 snippet main
 	fn main() {
@@ -42,11 +44,11 @@ snippet atto outer attribute
 snippet atti inner attribute
 	#![${1:meta}]
 snippet imp
-	impl ${1:Name} {
+	impl ${1:Identifier} {
 	}
 snippet enu
-	enum ${1:Name} {
+	enum ${1:Identifier} {
 	}
 snippet mod
-	mod ${1:name} {
+	mod ${1:identifier} {
 	}

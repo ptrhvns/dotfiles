@@ -287,6 +287,9 @@ nmap <Leader>rc :execute "!clear; cargo check"<CR>
 nmap <Leader>rdo :execute "!clear; cargo doc --open"<CR>
 nmap <Leader>rr :execute "!clear; cargo run"<CR>
 
+" Run go commands.
+nmap <Leader>gor :execute "!clear; go run " . expand("%")<CR>
+
 " PATHOGEN SETUP
 " =============================================================
 
@@ -584,7 +587,7 @@ vmap <Leader>a{ :Tabularize /{<CR>
 nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gc :Gcommit --verbose<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gp :Gpush --verbose<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 

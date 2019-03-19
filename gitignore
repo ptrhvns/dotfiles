@@ -1,0 +1,3 @@
+*.swp
+.gnupg/random_seed
+vim/.netrwhist

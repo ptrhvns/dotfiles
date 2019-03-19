@@ -1,0 +1,20 @@
+"\e[1~": beginning-of-line
+"\e[2~": quoted-insert
+"\e[3~": delete-char
+"\e[4~": end-of-line
+"\e[5~": beginning-of-history
+"\e[6~": end-of-history
+Control-j: menu-complete
+Control-k: menu-complete-backward
+Control-l: clear-screen
+set bell-style visible
+set completion-map-case on
+set completion-prefix-display-length 2
+set convert-meta off
+set editing-mode vi
+set input-meta on
+set keymap vi
+set meta-flag on
+set output-meta on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on

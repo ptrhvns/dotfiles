@@ -1,0 +1,46 @@
+AllCops:
+  TargetRubyVersion: 2.5.1
+AccessorMethodName:
+  Enabled: false
+AmbiguousRegexpLiteral:
+  Enabled: false
+Documentation:
+  Enabled: false
+Encoding:
+  Enabled: false
+Layout/CommentIndentation:
+  Enabled: false
+Layout/IndentHeredoc:
+  EnforcedStyle: squiggly
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Lint/InheritException:
+  Enabled: false
+Lint/HandleExceptions:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/LineLength:
+  Max: 80
+Metrics/MethodLength:
+  Enabled: false
+NumericLiterals:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/EmptyMethod:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/GlobalVars:
+  Enabled: false
+Style/MultilineBlockChain:
+  Enabled: false
+Style/RaiseArgs:
+  Enabled: false
+Style/Semicolon:
+  Enabled: false

@@ -284,7 +284,9 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 " Run rust and cargo commands.
 nmap <Leader>rb :execute "!clear; cargo build"<CR>
 nmap <Leader>rc :execute "!clear; cargo check"<CR>
-nmap <Leader>rdo :execute "!clear; cargo doc --open"<CR>
+nmap <Leader>rd :execute "!clear; cargo doc --open"<CR>
+nmap <Leader>rf :execut "!clear; cargo fix"<CR>
+nmap <Leader>rl :execute "!clear; cargo clippy"<CR>
 nmap <Leader>rr :execute "!clear; cargo run"<CR>
 
 " Run go commands.

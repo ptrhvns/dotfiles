@@ -26,6 +26,7 @@
 	ba       = branch -av
 	bd       = branch -d
 	bl       = branch
+	cam      = commit -am
 	cleanup  = !git reset --hard && git clean -d -f
 	co       = checkout
 	cob      = checkout -b

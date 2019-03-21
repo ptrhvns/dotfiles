@@ -39,8 +39,8 @@
 	do       = diff --stat origin/master
 	ds       = diff --ignore-submodules=dirty --stat
 	dt       = difftool
-	fp       = fetch --prune
 	fap      = fetch --all --prune
+	fp       = fetch --prune
 	g        = gui
 	l        = log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
 	lg       = log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
@@ -57,9 +57,9 @@
 	mt       = mergetool
 	pl       = pull-list
 	pod      = push origin --delete
+	rb       = rebase -i origin/master
 	rename   = branch -m
 	rh       = reset HEAD^
-	rb       = rebase -i origin/master
 	s        = status --porcelain
 	sa       = stash apply
 	sb       = show-branch --color

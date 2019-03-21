@@ -80,3 +80,6 @@
 	unstage  = reset HEAD --
 	up       = push
 	upt      = push --tags
+[user]
+	email = peter.havens@gmail.com
+	name = Peter Havens

@@ -27,11 +27,11 @@
 	bd       = branch -d
 	bl       = branch
 	cam      = commit -am
+	cav      = commit -a --verbose
 	cleanup  = !git reset --hard && git clean -d -f
 	co       = checkout
 	cob      = checkout -b
 	cv       = commit --verbose
-	cva      = commit -a --verbose
 	d        = diff --ignore-submodules=dirty
 	dc       = diff --ignore-submodules=dirty --cached
 	dn       = pull

@@ -61,7 +61,7 @@
 	rb       = rebase -i origin/master
 	rename   = branch -m
 	rh       = reset HEAD^
-	s        = status --porcelain
+	s        = status
 	sa       = stash apply
 	sb       = show-branch --color
 	sd       = "!git status -s -uall --ignore-submodule=dirty | awk '{print $2}'"

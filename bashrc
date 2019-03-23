@@ -219,6 +219,10 @@ if [[ "$EDITOR" = "$(type -p vim)" ]]; then
     alias eh="$EDITOR -c ':help | only'"
 fi
 
+function eg {
+    e $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')
+}
+
 alias g='egrep -i'
 alias gv='egrep -iv'
 
@@ -254,11 +258,50 @@ alias pgv="ps -eo $PSARGS | egrep -iv"
 alias pm="ps -eo $PSARGS | more"
 test "$UNAME" = "Linux" && alias pm="ps -Heo $PSARGS | more"
 
+alias be='bundle exec'
+alias k='keychain --nogui ~/.ssh/id_!(*.pub) && source ~/.keychain/$(hostname)-sh'
+alias ta='tmux att -t'
+alias td='tmux_new_session_pwd'
+alias tg='tmux_new_project_for_all_dirty_git'
+alias tk='tmux_kill_session'
+alias tl='tmux ls'
+alias tn='tmux_new_session'
+alias tp='tmux_new_project'
+
 colors() {
     for i in {0..255} ; do
         printf "\x1b[38;5;${i}mcolor ${i}\n"
     done
 }
+
+if command -v cargo 1>/dev/null 2>&1; then
+    export PATH=${PATH}:${HOME}/.cargo/bin
+fi
+
+if [ -s ~/.keychain/$(hostname)-sh ]; then
+    source ~/.keychain/$(hostname)-sh;
+fi
+
+export GREP_OPTIONS='--color=auto'
+
+if command -v rbenv 1>/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
+
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
+# FIXME This doesn't seem to work (commands not visible in shell).
+# if command -v virtualenvwrapper.sh 1>/dev/null 2>&1; then
+    # export WORKON_HOME=${HOME}/.virtualenvs
+    # virtualenvwrapper.sh
+# fi
+
+if command -v nodenv 1>/dev/null 2>&1; then
+    eval "$(nodenv init -)"
+fi
+
 
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
@@ -267,5 +310,13 @@ fi
 if [ -d $HOME/.bash.d ]; then
     for f in $HOME/.bash.d/*; do
         source $f
+    done
+fi
+
+if [ -d /usr/local/etc/bash_completion.d ]; then
+    for f in /usr/local/etc/bash_completion.d/*; do
+        if ! ( echo $f | grep -q "ag.bashcomp.sh"); then
+            source $f
+        fi
     done
 fi

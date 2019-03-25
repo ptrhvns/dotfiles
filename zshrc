@@ -59,8 +59,8 @@ export HOMEBREW_NO_ANALYTICS=1
 export INPUTRC=~/.inputrc
 export LSCOLORS="Hxfxcxdxbxegedabagacad"
 export LS_COLORS="di=1;37;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
-export MANPAGER=$PAGER
 export PAGER=$(command -v less || command -v more)
+export MANPAGER=$PAGER
 export SAVEHIST=1000
 export SHELL=$(command -v zsh)
 export VISUAL=$(command -v vim || command -v vi)
@@ -224,7 +224,6 @@ WHITE=254
 YELLOW=136
 
 # FIXME prompt does not dynamically regenerate results from functions.
-# FIXME move colors into functions.
 # FIXME move all sections of prompt into their own function.
 # PROMPT="$CLRFG[$GREY]%m $CLRFG[$GREEN]%n $CLRFG[$VIOLET]%~%1(j. $CLRFG[$RED][%j].)$CLRFG[$MAGENTA]$(prompt_ruby)$CLRFG[$MAGENTA]$(prompt_node)$CLRFG[$YELLOW]$(prompt_git)$CLRFG[$RED]$(prompt_git_dirty) $CLRFG[$GREY]%# %{$CLRFX[reset]%}"
 PROMPT="$CLRFG[$GREY]%m $CLRFG[$GREEN]%n $CLRFG[$VIOLET]%~%1(j. $CLRFG[$RED][%j].) $CLRFG[$GREY]%# %{$CLRFX[reset]%}"

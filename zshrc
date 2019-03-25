@@ -116,11 +116,18 @@ function print_background_colors() {
 alias c='cat'
 alias ctr='ctags -R .'
 alias e=$EDITOR
-alias f='fg'
+
+if [[ "$EDITOR" = "$(command -v vim)" ]]; then
+    if $(vim --version | awk '{ if ($5 >= 7.0) { exit(0) } else { exit(1) } }'); then
+        alias ep="$EDITOR -p"
+    fi
+fi
 
 function eg() {
     e $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')
 }
+
+alias f='fg'
 
 alias g='egrep -i'
 alias gv='egrep -iv'

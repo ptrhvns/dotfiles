@@ -125,19 +125,12 @@ function eg() {
 alias g='egrep -i'
 alias gv='egrep -iv'
 
-if command -v exa 1>/dev/null 2>&1; then
-    alias l="exa --long --color=auto --git"
-    alias la="exa --long --color=auto --all --git"
-    alias lr="exa --long --recurse --color=always --git"
-    alias lra="exa --long --recurse --color=always --all --git"
-else
-    ls -G &> /dev/null
-    test $? -eq 0 && CR="-G"
-    ls --color &> /dev/null
-    test $? -eq 0 && CR="--color=auto"
-    alias l="ls -Al $CR"
-    alias la="ls -al $CR"
-fi
+ls -G &> /dev/null
+test $? -eq 0 && CR="-G"
+ls --color &> /dev/null
+test $? -eq 0 && CR="--color=auto"
+alias l="ls -Al $CR"
+alias la="ls -al $CR"
 
 alias m=$PAGER
 

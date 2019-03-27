@@ -12,15 +12,6 @@ bindkey '^R' history-incremental-search-backward
 ulimit -c unlimited
 umask u=rwx,g=rwx,o=rx
 
-# shopt -s cdable_vars
-# shopt -s cdspell
-# shopt -s checkhash
-# shopt -s checkwinsize
-# shopt -s cmdhist # Save multi-line commands as one command
-# shopt -s dotglob
-# shopt -s extglob
-# shopt -u mailwarn
-
 setopt append_history
 setopt extended_glob
 setopt hist_ignore_dups
@@ -43,12 +34,6 @@ fi
 ##############################################################################################
 # General shell variables
 
-# PROMPT_COMMAND='history -a'
-# export HISTCONTROL="erasedups:ignoreboth"
-# export HISTFILESIZE=5000
-# export HISTTIMEFORMAT="%D %T "
-# export HISTTIMEFORMAT="%d/%m/%y %T "
-# unset MAILCHECK
 export EDITOR=$(command -v vim || command -v vi)
 export GPG_TTY=$(tty)
 export GREP_OPTIONS='--color=auto'

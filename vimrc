@@ -214,6 +214,8 @@ function! FormatFile()
 
     if (&filetype == 'cpp')
         execute "!clear; astyle --add-braces --align-pointer=type --align-reference=type --break-blocks --max-code-length=80 --pad-header --pad-oper --style=google --suffix=none " . t:file
+    elseif (&filetype == 'html')
+        execute "!clear; tidy -ibm -wrap 80 " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'javascript.jsx')

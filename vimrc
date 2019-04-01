@@ -214,8 +214,11 @@ function! FormatFile()
 
     if (&filetype == 'cpp')
         execute "!clear; astyle --add-braces --align-pointer=type --align-reference=type --break-blocks --max-code-length=80 --pad-header --pad-oper --style=google --suffix=none " . t:file
+    elseif (&filetype == 'css')
+        execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'html')
-        execute "!clear; tidy -ibm -wrap 80 " . t:file
+        " execute "!clear; tidy -ibmq -wrap 80 " . t:file
+        execute "!clear; html-beautify -pIr -s 2 -f " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'javascript.jsx')
@@ -603,15 +606,15 @@ let g:surround_105  = "#{\r}" " 105 = ASCII mapping for 'i'
 " ctrlp settings
 " --------------
 
-let g:ctrlp_arg_map = 1
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(\.git|\.hg|\.svn|node_modules|target|tmp|deps|spec/cassettes|bower_components|vendor|dist|coverage|public/packs)',
-    \ 'file': '\v\.(swp|pyc)'
-    \ }
-let g:ctrlp_extensions = ['buffertag', 'tag', 'mixed']
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-nnoremap <C-o> :CtrlPTag<CR>
+" let g:ctrlp_arg_map = 1
+" let g:ctrlp_custom_ignore = {
+    " \ 'dir': '\v(\.git|\.hg|\.svn|node_modules|target|tmp|deps|spec/cassettes|bower_components|vendor|dist|coverage|public/packs)',
+    " \ 'file': '\v\.(swp|pyc)'
+    " \ }
+" let g:ctrlp_extensions = ['buffertag', 'tag', 'mixed']
+" let g:ctrlp_switch_buffer = 0
+" let g:ctrlp_working_path_mode = 0
+" nnoremap <C-o> :CtrlPTag<CR>
 
 " Git Gutter settings
 " -------------------

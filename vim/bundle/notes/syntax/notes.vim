@@ -26,8 +26,8 @@ highlight link pComment SpecialComment
 syntax match pTag /\(\s\|^\|\W\)\@<=@\(-\|\w\|_\)\+/
 highlight link pTag SpecialComment
 
-" syntax region pInlineLiteral start=/`/ end=/[^\\]`/
-" highlight link pInlineLiteral Identifier
+syntax region pInlineLiteral start=/`/ end=/[^\\]`/
+highlight link pInlineLiteral Identifier
 
 " syntax region pIndentedLiteral start=/^\n\s\+[^-*+ \t]/ end=/\(^\s*$\)\@=/
 " highlight link pIndentedLiteral Identifier

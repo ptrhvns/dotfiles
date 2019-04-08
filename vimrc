@@ -97,7 +97,7 @@ nnoremap <Leader>p :set invpaste paste?<CR>
 imap <C-t> <C-r>=strftime("%H:%M - ")<CR>
 
 " Insert the current date.
-imap <C-d> # <C-r>=strftime("%Y %b %d %a")<CR>
+imap <C-d> <C-r>=strftime("%B %e, %Y")<CR>
 
 " Write to the current file with root permissions via sudo.
 cnoremap w!! w !sudo tee % >/dev/null<CR>
@@ -216,9 +216,11 @@ function! FormatFile()
         execute "!clear; astyle --add-braces --align-pointer=type --align-reference=type --break-blocks --max-code-length=80 --pad-header --pad-oper --style=google --suffix=none " . t:file
     elseif (&filetype == 'css')
         execute "!clear; npx prettier --write " . t:file
+    elseif (&filetype == 'go')
+        execute "!clear; gofmt -s -w " . t:file
     elseif (&filetype == 'html')
         " execute "!clear; tidy -ibmq -wrap 80 " . t:file
-        execute "!clear; html-beautify -pIr -s 2 -f " . t:file
+        execute "!clear; html-beautify -pIr -s 2 -w 80 -f " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'javascript.jsx')
@@ -376,9 +378,9 @@ augroup ag_all
     autocmd BufRead,BufNewFile .pryrc setlocal filetype=ruby
     autocmd BufRead,BufNewFile .sequelizerc setlocal filetype=javascript
     autocmd BufRead,BufNewFile .simplecov setlocal filetype=ruby
-    autocmd BufRead,BufNewFile Gemfile setlocal ft=ruby
     autocmd BufRead,BufNewFile .zprofile setlocal filetype=zsh
     autocmd BufRead,BufNewFile .zshrc setlocal filetype=zsh
+    autocmd BufRead,BufNewFile Gemfile setlocal ft=ruby
     autocmd BufRead,BufNewFile zprofile setlocal filetype=zsh
     autocmd BufRead,BufNewFile zshrc setlocal filetype=zsh
     autocmd BufReadPost fugitive://* set bufhidden=delete

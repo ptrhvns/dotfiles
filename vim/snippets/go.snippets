@@ -3,7 +3,7 @@ snippet var
 snippet vai
 	${1:identifier} := ${2:value}
 snippet vas
-	${1:identifier} := []${2:type}{${3:values}}
+	${1:identifier} := [${2:length}]${3:type}{${4:values}}
 snippet vam
 	${1:identifier} := make(${2})
 snippet if
@@ -12,24 +12,27 @@ snippet if
 snippet ifs
 	if ${1:statement}; ${2:conditional} {
 	}
-snippet el
+snippet els
 	else {
+	}
+snippet eli
+	else if ${1} {
 	}
 snippet imp
 	import "${1}"
 snippet pac
 	package ${1}
 snippet swi
-	switch ${1} {
+	switch${1} {
 	}
 snippet for
-	for ${1} {
+	for${1} {
 	}
 snippet fun
 	func ${1:identifier}(${2}) {
 	}
 snippet fn
-	func (${1}) {
+	func(${1}) {
 	}
 snippet funr
 	func (${1:receiver_identifier} ${2:receiver_type}) ${3:identifier}($4) {
@@ -45,8 +48,12 @@ snippet sel
 	}
 snippet cas
 	case ${1:expression}:
+snippet def
+	default:
 snippet ran
 	${1:identifiers} := range ${2:expression}
 snippet gof
 	go func (${1}) {
 	}(${2})
+snippet con
+	const ${1:identifier} = ${2:value}

@@ -219,7 +219,6 @@ function! FormatFile()
     elseif (&filetype == 'go')
         execute "!clear; gofmt -s -w " . t:file
     elseif (&filetype == 'html')
-        " execute "!clear; tidy -ibmq -wrap 80 " . t:file
         execute "!clear; html-beautify -pIr -s 2 -w 80 -f " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
@@ -228,7 +227,7 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; autopep8 -a -i " . t:file
+        execute "!clear; autopep8 --aggressive --ignore E226,E24,E401,E402,W50,W690 --in-place " . t:file
     elseif (&filetype == 'ruby')
         execute "!clear; rubocop --auto-correct " . t:file
     elseif (&filetype == 'rust')

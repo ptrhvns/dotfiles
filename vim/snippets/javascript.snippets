@@ -116,7 +116,7 @@ snippet swi
 	}
 snippet try
 	try {
-	} catch (error) {
+	} catch (${1:error}) {
 	}
 snippet var
 	var ${1} = ${2};
@@ -157,6 +157,8 @@ snippet us
 	'use strict';
 snippet imp
 	import ${1} from '${2}';
+snippet ims
+	import '${1}';
 snippet test
 	test('${1}', () => {
 	});

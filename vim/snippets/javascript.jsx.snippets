@@ -394,11 +394,28 @@ snippet rc
 	}
 	
 	export default ${4:$1};
-snippet rtc
+snippet rjtc
 	import React from 'react';
-	import ReactDOM from 'react-dom';
-	import expect from 'expect';
 	import { ${1:Component} } from './${2:$1}';
+	import { shallow } from 'enzyme';
+	
+	function buildProps(props = {}) {
+	  return { ...props };
+	}
+	
+	function buildComponent(props = {}) {
+	  return <${3:$1} {...buildProps(props)} />;
+	}
+	
+	describe('${4:$1}', () => {
+	  it('renders successfully', () => {
+	    shallow(buildComponent());
+	  });
+	});
+snippet rmtc
+	import React from 'react';
+	import { ${1:Component} } from './${2:$1}';
+	import { shallow } from 'enzyme';
 	
 	function buildProps(props = {}) {
 	  return { ...props };
@@ -410,9 +427,7 @@ snippet rtc
 	
 	describe('${4:$1}', function() {
 	  it('renders successfully', function() {
-	    const div = document.createElement('div');
-	    ReactDOM.render(buildComponent(), div);
-	    ReactDOM.unmountComponentAtNode(div);
+	    shallow(buildComponent());
 	  });
 	});
 snippet rrc

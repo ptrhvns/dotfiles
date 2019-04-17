@@ -608,10 +608,10 @@ let g:surround_105  = "#{\r}" " 105 = ASCII mapping for 'i'
 " --------------
 
 " let g:ctrlp_arg_map = 1
-" let g:ctrlp_custom_ignore = {
-    " \ 'dir': '\v(\.git|\.hg|\.svn|node_modules|target|tmp|deps|spec/cassettes|bower_components|vendor|dist|coverage|public/packs)',
-    " \ 'file': '\v\.(swp|pyc)'
-    " \ }
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v(\.git|node_modules|dist|coverage)',
+    \ 'file': '\v\.(swp|pyc)'
+    \ }
 " let g:ctrlp_extensions = ['buffertag', 'tag', 'mixed']
 " let g:ctrlp_switch_buffer = 0
 " let g:ctrlp_working_path_mode = 0

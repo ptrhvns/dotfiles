@@ -394,40 +394,24 @@ snippet rc
 	}
 	
 	export default ${4:$1};
-snippet rjtc
-	import React from 'react';
-	import { ${1:Component} } from './${2:$1}';
-	import { shallow } from 'enzyme';
-	
-	function buildProps(props = {}) {
-	  return { ...props };
-	}
-	
-	function buildComponent(props = {}) {
-	  return <${3:$1} {...buildProps(props)} />;
-	}
-	
-	describe('${4:$1}', () => {
-	  it('renders successfully', () => {
-	    shallow(buildComponent());
-	  });
-	});
 snippet rmtc
 	import React from 'react';
-	import { ${1:Component} } from './${2:$1}';
-	import { shallow } from 'enzyme';
+	import ReactDOM from 'react-dom';
+	import ${1:Component} from './${2:$1}';
+	import { cleanup, render } from 'react-testing-library';
 	
-	function buildProps(props = {}) {
-	  return { ...props };
-	}
+	describe('${3:$1}', function() {
+	  this.timeout(5000);
 	
-	function buildComponent(props = {}) {
-	  return <${3:$1} {...buildProps(props)} />;
-	}
+	  function renderComponent() {
+	    return render(<${4:$1} />);
+	  }
 	
-	describe('${4:$1}', function() {
+	  afterEach(cleanup);
+	
 	  it('renders successfully', function() {
-	    shallow(buildComponent());
+	    const div = document.createElement('div');
+	    ReactDOM.render(<${5:$1} />, div);
 	  });
 	});
 snippet rrc

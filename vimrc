@@ -227,7 +227,7 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; autopep8 --aggressive --ignore E226,E24,E401,E402,W50,W690 --in-place " . t:file
+        execute "!clear; black -l 80 " . t:file
     elseif (&filetype == 'ruby')
         execute "!clear; rubocop --auto-correct " . t:file
     elseif (&filetype == 'rust')
@@ -607,14 +607,14 @@ let g:surround_105  = "#{\r}" " 105 = ASCII mapping for 'i'
 " ctrlp settings
 " --------------
 
-" let g:ctrlp_arg_map = 1
+let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v(\.git|node_modules|dist|coverage)',
     \ 'file': '\v\.(swp|pyc)'
     \ }
-" let g:ctrlp_extensions = ['buffertag', 'tag', 'mixed']
-" let g:ctrlp_switch_buffer = 0
-" let g:ctrlp_working_path_mode = 0
+let g:ctrlp_extensions = ['buffertag', 'tag', 'mixed']
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
 " nnoremap <C-o> :CtrlPTag<CR>
 
 " Git Gutter settings

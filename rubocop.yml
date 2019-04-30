@@ -1,5 +1,6 @@
+require: rubocop-rspec
 AllCops:
-  TargetRubyVersion: 2.5.1
+  TargetRubyVersion: 2.6.2
 AccessorMethodName:
   Enabled: false
 AmbiguousRegexpLiteral:
@@ -10,8 +11,16 @@ Encoding:
   Enabled: false
 Layout/CommentIndentation:
   Enabled: false
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
 Layout/IndentHeredoc:
   EnforcedStyle: squiggly
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 Lint/InheritException:
@@ -24,11 +33,26 @@ Metrics/BlockLength:
   Enabled: false
 Metrics/ClassLength:
   Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
 Metrics/LineLength:
+  AutoCorrect: true
   Max: 80
 Metrics/MethodLength:
   Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
 NumericLiterals:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/MessageChain:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/NestedGroups:
+  Enabled: false
+RSpec/SubjectStub:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false

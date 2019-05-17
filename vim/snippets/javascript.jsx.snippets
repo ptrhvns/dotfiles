@@ -403,8 +403,8 @@ snippet rmtc
 	describe('${3:$1}', function() {
 	  this.timeout(5000);
 	
-	  function renderComponent() {
-	    return render(<${4:$1} />);
+	  function renderComponent(props = {}) {
+	    return render(<${4:$1} {...props} />);
 	  }
 	
 	  afterEach(cleanup);

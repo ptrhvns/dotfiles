@@ -219,6 +219,7 @@ function! FormatFile()
     elseif (&filetype == 'go')
         execute "!clear; gofmt -s -w " . t:file
     elseif (&filetype == 'html')
+        " Do `npm install -g js-beautify` to get the html-beautify command.
         execute "!clear; html-beautify -pIr -s 2 -w 80 -f " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
@@ -370,6 +371,7 @@ augroup ag_all
 
     autocmd BufNewFile,BufRead *.jeco exec "let b:eco_subtype = 'html' | setlocal filetype=eco"
     autocmd BufNewFile,BufRead *.pc setlocal filetype=c
+    autocmd BufNewFile,BufRead *.svelte setlocal filetype=html
     autocmd BufRead * normal zz
     autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
     autocmd BufRead,BufNewFile .babelrc setlocal filetype=json
@@ -612,10 +614,12 @@ let g:ctrlp_custom_ignore = {
     \ 'dir': '\v(\.git|node_modules|dist|coverage)',
     \ 'file': '\v\.(swp|pyc)'
     \ }
-let g:ctrlp_extensions = ['buffertag', 'tag', 'mixed']
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-" nnoremap <C-o> :CtrlPTag<CR>
+
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+endif
 
 " Git Gutter settings
 " -------------------

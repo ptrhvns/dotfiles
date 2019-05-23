@@ -371,7 +371,6 @@ augroup ag_all
 
     autocmd BufNewFile,BufRead *.jeco exec "let b:eco_subtype = 'html' | setlocal filetype=eco"
     autocmd BufNewFile,BufRead *.pc setlocal filetype=c
-    autocmd BufNewFile,BufRead *.svelte setlocal filetype=html
     autocmd BufRead * normal zz
     autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
     autocmd BufRead,BufNewFile .babelrc setlocal filetype=json

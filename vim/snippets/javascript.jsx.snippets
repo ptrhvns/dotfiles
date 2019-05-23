@@ -395,23 +395,14 @@ snippet rc
 	
 	export default ${4:$1};
 snippet rmtc
+	import ${1:Component} from './${2:$1}';
 	import React from 'react';
 	import ReactDOM from 'react-dom';
-	import ${1:Component} from './${2:$1}';
-	import { cleanup, render } from 'react-testing-library';
 	
 	describe('${3:$1}', function() {
-	  this.timeout(5000);
-	
-	  function renderComponent(props = {}) {
-	    return render(<${4:$1} {...props} />);
-	  }
-	
-	  afterEach(cleanup);
-	
 	  it('renders successfully', function() {
-	    const div = document.createElement('div');
-	    ReactDOM.render(<${5:$1} />, div);
+	    const container = document.createElement('div');
+	    ReactDOM.render(<${4:$1} />, container);
 	  });
 	});
 snippet rrc

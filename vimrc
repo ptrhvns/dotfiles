@@ -474,6 +474,9 @@ augroup ag_all
     autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
     autocmd FileType sql setlocal shiftwidth=2
     autocmd FileType sql setlocal softtabstop=2
+    autocmd FileType svelte setlocal expandtab
+    autocmd FileType svelte setlocal shiftwidth=2
+    autocmd FileType svelte setlocal softtabstop=2
     autocmd FileType text setlocal nolist
     autocmd FileType text setlocal norelativenumber
     autocmd FileType text setlocal spell

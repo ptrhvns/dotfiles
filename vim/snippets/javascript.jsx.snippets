@@ -400,12 +400,7 @@ snippet rmtc
 	import ReactDOM from 'react-dom';
 	
 	describe('${3:$1}', function() {
-	  it('renders successfully', function() {
-	    const container = document.createElement('div');
-	    ReactDOM.render(<${4:$1} />, container);
-	  });
-	
-	  // FIXME add more tests once Enzyme supports hooks
+	  // FIXME add tests once Enzyme supports hooks
 	});
 snippet rrc
 	import { connect } from 'react-redux';

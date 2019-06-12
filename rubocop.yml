@@ -54,6 +54,8 @@ RSpec/NestedGroups:
   Enabled: false
 RSpec/SubjectStub:
   Enabled: false
+RSpec/VerifiedDoubles:
+  Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
 Style/EmptyMethod:

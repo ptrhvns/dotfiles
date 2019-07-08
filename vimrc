@@ -235,6 +235,10 @@ function! FormatFile()
         execute "!clear; rustfmt " . t:file
     elseif (&filetype == 'scss')
         execute "!clear; npx prettier --write " . t:file
+    elseif (&filetype == 'typescript')
+        execute "!clear; npx prettier --single-quote --write " . t:file
+    elseif (&filetype == 'typescript.jsx')
+        execute "!clear; npx prettier --single-quote --write " . t:file
     else
         echoerr "Don't know how to format filetype: " . &filetype
     endif
@@ -480,12 +484,16 @@ augroup ag_all
     autocmd FileType text setlocal nolist
     autocmd FileType text setlocal norelativenumber
     autocmd FileType text setlocal spell
-    autocmd FileType typescript setlocal expandtab
+    autocmd FileType typescript setlocal noexpandtab
+    autocmd FileType typescript setlocal nolist
     autocmd FileType typescript setlocal shiftwidth=2
     autocmd FileType typescript setlocal softtabstop=2
-    autocmd FileType typescript.tsx setlocal expandtab
-    autocmd FileType typescript.tsx setlocal shiftwidth=2
-    autocmd FileType typescript.tsx setlocal softtabstop=2
+    autocmd FileType typescript setlocal tabstop=2
+    autocmd FileType typescript.jsx setlocal noexpandtab
+    autocmd FileType typescript.jsx setlocal nolist
+    autocmd FileType typescript.jsx setlocal shiftwidth=2
+    autocmd FileType typescript.jsx setlocal softtabstop=2
+    autocmd FileType typescript.jsx setlocal tabstop=2
     autocmd FileType vim setlocal expandtab
     autocmd FileType vim setlocal shiftwidth=4
     autocmd FileType vim setlocal softtabstop=4

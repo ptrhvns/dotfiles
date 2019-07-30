@@ -222,7 +222,8 @@ function! FormatFile()
         " Do `npm install -g js-beautify` to get the html-beautify command.
         execute "!clear; html-beautify -pIr -s 2 -w 80 -f " . t:file
     elseif (&filetype == 'java')
-        execute "!clear; astyle --add-braces --attach-classes --attach-return-type --break-blocks --max-code-length=80 --pad-header --pad-oper --style=java --suffix=none " . t:file
+        " execute "!clear; astyle --add-braces --attach-classes --attach-return-type --break-blocks --max-code-length=80 --pad-header --pad-oper --style=java --suffix=none " . t:file
+        execute "!clear; google-java-format --replace " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'javascript.jsx')

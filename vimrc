@@ -445,6 +445,9 @@ augroup ag_all
     autocmd FileType htmldjango setlocal shiftwidth=4
     autocmd FileType htmldjango setlocal softtabstop=4
     autocmd FileType htmldjango setlocal tabstop=4
+    autocmd FileType java setlocal expandtab
+    autocmd FileType java setlocal shiftwidth=2
+    autocmd FileType java setlocal softtabstop=2
     autocmd FileType javascript setlocal expandtab
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#Complete
     autocmd FileType javascript setlocal shiftwidth=2

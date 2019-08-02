@@ -1,15 +1,54 @@
 snippet cla
-	class ${1:Identifier} {
+	class ${1:Name} {
 	}
 snippet main
 	public static void main(String[] args) {
 	}
 snippet if
-	if (${1:condition}) {
+	if (${1:expression}) {
 	}
 snippet els
 	else {
 	}
 snippet whi
-	while (${1:condition}) {
+	while (${1:expression}) {
 	}
+snippet do
+	do {
+	} while (${1:expression});
+snippet swi
+	switch (${1:expression}) {
+	}
+snippet cas
+	case ${1:value}:
+	  break;
+snippet def
+	default:
+	  break;
+snippet for
+	for (${1:initialization}; ${2:test}; ${3:increment}) {
+	}
+snippet foe
+	for (${1:name} : ${2:iterable}) {
+	}
+snippet syn
+	synchronized (${1:expression}) {
+	}
+snippet try
+	try {
+	} catch (${1:Type} ${2:name}) {
+	}
+snippet ass
+	assert ${1:invariant};
+snippet bre
+	break;
+snippet cont
+	continue;
+snippet ret
+	return ${1:expression};
+snippet thr
+	throw ${1:expression};
+snippet emp
+	/* empty */;
+snippet var
+	${1:Type} ${2:name} = ${3:expression};

@@ -23,7 +23,7 @@ setopt noclobber
 setopt prompt_subst
 setopt share_history
 
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/usr/libexec/java_home
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/usr/libexec/java_home:~/.nodenv/bin
 export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 
@@ -36,7 +36,6 @@ fi
 
 export EDITOR=$(command -v vim || command -v vi)
 export GPG_TTY=$(tty)
-export GREP_OPTIONS='--color=auto'
 export GUIEDITOR=$(command -v mvim || command -v gvim)
 export HISTFILE=~/.zsh_history
 export HISTSIZE=1000

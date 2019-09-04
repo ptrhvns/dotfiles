@@ -78,6 +78,9 @@ if &term == "dtterm"
     fixdel
 endif
 
+if has('gui_win32')
+    set guifont=Consolas:h11:cANSI
+endif
 
 " MAPPINGS & FUNCTIONS
 " =============================================================
@@ -322,12 +325,17 @@ endtry
 
 
 " Color & syntax settings.
-if &t_Co > 1 | syntax on | endif
+if &t_Co > 1 || has('gui_running')
+    syntax on
+endif
 
-set background=dark
-" set background=light
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
 
-if &t_Co > 255
+if &t_Co > 255 || has('gui_running')
     let g:solarized_termcolors=256
 elseif &t_Co > 15
     let g:solarized_termcolors=16

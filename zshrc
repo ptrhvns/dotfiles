@@ -240,3 +240,7 @@ fi
 if command -v cargo 1>/dev/null 2>&1; then
     export PATH=${PATH}:${HOME}/.cargo/bin
 fi
+
+if [ -e ~/.zsh_local ]; then
+    source ~/.zsh_local
+fi

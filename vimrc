@@ -463,10 +463,13 @@ augroup ag_all
     autocmd FileType json setlocal expandtab
     autocmd FileType json setlocal shiftwidth=2
     autocmd FileType json setlocal softtabstop=2
+    autocmd FileType python setlocal autoindent
     autocmd FileType python setlocal expandtab
+    autocmd FileType python setlocal fileformat=unix
     autocmd FileType python setlocal shiftwidth=4
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
+    autocmd FileType python setlocal textwidth=79
     autocmd Filetype c setlocal omnifunc=ccomplete#Complete
 
     " if exists('+relativenumber')

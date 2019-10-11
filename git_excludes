@@ -6,12 +6,13 @@
 *.rbc
 *.seed
 *.sw[po]
+.DS_Store
 .bundle
 .byebug_history
 .config
-.DS_Store
 .env
 .grunt
+.idea
 .rbenv-gemsets
 .repl_history
 .rspec
@@ -19,6 +20,7 @@
 .rvmrc
 .sass-cache
 .vagrant
+.vscode
 .yardoc
 _site
 build
@@ -33,6 +35,7 @@ pids
 pkg
 public/assets/source_maps
 rdoc
+stale_outputs_checked
 tags
 target
 target-eclipse

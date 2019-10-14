@@ -265,32 +265,8 @@ colors() {
     done
 }
 
-if command -v cargo 1>/dev/null 2>&1; then
-    export PATH=${PATH}:${HOME}/.cargo/bin
-fi
-
 if [ -s ~/.keychain/$(hostname)-sh ]; then
     source ~/.keychain/$(hostname)-sh;
-fi
-
-export GREP_OPTIONS='--color=auto'
-
-if command -v rbenv 1>/dev/null 2>&1; then
-    eval "$(rbenv init -)"
-fi
-
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
-# FIXME This doesn't seem to work (commands not visible in shell).
-# if command -v virtualenvwrapper.sh 1>/dev/null 2>&1; then
-    # export WORKON_HOME=${HOME}/.virtualenvs
-    # virtualenvwrapper.sh
-# fi
-
-if command -v nodenv 1>/dev/null 2>&1; then
-    eval "$(nodenv init -)"
 fi
 
 if [ -f ~/.bash_local ]; then

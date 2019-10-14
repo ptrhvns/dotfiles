@@ -1,4 +1,4 @@
-# FIXME This is a work-in-progress. Port bash code to zsh where appropriate.
+#!/usr/bin/env zsh
 
 ##############################################################################################
 # Keybindings
@@ -23,7 +23,7 @@ setopt noclobber
 setopt prompt_subst
 setopt share_history
 
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/usr/libexec/java_home:~/.nodenv/bin:~/.pyenv/bin:~/.rbenv/bin
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb
 export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 
@@ -154,47 +154,6 @@ for color in {000..255}; do
     CLRBG[$color]="%{[48;5;${color}m%}"
 done
 
-# function prompt_git() {
-    # ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-        # ref=$(command git rev-parse --short HEAD 2> /dev/null) || \
-        # return 0
-    # print -n " ${ref#refs/heads/}"
-# }
-
-# function prompt_git_dirty() {
-    # (
-        # (command git symbolic-ref HEAD > /dev/null 2>&1) || \
-        # (command git rev-parse --short HEAD > /dev/null 2>&1)
-    # ) && {
-        # if test $(git status --porcelain --ignore-submodules=dirty 2> /dev/null | wc -l) -gt 0; then
-            # print -n " *"
-        # fi
-
-        # if test $(git stash list 2> /dev/null | wc -l) -gt 0; then
-            # print -n " #"
-        # fi
-    # }
-# }
-
-# function prompt_ruby() {
-    # if command -v rbenv > /dev/null 2>&1; then
-        # if [ -f "$(pwd)/.rbenv-version" -o -f "$(pwd)/.ruby-version" ] && rbenv version-name > /dev/null 2>&1; then
-            # echo -n " $(rbenv version-name)"
-            # if [ -f $(pwd)/.rbenv-gemsets ] && rbenv gemset active > /dev/null 2>&1; then
-                # echo -n " $(rbenv gemset active | awk '{print $1}')"
-            # fi
-        # fi
-    # fi
-# }
-
-# function prompt_node() {
-    # if command -v nodenv > /dev/null 2>&1; then
-        # if [ -f "$(pwd)/.node-version" ]; then
-            # echo -n " $(nodenv version-name)"
-        # fi
-    # fi
-# }
-
 # Indexes for Solarized colors.
 BLUE=033
 CYAN=037
@@ -207,9 +166,6 @@ VIOLET=061
 WHITE=254
 YELLOW=136
 
-# FIXME prompt does not dynamically regenerate results from functions.
-# FIXME move all sections of prompt into their own function.
-# PROMPT="$CLRFG[$GREY]%m $CLRFG[$GREEN]%n $CLRFG[$VIOLET]%~%1(j. $CLRFG[$RED][%j].)$CLRFG[$MAGENTA]$(prompt_ruby)$CLRFG[$MAGENTA]$(prompt_node)$CLRFG[$YELLOW]$(prompt_git)$CLRFG[$RED]$(prompt_git_dirty) $CLRFG[$GREY]%# %{$CLRFX[reset]%}"
 PROMPT="$CLRFG[$GREY]%m $CLRFG[$GREEN]%n $CLRFG[$VIOLET]%~%1(j. $CLRFG[$RED][%j].) $CLRFG[$GREY]%# %{$CLRFX[reset]%}"
 
 ##############################################################################################
@@ -217,28 +173,6 @@ PROMPT="$CLRFG[$GREY]%m $CLRFG[$GREEN]%n $CLRFG[$VIOLET]%~%1(j. $CLRFG[$RED][%j]
 
 if [ -s ~/.keychain/$(hostname)-sh ]; then
     source ~/.keychain/$(hostname)-sh;
-fi
-
-if command -v nodenv 1>/dev/null 2>&1; then
-    eval "$(nodenv init -)"
-fi
-
-if command -v rbenv 1>/dev/null 2>&1; then
-    eval "$(rbenv init - zsh)"
-fi
-
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
-# # FIXME This doesn't seem to work (commands not visible in shell).
-# # if command -v virtualenvwrapper.sh 1>/dev/null 2>&1; then
-    # # export WORKON_HOME=${HOME}/.virtualenvs
-    # # virtualenvwrapper.sh
-# # fi
-
-if command -v cargo 1>/dev/null 2>&1; then
-    export PATH=${PATH}:${HOME}/.cargo/bin
 fi
 
 if [ -e ~/.zsh_local ]; then

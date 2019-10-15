@@ -1,15 +1,24 @@
 #!/usr/bin/env bash
 
+##############################################################################################
+# Environment settings
+
 ulimit -c unlimited
 umask u=rwx,g=rwx,o=rx
 
-set -o noclobber
-set -o vi
+##############################################################################################
+# Keybindings
 
 bind "set completion-map-case on" # Treat hyphens and underscores as equivalent
 bind "set show-all-if-ambiguous on" # Display matches for ambiguous patterns at first tab press
 bind -m vi-insert "\C-l":clear-screen
 bind Space:magic-space
+
+##############################################################################################
+# Shell options
+
+set -o noclobber
+set -o vi
 
 shopt -s cdable_vars
 shopt -s cdspell
@@ -21,7 +30,10 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/usr/libexec/java_home
+##############################################################################################
+# Shell variables
+
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb
 export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 
@@ -29,25 +41,24 @@ if [[ "$LANG" == "en_US.UTF-8" ]]; then
     export NLS_LANG="AMERICAN_AMERICA.AL32UTF8"
 fi
 
-export SHELL=$(command -v bash)
-UNAME=$(uname)
-export LSCOLORS="Hxfxcxdxbxegedabagacad"
-export LS_COLORS="di=1;37;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
-export HISTTIMEFORMAT="%D %T "
+export EDITOR=$(command -v vim || type -p vi)
 export GPG_TTY=$(tty)
-export INPUTRC=~/.inputrc
+export GUIEDITOR=$(command -v mvim || command -v gvim)
+export HISTCONTROL="erasedups:ignoreboth"
 export HISTFILESIZE=5000
 export HISTSIZE=5000
-export HISTCONTROL="erasedups:ignoreboth"
+export HISTTIMEFORMAT="%D %T "
 export HISTTIMEFORMAT="%d/%m/%y %T "
-unset MAILCHECK
-export VISUAL=$(type -p vim || type -p vi)
-export EDITOR=$(type -p vim || type -p vi)
-export GUIEDITOR=$(type -p mvim || type -p gvim)
-PROMPT_COMMAND='history -a'
-export PAGER=$(type -p less || type -p more)
+export INPUTRC=~/.inputrc
+export LSCOLORS="Hxfxcxdxbxegedabagacad"
+export LS_COLORS="di=1;37;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
+export PAGER=$(command -v less || command -v more)
 export MANPAGER=$PAGER
-export HOMEBREW_NO_ANALYTICS=1
+export PROMPT_COMMAND='history -a'
+export SHELL=$(command -v bash)
+export UNAME=$(uname)
+export VISUAL=$(command -v vim || command -v vi)
+unset MAILCHECK
 
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
     export LESS="-qiX"
@@ -60,24 +71,69 @@ if [[ "$(tty)" = "/dev/console" ]]; then
 elif [[ "$TERM" = screen* && -z "$TMUX" ]]; then
     infocmp screen > /dev/null 2>&1 && export TERM=screen
     infocmp screen-256color > /dev/null 2>&1 && export TERM=screen-256color
-    if [[ "$UNAME" = "SunOS" ]]; then
-        infocmp dtterm > /dev/null 2>&1 && export TERM=dtterm
-    fi
 elif [[ -n "$TMUX" ]]; then
     infocmp screen > /dev/null 2>&1 && export TERM=screen
     infocmp screen-256color > /dev/null 2>&1 && export TERM=screen-256color
-    if [[ "$UNAME" = "SunOS" ]]; then
-        infocmp dtterm > /dev/null 2>&1 && export TERM=dtterm
-    fi
 else
     infocmp vt100 > /dev/null 2>&1 && export TERM=vt100
     infocmp xterm > /dev/null 2>&1 && export TERM=xterm
     infocmp xterm-color > /dev/null 2>&1 && export TERM=xterm-color
     infocmp xterm-256color > /dev/null 2>&1 && export TERM=xterm-256color
-    if [[ "$UNAME" = "SunOS" ]]; then
-        infocmp dtterm > /dev/null 2>&1 && export TERM=dtterm
+fi
+
+##############################################################################################
+# Functions and aliases
+
+colors() {
+    for i in {0..255} ; do
+        printf "\x1b[38;5;${i}mcolor ${i}\n"
+    done
+}
+
+# Make a directory and then cd into it.
+mkcd() {
+    mkdir -p $1 && cd $1
+}
+
+alias c='cat'
+alias ctr='ctags -R .'
+alias e=$EDITOR
+
+if [[ "$EDITOR" = "$(command -v vim)" ]]; then
+    if $(vim --version | awk '{ if ($5 >= 7.0) { exit(0) } else { exit(1) } }'); then
+        alias ep="$EDITOR -p"
     fi
 fi
+
+eg() {
+    e $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')
+}
+
+alias f='fg'
+
+alias g='egrep -i'
+alias gv='egrep -iv'
+
+alias j='jobs'
+
+ls -G &> /dev/null
+test $? -eq 0 && CR="-G"
+ls --color &> /dev/null
+test $? -eq 0 && CR="--color=auto"
+alias l="ls -Al $CR"
+alias la="ls -al $CR"
+
+alias m=$PAGER
+
+alias be='bundle exec'
+alias k='keychain --nogui ~/.ssh/id_!(*.pub) && source ~/.keychain/$(hostname)-sh'
+alias ta='tmux att -t'
+alias td='tmux_new_session_pwd'
+alias tg='tmux_new_project_for_all_dirty_git'
+alias tk='tmux_kill_session'
+alias tl='tmux ls'
+alias tn='tmux_new_session'
+alias tp='tmux_new_project'
 
 if [[ "$TERM" == "dtterm" ]]; then
     export MYCOLORS=256
@@ -85,8 +141,16 @@ else
     export MYCOLORS=$(tput colors)
 fi
 
-color16() { echo -ne "\[\033[${1}m\]"; }
-color256() { echo -ne "\[\033[38;5;${1}m\]"; }
+##############################################################################################
+# Shell prompt
+
+color16() {
+    echo -ne "\[\033[${1}m\]";
+}
+
+color256() {
+    echo -ne "\[\033[38;5;${1}m\]";
+}
 
 NOCOLOR="$(color16 '0')"
 
@@ -131,158 +195,19 @@ fi
 CLRJBS=$RED
 CLRNONE=$NOCOLOR
 CLRPRMT=$GREY
-# CLRPRMT=$WHITE
-
-if [[ -x "$(type -p locale)" && $(locale | grep UTF | wc -l) -gt 0 ]]; then
-    UTF=1
-else
-    UTF=0
-fi
-
-ps_id() {
-    echo -n "$(whoami) "
-}
-
-ps_host() {
-    echo -ne "\h "
-}
-
-ps_dir() {
-    echo -ne "\w"
-}
 
 ps_jobs() {
     local jbs=$(jobs 2>/dev/null | wc -l | awk '{print $1}')
     if test $jbs -gt 0; then
-        # echo -ne "[$jbs] "
         echo -ne " [$jbs]"
     fi
 }
 
-ps_git() {
-    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-        ref=$(command git rev-parse --short HEAD 2> /dev/null) || \
-        return 0
-    echo -n " ${ref#refs/heads/}"
-}
+export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}>${CLRNONE} "
 
-ps_git_chg() {
-    (
-        (command git symbolic-ref HEAD > /dev/null 2>&1) || \
-        (command git rev-parse --short HEAD > /dev/null 2>&1)
-    ) && {
-        if test $(git status --porcelain --ignore-submodules=dirty 2> /dev/null | wc -l) -gt 0; then
-            echo -n " *"
-        fi
-
-        if test $(git stash list 2> /dev/null | wc -l) -gt 0; then
-            echo -n ' #'
-        fi
-    }
-}
-
-ps_rb() {
-    if type -p rbenv > /dev/null 2>&1; then
-        if [ -f "$(pwd)/.rbenv-version" -o -f "$(pwd)/.ruby-version" ] && rbenv version-name > /dev/null 2>&1; then
-            echo -n " $(rbenv version-name)"
-            if [ -f $(pwd)/.rbenv-gemsets ] && rbenv gemset active > /dev/null 2>&1; then
-                echo -n " $(rbenv gemset active | awk '{print $1}')"
-            fi
-        fi
-    fi
-}
-
-ps_node() {
-    if type -p nodenv > /dev/null 2>&1; then
-        if [ -f "$(pwd)/.node-version" ]; then
-            echo -n " $(nodenv version-name)"
-        fi
-    fi
-}
-
-ps_prompt() {
-    echo -n " > "
-}
-
-export PS1="${CLRHOST}$(ps_host)${CLRID}"'$(ps_id)'"${CLRDIR}$(ps_dir)${CLRJBS}"'$(ps_jobs)'"${CLRRB}"'$(ps_rb)'"${CLRNODE}"'$(ps_node)'"${CLRGIT}"'$(ps_git)'"${CLRGITCHG}"'$(ps_git_chg)'"${CLRPRMT}$(ps_prompt)${CLRNONE}"
-
-alias c='cat'
-alias ctr='ctags -R .'
-alias e=$EDITOR
-alias f='fg'
-
-if [[ "$EDITOR" = "$(command -v vim)" ]]; then
-    if $(vim --version | awk '{ if ($5 >= 7.0) { exit(0) } else { exit(1) } }'); then
-        alias ep="$EDITOR -p"
-    fi
-fi
-
-function eg {
-    e $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')
-}
-
-alias g='egrep -i'
-alias gv='egrep -iv'
-
-if [[ $UNAME == "SunOS" ]]; then
-    alias gq='/usr/xpg4/bin/egrep -iq'
-elif [[ $UNAME == "Darwin" ]]; then
-    alias gq='/usr/bin/egrep -iq'
-fi
-
-alias j='jobs'
-
-ls -G &> /dev/null
-test $? -eq 0 && CR="-G"
-ls --color &> /dev/null
-test $? -eq 0 && CR="--color=auto"
-alias l="ls -Al $CR"
-alias la="ls -al $CR"
-
-alias m=$PAGER
-alias mt="$PAGER +F"
-
-PSARGS="user,pid,args"
-test "$(uname -sr)" = "SunOS 5.10" && PSARGS="zone,$PSARGS"
-alias pg="ps -eo $PSARGS | egrep -i"
-alias pgv="ps -eo $PSARGS | egrep -iv"
-alias pm="ps -eo $PSARGS | more"
-test "$UNAME" = "Linux" && alias pm="ps -Heo $PSARGS | more"
-
-alias be='bundle exec'
-alias k='keychain --nogui ~/.ssh/id_!(*.pub) && source ~/.keychain/$(hostname)-sh'
-alias ta='tmux att -t'
-alias td='tmux_new_session_pwd'
-alias tg='tmux_new_project_for_all_dirty_git'
-alias tk='tmux_kill_session'
-alias tl='tmux ls'
-alias tn='tmux_new_session'
-alias tp='tmux_new_project'
-
-colors() {
-    for i in {0..255} ; do
-        printf "\x1b[38;5;${i}mcolor ${i}\n"
-    done
-}
-
-if [ -s ~/.keychain/$(hostname)-sh ]; then
-    source ~/.keychain/$(hostname)-sh;
-fi
+##############################################################################################
+# External setup
 
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
-fi
-
-if [ -d $HOME/.bash.d ]; then
-    for f in $HOME/.bash.d/*; do
-        source $f
-    done
-fi
-
-if [ -d /usr/local/etc/bash_completion.d ]; then
-    for f in /usr/local/etc/bash_completion.d/*; do
-        if ! ( echo $f | grep -q "ag.bashcomp.sh"); then
-            source $f
-        fi
-    done
 fi

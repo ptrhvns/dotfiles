@@ -182,10 +182,6 @@ if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"
 fi
 
-if command -v rbenv 1>/dev/null 2>&1; then
-    eval "$(rbenv init -)"
-fi
-
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi

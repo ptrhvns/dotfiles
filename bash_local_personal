@@ -1,8 +1,0 @@
-#!/bin/bash
-
-function brew {
-    (
-        unset DYLD_LIBRARY_PATH
-        command brew $@
-    )
-}

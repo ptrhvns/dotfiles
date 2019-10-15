@@ -186,6 +186,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
+if command -v rbenv 1>/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
 if [ -s ~/.keychain/$(hostname)-sh ]; then
     source ~/.keychain/$(hostname)-sh;
 fi

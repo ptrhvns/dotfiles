@@ -40,7 +40,6 @@ export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/
 export PAGER=$(command -v less || command -v more)
 export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:~/IntelliJ/idea-IC-192.6817.14/bin:~/PyCharm/pycharm-community-2019.2.3/bin:/usr/libexec/java_home:~/.nodenv/bin:~/.pyenv/bin:~/.rbenv/bin
 export PROMPT_COMMAND='history -a'
-
 export SHELL=$(command -v bash)
 export UNAME=$(uname)
 export VISUAL=$(command -v vim || command -v vi)
@@ -174,10 +173,6 @@ alias tl='tmux ls'
 alias tn='tmux_new_session'
 alias tp='tmux_new_project'
 
-if [ -f ~/.bash_local ]; then
-    source ~/.bash_local
-fi
-
 if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"
 fi
@@ -189,6 +184,11 @@ fi
 if command -v rbenv 1>/dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
+
 if [ -s ~/.keychain/$(hostname)-sh ]; then
     source ~/.keychain/$(hostname)-sh;
+fi
+
+if [ -f ~/.bash_local ]; then
+    source ~/.bash_local
 fi

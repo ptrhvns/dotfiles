@@ -61,10 +61,11 @@ set wrapscan
 
 if has("multi_byte") && &t_Co > 255
     set encoding=utf-8
-    set fillchars=diff:⣿
+    " set fillchars=diff:⣿
     set list
     " set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-    set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
+    " set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
+    set listchars=tab:..,trail:_,extends:>,precedes:<,nbsp:~
 
     " if exists('+relativenumber')
         " set relativenumber

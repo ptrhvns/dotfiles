@@ -3,10 +3,12 @@
 ulimit -c unlimited
 umask u=rwx,g=rwx,o=rx
 
-bind "set completion-map-case on"
-bind "set show-all-if-ambiguous on"
-bind -m vi-insert "\C-l":clear-screen
-bind Space:magic-space
+if tty -s; then
+    bind "set completion-map-case on"
+    bind "set show-all-if-ambiguous on"
+    bind -m vi-insert "\C-l":clear-screen
+    bind Space:magic-space
+fi
 
 set -o noclobber
 set -o vi

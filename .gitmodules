@@ -52,6 +52,3 @@
 [submodule "vim/bundle/lightline.vim"]
 	path = vim/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
-[submodule "vim/bundle/vim-svelte"]
-	path = vim/bundle/vim-svelte
-	url = https://github.com/burner/vim-svelte.git

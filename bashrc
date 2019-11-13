@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ulimit -c unlimited
-umask u=rwx,g=rwx,o=rx
+umask 022
 
 if tty -s; then
     bind "set completion-map-case on"

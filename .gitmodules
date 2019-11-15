@@ -52,3 +52,6 @@
 [submodule "vim/bundle/lightline.vim"]
 	path = vim/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/bundle/Vim-Jinja2-Syntax"]
+	path = vim/bundle/Vim-Jinja2-Syntax
+	url = git@github.com:Glench/Vim-Jinja2-Syntax.git

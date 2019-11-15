@@ -225,6 +225,10 @@ function! FormatFile()
     elseif (&filetype == 'html')
         " Do `npm install -g js-beautify` to get the html-beautify command.
         execute "!clear; html-beautify -pIr -s 2 -w 80 -f " . t:file
+        execute "!clear; npx prettier --write " . t:file
+    " elseif (&filetype == 'htmldjango')
+        " Do `npm install -g js-beautify` to get the html-beautify command.
+        " execute "!clear; html-beautify -pIr -s 2 -w 80 -f " . t:file
     elseif (&filetype == 'java')
         " execute "!clear; astyle --add-braces --attach-classes --attach-return-type --break-blocks --max-code-length=80 --pad-header --pad-oper --style=java --suffix=none " . t:file
         execute "!clear; google-java-format --replace " . t:file
@@ -451,9 +455,9 @@ augroup ag_all
     autocmd FileType html.handlebars setlocal shiftwidth=2
     autocmd FileType html.handlebars setlocal softtabstop=2
     autocmd FileType htmldjango setlocal expandtab
-    autocmd FileType htmldjango setlocal shiftwidth=4
-    autocmd FileType htmldjango setlocal softtabstop=4
-    autocmd FileType htmldjango setlocal tabstop=4
+    autocmd FileType htmldjango setlocal shiftwidth=2
+    autocmd FileType htmldjango setlocal softtabstop=2
+    autocmd FileType htmldjango setlocal tabstop=2
     autocmd FileType java setlocal expandtab
     autocmd FileType java setlocal shiftwidth=2
     autocmd FileType java setlocal softtabstop=2

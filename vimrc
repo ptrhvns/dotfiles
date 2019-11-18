@@ -239,7 +239,7 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; black -l 80 " . t:file
+        execute "!clear; isort -ac " . t:file . " && black " . t:file
     elseif (&filetype == 'ruby')
         execute "!clear; rubocop --auto-correct " . t:file
     elseif (&filetype == 'rust')

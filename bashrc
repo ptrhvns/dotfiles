@@ -43,7 +43,7 @@ export PAGER=$(command -v less || command -v more)
 
 # Window "echo %path%"
 # C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Vim 8.1;C:\Program Files (x86)\Vim\vim81;;C:\Users\Pete\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Pete\AppData\Local\hyper\app-3.0.2\resources\bin
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:~/IntelliJ/idea-IC-192.6817.14/bin:~/PyCharm/pycharm-community-2019.2.3/bin:/usr/libexec/java_home:~/.nodenv/bin:~/.pyenv/bin:~/.rbenv/bin:/mnt/c/Windows/System32
+export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:~/IntelliJ/idea-IC-192.6817.14/bin:~/PyCharm/pycharm-community-2019.2.3/bin:/usr/libexec/java_home:~/.nodenv/bin:~/.pyenv/bin:~/.rbenv/bin:/mnt/c/Windows/System32
 
 export PROMPT_COMMAND='history -a'
 export SHELL=$(command -v bash)

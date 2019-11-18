@@ -233,7 +233,7 @@ snippet small
 snippet source
 	<source />
 snippet span
-	span>${1}</span>
+	<span>${1}</span>
 snippet strong
 	<strong>${1}</strong>
 snippet sty
@@ -287,3 +287,14 @@ snippet main
 	</main>
 snippet att
 	${1:name}="${2:value}"
+snippet %%
+	{% ${1} %}
+snippet %blo
+	{% block ${1:name} %}
+	{% endblock %}
+snippet %if
+	{% if ${1:expression} %}
+	{% endif %}
+snippet %for
+	{% for ${1:target} in ${2:expression} %}
+	{% endfor %}

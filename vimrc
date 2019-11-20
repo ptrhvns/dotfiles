@@ -643,7 +643,7 @@ let g:surround_105  = "#{\r}" " 105 = ASCII mapping for 'i'
 
 let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(\.git|node_modules|dist|coverage|venv)',
+    \ 'dir': '\v(\.git|node_modules|dist|coverage|venv|__pycache__|egg-info)',
     \ 'file': '\v\.(swp|pyc)'
     \ }
 let g:ctrlp_switch_buffer = 0

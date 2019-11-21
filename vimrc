@@ -61,7 +61,7 @@ set wrapscan
 
 if has("multi_byte") && &t_Co > 255
     set encoding=utf-8
-    " set fillchars=diff:⣿
+    set fillchars=diff:⣿
     set list
     " set listchars=tab:..,trail:.,extends:>,precedes:<,nbsp:~
     " set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
@@ -239,7 +239,7 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; isort -ac " . t:file . " && black " . t:file
+        execute "!clear; isort -ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
     elseif (&filetype == 'ruby')
         execute "!clear; rubocop --auto-correct " . t:file
     elseif (&filetype == 'rust')

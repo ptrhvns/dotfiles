@@ -574,7 +574,7 @@ let g:GPGPreferArmor=1
 " -----------------
 
 let g:snippets_dir=$HOME.'/.vim/snippets'
-nnoremap <Leader>es :tabedit $HOME/.vim/snippets/
+nnoremap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
 
 " airline settings
 " ----------------

@@ -127,7 +127,7 @@ nnoremap <Up> :tabmove +1<CR><C-l>
 nnoremap K <Nop>
 
 " Edit my vimrc file.
-nnoremap <Leader>ev :tabedit $MYVIMRC<CR>
+nnoremap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
 
 " Align columns in a "table" (see tabular settings for conflicts).
 vnoremap <Leader>ac :!column -t<CR>
@@ -474,7 +474,7 @@ augroup ag_all
     autocmd FileType python setlocal shiftwidth=4
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
-    autocmd FileType python setlocal textwidth=79
+    autocmd FileType python setlocal textwidth=88
     autocmd Filetype c setlocal omnifunc=ccomplete#Complete
 
     " if exists('+relativenumber')

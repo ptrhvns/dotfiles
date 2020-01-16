@@ -171,6 +171,7 @@ test $? -eq 0 && CR="--color=auto"
 alias l="ls -Al $CR"
 alias la="ls -al $CR"
 alias m=$PAGER
+alias notepad='/mnt/c/windows/system32/notepad.exe'
 alias ta='tmux att -t'
 alias td='tmux_new_session_pwd'
 alias tg='tmux_new_project_for_all_dirty_git'

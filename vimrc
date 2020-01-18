@@ -128,7 +128,7 @@ nnoremap <Leader>w :set invwrap wrap?<CR>
 nnoremap <Leader>u :setlocal list! cursorcolumn! cursorline!<CR><C-l>
 
 " Toggle moving cursor to first non-blank of line and show result.
-vnoremap <Leader>s :sort u<CR>
+vnoremap <Leader>s :sort iu<CR>
 
 " Switch between tabs.
 nnoremap <Right> gt

@@ -150,10 +150,6 @@ vnoremap <Leader>ac :!column -t<CR>
 " Source my vimrc file.
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 
-" Save and load sessions to recover screen layout of files.
-nmap <Leader>ss :mksession! ~/.vim/session <CR>
-nmap <Leader>sl :source ~/.vim/session <CR>
-
 " Toggle list, number, and relativenumber.
 " if exists('+relativenumber')
     " nnoremap <Leader>$ :set list! number! relativenumber!<CR><C-l>
@@ -163,10 +159,6 @@ nmap <Leader>sl :source ~/.vim/session <CR>
 
 " Make Y behave like other capitals.
 nnoremap Y y$
-
-" Reselect previous visual block after an indent, or outdent.
-vnoremap < <gv
-vnoremap > >gv
 
 " Remove all trailing whitespace.
 nnoremap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
@@ -300,11 +292,10 @@ command! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
 " Configure a notes file.
 map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 
-" Start silver seacher.
-map <Leader>z :Ag<Space>
-
+" Set a marker for Django HTML templates.
 map <Leader>hd O{# htmldjango #}<Esc>:set ft=htmldjango<CR>
 
+" Translate some fancy (Unicode) characters to ASCII.
 function! RemoveFancyCharacters()
     let typo = {}
     let typo["“"] = '"'
@@ -326,8 +317,6 @@ nmap <Leader>rf :execut "!clear; cargo fix"<CR>
 nmap <Leader>rl :execute "!clear; cargo clippy"<CR>
 nmap <Leader>rr :execute "!clear; cargo run"<CR>
 
-" Run go commands.
-nmap <Leader>gor :execute "!clear; go run " . expand("%")<CR>
 
 " PATHOGEN SETUP
 " =============================================================
@@ -389,18 +378,6 @@ filetype indent on
 " Enable filetype specific plugins.
 filetype plugin on
 
-" Use Tabularize to align pipe delimited tables (e.g. in Cucumber features).
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
-
 augroup ag_all
     autocmd!
 
@@ -426,25 +403,11 @@ augroup ag_all
     autocmd FileType c setlocal nolist
     autocmd FileType c setlocal shiftwidth=8
     autocmd FileType c setlocal softtabstop=0
-    autocmd FileType clojure RainbowParenthesesActivate
-    autocmd FileType clojure RainbowParenthesesLoadBraces
-    autocmd FileType clojure RainbowParenthesesLoadRound
-    autocmd FileType clojure RainbowParenthesesLoadSquare
-    autocmd FileType clojure setlocal expandtab
-    autocmd FileType clojure setlocal shiftwidth=2
-    autocmd FileType clojure setlocal softtabstop=2
-    autocmd FileType coffee setlocal expandtab
-    autocmd FileType coffee setlocal shiftwidth=2
-    autocmd FileType coffee setlocal softtabstop=2
     autocmd FileType css setlocal expandtab
     autocmd FileType css setlocal iskeyword+=-
     autocmd FileType css setlocal omnifunc=csscomplete#Complete
     autocmd FileType css setlocal shiftwidth=2
     autocmd FileType css setlocal softtabstop=2
-    autocmd FileType cucumber imap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-    autocmd FileType cucumber setlocal expandtab
-    autocmd FileType cucumber setlocal shiftwidth=2
-    autocmd FileType cucumber setlocal softtabstop=2
     autocmd FileType eruby setlocal expandtab
     autocmd FileType eruby setlocal shiftwidth=2
     autocmd FileType eruby setlocal softtabstop=2
@@ -455,20 +418,12 @@ augroup ag_all
     autocmd FileType gitconfig setlocal expandtab
     autocmd FileType gitconfig setlocal shiftwidth=8
     autocmd FileType gitconfig setlocal softtabstop=8
-    autocmd FileType go setlocal noexpandtab
-    autocmd FileType go setlocal nolist
-    autocmd FileType go setlocal shiftwidth=4
-    autocmd FileType go setlocal softtabstop=4
-    autocmd FileType go setlocal tabstop=4
     autocmd FileType haml setlocal iskeyword+=-
     autocmd FileType help setlocal nolist
     autocmd FileType html setlocal expandtab
     autocmd FileType html setlocal omnifunc=htmlcomplete#Complete
     autocmd FileType html setlocal shiftwidth=2
     autocmd FileType html setlocal softtabstop=2
-    autocmd FileType html.handlebars setlocal expandtab
-    autocmd FileType html.handlebars setlocal shiftwidth=2
-    autocmd FileType html.handlebars setlocal softtabstop=2
     autocmd FileType htmldjango setlocal expandtab
     autocmd FileType htmldjango setlocal shiftwidth=2
     autocmd FileType htmldjango setlocal softtabstop=2
@@ -515,9 +470,6 @@ augroup ag_all
     autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
     autocmd FileType sql setlocal shiftwidth=2
     autocmd FileType sql setlocal softtabstop=2
-    autocmd FileType svelte setlocal expandtab
-    autocmd FileType svelte setlocal shiftwidth=2
-    autocmd FileType svelte setlocal softtabstop=2
     autocmd FileType text setlocal nolist
     autocmd FileType text setlocal norelativenumber
     autocmd FileType text setlocal spell
@@ -534,10 +486,6 @@ augroup ag_all
     autocmd FileType vim setlocal expandtab
     autocmd FileType vim setlocal shiftwidth=4
     autocmd FileType vim setlocal softtabstop=4
-    autocmd FileType vue.html.javascript.css setlocal expandtab
-    autocmd FileType vue.html.javascript.css setlocal shiftwidth=2
-    autocmd FileType vue.html.javascript.css setlocal softtabstop=2
-    autocmd FileType vue.html.javascript.css syntax sync fromstart
     autocmd FileType xhtml setlocal expandtab
     autocmd FileType xhtml setlocal omnifunc=htmlcomplete#Complete
     autocmd FileType xhtml setlocal shiftwidth=2
@@ -590,16 +538,6 @@ let g:GPGPreferArmor=1
 
 let g:snippets_dir=$HOME.'/.vim/snippets'
 nnoremap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
-
-" airline settings
-" ----------------
-
-" if has("multi_byte")
-    " let g:airline_left_sep='▶'
-    " let g:airline_right_sep='◀'
-" end
-
-" let g:airline_theme='solarized'
 
 " lightline
 " ---------
@@ -658,23 +596,11 @@ let g:surround_105  = "#{\r}" " 105 = ASCII mapping for 'i'
 
 let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(\.git|node_modules|dist|coverage|venv|__pycache__|egg-info)',
+    \ 'dir': '\v(\.git|node_modules|dist|coverage|venv|__pycache__|egg-info|target)',
     \ 'file': '\v\.(swp|pyc)'
     \ }
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-
-" if executable('rg')
-  " let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  " let g:ctrlp_use_caching = 0
-" endif
-
-" Git Gutter settings
-" -------------------
-
-" let g:gitgutter_enabled = 0
-" nmap <Leader>gg :GitGutterToggle<CR>
-" highlight clear SignColumn
 
 " dragvisuals settings
 " --------------------
@@ -691,32 +617,6 @@ vmap  <expr>  D        DVB_Duplicate()
 
 let g:vim_json_syntax_conceal = 0
 let g:vim_json_warnings = 1
-
-" vim-sexp settings
-" -----------------
-
-" let g:sexp_filetypes = 'clojure,scheme,lisp'
-
-" rainbow_parentheses settings
-" ----------------------------
-
-" let g:rbpt_colorpairs = [
-    " \ ['brown',       'RoyalBlue3'],
-    " \ ['Darkblue',    'SeaGreen3'],
-    " \ ['darkgray',    'DarkOrchid3'],
-    " \ ['darkgreen',   'firebrick3'],
-    " \ ['darkcyan',    'RoyalBlue3'],
-    " \ ['darkred',     'SeaGreen3'],
-    " \ ['darkmagenta', 'DarkOrchid3'],
-    " \ ['brown',       'firebrick3'],
-    " \ ['gray',        'RoyalBlue3'],
-    " \ ['darkmagenta', 'DarkOrchid3'],
-    " \ ['Darkblue',    'firebrick3'],
-    " \ ['darkgreen',   'RoyalBlue3'],
-    " \ ['darkcyan',    'SeaGreen3'],
-    " \ ['darkred',     'DarkOrchid3'],
-    " \ ['red',         'firebrick3'],
-    " \ ]
 
 " CamelCaseMotion
 " ---------------

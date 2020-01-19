@@ -82,9 +82,9 @@ if has("multi_byte") && &t_Co > 255
     " set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
     set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
 
-    " if exists('+relativenumber')
-        " set relativenumber
-    " end
+    if exists('+relativenumber')
+        set relativenumber
+    end
 endif
 
 " Fix problems with dtterm TERM type.
@@ -155,11 +155,11 @@ nmap <Leader>ss :mksession! ~/.vim/session <CR>
 nmap <Leader>sl :source ~/.vim/session <CR>
 
 " Toggle list, number, and relativenumber.
-" if exists('+relativenumber')
-    " nnoremap <Leader>$ :set list! number! relativenumber!<CR><C-l>
-" else
+if exists('+relativenumber')
+    nnoremap <Leader>$ :set list! number! relativenumber!<CR><C-l>
+else
     nnoremap <Leader>$ :set list! number!<CR><C-l>
-" endif
+endif
 
 " Make Y behave like other capitals.
 nnoremap Y y$
@@ -492,11 +492,11 @@ augroup ag_all
     autocmd FileType python setlocal textwidth=88
     autocmd Filetype c setlocal omnifunc=ccomplete#Complete
 
-    " if exists('+relativenumber')
-        " autocmd FileType nerdtree setlocal nolist nonumber norelativenumber
-    " else
+    if exists('+relativenumber')
+        autocmd FileType nerdtree setlocal nolist nonumber norelativenumber
+    else
         autocmd FileType nerdtree setlocal nolist nonumber
-    " endif
+    endif
 
     autocmd FileType ruby setlocal expandtab
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete

@@ -29,8 +29,10 @@ snippet fro
 snippet try
 	try:
 	    ${1:pass}
+	except ${2:Exception}:
+	    ${3:pass}
 snippet exc
-	except ${1:Exception}:
+	except ${1:Exception} as exc:
 	    ${2:pass}
 snippet fin
 	finally:

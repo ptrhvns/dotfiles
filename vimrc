@@ -584,7 +584,7 @@ nnoremap <Leader>gc :Gcommit --verbose<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gp :Gpush --verbose<CR>
 nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gw :Gwrite<CR>
+" nnoremap <Leader>gw :Gwrite<CR>
 
 " surround settings
 " -----------------

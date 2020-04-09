@@ -19,6 +19,12 @@ snippet des
 	@staticmethod
 	def ${1:name}(${2}):
 	    ${3:pass}
+snippet adef
+	async def ${1:name}(${2}):
+	    ${3:pass}
+snippet adem
+	async def ${1:name}(self${2}):
+	    ${3:pass}
 snippet cla
 	class ${1:Name}(${2}):
 	    ${3:pass}
@@ -58,11 +64,17 @@ snippet els
 snippet for
 	for ${1:target} in ${2:expression}:
 	    ${3:pass}
+snippet afor
+	async for ${1:target} in ${2:expression}:
+	    ${3:pass}
 snippet whi
 	while ${1:expression}:
 	    ${2:pass}
 snippet wit
 	with ${1:expression}:
+	    ${2:pass}
+snippet awit
+	async with ${1:expression}:
 	    ${2:pass}
 snippet lam
 	lambda ${1:parameters}: ${2:expression}

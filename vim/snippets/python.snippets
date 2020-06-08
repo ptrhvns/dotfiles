@@ -88,3 +88,6 @@ snippet pmf
 	@pytest.mark.focus  # FIXME remove
 snippet pms
 	@pytest.mark.skip
+snippet dto
+	from django.test import tag
+	@tag("only")

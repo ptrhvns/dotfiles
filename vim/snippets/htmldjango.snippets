@@ -21,7 +21,6 @@ snippet doc
 	<html lang="en">
 	    <head>
 	        <meta charset="utf-8">
-	        <meta http-equiv="x-ua-compatible" content="ie=edge">
 	        <meta name="viewport" content="width=device-width, initial-scale=1">
 	        <title>${1}</title>
 	    </head>
@@ -300,3 +299,8 @@ snippet else
 	{% else %}
 snippet att
 	${1:name}="${2:value}"
+snippet extends
+	{% extends ${1:argument} %}
+snippet block
+	{% block ${1:name} %}
+	{% endblock ${2:$1} %}

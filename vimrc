@@ -361,7 +361,7 @@ try
         highlight Search term=reverse cterm=reverse ctermbg=Black ctermfg=Yellow guibg=Yellow
     endif
 catch /^Vim\%((\a\+)\)\=:E185/
-    " Ignore errors if solarized can't be found.
+    colorscheme industry
 endtry
 
 if exists("g:colors_name") && g:colors_name == 'solarized' && has("multi_byte")
@@ -397,11 +397,9 @@ augroup ag_all
     autocmd BufRead,BufNewFile zprofile setlocal filetype=zsh
     autocmd BufRead,BufNewFile zshrc setlocal filetype=zsh
     autocmd BufReadPost fugitive://* set bufhidden=delete
-    autocmd FileType Gemfile setlocal expandtab
-    autocmd FileType Gemfile setlocal shiftwidth=2
-    autocmd FileType Gemfile setlocal softtabstop=2
     autocmd FileType c setlocal noexpandtab
     autocmd FileType c setlocal nolist
+    autocmd Filetype c setlocal omnifunc=ccomplete#Complete
     autocmd FileType c setlocal shiftwidth=8
     autocmd FileType c setlocal softtabstop=0
     autocmd FileType css setlocal expandtab
@@ -412,6 +410,9 @@ augroup ag_all
     autocmd FileType eruby setlocal expandtab
     autocmd FileType eruby setlocal shiftwidth=2
     autocmd FileType eruby setlocal softtabstop=2
+    autocmd FileType Gemfile setlocal expandtab
+    autocmd FileType Gemfile setlocal shiftwidth=2
+    autocmd FileType Gemfile setlocal softtabstop=2
     autocmd FileType gitcommit setlocal expandtab
     autocmd FileType gitcommit setlocal nolist
     autocmd FileType gitcommit setlocal shiftwidth=8
@@ -439,6 +440,9 @@ augroup ag_all
     autocmd FileType json setlocal expandtab
     autocmd FileType json setlocal shiftwidth=2
     autocmd FileType json setlocal softtabstop=2
+    autocmd FileType markdown setlocal expandtab
+    autocmd FileType markdown setlocal shiftwidth=2
+    autocmd FileType markdown setlocal softtabstop=2
     autocmd FileType python setlocal autoindent
     autocmd FileType python setlocal expandtab
     autocmd FileType python setlocal fileformat=unix
@@ -446,7 +450,6 @@ augroup ag_all
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
     autocmd FileType python setlocal textwidth=88
-    autocmd Filetype c setlocal omnifunc=ccomplete#Complete
 
     " if exists('+relativenumber')
         " autocmd FileType nerdtree setlocal nolist nonumber norelativenumber
@@ -597,7 +600,7 @@ let g:surround_105  = "#{\r}" " 105 = ASCII mapping for 'i'
 
 let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(\.git|node_modules|dist|coverage|venv|__pycache__|egg-info|target)',
+    \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info)',
     \ 'file': '\v\.(swp|pyc)'
     \ }
 let g:ctrlp_switch_buffer = 0

@@ -9,19 +9,22 @@ snippet #!
 snippet if
 	if ${1:condition}; then
 	fi
-snippet elif
+snippet eli
 	elif ${1:condition}; then
 snippet for
 	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
 	done
-snippet wh
+snippet whi
 	while ${1:condition}; do
 	done
-snippet until
+snippet unt
 	until ${1:condition}; do
 	done
-snippet case
+snippet cas
 	case ${1:expression} in
 	    *)
 	        ;;
 	esac
+snippet fun
+	${1:name}() {
+	}

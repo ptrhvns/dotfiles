@@ -89,5 +89,6 @@ snippet pmf
 snippet pms
 	@pytest.mark.skip
 snippet dto
-	from django.test import tag
-	@tag("only")
+	@__import__('django.test').tag("only")
+snippet ipd
+	__import__('ipdb').set_trace(context=10)

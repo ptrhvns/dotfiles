@@ -89,8 +89,12 @@ snippet pmf
 snippet pms
 	@pytest.mark.skip
 snippet dto
-	@__import__('django.test').tag("only")
+	# FIXME remove
+	import django.test
+	@django.test.tag("only")
 snippet ipd
-	__import__('ipdb').set_trace(context=10)
+	# FIXME remove
+	import ipdb
+	ipdb.set_trace(context=20)
 snippet bre
 	breakpoint()

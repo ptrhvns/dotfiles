@@ -138,7 +138,7 @@ if [ -f "$HOME/.git-prompt.sh" ]; then
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
-    GIT_PS1_STATESEPARATOR=:
+    # GIT_PS1_STATESEPARATOR=:
 
     export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'"${CLRGIT}"'$(__git_ps1 " %s")'" ${CLRPRMT}\n>${CLRNONE} "
 else

@@ -420,6 +420,11 @@ augroup ag_all
     autocmd FileType gitconfig setlocal expandtab
     autocmd FileType gitconfig setlocal shiftwidth=8
     autocmd FileType gitconfig setlocal softtabstop=8
+    autocmd FileType go setlocal noexpandtab
+    autocmd FileType go setlocal nolist
+    autocmd FileType go setlocal shiftwidth=4
+    autocmd FileType go setlocal softtabstop=4
+    autocmd FileType go setlocal tabstop=4
     autocmd FileType haml setlocal iskeyword+=-
     autocmd FileType help setlocal nolist
     autocmd FileType html setlocal expandtab
@@ -450,13 +455,7 @@ augroup ag_all
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
     autocmd FileType python setlocal textwidth=88
-
-    " if exists('+relativenumber')
-        " autocmd FileType nerdtree setlocal nolist nonumber norelativenumber
-    " else
-        autocmd FileType nerdtree setlocal nolist nonumber
-    " endif
-
+    autocmd FileType nerdtree setlocal nolist nonumber
     autocmd FileType ruby setlocal expandtab
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
     autocmd FileType ruby setlocal shiftwidth=2

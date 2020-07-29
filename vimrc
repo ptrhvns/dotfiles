@@ -258,6 +258,8 @@ function! FormatFile()
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'typescript.jsx')
         execute "!clear; npx prettier --single-quote --write " . t:file
+    elseif (&filetype == 'vue.html.javascript.css')
+        execute "!clear; npx prettier --single-quote --write " . t:file
     else
         echoerr "Don't know how to format filetype: " . &filetype
     endif
@@ -489,6 +491,9 @@ augroup ag_all
     autocmd FileType vim setlocal expandtab
     autocmd FileType vim setlocal shiftwidth=4
     autocmd FileType vim setlocal softtabstop=4
+    autocmd FileType vue.html.javascript.css setlocal expandtab
+    autocmd FileType vue.html.javascript.css setlocal shiftwidth=2
+    autocmd FileType vue.html.javascript.css setlocal softtabstop=2
     autocmd FileType xhtml setlocal expandtab
     autocmd FileType xhtml setlocal omnifunc=htmlcomplete#Complete
     autocmd FileType xhtml setlocal shiftwidth=2
@@ -599,7 +604,7 @@ let g:surround_105  = "#{\r}" " 105 = ASCII mapping for 'i'
 
 let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info)',
+    \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static)',
     \ 'file': '\v\.(swp|pyc)'
     \ }
 let g:ctrlp_switch_buffer = 0

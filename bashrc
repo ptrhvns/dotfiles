@@ -171,7 +171,6 @@ alias f='fg'
 alias g='egrep -i'
 alias gv='egrep -iv'
 alias j='jobs'
-alias k='keychain --nogui ~/.ssh/id_!(*.pub) && source ~/.keychain/$(hostname)-sh'
 
 ls -G &> /dev/null
 test $? -eq 0 && CR="-G"
@@ -191,6 +190,19 @@ alias tl='tmux ls'
 alias tn='tmux_new_session'
 alias tp='tmux_new_project'
 
+# alias k='keychain --nogui ~/.ssh/id_!(*.pub) && source ~/.keychain/$(hostname)-sh'
+# if [ -s ~/.keychain/$(hostname)-sh ]; then
+    # source ~/.keychain/$(hostname)-sh;
+# fi
+
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval `ssh-agent`
+  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add ~/.ssh/id_!(*.pub)
+
 if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"
 fi
@@ -205,10 +217,6 @@ fi
 
 if command -v rbenv 1>/dev/null 2>&1; then
     eval "$(rbenv init -)"
-fi
-
-if [ -s ~/.keychain/$(hostname)-sh ]; then
-    source ~/.keychain/$(hostname)-sh;
 fi
 
 if [ -f ~/.bash_local ]; then

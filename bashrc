@@ -190,18 +190,29 @@ alias tl='tmux ls'
 alias tn='tmux_new_session'
 alias tp='tmux_new_project'
 
-# alias k='keychain --nogui ~/.ssh/id_!(*.pub) && source ~/.keychain/$(hostname)-sh'
-# if [ -s ~/.keychain/$(hostname)-sh ]; then
-    # source ~/.keychain/$(hostname)-sh;
-# fi
+# Ensure SSH agent is running.
+ssh-add -l &>/dev/null
+if [ "$?" == 2 ]; then
+    # Connection to SSH agent failed.
 
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent`
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+    # Load stored SSH agent connection information.
+    test -r ~/.ssh-agent && eval "$(<~/.ssh-agent)" >/dev/null
+
+    ssh-add -l &>/dev/null
+    if [ "$?" == 2 ]; then
+        # Start SSH agent and store agent connection information.
+        (umask 066; ssh-agent >| ~/.ssh-agent)
+        eval "$(<~/.ssh-agent)" >/dev/null
+    fi
 fi
 
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add ~/.ssh/id_!(*.pub)
+# Check if SSH agent has identities.
+ssh-add -l &>/dev/null
+if [ "$?" == 1 ]; then
+    # The agent has no identities.
+    echo ">>> Adding identities to SSH agent ..."
+    ssh-add ~/.ssh/id_!(*.pub)
+fi
 
 if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"

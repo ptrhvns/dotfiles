@@ -167,6 +167,10 @@ eg() {
     e $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')
 }
 
+randgen() {
+    echo $(openssl rand 60 | openssl base64 -A)
+}
+
 alias f='fg'
 alias g='egrep -i'
 alias gv='egrep -iv'

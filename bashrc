@@ -140,9 +140,9 @@ if [ -f "$HOME/.git-prompt.sh" ]; then
     GIT_PS1_SHOWUNTRACKEDFILES=1
     # GIT_PS1_STATESEPARATOR=:
 
-    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'"${CLRGIT}"'$(__git_ps1 " %s")'" ${CLRPRMT}\n>${CLRNONE} "
+    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'"${CLRGIT}"'$(__git_ps1 " %s")'" ${CLRPRMT}\n\$${CLRNONE} "
 else
-    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}>${CLRNONE} "
+    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\n\$${CLRNONE} "
 fi
 
 alias be='bundle exec'

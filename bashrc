@@ -185,6 +185,7 @@ test $? -eq 0 && CR="--color=auto"
 alias l="ls -Al $CR"
 alias la="ls -al $CR"
 alias m=$PAGER
+alias pm='python manage.py'
 alias notepad='/mnt/c/windows/system32/notepad.exe'
 alias ta='tmux att -t'
 alias td='tmux_new_session_pwd'

@@ -195,30 +195,6 @@ alias tl='tmux ls'
 alias tn='tmux_new_session'
 alias tp='tmux_new_project'
 
-# Ensure SSH agent is running.
-ssh-add -l &>/dev/null
-if [ "$?" == 2 ]; then
-    # Connection to SSH agent failed.
-
-    # Load stored SSH agent connection information.
-    test -r ~/.ssh-agent && eval "$(<~/.ssh-agent)" >/dev/null
-
-    ssh-add -l &>/dev/null
-    if [ "$?" == 2 ]; then
-        # Start SSH agent and store agent connection information.
-        (umask 066; ssh-agent >| ~/.ssh-agent)
-        eval "$(<~/.ssh-agent)" >/dev/null
-    fi
-fi
-
-# Check if SSH agent has identities.
-ssh-add -l &>/dev/null
-if [ "$?" == 1 ]; then
-    # The agent has no identities.
-    echo ">>> Adding identities to SSH agent ..."
-    ssh-add ~/.ssh/id_!(*.pub)
-fi
-
 if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"
 fi

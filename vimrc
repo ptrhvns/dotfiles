@@ -363,7 +363,7 @@ try
         highlight Search term=reverse cterm=reverse ctermbg=Black ctermfg=Yellow guibg=Yellow
     endif
 catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme industry
+    colorscheme slate
 endtry
 
 if exists("g:colors_name") && g:colors_name == 'solarized' && has("multi_byte")

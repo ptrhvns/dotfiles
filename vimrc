@@ -71,7 +71,7 @@ endif
 set virtualedit=all
 set visualbell
 set wildmenu
-set winwidth=96
+" set winwidth=96
 set wrapscan
 
 if has("multi_byte") && &t_Co > 255
@@ -247,7 +247,7 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; isort --atomic " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
+        execute "!clear; isort --atomic --no-sections " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
     elseif (&filetype == 'ruby')
         execute "!clear; rubocop --auto-correct " . t:file
     elseif (&filetype == 'rust')

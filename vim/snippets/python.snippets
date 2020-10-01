@@ -4,84 +4,82 @@ snippet #t
 	# TODO
 snippet def
 	def ${1:name}(${2}):
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet dem
 	def ${1:name}(self${2}):
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet ded
 	def __${1:name}__(self${2}):
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet dec
 	@classmethod
 	def ${1:name}(cls${2}):
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet des
 	@staticmethod
 	def ${1:name}(${2}):
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet adef
 	async def ${1:name}(${2}):
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet adem
 	async def ${1:name}(self${2}):
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet cla
-	class ${1:Name}(${2}):
-	    ${3:pass}
+	class ${1:Name}:
+	    ${2:pass} # FIXME
 snippet imp
 	import ${1:module}
 snippet fro
 	from ${1:module} import ${2:name}
 snippet try
 	try:
-	    ${1:pass}
+	    ${1:pass} # FIXME
 	except ${2:Exception}:
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet exc
 	except ${1:Exception} as exc:
-	    ${2:pass}
+	    ${2:pass} # FIXME
 snippet fin
 	finally:
-	    ${1:pass}
+	    ${1:pass} # FIXME
 snippet ifm
 	if __name__ == "__main__":
-	    ${1:pass}
+	    ${1:pass} # FIXME
 snippet if
 	if ${1:expression}:
-	    ${2:pass}
+	    ${2:pass} # FIXME
 snippet ifn
 	if not ${1:expression}:
-	    ${2:pass}
+	    ${2:pass} # FIXME
 snippet eli
 	elif ${1:expression}:
-	    ${2:pass}
+	    ${2:pass} # FIXME
 snippet elin
 	elif not ${1:expression}:
-	    ${2:pass}
+	    ${2:pass} # FIXME
 snippet els
 	else:
-	    ${1:pass}
+	    ${1:pass} # FIXME
 snippet for
 	for ${1:target} in ${2:expression}:
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet afor
 	async for ${1:target} in ${2:expression}:
-	    ${3:pass}
+	    ${3:pass} # FIXME
 snippet whi
 	while ${1:expression}:
-	    ${2:pass}
+	    ${2:pass} # FIXME
 snippet wit
 	with ${1:expression}:
-	    ${2:pass}
+	    ${2:pass} # FIXME
 snippet awit
 	async with ${1:expression}:
-	    ${2:pass}
+	    ${2:pass} # FIXME
 snippet lam
 	lambda ${1:parameters}: ${2:expression}
 snippet doc
 	"""${1:text}"""
-snippet to
-	@tag("only") remove
 snippet ass
 	assert ${1:expression}
 snippet pmf
@@ -104,7 +102,7 @@ snippet model_style
 	# custom manager ("table-level")
 	
 	# class Meta:
-	#     pass
+	#     pass # FIXME
 	
 	def __str__(self):
 	    pass  # FIXME implement
@@ -112,13 +110,13 @@ snippet model_style
 	# other special model methods
 	
 	# def clean(self):
-	#     pass
+	#     pass # FIXME
 	
 	# def save(self):
-	#     pass
+	#     pass # FIXME
 	
 	# def get_absolute_url(self):
-	#     pass
+	#     pass # FIXME
 	
 	# model methods ("row-level")
 snippet rai

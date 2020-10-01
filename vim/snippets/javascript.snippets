@@ -31,7 +31,7 @@ snippet coni
 snippet conl
 	console.log(${1});
 snippet conf
-	console.log(${1}); // FIXME
+	console.log('DEBUG', ${1}); // FIXME
 snippet cont
 	console.trace(${1:[message][, ...args]}); // FIXME
 snippet conw
@@ -128,6 +128,7 @@ snippet xde
 	});
 snippet xit
 	xit('${1}', () => {
+	  // FIXME
 	});
 snippet iife
 	(() => {
@@ -213,5 +214,5 @@ snippet jsd
 	 *
 	 */
 snippet it
-	it("${1:description}", () => {
+	it('${1:description}', () => {
 	});

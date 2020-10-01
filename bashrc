@@ -23,7 +23,7 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
-export DISPLAY=:0.0
+# export DISPLAY=:0.0
 export EDITOR=$(command -v vim || type -p vi)
 export GPG_TTY=$(tty)
 export GUIEDITOR=$(command -v mvim || command -v gvim)

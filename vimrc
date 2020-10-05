@@ -517,11 +517,11 @@ augroup END
 " NERD_commenter settings
 " -----------------------
 
-" let NERDSpaceDelims=1
 let NERD_scss_alt_style=1
 let NERDCommentWholeLinesInVMode=2
 let NERDCreateDefaultMappings=0
 let NERDDefaultAlign = 'left'
+let NERDSpaceDelims=1
 nmap <Leader>c <Plug>NERDCommenterToggle<C-l>
 nmap <Leader>i <Plug>NERDCommenterAltDelims<C-l>
 nmap <Leader>x <Plug>NERDCommenterSexy<C-l>

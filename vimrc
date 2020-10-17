@@ -19,7 +19,9 @@ set softtabstop=4
 set splitbelow
 set splitright
 set textwidth=79
-set timeout timeoutlen=3000 ttimeoutlen=100
+set timeout
+set timeoutlen=3000
+set ttimeoutlen=100
 set ttyfast
 set undolevels=1000
 set virtualedit=all
@@ -48,7 +50,7 @@ nmap <Leader>p :set invpaste paste?<CR>
 nmap <Leader>w :set invwrap wrap?<CR>
 
 " Toggle highlight the current line of the cursor.
-nmap <Leader>u :setlocal list! cursorcolumn! cursorline!<CR><C-l>
+nmap <Leader>u :setlocal cursorcolumn! cursorline!<CR><C-l>
 
 " Sort visual selection.
 vmap <Leader>s :sort iu<CR>

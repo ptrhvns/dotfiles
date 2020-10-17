@@ -180,7 +180,7 @@ try
     if &t_Co > 15
         colorscheme solarized
         highlight IncSearch term=reverse cterm=reverse ctermbg=White ctermfg=Red guibg=Yellow
-        highlight Search term=reverse cterm=reverse ctermbg=Black ctermfg=Yellow guibg=Yellow
+        highlight Search term=reverse cterm=reverse ctermbg=White ctermfg=Red guibg=Yellow
     endif
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme default

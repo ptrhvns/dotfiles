@@ -5,6 +5,7 @@ let mapleader="\\"
 set autoindent
 set hlsearch
 set ignorecase
+set nofoldenable
 set nojoinspaces
 set noshowmode
 set nostartofline
@@ -138,8 +139,6 @@ function! FormatFile()
         execute "!clear; isort --atomic " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
     elseif (&filetype == 'scss')
         execute "!clear; npx prettier --write " . t:file
-    elseif (&filetype == 'vue')
-        execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'vue.html.javascript.css')
         execute "!clear; npx prettier --single-quote --write " . t:file
     else
@@ -198,6 +197,8 @@ filetype indent on
 filetype plugin on
 
 augroup ag_all
+    autocmd!
+
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
     autocmd BufRead * normal zz
     autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
@@ -283,7 +284,7 @@ augroup ag_all
     autocmd FileType yaml setlocal softtabstop=2
     autocmd InsertLeave * set nopaste
     autocmd VimResized * :wincmd =
-    autocmd!
+
 augroup end
 
 " NERD_commenter settings

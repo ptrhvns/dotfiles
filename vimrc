@@ -126,7 +126,7 @@ function! FormatFile()
     :write
     let t:file = @%
 
-    elseif (&filetype == 'css')
+    if (&filetype == 'css')
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
@@ -135,10 +135,11 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        " execute "!clear; isort --atomic --no-sections " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
         execute "!clear; isort --atomic " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
     elseif (&filetype == 'scss')
         execute "!clear; npx prettier --write " . t:file
+    elseif (&filetype == 'vue')
+        execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'vue.html.javascript.css')
         execute "!clear; npx prettier --single-quote --write " . t:file
     else
@@ -146,7 +147,7 @@ function! FormatFile()
     endif
 endfunction
 
-nmap <Leader>f :call FormatFile()<CR>
+noremap <Leader>f :call FormatFile()<CR>
 
 " Configure Pathogen plugin manager.
 try

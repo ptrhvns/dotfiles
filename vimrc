@@ -253,7 +253,6 @@ augroup ag_all
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
     autocmd FileType python setlocal textwidth=88
-    autocmd FileType scss imap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
     autocmd FileType scss setlocal expandtab
     autocmd FileType scss setlocal iskeyword+=-
     autocmd FileType scss setlocal omnifunc=csscomplete#Complete

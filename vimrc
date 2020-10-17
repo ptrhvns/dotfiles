@@ -1,53 +1,16 @@
-" GENERAL SETTINGS
-" =============================================================
-
-" Unicode support
-" if has("multi_byte")
-    " if &termencoding == ""
-        " let &termencoding = &encoding
-    " endif
-
-    " set encoding=utf-8
-    " setglobal fileencoding=utf-8
-
-    " " Uncomment to have 'bomb' on by default for new files.
-    " " Note, this will not apply to the first, empty buffer created at Vim startup.
-    " "setglobal bomb
-
-    " set fileencodings=ucs-bom,utf-8,latin1
-" endif
-
 set nocompatible
 
 let mapleader="\\"
 
 set autoindent
-set autoread
-set backspace=indent,eol,start
-" set clipboard=unnamedplus
-set expandtab
-set fileformat=unix
-set hidden
-set history=500
 set hlsearch
 set ignorecase
-set laststatus=2
-set lazyredraw
-set matchpairs+=<:>
-set modeline
-set modelines=5
-set mousehide
-set noesckeys
-set nofoldenable
 set nojoinspaces
+set noshowmode
 set nostartofline
-" set number
-set ruler
 set shell=/bin/bash
-set shiftround
 set shiftwidth=4
 set showcmd
-set showmode
 set sidescroll=1
 set smartcase
 set smarttab
@@ -57,120 +20,58 @@ set splitright
 set textwidth=79
 set timeout timeoutlen=3000 ttimeoutlen=100
 set ttyfast
-
-if exists('+undodir')
-    set undodir=$HOME/.vim/undo
-endif
-
 set undolevels=1000
+set virtualedit=all
+set visualbell
+set wildmenu
 
 if exists('+undoreload')
     set undoreload=10000
 endif
 
-set virtualedit=all
-set visualbell
-set wildmenu
-" set winwidth=96
-set wrapscan
-
 if has("multi_byte") && &t_Co > 255
     set encoding=utf-8
     set fillchars=diff:⣿
     set list
-    " set listchars=tab:..,trail:.,extends:>,precedes:<,nbsp:~
-    " set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
     set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
-
-    " if exists('+relativenumber')
-        " set relativenumber
-    " end
 endif
-
-" Fix problems with dtterm TERM type.
-if &term == "dtterm"
-    set t_kb=
-    set t_Co=256
-    fixdel
-endif
-
-if has('gui_win32')
-    set guifont=Consolas:h11:cANSI
-endif
-
-" MAPPINGS & FUNCTIONS
-" =============================================================
-
 
 " Clear highlighting and redraw.
 nnoremap <C-l> :nohlsearch<CR><C-l>
 inoremap <C-l> <C-o>:nohlsearch<CR>
 
-" Call help on the word under cursor.
-nnoremap <Leader>h :execute "help " . expand("<cword>")<CR>
-
 " Toggle paste mode and show result.
-nnoremap <Leader>p :set invpaste paste?<CR>
-
-" Insert the current time.
-imap <C-t> <C-r>=strftime("%H:%M - ")<CR>
-
-" Insert the current date.
-imap <C-d> <C-r>=strftime("%B %e, %Y")<CR>
-
-" Write to the current file with root permissions via sudo.
-cnoremap w!! w !sudo tee % >/dev/null<CR>
+nmap <Leader>p :set invpaste paste?<CR>
 
 " Toggle line wrapping and show result.
-nnoremap <Leader>w :set invwrap wrap?<CR>
+nmap <Leader>w :set invwrap wrap?<CR>
 
 " Toggle highlight the current line of the cursor.
-nnoremap <Leader>u :setlocal list! cursorcolumn! cursorline!<CR><C-l>
+nmap <Leader>u :setlocal list! cursorcolumn! cursorline!<CR><C-l>
 
-" Toggle moving cursor to first non-blank of line and show result.
-vnoremap <Leader>s :sort iu<CR>
+" Sort visual selection.
+vmap <Leader>s :sort iu<CR>
 
-" Switch between tabs.
-nnoremap <Right> gt
-nnoremap <Left> gT
+" Control tabs.
+nmap <Left> gT
+nmap <Right> gt
+nmap <Down> :tabmove -1<CR><C-l>
+nmap <Up> :tabmove +1<CR><C-l>
 
-" Move tabs.
-nnoremap <Down> :tabmove -1<CR><C-l>
-nnoremap <Up> :tabmove +1<CR><C-l>
-
-" Remove manual key.
+" Remove keywork lookup.
 nnoremap K <Nop>
 
-" Edit my vimrc file.
-nnoremap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
+" Manage vimrc file.
+nmap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
+nmap <Leader>sv :source $MYVIMRC<CR>
 
-" Align columns in a "table" (see tabular settings for conflicts).
-vnoremap <Leader>ac :!column -t<CR>
+" Toggle list and number.
+nmap <Leader>$ :set list! number!<CR><C-l>
 
-" Source my vimrc file.
-nnoremap <Leader>sv :source $MYVIMRC<CR>
+" Remove trailing whitespace.
+nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-" Toggle list, number, and relativenumber.
-" if exists('+relativenumber')
-    " nnoremap <Leader>$ :set list! number! relativenumber!<CR><C-l>
-" else
-    nnoremap <Leader>$ :set list! number!<CR><C-l>
-" endif
-
-" Make Y behave like other capitals.
-nnoremap Y y$
-
-" Remove all trailing whitespace.
-nnoremap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
-
-" Keep search matches in the middle of the screen when moving.
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-
-" Rename the current file.
+" Rename the current buffer file.
 function! RenameFile()
     let old_name = expand('%')
     let new_name = input('New file name: ', expand('%'), 'file')
@@ -182,9 +83,9 @@ function! RenameFile()
     endif
 endfunction
 
-map <Leader>R :call RenameFile()<CR>
+nmap <Leader>R :call RenameFile()<CR>
 
-" Delete the current file.
+" Delete the current buffer file.
 function! DeleteFile()
     let fname = expand('%')
     exec ':bdelete!'
@@ -192,7 +93,7 @@ function! DeleteFile()
     redraw!
 endfunction
 
-map <Leader>D :call DeleteFile()<CR>
+nmap <Leader>D :call DeleteFile()<CR>
 
 " Run tests.
 function! RunTestUnderCursor()
@@ -206,6 +107,8 @@ function! RunTestUnderCursor()
     execute "!clear; run_test " . t:test_file . " -t " . t:test_line_number
 endfunction
 
+nmap <Leader>t :call RunTestUnderCursor()<CR>
+
 function! RunTestFile()
     :write
 
@@ -216,30 +119,15 @@ function! RunTestFile()
     execute "!clear; run_test " . t:test_file
 endfunction
 
-nnoremap <Leader>T :call RunTestFile()<CR>
-nnoremap <Leader>t :call RunTestUnderCursor()<CR>
+nmap <Leader>T :call RunTestFile()<CR>
 
+" Format current buffer file.
 function! FormatFile()
     :write
     let t:file = @%
 
-    if (&filetype == 'cpp')
-        execute "!clear; astyle --add-braces --align-pointer=type --align-reference=type --break-blocks --max-code-length=80 --pad-header --pad-oper --style=google --suffix=none " . t:file
     elseif (&filetype == 'css')
         execute "!clear; npx prettier --write " . t:file
-    elseif (&filetype == 'go')
-        execute "!clear; gofmt -s -w " . t:file
-    elseif (&filetype == 'html')
-        " Do `npm install -g js-beautify` to get the html-beautify command.
-        " execute "!clear; html-beautify -pIr -s 2 -w 80 -f " . t:file
-        execute "!clear; npx prettier --write " . t:file
-    elseif (&filetype == 'htmldjango')
-        " execute "!clear; npx prettier --write " . t:file
-        " Do `npm install -g js-beautify` to get the html-beautify command.
-        execute "!clear; html-beautify -pIr -s 2 -w 80 -f " . t:file
-    elseif (&filetype == 'java')
-        " execute "!clear; astyle --add-braces --attach-classes --attach-return-type --break-blocks --max-code-length=80 --pad-header --pad-oper --style=java --suffix=none " . t:file
-        execute "!clear; google-java-format --replace " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'javascript.jsx')
@@ -247,50 +135,25 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; isort --atomic --no-sections " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
-    elseif (&filetype == 'ruby')
-        execute "!clear; rubocop --auto-correct " . t:file
-    elseif (&filetype == 'rust')
-        execute "!clear; rustfmt " . t:file
+        " execute "!clear; isort --atomic --no-sections " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
+        execute "!clear; isort --atomic " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
     elseif (&filetype == 'scss')
         execute "!clear; npx prettier --write " . t:file
-    elseif (&filetype == 'typescript')
-        execute "!clear; npx prettier --single-quote --write " . t:file
-    elseif (&filetype == 'typescript.jsx')
-        execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'vue.html.javascript.css')
         execute "!clear; npx prettier --single-quote --write " . t:file
     else
-        echoerr "Don't know how to format filetype: " . &filetype
+        echoerr "Failed to format unknown filetype: " . &filetype
     endif
 endfunction
 
-" Format current file.
 nmap <Leader>f :call FormatFile()<CR>
 
-" Like windo but restore the current window.
-function! WinDo(command)
-  let currwin=winnr()
-  execute 'windo ' . a:command
-  execute currwin . 'wincmd w'
-endfunction
-command! -nargs=+ -complete=command Windo call WinDo(<q-args>)
-
-" Like bufdo but restore the current buffer.
-function! BufDo(command)
-  let currBuff=bufnr("%")
-  execute 'bufdo ' . a:command
-  execute 'buffer ' . currBuff
-endfunction
-command! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
-
-" Like tabdo but restore the current tab.
-function! TabDo(command)
-  let currTab=tabpagenr()
-  execute 'tabdo ' . a:command
-  execute 'tabn ' . currTab
-endfunction
-command! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
+" Configure Pathogen plugin manager.
+try
+    call pathogen#infect()
+catch /^Vim\%((\a\+)\)\=:E/
+    " Ignore errors if pathogen can't be found.
+endtry
 
 " Configure a notes file.
 map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
@@ -298,82 +161,34 @@ map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 " Set a marker for Django HTML templates.
 map <Leader>hd O{# htmldjango #}<Esc>:set ft=htmldjango<CR>
 
-" Translate some fancy (Unicode) characters to ASCII.
-function! RemoveFancyCharacters()
-    let typo = {}
-    let typo["“"] = '"'
-    let typo["”"] = '"'
-    let typo["‘"] = "'"
-    let typo["’"] = "'"
-    let typo["–"] = '--'
-    let typo["—"] = '---'
-    let typo["…"] = '...'
-    :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
-endfunction
-command! RemoveFancyCharacters :call RemoveFancyCharacters()
-
-" Run rust and cargo commands.
-nmap <Leader>rb :execute "!clear; cargo build"<CR>
-nmap <Leader>rc :execute "!clear; cargo check"<CR>
-nmap <Leader>rd :execute "!clear; cargo doc --open"<CR>
-nmap <Leader>rf :execut "!clear; cargo fix"<CR>
-nmap <Leader>rl :execute "!clear; cargo clippy"<CR>
-nmap <Leader>rr :execute "!clear; cargo run"<CR>
-
-
-" PATHOGEN SETUP
-" =============================================================
-
-
-try
-    call pathogen#infect()
-catch /^Vim\%((\a\+)\)\=:E/
-    " Ignore errors if pathogen can't be found.
-endtry
-
-
-" COLOR SETUP
-" =============================================================
-
-
 " Color & syntax settings.
 if &t_Co > 1 || has('gui_running')
     syntax on
 endif
 
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
+set background=dark
 
-if &t_Co > 255 || has('gui_running')
+if &t_Co > 255
     let g:solarized_termcolors=256
 elseif &t_Co > 15
     let g:solarized_termcolors=16
 endif
 
-" let g:solarized_contrast="high"
 let g:solarized_termtrans=1
 
 try
-    if has('gui_running') || &t_Co > 15
+    if &t_Co > 15
         colorscheme solarized
         highlight IncSearch term=reverse cterm=reverse ctermbg=White ctermfg=Red guibg=Yellow
         highlight Search term=reverse cterm=reverse ctermbg=Black ctermfg=Yellow guibg=Yellow
     endif
 catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme slate
+    colorscheme default
 endtry
 
 if exists("g:colors_name") && g:colors_name == 'solarized' && has("multi_byte")
     highlight! NonText ctermfg=235
 endif
-
-
-" FILE TYPE SETTINGS & AUTOCMD GROUPS
-" =============================================================
-
 
 " Enable filetype specific indenting.
 filetype indent on
@@ -382,23 +197,12 @@ filetype indent on
 filetype plugin on
 
 augroup ag_all
-    autocmd!
-
-    autocmd BufNewFile,BufRead *.jeco exec "let b:eco_subtype = 'html' | setlocal filetype=eco"
-    autocmd BufNewFile,BufRead *.pc setlocal filetype=c
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
     autocmd BufRead * normal zz
     autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
     autocmd BufRead,BufNewFile .babelrc setlocal filetype=json
     autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
-    autocmd BufRead,BufNewFile .pryrc setlocal filetype=ruby
     autocmd BufRead,BufNewFile .sequelizerc setlocal filetype=javascript
-    autocmd BufRead,BufNewFile .simplecov setlocal filetype=ruby
-    autocmd BufRead,BufNewFile .zprofile setlocal filetype=zsh
-    autocmd BufRead,BufNewFile .zshrc setlocal filetype=zsh
-    autocmd BufRead,BufNewFile Gemfile setlocal ft=ruby
-    autocmd BufRead,BufNewFile zprofile setlocal filetype=zsh
-    autocmd BufRead,BufNewFile zshrc setlocal filetype=zsh
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd FileType c setlocal noexpandtab
     autocmd FileType c setlocal nolist
@@ -410,9 +214,6 @@ augroup ag_all
     autocmd FileType css setlocal omnifunc=csscomplete#Complete
     autocmd FileType css setlocal shiftwidth=2
     autocmd FileType css setlocal softtabstop=2
-    autocmd FileType eruby setlocal expandtab
-    autocmd FileType eruby setlocal shiftwidth=2
-    autocmd FileType eruby setlocal softtabstop=2
     autocmd FileType Gemfile setlocal expandtab
     autocmd FileType Gemfile setlocal shiftwidth=2
     autocmd FileType Gemfile setlocal softtabstop=2
@@ -423,12 +224,6 @@ augroup ag_all
     autocmd FileType gitconfig setlocal expandtab
     autocmd FileType gitconfig setlocal shiftwidth=8
     autocmd FileType gitconfig setlocal softtabstop=8
-    autocmd FileType go setlocal noexpandtab
-    autocmd FileType go setlocal nolist
-    autocmd FileType go setlocal shiftwidth=4
-    autocmd FileType go setlocal softtabstop=4
-    autocmd FileType go setlocal tabstop=4
-    autocmd FileType haml setlocal iskeyword+=-
     autocmd FileType help setlocal nolist
     autocmd FileType html setlocal expandtab
     autocmd FileType html setlocal omnifunc=htmlcomplete#Complete
@@ -438,9 +233,6 @@ augroup ag_all
     autocmd FileType htmldjango setlocal shiftwidth=2
     autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType htmldjango setlocal tabstop=2
-    autocmd FileType java setlocal expandtab
-    autocmd FileType java setlocal shiftwidth=2
-    autocmd FileType java setlocal softtabstop=2
     autocmd FileType javascript setlocal expandtab
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#Complete
     autocmd FileType javascript setlocal shiftwidth=2
@@ -451,6 +243,7 @@ augroup ag_all
     autocmd FileType markdown setlocal expandtab
     autocmd FileType markdown setlocal shiftwidth=2
     autocmd FileType markdown setlocal softtabstop=2
+    autocmd FileType nerdtree setlocal nolist nonumber
     autocmd FileType python setlocal autoindent
     autocmd FileType python setlocal expandtab
     autocmd FileType python setlocal fileformat=unix
@@ -458,11 +251,6 @@ augroup ag_all
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
     autocmd FileType python setlocal textwidth=88
-    autocmd FileType nerdtree setlocal nolist nonumber
-    autocmd FileType ruby setlocal expandtab
-    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    autocmd FileType ruby setlocal shiftwidth=2
-    autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType scss imap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
     autocmd FileType scss setlocal expandtab
     autocmd FileType scss setlocal iskeyword+=-
@@ -479,26 +267,12 @@ augroup ag_all
     autocmd FileType text setlocal nolist
     autocmd FileType text setlocal norelativenumber
     autocmd FileType text setlocal spell
-    autocmd FileType typescript setlocal noexpandtab
-    autocmd FileType typescript setlocal nolist
-    autocmd FileType typescript setlocal shiftwidth=2
-    autocmd FileType typescript setlocal softtabstop=2
-    autocmd FileType typescript setlocal tabstop=2
-    autocmd FileType typescript.jsx setlocal noexpandtab
-    autocmd FileType typescript.jsx setlocal nolist
-    autocmd FileType typescript.jsx setlocal shiftwidth=2
-    autocmd FileType typescript.jsx setlocal softtabstop=2
-    autocmd FileType typescript.jsx setlocal tabstop=2
     autocmd FileType vim setlocal expandtab
     autocmd FileType vim setlocal shiftwidth=4
     autocmd FileType vim setlocal softtabstop=4
     autocmd FileType vue.html.javascript.css setlocal expandtab
     autocmd FileType vue.html.javascript.css setlocal shiftwidth=2
     autocmd FileType vue.html.javascript.css setlocal softtabstop=2
-    autocmd FileType xhtml setlocal expandtab
-    autocmd FileType xhtml setlocal omnifunc=htmlcomplete#Complete
-    autocmd FileType xhtml setlocal shiftwidth=2
-    autocmd FileType xhtml setlocal softtabstop=2
     autocmd FileType xml setlocal expandtab
     autocmd FileType xml setlocal omnifunc=xmlcomplete#Complete
     autocmd FileType xml setlocal shiftwidth=4
@@ -508,20 +282,15 @@ augroup ag_all
     autocmd FileType yaml setlocal softtabstop=2
     autocmd InsertLeave * set nopaste
     autocmd VimResized * :wincmd =
-augroup END
-
-" PLUGIN SETTINGS
-" =============================================================
-
+    autocmd!
+augroup end
 
 " NERD_commenter settings
-" -----------------------
-
-let NERD_scss_alt_style=1
 let NERDCommentWholeLinesInVMode=2
 let NERDCreateDefaultMappings=0
 let NERDDefaultAlign = 'left'
 let NERDSpaceDelims=1
+let NERD_scss_alt_style=1
 nmap <Leader>c <Plug>NERDCommenterToggle<C-l>
 nmap <Leader>i <Plug>NERDCommenterAltDelims<C-l>
 nmap <Leader>x <Plug>NERDCommenterSexy<C-l>
@@ -529,28 +298,22 @@ vmap <Leader>c <Plug>NERDCommenterToggle<C-l>
 vmap <Leader>x <Plug>NERDCommenterSexy<C-l>
 
 " NERD_tree settings
-" ------------------
-
 let NERDChristmasTree=1
 let NERDTreeDirArrows= has("multi_byte") ? 1 : 0
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=50
-nnoremap <Leader>n :NERDTreeToggle<CR>
+nmap <Leader>n :NERDTreeToggle<CR>
 
 " gnupg settings
-" --------------
-
 let g:GPGExecutable="gpg"
 let g:GPGPreferArmor=1
 
 " snipmate settings
-" -----------------
-
 let g:snippets_dir=$HOME.'/.vim/snippets'
-nnoremap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
+nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
 
-" lightline
-" ---------
+" lightline settings
+set laststatus=2
 
 let g:lightline = {
     \ 'colorscheme': 'solarized',
@@ -563,32 +326,7 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
-" tabular settings
-" ----------------
-
-nmap <Leader>a# :Tabularize /#<CR>
-nmap <Leader>a, :Tabularize /^[^,]*,\zs /l0l0l0<CR>
-nmap <Leader>a- :Tabularize /-<CR>
-nmap <Leader>a: :Tabularize /^[^:]*:\zs /l0l0l0<CR>
-nmap <Leader>a; :Tabularize /^[^;]*;\zs /l0l0l0<CR>
-nmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a> :Tabularize /=><CR>
-nmap <Leader>as :Tabularize / <CR>
-nmap <Leader>a{ :Tabularize /{<CR>
-
-vmap <Leader>a# :Tabularize /#<CR>
-vmap <Leader>a, :Tabularize /^[^,]*,\zs /l0l0l0<CR>
-vmap <Leader>a- :Tabularize /-<CR>
-vmap <Leader>a: :Tabularize /^[^:]*:\zs /l0l0l0<CR>
-vmap <Leader>a; :Tabularize /^[^;]*;\zs /l0l0l0<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a> :Tabularize /=><CR>
-vmap <Leader>as :Tabularize / <CR>
-vmap <Leader>a{ :Tabularize /{<CR>
-
 " fugitive settings
-" -----------------
-
 nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gc :Gcommit --verbose<CR>
 nnoremap <Leader>gd :Gdiff<CR>
@@ -596,14 +334,7 @@ nnoremap <Leader>gp :Gpush --verbose<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 
-" surround settings
-" -----------------
-
-let g:surround_105  = "#{\r}" " 105 = ASCII mapping for 'i'
-
 " ctrlp settings
-" --------------
-
 let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static)',
@@ -613,8 +344,6 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 
 " dragvisuals settings
-" --------------------
-
 let g:DVB_TrimWS = 1
 vmap  <expr>  <LEFT>   DVB_Drag('left')
 vmap  <expr>  <RIGHT>  DVB_Drag('right')
@@ -623,18 +352,9 @@ vmap  <expr>  <UP>     DVB_Drag('up')
 vmap  <expr>  D        DVB_Duplicate()
 
 " json settings
-" -------------
-
 let g:vim_json_syntax_conceal = 0
 let g:vim_json_warnings = 1
 
 " CamelCaseMotion
-" ---------------
-
-map <silent> ,w <Plug>CamelCaseMotion_w
 map <silent> ,b <Plug>CamelCaseMotion_b
-
-" vim-jsx
-" -------
-
-let g:jsx_ext_required = 0
+map <silent> ,w <Plug>CamelCaseMotion_w

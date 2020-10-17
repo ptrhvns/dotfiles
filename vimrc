@@ -5,6 +5,7 @@ let mapleader="\\"
 set autoindent
 set hlsearch
 set ignorecase
+set lazyredraw
 set nofoldenable
 set nojoinspaces
 set noshowmode

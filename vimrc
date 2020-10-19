@@ -3,6 +3,7 @@ set nocompatible
 let mapleader="\\"
 
 set autoindent
+set autoread
 set hlsearch
 set ignorecase
 set lazyredraw

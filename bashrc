@@ -23,7 +23,6 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
-# export DISPLAY=:0.0
 export EDITOR=$(command -v vim || type -p vi)
 export GPG_TTY=$(tty)
 export GUIEDITOR=$(command -v mvim || command -v gvim)
@@ -41,8 +40,6 @@ export MANPAGER=$(command -v less || command -v more)
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 export PAGER=$(command -v less || command -v more)
 
-# Window "echo %path%"
-# C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Vim 8.1;C:\Program Files (x86)\Vim\vim81;;C:\Users\Pete\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Pete\AppData\Local\hyper\app-3.0.2\resources\bin
 export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/usr/libexec/java_home:~/.nodenv/bin:~/.pyenv/bin:~/.rbenv/bin:/mnt/c/Windows/System32:~/.cargo/bin:~/.rustup:/usr/local/go/bin
 
 export PROMPT_COMMAND='history -a'
@@ -138,16 +135,13 @@ if [ -f "$HOME/.git-prompt.sh" ]; then
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
-    # GIT_PS1_STATESEPARATOR=:
 
     export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'"${CLRGIT}"'$(__git_ps1 " %s")'" ${CLRPRMT}\n\$${CLRNONE} "
 else
     export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\n\$${CLRNONE} "
 fi
 
-alias be='bundle exec'
 alias c='cat'
-alias code="/mnt/c/Users/Pete/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
 
 colors() {
     for i in {0..255} ; do
@@ -185,8 +179,6 @@ test $? -eq 0 && CR="--color=auto"
 alias l="ls -Al $CR"
 alias la="ls -al $CR"
 alias m=$PAGER
-alias pm='python manage.py'
-alias notepad='/mnt/c/windows/system32/notepad.exe'
 alias ta='tmux att -t'
 alias td='tmux_new_session_pwd'
 alias tg='tmux_new_project_for_all_dirty_git'

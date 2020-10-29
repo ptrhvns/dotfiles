@@ -135,7 +135,7 @@ function! FormatFile()
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
-    elseif (&filetype == 'javascript.jsx')
+    elseif (&filetype == 'javascriptreact')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
@@ -243,6 +243,10 @@ augroup ag_all
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#Complete
     autocmd FileType javascript setlocal shiftwidth=2
     autocmd FileType javascript setlocal softtabstop=2
+    autocmd FileType javascriptreact setlocal expandtab
+    autocmd FileType javascriptreact setlocal omnifunc=javascriptcomplete#Complete
+    autocmd FileType javascriptreact setlocal shiftwidth=2
+    autocmd FileType javascriptreact setlocal softtabstop=2
     autocmd FileType json setlocal expandtab
     autocmd FileType json setlocal shiftwidth=2
     autocmd FileType json setlocal softtabstop=2

@@ -140,7 +140,7 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; isort --atomic " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
+        execute "!clear; isort -ac -fss " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
     elseif (&filetype == 'scss')
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'vue.html.javascript.css')

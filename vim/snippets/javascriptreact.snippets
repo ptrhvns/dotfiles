@@ -1,8 +1,7 @@
-snippet med
-	@media (${1:min}-width: ${2}) {
-	}
 snippet <!
 	<!-- ${1} -->
+snippet <f
+	<!-- FIXME: ${1} -->
 snippet <t
 	<!-- TODO: ${1} -->
 snippet @me
@@ -19,8 +18,8 @@ snippet doc
 	<!DOCTYPE html>
 	<html lang="en">
 	  <head>
-	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <title>${1}</title>
 	  </head>
 	  <body>
@@ -29,9 +28,9 @@ snippet doc
 snippet doctype
 	<!DOCTYPE HTML>
 snippet a
-	<a></a>
+	<a>${1}</a>
 snippet abbr
-	<abbr></abbr>
+	<abbr>${1}</abbr>
 snippet address
 	<address>
 	</address>
@@ -51,7 +50,7 @@ snippet audio
 	  Your software does not support this object.
 	</audio>
 snippet b
-	<b></b>
+	<b>${1}</b>
 snippet base
 	<base />
 snippet blockquote
@@ -63,18 +62,15 @@ snippet body
 snippet br
 	<br />
 snippet button
-	<button
-	  autoFocus
-	  disabled
-	  name=""
-	  type="button reset submit"
-	>${1}</button>
+	<button type="button reset submit">${1}</button>
 snippet canvas
 	<canvas>
 	  Your software does not support this object.
 	</canvas>
 snippet caption
-	<caption></caption>
+	<caption>${1}</caption>
+snippet hcl
+	class="${1:class}"
 snippet command
 	<command>
 	</command>
@@ -82,7 +78,7 @@ snippet datalist
 	<datalist>
 	</datalist>
 snippet dd
-	<dd></dd>
+	<dd>${1}</dd>
 snippet details
 	<details>
 	</details>
@@ -93,16 +89,16 @@ snippet dl
 	<dl>
 	</dl>
 snippet dt
-	<dt></dt>
+	<dt>${1}</dt>
 snippet em
-	<em></em>
+	<em>${1}</em>
 snippet embed
-	<embed />
+	<embed>
 snippet fieldset
 	<fieldset>
 	</fieldset>
 snippet figcaption
-	<figcaption></figcaption>
+	<figcaption>${1}</figcaption>
 snippet figure
 	<figure>
 	</figure>
@@ -118,15 +114,15 @@ snippet form
 snippet h1
 	<h1>${1}</h1>
 snippet h2
-	<h2></h2>
+	<h2>${1}</h2>
 snippet h3
-	<h3></h3>
+	<h3>${1}</h3>
 snippet h4
-	<h4></h4>
+	<h4>${1}</h4>
 snippet h5
-	<h5></h5>
+	<h5>${1}</h5>
 snippet h6
-	<h6></h6>
+	<h6>${1}</h6>
 snippet head
 	<head>
 	</head>
@@ -151,60 +147,39 @@ snippet iframe
 snippet img
 	<img />
 snippet input
-	<input
-	  accept=".doc,.pdf,audio/*,image/*,text/plain,video/*"
-	  autoFocus
-	  checked
-	  disabled
-	  inputMode="numeric tel email url"
-	  max=""
-	  maxLength=""
-	  min=""
-	  multiple
-	  name=""
-	  pattern="<regex>"
-	  placeholder=""
-	  readOnly
-	  required
-	  spellCheck
-	  src="<image URI>"
-	  step=""
-	  type="button checkbox color date datetime-local email file hidden image month number password radio range reset search submit tel text time url week"
-	  value=""
-	  width=""
-	/>
+	<input />
 snippet keygen
 	<keygen />
 snippet label
-	<label htmlFor="${1}">${2}</label>
+	<label>${1}</label>
 snippet legend
-	<legend></legend>
+	<legend>${1}</legend>
 snippet li
-	<li></li>
+	<li>${1}</li>
 snippet link
 	<link />
 snippet map
 	<map>
 	</map>
 snippet mark
-	<mark></mark>
+	<mark>${1}</mark>
 snippet menu
 	<menu>
 	</menu>
 snippet meta charset
 	<meta charset="${1:utf-8}" />
 snippet meta description
-	<meta name="description" content="${1}">
+	<meta name="description" content="${1}" />
 snippet meta http-equiv (generic)
 	<meta http-equiv="${1}" content="${2}" />
 snippet meta http-equiv for IE edge
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 snippet meta name
 	<meta name="${1}" content="${2}" />
 snippet meta viewport
 	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 snippet meter
-	<meter></meter>
+	<meter>${1}</meter>
 snippet nav
 	<nav>
 	</nav>
@@ -221,26 +196,24 @@ snippet optgroup
 	<optgroup>
 	</optgroup>
 snippet option
-	<option></option>
+	<option>${1}</option>
 snippet output
-	<output></output>
+	<output>${1}</output>
 snippet p
 	<p>
 	</p>
 snippet param
-	<param>
+	<param />
 snippet pre
 	<pre>
 	</pre>
 snippet progress
-	<progress></progress>
+	<progress>${1}</progress>
 snippet q
-	<q></q>
-snippet script inline statements
+	<q>${1}</q>
+snippet script
 	<script>
 	</script>
-snippet script external source
-	<script src="${1:http://www.example.com}"></script>
 snippet section
 	<section>
 	</section>
@@ -251,22 +224,24 @@ snippet select
 	<select>
 	</select>
 snippet small
-	<small></small>
+	<small>${1}</small>
 snippet source
 	<source />
 snippet span
-	<span></span>
+	<span>${1}</span>
+snippet strong
+	<strong>${1}</strong>
 snippet sty
 	style="${1}"
 snippet style
 	<style>
 	</style>
 snippet sub
-	<sub></sub>
+	<sub>${1}</sub>
 snippet summary
-	<summary></summary>
+	<summary>${1}</summary>
 snippet sup
-	<sup></sup>
+	<sup>${1}</sup>
 snippet table
 	<table>
 	</table>
@@ -274,7 +249,7 @@ snippet tbody
 	<tbody>
 	</tbody>
 snippet td
-	<td></td>
+	<td>${1}</td>
 snippet textarea
 	<textarea>
 	</textarea>
@@ -282,14 +257,14 @@ snippet tfoot
 	<tfoot>
 	</tfoot>
 snippet th
-	<th></th>
+	<th>${1}</th>
 snippet thead
 	<thead>
 	</thead>
 snippet time
-	<time></time>
+	<time>${1}</time>
 snippet title
-	<title></title>
+	<title>${1}</title>
 snippet tr
 	<tr>
 	</tr>
@@ -305,272 +280,7 @@ snippet jsv
 snippet main
 	<main>
 	</main>
-snippet gat
-	className=""
-	id=""
-	style=""
-	tabIndex="0"
-	title=""
-snippet rf
-	import React from 'react';
-	
-	export function ${1:name}(${2}) {
-	  return <span>${3:$1}</span>;
-	}
-	
-	export default ${4:$1};
-snippet rc
-	import React, { Component } from 'react';
-	
-	export class ${1:Component} extends Component {
-	  // static methods
-	  // static propTypes = {};
-	  // static defaultProps = {};
-	  // state = {};
-	  // instance variables
-	
-	  ///////////////////////////////////////////////////////////////////////////
-	  // MOUNTING: invoked, in order, when component is inserted into DOM.
-	  //
-	  // constructor(props) {}
-	  //
-	  // Invoked before render(), on initial mount and updates. For rare
-	  // cases when state depends on changes in props over time.
-	  // static getDerivedStateFromProps(props, state) {}
-	  //
-	  // render() {}
-	  //
-	  // Invoked after mount. For initialization requiring DOM, loading
-	  // data from network, setting up subscriptions and timers, etc.
-	  // componentDidMount() {}
-	
-	  ///////////////////////////////////////////////////////////////////////////
-	  // UPDATING: invoked, in order, when component is re-rendered.
-	  //
-	  // Invoked before render(), on initial mount and updates. For rare
-	  // cases when state depends on changes in props over time.
-	  // static getDerivedStateFromProps(props, state) {}
-	  //
-	  // Invoked before render() when new props or state are received. For
-	  // performance optimization, not to prevent rendering.
-	  // shouldComponentUpdate(nextProps, nextState) {}
-	  //
-	  // render() {}
-	  //
-	  // Invoked before rendered output is committed to DOM. For capturing
-	  // information from DOM before it's changed.
-	  // getSnapshotBeforeUpdate(prevProps, prevState) {}
-	  //
-	  // Invoked after update. For operating on DOM, loading data from
-	  // network, etc.
-	  // componentDidUpdate(prevProps, prevState, snapshot) {}
-	
-	  ///////////////////////////////////////////////////////////////////////////
-	  // UNMOUNTING: invoked when component is removed from DOM.
-	  //
-	  // Invoked before component is unmounted and destroyed. For
-	  // performing cleanup on subscriptions and timers, canceling network
-	  // requests, etc.
-	  // componentWillUnmount() {}
-	
-	  ///////////////////////////////////////////////////////////////////////////
-	  // ERROR HANDLING: invoked when there's an error during rendering, in a
-	  // lifecycle method, or in constructor of any child component.
-	  //
-	  // Invoked after error was thrown by descendant component. For
-	  // returning value to update state.
-	  // static getDerivedStateFromError(error) {}
-	  //
-	  // Use to handle error in tree, e.g. logging.
-	  // componentDidCatch(error, info) {}
-	
-	  render() {
-	    return <span>${3:$1}</span>;
-	  }
-	
-	  // render helper methods (e.g. renderNavigation())
-	  // event handlers and callbacks (e.g. handleChange = () => {};)
-	  // utility methods
-	}
-	
-	export default ${4:$1};
-snippet rmtc
-	import ${1:Component} from './${2:$1}';
-	import React from 'react';
-	import ReactDOM from 'react-dom';
-	
-	describe('${3:$1}', function() {
-	  // FIXME add tests once Enzyme supports hooks
-	});
-snippet rrc
-	import { connect } from 'react-redux';
-	import ${1:PresentationalComponent} from '../components/${2:$1}';
-	
-	export const mapStateToProps = (state, ownProps) => ({
-	});
-	
-	export const mapDispatchToProps = (dispatch, ownProps) => ({
-	});
-	
-	export const ${3:$1}Container = connect(
-	  mapStateToProps,
-	  mapDispatchToProps
-	)(${4:$1});
-	
-	export default ${5:$1}Container;
-snippet rtrc
-	import { mapStateToProps, mapDispatchToProps } from './${1}';
-	
-	describe('mapStateToProps()', () => {
-	  it.skip('returns an object mapped from state', () => {
-	    const state = {
-	    };
-	    expect(mapStateToProps(state)).toEqual({
-	    });
-	  });
-	});
-	
-	describe('mapDispatchToProps', () => {
-	  describe('returned object mapped from dispatch', () => {
-	  });
-	});
-snippet rrr
-	export const initialState = {
-	};
-	
-	export function ${1:reducer}(state = initialState, action) {
-	  switch (action.type) {
-	    default:
-	      return state;
-	  }
-	}
-	
-	export default ${2:$1};
-snippet rra
-	export const actionTypes = {
-	};
-	
-	export const actions = {
-	};
-snippet rtrr
-	import {
-	  initialState,
-	  ${1:function}
-	} from './${2:$1}';
-	
-	describe('${3:$1}()', () => {
-	  describe('when action.type is unrecognized', () => {
-	    it('returns previous state', () => {
-	      const action = { type: 'UNRECOGNIZED' };
-	      expect(${4:$1}(initialState, action)).toEqual(initialState);
-	    });
-	  });
-	});
-snippet rtra
-	import { actions, actionTypes } from './${1}';
-	import { isFSA } from 'flux-standard-action';
-	
-	describe('actions', () => {
-	});
-snippet rtesting
-	// Test render() and other "public" methods for these things:
-	// * Output - significant or variable rendered content
-	// * Side-effects - simulated events, "child" interaction, prop
-	//   function calls, lifecycle method effects, timers, etc.
-	// * Error handling
-	// * Boundary condition handling
-	//
-	// Avoid testing:
-	// * Declarative code which would need to be duplicated in the test.
-	// * Behavior of code outside this unit (frameworks, libraries, etc.).
-snippet rhoc
-	import React from 'react';
-	
-	export function with${1:Component}(WrappedComponent) {
-	  const With${2:$1} = React.fowardRef((props, ref) => {
-	    return <WrappedComponent {...props} ref={ref}/>;
-	  });
-	
-	  const wrappedComponentName = WrappedComponent.displayName
-	    || WrappedComponent.name
-	    || 'Component';
-	
-	  With${3:$1}.displayName = \`with${4:$1}(${wrappedComponentName})\`;
-	  return With${5:$1};
-	}
-snippet rpt
-	import PropTypes from 'prop-types';
-	
-	const propTypes = {
-	};
-	
-	const defaultProps = {
-	};
-	
-	${1:Component}.propTypes = propTypes;
-	${2:$1}.defaultProps = defaultProps;
-snippet rlimp
-	const ${1:Component} = React.lazy(() => import('./${2:$1}'));
-snippet pt
-	PropTypes.${1}
-snippet tp
-	this.props.${1}
-snippet ts
-	this.state.${1}
-snippet tb
-	toBe(${1:value});
-snippet thbc
-	toHaveBeenCalled();
-snippet thbct
-	toHaveBeenCalledTimes(${1:number});
-snippet thbcw
-	toHaveBeenCalledWith(${1:argument});
-snippet thblcw
-	toHaveBeenLastCalledWith(${1:argument});
-snippet tbct
-	toBeCloseTo(${1:number}, ${2:numberOfDigits});
-snippet tbd
-	toBeDefined();
-snippet tbf
-	toBeFalsy();
-snippet tbgt
-	toBeGreaterThan(${1:number});
-snippet tbgte
-	toBeGreaterThanOrEqual(${1:number});
-snippet tbelt
-	toBeLessThan(${1:number});
-snippet tblte
-	toBeLessThanOrEqual(${1:number});
-snippet tbio
-	toBeInstanceOf(${1:Class});
-snippet tbn
-	toBeNull();
-snippet tbt
-	toBeTruthy();
-snippet tbu
-	toBeUndefined();
-snippet tc
-	toContain(${1:item});
-snippet tce
-	toContainEqual(${1:item});
-snippet te
-	toEqual(${1:value});
-snippet thl
-	toHaveLength(${1:number});
-snippet tm
-	toMatch(new RegExp(${1:regexp}));
-snippet tmo
-	toMatchObject(${1:object});
-snippet tms
-	toMatchSnapshot();
-snippet tt
-	toThrow();
-snippet tte
-	toThrowError(${1:error});
-snippet ttems
-	toThrowErrorMatchingSnapshot();
-snippet typ
-	type ${1:TType} = ${2};
-snippet int
-	interface ${1:IInterface} {
-	}
+snippet att
+	${1:name}="${2:value}"
+snippet imp
+	import ${1} from '${2}';

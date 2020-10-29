@@ -138,9 +138,9 @@ if [ -f "$HOME/.git-prompt.sh" ]; then
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
 
-    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\W${CLRJBS}"'$(ps_jobs)'"${CLRGIT}"'$(__git_ps1 " %s")'" ${CLRPRMT}\$${CLRNONE} "
+    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'"${CLRGIT}"'$(__git_ps1 " %s")'" ${CLRPRMT}\$${CLRNONE} "
 else
-    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\W${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\$${CLRNONE} "
+    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\$${CLRNONE} "
 fi
 
 alias c='cat'

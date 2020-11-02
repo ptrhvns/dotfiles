@@ -8,6 +8,7 @@ set hlsearch
 set ignorecase
 set lazyredraw
 set nofoldenable
+set noincsearch
 set nojoinspaces
 set noshowmode
 set nostartofline
@@ -135,7 +136,7 @@ function! FormatFile()
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
-    elseif (&filetype == 'javascriptreact')
+    elseif (&filetype == 'javascript.html.css')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
@@ -143,8 +144,6 @@ function! FormatFile()
         execute "!clear; isort -ac -fss " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
     elseif (&filetype == 'scss')
         execute "!clear; npx prettier --write " . t:file
-    elseif (&filetype == 'vue.html.javascript.css')
-        execute "!clear; npx prettier --single-quote --write " . t:file
     else
         echoerr "Failed to format unknown filetype: " . &filetype
     endif
@@ -205,24 +204,15 @@ augroup ag_all
 
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
     autocmd BufRead * normal zz
-    autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+    autocmd BufRead,BufNewFile *.js setlocal filetype=javascript.html.css
     autocmd BufRead,BufNewFile .babelrc setlocal filetype=json
     autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
-    autocmd BufRead,BufNewFile .sequelizerc setlocal filetype=javascript
     autocmd BufReadPost fugitive://* set bufhidden=delete
-    autocmd FileType c setlocal noexpandtab
-    autocmd FileType c setlocal nolist
-    autocmd Filetype c setlocal omnifunc=ccomplete#Complete
-    autocmd FileType c setlocal shiftwidth=8
-    autocmd FileType c setlocal softtabstop=0
     autocmd FileType css setlocal expandtab
     autocmd FileType css setlocal iskeyword+=-
     autocmd FileType css setlocal omnifunc=csscomplete#Complete
     autocmd FileType css setlocal shiftwidth=2
     autocmd FileType css setlocal softtabstop=2
-    autocmd FileType Gemfile setlocal expandtab
-    autocmd FileType Gemfile setlocal shiftwidth=2
-    autocmd FileType Gemfile setlocal softtabstop=2
     autocmd FileType gitcommit setlocal expandtab
     autocmd FileType gitcommit setlocal nolist
     autocmd FileType gitcommit setlocal shiftwidth=8
@@ -243,10 +233,6 @@ augroup ag_all
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#Complete
     autocmd FileType javascript setlocal shiftwidth=2
     autocmd FileType javascript setlocal softtabstop=2
-    autocmd FileType javascriptreact setlocal expandtab
-    autocmd FileType javascriptreact setlocal omnifunc=javascriptcomplete#Complete
-    autocmd FileType javascriptreact setlocal shiftwidth=2
-    autocmd FileType javascriptreact setlocal softtabstop=2
     autocmd FileType json setlocal expandtab
     autocmd FileType json setlocal shiftwidth=2
     autocmd FileType json setlocal softtabstop=2
@@ -279,9 +265,6 @@ augroup ag_all
     autocmd FileType vim setlocal expandtab
     autocmd FileType vim setlocal shiftwidth=4
     autocmd FileType vim setlocal softtabstop=4
-    autocmd FileType vue.html.javascript.css setlocal expandtab
-    autocmd FileType vue.html.javascript.css setlocal shiftwidth=2
-    autocmd FileType vue.html.javascript.css setlocal softtabstop=2
     autocmd FileType xml setlocal expandtab
     autocmd FileType xml setlocal omnifunc=xmlcomplete#Complete
     autocmd FileType xml setlocal shiftwidth=4

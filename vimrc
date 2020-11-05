@@ -134,6 +134,8 @@ function! FormatFile()
 
     if (&filetype == 'css')
         execute "!clear; npx prettier --write " . t:file
+    elseif (&filetype == 'go')
+        execute "!clear; gofmt -w " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'javascript.html.css')
@@ -220,6 +222,10 @@ augroup ag_all
     autocmd FileType gitconfig setlocal expandtab
     autocmd FileType gitconfig setlocal shiftwidth=8
     autocmd FileType gitconfig setlocal softtabstop=8
+    autocmd FileType go setlocal nolist
+    autocmd Filetype go setlocal shiftwidth=4
+    autocmd Filetype go setlocal softtabstop=4
+    autocmd Filetype go setlocal tabstop=4
     autocmd FileType help setlocal nolist
     autocmd FileType html setlocal expandtab
     autocmd FileType html setlocal omnifunc=htmlcomplete#Complete
@@ -239,7 +245,8 @@ augroup ag_all
     autocmd FileType markdown setlocal expandtab
     autocmd FileType markdown setlocal shiftwidth=2
     autocmd FileType markdown setlocal softtabstop=2
-    autocmd FileType nerdtree setlocal nolist nonumber
+    autocmd FileType nerdtree setlocal nolist
+    autocmd FileType nerdtree setlocal nonumber
     autocmd FileType python setlocal autoindent
     autocmd FileType python setlocal expandtab
     autocmd FileType python setlocal fileformat=unix
@@ -350,3 +357,8 @@ let g:vim_json_warnings = 1
 " CamelCaseMotion
 map <silent> ,b <Plug>CamelCaseMotion_b
 map <silent> ,w <Plug>CamelCaseMotion_w
+
+" vim-go
+let g:go_fmt_autosave = 0
+let g:go_imports_autosave = 0
+let g:go_mod_fmt_autosave = 0

@@ -1,16 +1,16 @@
 snippet var
-	var ${1:identifier} ${2:type}
+	var ${1:name} ${2:type}
 snippet vai
-	${1:identifier} := ${2:value}
+	${1:name} := ${2:value}
 snippet vas
-	${1:identifier} := [${2}]${3:type}{${4:values}}
+	${1:name} := [${2}]${3:type}{${4:values}}
 snippet vam
-	${1:identifier} := make(${2})
+	${1:name} := make(${2})
 snippet if
 	if ${1} {
 	}
 snippet ifs
-	if ${1:statement}; ${2:conditional} {
+	if ${1:stmt}; ${2:condition} {
 	}
 snippet els
 	else {
@@ -29,31 +29,31 @@ snippet for
 	for${1} {
 	}
 snippet fun
-	func ${1:identifier}(${2}) ${3}{
+	func ${1:name}(${2}) ${3}{
 	}
 snippet fn
 	func(${1}) ${2}{
 	}
 snippet meth
-	func (${1:identifier} ${2:type}) ${3:identifier}($4) ${5}{
+	func (${1:name} ${2:type}) ${3:name}($4) ${5}{
 	}
 snippet ts
-	type ${1:identifier} struct {
+	type ${1:name} struct {
 	}
 snippet ti
-	type ${1:identifier} interface {
+	type ${1:name} interface {
 	}
 snippet sel
 	select {
 	}
 snippet cas
-	case ${1:expression}:
+	case ${1:expr}:
 snippet def
 	default:
 snippet ran
-	${1:identifiers} := range ${2:expression}
+	${1:names} := range ${2:expr}
 snippet gof
 	go func (${1}) {
 	}(${2})
 snippet con
-	const ${1:identifier} = ${2:value}
+	const ${1:name} = ${2:value}

@@ -212,7 +212,6 @@ augroup ag_all
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd FileType css setlocal expandtab
     autocmd FileType css setlocal iskeyword+=-
-    autocmd FileType css setlocal omnifunc=csscomplete#Complete
     autocmd FileType css setlocal shiftwidth=2
     autocmd FileType css setlocal softtabstop=2
     autocmd FileType gitcommit setlocal expandtab
@@ -228,7 +227,6 @@ augroup ag_all
     autocmd Filetype go setlocal tabstop=4
     autocmd FileType help setlocal nolist
     autocmd FileType html setlocal expandtab
-    autocmd FileType html setlocal omnifunc=htmlcomplete#Complete
     autocmd FileType html setlocal shiftwidth=2
     autocmd FileType html setlocal softtabstop=2
     autocmd FileType htmldjango setlocal expandtab
@@ -236,7 +234,6 @@ augroup ag_all
     autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType htmldjango setlocal tabstop=2
     autocmd FileType javascript setlocal expandtab
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#Complete
     autocmd FileType javascript setlocal shiftwidth=2
     autocmd FileType javascript setlocal softtabstop=2
     autocmd FileType json setlocal expandtab
@@ -256,14 +253,12 @@ augroup ag_all
     autocmd FileType python setlocal textwidth=88
     autocmd FileType scss setlocal expandtab
     autocmd FileType scss setlocal iskeyword+=-
-    autocmd FileType scss setlocal omnifunc=csscomplete#Complete
     autocmd FileType scss setlocal shiftwidth=2
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType sh setlocal expandtab
     autocmd FileType sh setlocal shiftwidth=4
     autocmd FileType sh setlocal softtabstop=4
     autocmd FileType sql setlocal expandtab
-    autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
     autocmd FileType sql setlocal shiftwidth=2
     autocmd FileType sql setlocal softtabstop=2
     autocmd FileType text setlocal nolist
@@ -273,7 +268,6 @@ augroup ag_all
     autocmd FileType vim setlocal shiftwidth=4
     autocmd FileType vim setlocal softtabstop=4
     autocmd FileType xml setlocal expandtab
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#Complete
     autocmd FileType xml setlocal shiftwidth=4
     autocmd FileType xml setlocal softtabstop=4
     autocmd FileType yaml setlocal expandtab

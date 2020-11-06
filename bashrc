@@ -24,6 +24,7 @@ shopt -s histappend
 shopt -u mailwarn
 
 export EDITOR=$(command -v vim || type -p vi)
+export GOTPATH=${HOME}/.local/go
 export GPG_TTY=$(tty)
 export GUIEDITOR=$(command -v mvim || command -v gvim)
 export HISTCONTROL="erasedups:ignoreboth"

@@ -205,76 +205,19 @@ augroup ag_all
     autocmd!
 
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
-    autocmd BufRead * normal zz
     autocmd BufRead,BufNewFile *.js setlocal filetype=javascript.html.css
     autocmd BufRead,BufNewFile .babelrc setlocal filetype=json
     autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
     autocmd BufReadPost fugitive://* set bufhidden=delete
-    autocmd FileType css setlocal expandtab
-    autocmd FileType css setlocal iskeyword+=-
-    autocmd FileType css setlocal shiftwidth=2
-    autocmd FileType css setlocal softtabstop=2
-    autocmd FileType gitcommit setlocal expandtab
     autocmd FileType gitcommit setlocal nolist
-    autocmd FileType gitcommit setlocal shiftwidth=8
-    autocmd FileType gitcommit setlocal softtabstop=8
-    autocmd FileType gitconfig setlocal expandtab
-    autocmd FileType gitconfig setlocal shiftwidth=8
-    autocmd FileType gitconfig setlocal softtabstop=8
     autocmd FileType go setlocal nolist
-    autocmd Filetype go setlocal shiftwidth=4
-    autocmd Filetype go setlocal softtabstop=4
-    autocmd Filetype go setlocal tabstop=4
     autocmd FileType help setlocal nolist
-    autocmd FileType html setlocal expandtab
-    autocmd FileType html setlocal shiftwidth=2
-    autocmd FileType html setlocal softtabstop=2
-    autocmd FileType htmldjango setlocal expandtab
-    autocmd FileType htmldjango setlocal shiftwidth=2
-    autocmd FileType htmldjango setlocal softtabstop=2
-    autocmd FileType htmldjango setlocal tabstop=2
-    autocmd FileType javascript setlocal expandtab
-    autocmd FileType javascript setlocal shiftwidth=2
-    autocmd FileType javascript setlocal softtabstop=2
-    autocmd FileType json setlocal expandtab
-    autocmd FileType json setlocal shiftwidth=2
-    autocmd FileType json setlocal softtabstop=2
-    autocmd FileType markdown setlocal expandtab
-    autocmd FileType markdown setlocal shiftwidth=2
-    autocmd FileType markdown setlocal softtabstop=2
     autocmd FileType nerdtree setlocal nolist
     autocmd FileType nerdtree setlocal nonumber
-    autocmd FileType python setlocal autoindent
-    autocmd FileType python setlocal expandtab
-    autocmd FileType python setlocal fileformat=unix
-    autocmd FileType python setlocal shiftwidth=4
-    autocmd FileType python setlocal softtabstop=4
-    autocmd FileType python setlocal tabstop=4
-    autocmd FileType python setlocal textwidth=88
-    autocmd FileType scss setlocal expandtab
     autocmd FileType scss setlocal iskeyword+=-
-    autocmd FileType scss setlocal shiftwidth=2
-    autocmd FileType scss setlocal softtabstop=2
-    autocmd FileType sh setlocal expandtab
-    autocmd FileType sh setlocal shiftwidth=4
-    autocmd FileType sh setlocal softtabstop=4
-    autocmd FileType sql setlocal expandtab
-    autocmd FileType sql setlocal shiftwidth=2
-    autocmd FileType sql setlocal softtabstop=2
     autocmd FileType text setlocal nolist
-    autocmd FileType text setlocal norelativenumber
     autocmd FileType text setlocal spell
-    autocmd FileType vim setlocal expandtab
-    autocmd FileType vim setlocal shiftwidth=4
-    autocmd FileType vim setlocal softtabstop=4
-    autocmd FileType xml setlocal expandtab
-    autocmd FileType xml setlocal shiftwidth=4
-    autocmd FileType xml setlocal softtabstop=4
-    autocmd FileType yaml setlocal expandtab
-    autocmd FileType yaml setlocal shiftwidth=2
-    autocmd FileType yaml setlocal softtabstop=2
     autocmd InsertLeave * set nopaste
-    autocmd VimResized * :wincmd =
 
 augroup end
 
@@ -351,8 +294,3 @@ let g:vim_json_warnings = 1
 " CamelCaseMotion
 map <silent> ,b <Plug>CamelCaseMotion_b
 map <silent> ,w <Plug>CamelCaseMotion_w
-
-" vim-go
-" let g:go_fmt_autosave = 0
-" let g:go_imports_autosave = 0
-" let g:go_mod_fmt_autosave = 0

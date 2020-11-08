@@ -211,10 +211,12 @@ augroup ag_all
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd FileType gitcommit setlocal nolist
     autocmd FileType go setlocal nolist
+    autocmd FileType go setlocal tabstop=2
     autocmd FileType help setlocal nolist
     autocmd FileType nerdtree setlocal nolist
     autocmd FileType nerdtree setlocal nonumber
     autocmd FileType scss setlocal iskeyword+=-
+    autocmd FileType snippets setlocal list
     autocmd FileType text setlocal nolist
     autocmd FileType text setlocal spell
     autocmd InsertLeave * set nopaste

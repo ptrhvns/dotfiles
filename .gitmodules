@@ -49,3 +49,6 @@
 [submodule "vim/bundle/lightline.vim"]
 	path = vim/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/bundle/vim-gnupg"]
+	path = vim/bundle/vim-gnupg
+	url = git@github.com:jamessan/vim-gnupg.git

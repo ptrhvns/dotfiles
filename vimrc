@@ -10,6 +10,8 @@ set lazyredraw
 set nofoldenable
 set noincsearch
 set nojoinspaces
+set nonumber
+set norelativenumber
 set noshowmode
 set nostartofline
 set shell=/bin/bash
@@ -21,6 +23,7 @@ set smarttab
 set softtabstop=4
 set splitbelow
 set splitright
+set tabstop=4
 set textwidth=79
 set timeout
 set timeoutlen=3000

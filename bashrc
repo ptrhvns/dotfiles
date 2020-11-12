@@ -24,7 +24,7 @@ shopt -s histappend
 shopt -u mailwarn
 
 export EDITOR=$(command -v vim || type -p vi)
-export GOTPATH=${HOME}/.local/go
+export GOPATH=${HOME}/.local/go
 export GPG_TTY=$(tty)
 export GUIEDITOR=$(command -v mvim || command -v gvim)
 export HISTCONTROL="erasedups:ignoreboth"
@@ -41,7 +41,7 @@ export MANPAGER=$(command -v less || command -v more)
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 export PAGER=$(command -v less || command -v more)
 
-export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/usr/libexec/java_home:~/.nodenv/bin:~/.pyenv/bin:~/.rbenv/bin:/mnt/c/Windows/System32:~/.cargo/bin:~/.rustup:/usr/local/go/bin:/usr/games
+export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/usr/libexec/java_home:~/.nodenv/bin:~/.pyenv/bin:~/.rbenv/bin:/mnt/c/Windows/System32
 
 export PROMPT_COMMAND='history -a'
 export SHELL=$(command -v bash)

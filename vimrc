@@ -68,7 +68,7 @@ nmap <Down> :tabmove -1<CR><C-l>
 nmap <Up> :tabmove +1<CR><C-l>
 
 " Remove keywork lookup.
-nnoremap K <Nop>
+nmap K <Nop>
 
 " Manage vimrc file.
 nmap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
@@ -154,7 +154,7 @@ function! FormatFile()
     endif
 endfunction
 
-noremap <Leader>f :call FormatFile()<CR>
+nmap <Leader>f :call FormatFile()<CR>
 
 " Configure Pathogen plugin manager.
 try
@@ -268,12 +268,12 @@ function! LightlineFilename()
 endfunction
 
 " fugitive settings
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gc :Gcommit --verbose<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gp :Gpush --verbose<CR>
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gw :Gwrite<CR>
+nmap <Leader>gb :Gblame<CR>
+nmap <Leader>gc :Gcommit --verbose<CR>
+nmap <Leader>gd :Gdiff<CR>
+nmap <Leader>gp :Gpush --verbose<CR>
+nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>gw :Gwrite<CR>
 
 " ctrlp settings
 let g:ctrlp_arg_map = 1

@@ -215,6 +215,8 @@ augroup ag_all
     autocmd FileType gitcommit setlocal nolist
     autocmd FileType go setlocal nolist
     autocmd FileType go setlocal tabstop=2
+    autocmd FileType gomod setlocal nolist
+    autocmd FileType gomod setlocal tabstop=2
     autocmd FileType help setlocal nolist
     autocmd FileType nerdtree setlocal nolist
     autocmd FileType nerdtree setlocal nonumber

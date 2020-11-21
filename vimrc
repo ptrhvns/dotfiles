@@ -45,42 +45,31 @@ if has("multi_byte") && &t_Co > 255
     set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
 endif
 
-" Clear highlighting and redraw.
 nnoremap <C-l> :nohlsearch<CR><C-l>
 inoremap <C-l> <C-o>:nohlsearch<CR>
 
-" Toggle paste mode and show result.
 nmap <Leader>p :set invpaste paste?<CR>
 
-" Toggle line wrapping and show result.
 nmap <Leader>w :set invwrap wrap?<CR>
 
-" Toggle highlight the current line of the cursor.
 nmap <Leader>u :setlocal cursorcolumn! cursorline!<CR><C-l>
 
-" Sort visual selection.
 vmap <Leader>s :sort iu<CR>
 
-" Control tabs.
 nmap <Left> gT
 nmap <Right> gt
 nmap <Down> :tabmove -1<CR><C-l>
 nmap <Up> :tabmove +1<CR><C-l>
 
-" Remove keywork lookup.
 nmap K <Nop>
 
-" Manage vimrc file.
 nmap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
 nmap <Leader>sv :source $MYVIMRC<CR>
 
-" Toggle list and number.
 nmap <Leader>$ :set list! number!<CR><C-l>
 
-" Remove trailing whitespace.
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-" Rename the current buffer file.
 function! RenameFile()
     let old_name = expand('%')
     let new_name = input('New file name: ', expand('%'), 'file')
@@ -94,7 +83,6 @@ endfunction
 
 nmap <Leader>R :call RenameFile()<CR>
 
-" Delete the current buffer file.
 function! DeleteFile()
     let fname = expand('%')
     exec ':bdelete!'
@@ -104,7 +92,6 @@ endfunction
 
 nmap <Leader>D :call DeleteFile()<CR>
 
-" Run tests.
 function! RunTestUnderCursor()
     :write
 
@@ -130,7 +117,6 @@ endfunction
 
 nmap <Leader>T :call RunTestFile()<CR>
 
-" Format current buffer file.
 function! FormatFile()
     :write
     let t:file = @%
@@ -156,20 +142,16 @@ endfunction
 
 nmap <Leader>f :call FormatFile()<CR>
 
-" Configure Pathogen plugin manager.
 try
     call pathogen#infect()
 catch /^Vim\%((\a\+)\)\=:E/
     " Ignore errors if pathogen can't be found.
 endtry
 
-" Configure a notes file.
 map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 
-" Set a marker for Django HTML templates.
 map <Leader>hd O{# htmldjango #}<Esc>:set ft=htmldjango<CR>
 
-" Color & syntax settings.
 if &t_Co > 1 || has('gui_running')
     syntax on
 endif
@@ -198,10 +180,7 @@ if exists("g:colors_name") && g:colors_name == 'solarized' && has("multi_byte")
     highlight! NonText ctermfg=235
 endif
 
-" Enable filetype specific indenting.
 filetype indent on
-
-" Enable filetype specific plugins.
 filetype plugin on
 
 augroup ag_all
@@ -228,7 +207,7 @@ augroup ag_all
 
 augroup end
 
-" NERD_commenter settings
+" NERD_commenter
 let NERDCommentWholeLinesInVMode=2
 let NERDCreateDefaultMappings=0
 let NERDDefaultAlign = 'left'
@@ -240,22 +219,22 @@ nmap <Leader>x <Plug>NERDCommenterSexy<C-l>
 vmap <Leader>c <Plug>NERDCommenterToggle<C-l>
 vmap <Leader>x <Plug>NERDCommenterSexy<C-l>
 
-" NERD_tree settings
+" NERD_tree
 let NERDChristmasTree=1
 let NERDTreeDirArrows= has("multi_byte") ? 1 : 0
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=50
 nmap <Leader>n :NERDTreeToggle<CR>
 
-" gnupg settings
+" gnupg
 let g:GPGExecutable="gpg"
 let g:GPGPreferArmor=1
 
-" snipmate settings
+" snipmate
 let g:snippets_dir=$HOME.'/.vim/snippets'
 nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
 
-" lightline settings
+" lightline
 set laststatus=2
 
 let g:lightline = {
@@ -269,7 +248,7 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
-" fugitive settings
+" fugitive
 nmap <Leader>gb :Gblame<CR>
 nmap <Leader>gc :Gcommit --verbose<CR>
 nmap <Leader>gd :Gdiff<CR>
@@ -277,7 +256,7 @@ nmap <Leader>gp :Gpush --verbose<CR>
 nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gw :Gwrite<CR>
 
-" ctrlp settings
+" ctrlp
 let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static)',
@@ -286,7 +265,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 
-" dragvisuals settings
+" dragvisuals
 let g:DVB_TrimWS = 1
 vmap  <expr>  <LEFT>   DVB_Drag('left')
 vmap  <expr>  <RIGHT>  DVB_Drag('right')
@@ -294,7 +273,7 @@ vmap  <expr>  <DOWN>   DVB_Drag('down')
 vmap  <expr>  <UP>     DVB_Drag('up')
 vmap  <expr>  D        DVB_Duplicate()
 
-" json settings
+" json
 let g:vim_json_syntax_conceal = 0
 let g:vim_json_warnings = 1
 

@@ -10,6 +10,7 @@ set lazyredraw
 set nofoldenable
 set noincsearch
 set nojoinspaces
+set nolist
 set nonumber
 set norelativenumber
 set noshowmode
@@ -192,13 +193,23 @@ augroup ag_all
     autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd FileType gitcommit setlocal nolist
+    autocmd FileType go setlocal noexpandtab
     autocmd FileType go setlocal nolist
-    autocmd FileType go setlocal tabstop=2
+    autocmd FileType go setlocal shiftwidth=0
+    autocmd FileType go setlocal tabstop=4
+    autocmd FileType gomod setlocal noexpandtab
     autocmd FileType gomod setlocal nolist
-    autocmd FileType gomod setlocal tabstop=2
+    autocmd FileType gomod setlocal shiftwidth=0
+    autocmd FileType gomod setlocal tabstop=4
     autocmd FileType help setlocal nolist
+    autocmd FileType html setlocal expandtab
+    autocmd FileType html setlocal shiftwidth=0
+    autocmd FileType html setlocal tabstop=2
     autocmd FileType nerdtree setlocal nolist
-    autocmd FileType nerdtree setlocal nonumber
+    autocmd FileType python setlocal expandtab
+    autocmd FileType python setlocal shiftwidth=0
+    autocmd FileType python setlocal tabstop=4
+    autocmd FileType python setlocal textwidth=88
     autocmd FileType scss setlocal iskeyword+=-
     autocmd FileType snippets setlocal list
     autocmd FileType text setlocal nolist

@@ -291,3 +291,11 @@ let g:vim_json_warnings = 1
 " CamelCaseMotion
 map <silent> ,b <Plug>CamelCaseMotion_b
 map <silent> ,w <Plug>CamelCaseMotion_w
+
+" vim-go
+nmap <Leader>od <Plug>(go-doc)
+nmap <Leader>oi <Plug>(go-info)
+nmap <Leader>om <Plug>(go-metalinter)
+nmap <Leader>or <Plug>(go-rename)
+nmap <Leader>os <Plug>(go-def-split)
+nmap <Leader>ot <Plug>(go-test-func)

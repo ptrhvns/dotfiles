@@ -211,6 +211,9 @@ augroup ag_all
     autocmd FileType python setlocal tabstop=4
     autocmd FileType python setlocal textwidth=88
     autocmd FileType scss setlocal iskeyword+=-
+    autocmd FileType sh setlocal expandtab
+    autocmd FileType sh setlocal shiftwidth=0
+    autocmd FileType sh setlocal tabstop=4
     autocmd FileType snippets setlocal list
     autocmd FileType text setlocal nolist
     autocmd FileType text setlocal spell

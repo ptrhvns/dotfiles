@@ -134,10 +134,12 @@ function! FormatFile()
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
         execute "!clear; isort -ac -fss " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
+    elseif (&filetype == 'rust')
+        execute "!clear; rustfmt " . t:file
     elseif (&filetype == 'scss')
         execute "!clear; npx prettier --write " . t:file
     else
-        echoerr "Failed to format unknown filetype: " . &filetype
+        echoerr "Failed to format: unknown filetype: " . &filetype
     endif
 endfunction
 

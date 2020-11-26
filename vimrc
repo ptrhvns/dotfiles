@@ -308,3 +308,8 @@ nmap <Leader>or <Plug>(go-rename)
 nmap <Leader>os <Plug>(go-def-split)
 nmap <Leader>ot <Plug>(go-test-func)
 nmap <Leader>ov <Plug>(go-vet)
+
+" rust
+nmap <Leader>cb :Cbuild<CR>
+nmap <Leader>cc :Cargo check<CR>
+nmap <Leader>cr :Crun<CR>

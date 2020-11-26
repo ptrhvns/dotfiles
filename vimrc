@@ -212,6 +212,9 @@ augroup ag_all
     autocmd FileType python setlocal shiftwidth=0
     autocmd FileType python setlocal tabstop=4
     autocmd FileType python setlocal textwidth=88
+    autocmd FileType rust setlocal expandtab
+    autocmd FileType rust setlocal shiftwidth=0
+    autocmd FileType rust setlocal tabstop=4
     autocmd FileType scss setlocal iskeyword+=-
     autocmd FileType sh setlocal expandtab
     autocmd FileType sh setlocal shiftwidth=0

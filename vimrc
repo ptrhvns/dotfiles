@@ -227,11 +227,11 @@ augroup ag_all
 augroup end
 
 " NERD_commenter
+let NERD_scss_alt_style=1
 let NERDCommentWholeLinesInVMode=2
 let NERDCreateDefaultMappings=0
 let NERDDefaultAlign = 'left'
 let NERDSpaceDelims=1
-let NERD_scss_alt_style=1
 nmap <Leader>c <Plug>NERDCommenterToggle<C-l>
 nmap <Leader>i <Plug>NERDCommenterAltDelims<C-l>
 nmap <Leader>x <Plug>NERDCommenterSexy<C-l>
@@ -278,7 +278,7 @@ nmap <Leader>gw :Gwrite<CR>
 " ctrlp
 let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static)',
+    \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static|target)',
     \ 'file': '\v\.(swp|pyc)'
     \ }
 let g:ctrlp_switch_buffer = 0
@@ -310,6 +310,6 @@ nmap <Leader>ot <Plug>(go-test-func)
 nmap <Leader>ov <Plug>(go-vet)
 
 " rust
-nmap <Leader>cb :Cbuild<CR>
-nmap <Leader>cc :Cargo check<CR>
-nmap <Leader>cr :Crun<CR>
+nmap <Leader>rb :Cbuild<CR>
+nmap <Leader>rc :Cargo check<CR>
+nmap <Leader>rr :Crun<CR>

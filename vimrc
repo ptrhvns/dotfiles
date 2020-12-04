@@ -133,7 +133,9 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; isort -ac -fss " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
+        execute "!clear; isort --ac --fss " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
+        " Ensure black changes are seen.
+        :edit
     elseif (&filetype == 'rust')
         execute "!clear; rustfmt " . t:file
     elseif (&filetype == 'scss')
@@ -207,6 +209,9 @@ augroup ag_all
     autocmd FileType html setlocal expandtab
     autocmd FileType html setlocal shiftwidth=0
     autocmd FileType html setlocal tabstop=2
+    autocmd FileType htmldjango setlocal expandtab
+    autocmd FileType htmldjango setlocal shiftwidth=0
+    autocmd FileType htmldjango setlocal tabstop=4
     autocmd FileType nerdtree setlocal nolist
     autocmd FileType python setlocal expandtab
     autocmd FileType python setlocal shiftwidth=0

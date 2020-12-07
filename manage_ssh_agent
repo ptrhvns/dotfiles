@@ -21,6 +21,6 @@ ssh-add -l &>/dev/null
 if [ "$?" == 1 ]; then
     # The agent has no identities.
     echo ">>> Adding identities to SSH agent ..."
-    ssh-add ~/.ssh/id_!(*.pub)
+    ssh-add $(ls ~/.ssh/id_* | grep -v '\.pub')
 fi
 

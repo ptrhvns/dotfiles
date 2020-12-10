@@ -124,8 +124,6 @@ function! FormatFile()
 
     if (&filetype == 'css')
         execute "!clear; npx prettier --write " . t:file
-    elseif (&filetype == 'go')
-        execute "!clear; gofmt -w " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'javascript.html.css')
@@ -198,14 +196,6 @@ augroup ag_all
     autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd FileType gitcommit setlocal nolist
-    autocmd FileType go setlocal noexpandtab
-    autocmd FileType go setlocal nolist
-    autocmd FileType go setlocal shiftwidth=0
-    autocmd FileType go setlocal tabstop=4
-    autocmd FileType gomod setlocal noexpandtab
-    autocmd FileType gomod setlocal nolist
-    autocmd FileType gomod setlocal shiftwidth=0
-    autocmd FileType gomod setlocal tabstop=4
     autocmd FileType help setlocal nolist
     autocmd FileType html setlocal expandtab
     autocmd FileType html setlocal shiftwidth=0
@@ -305,15 +295,6 @@ let g:vim_json_warnings = 1
 " CamelCaseMotion
 map <silent> ,b <Plug>CamelCaseMotion_b
 map <silent> ,w <Plug>CamelCaseMotion_w
-
-" vim-go
-nmap <Leader>od <Plug>(go-doc)
-nmap <Leader>oi <Plug>(go-info)
-nmap <Leader>om <Plug>(go-metalinter)
-nmap <Leader>or <Plug>(go-rename)
-nmap <Leader>os <Plug>(go-def-split)
-nmap <Leader>ot <Plug>(go-test-func)
-nmap <Leader>ov <Plug>(go-vet)
 
 " rust
 nmap <Leader>rb :Cbuild<CR>

@@ -8,6 +8,7 @@ set hlsearch
 set ignorecase
 set lazyredraw
 set nofoldenable
+set noincsearch
 set nojoinspaces
 set nolist
 set noshowmode
@@ -145,14 +146,38 @@ endfunction
 
 nmap <Leader>f :call FormatFile()<CR>
 
-try
-    call pathogen#infect()
-catch /^Vim\%((\a\+)\)\=:E/
-    " Ignore errors if pathogen can't be found.
-endtry
+" try
+"     call pathogen#infect()
+" catch /^Vim\%((\a\+)\)\=:E/
+"     " Ignore errors if pathogen can't be found.
+" endtry
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'https://github.com/altercation/vim-colors-solarized.git'
+Plug 'https://github.com/bkad/CamelCaseMotion.git'
+Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
+Plug 'https://github.com/garbas/vim-snipmate.git'
+Plug 'https://github.com/godlygeek/tabular.git'
+Plug 'https://github.com/henrik/vim-indexed-search.git'
+Plug 'https://github.com/itchyny/lightline.vim'
+Plug 'https://github.com/jamessan/vim-gnupg.git'
+Plug 'https://github.com/kana/vim-smartinput.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
+Plug 'https://github.com/rust-lang/rust.vim.git'
+Plug 'https://github.com/scrooloose/nerdcommenter.git'
+Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'https://github.com/sheerun/vim-polyglot'
+Plug 'https://github.com/tomtom/tlib_vim.git'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/tpope/vim-repeat.git'
+Plug 'https://github.com/tpope/vim-surround.git'
+
+call plug#end()
 
 " Only seems to work after pathogen#infect.
-set noincsearch
+" set noincsearch
 
 map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 

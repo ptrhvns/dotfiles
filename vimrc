@@ -8,13 +8,12 @@ set hlsearch
 set ignorecase
 set lazyredraw
 set nofoldenable
-set noincsearch
 set nojoinspaces
 set nolist
-set nonumber
-set norelativenumber
 set noshowmode
 set nostartofline
+set number
+set relativenumber
 set shell=/bin/bash
 set shiftwidth=4
 set showcmd
@@ -152,6 +151,9 @@ catch /^Vim\%((\a\+)\)\=:E/
     " Ignore errors if pathogen can't be found.
 endtry
 
+" Only seems to work after pathogen#infect.
+set noincsearch
+
 map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 
 map <Leader>hd O{# htmldjango #}<Esc>:set ft=htmldjango<CR>
@@ -202,18 +204,22 @@ augroup ag_all
     autocmd FileType html setlocal tabstop=2
     autocmd FileType htmldjango setlocal expandtab
     autocmd FileType htmldjango setlocal shiftwidth=0
+    autocmd FileType htmldjango setlocal softtabstop=4
     autocmd FileType htmldjango setlocal tabstop=4
     autocmd FileType nerdtree setlocal nolist
     autocmd FileType python setlocal expandtab
     autocmd FileType python setlocal shiftwidth=0
+    autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
     autocmd FileType python setlocal textwidth=88
     autocmd FileType rust setlocal expandtab
     autocmd FileType rust setlocal shiftwidth=0
+    autocmd FileType rust setlocal softtabstop=4
     autocmd FileType rust setlocal tabstop=4
     autocmd FileType scss setlocal iskeyword+=-
     autocmd FileType sh setlocal expandtab
     autocmd FileType sh setlocal shiftwidth=0
+    autocmd FileType sh setlocal softtabstop=4
     autocmd FileType sh setlocal tabstop=4
     autocmd FileType snippets setlocal list
     autocmd FileType text setlocal nolist
@@ -300,3 +306,4 @@ map <silent> ,w <Plug>CamelCaseMotion_w
 nmap <Leader>rb :Cbuild<CR>
 nmap <Leader>rc :Cargo check<CR>
 nmap <Leader>rr :Crun<CR>
+

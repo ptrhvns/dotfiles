@@ -146,12 +146,6 @@ endfunction
 
 nmap <Leader>f :call FormatFile()<CR>
 
-" try
-"     call pathogen#infect()
-" catch /^Vim\%((\a\+)\)\=:E/
-"     " Ignore errors if pathogen can't be found.
-" endtry
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'https://github.com/altercation/vim-colors-solarized.git'
@@ -175,9 +169,6 @@ Plug 'https://github.com/tpope/vim-repeat.git'
 Plug 'https://github.com/tpope/vim-surround.git'
 
 call plug#end()
-
-" Only seems to work after pathogen#infect.
-" set noincsearch
 
 map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 

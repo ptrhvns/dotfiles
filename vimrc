@@ -16,7 +16,7 @@ set nostartofline
 set number
 set relativenumber
 set shell=/bin/bash
-set shiftwidth=4
+set shiftwidth=0
 set showcmd
 set sidescroll=1
 set smartcase
@@ -43,7 +43,7 @@ if has("multi_byte") && &t_Co > 255
     set encoding=utf-8
     set fillchars=diff:⣿
     set list
-    set listchars=tab:▸\ ,trail:⋅,extends:❯,precedes:❮
+    set listchars=extends:❯,nbsp:~,precedes:❮,tab:▸\ ,trail:⋅
 endif
 
 nnoremap <C-l> :nohlsearch<CR><C-l>

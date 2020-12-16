@@ -11,10 +11,10 @@ set nofoldenable
 set noincsearch
 set nojoinspaces
 set nolist
+set nonumber
+set norelativenumber
 set noshowmode
 set nostartofline
-set number
-set relativenumber
 set shell=/bin/bash
 set shiftwidth=0
 set showcmd

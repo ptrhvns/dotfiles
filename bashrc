@@ -191,6 +191,37 @@ alias tl='tmux ls'
 alias tn='tmux_new_session'
 alias tp='tmux_new_project'
 
+if [ -r ~/.ssh-agent ]; then
+    source ~/.ssh-agent >/dev/null
+else
+    echo "### Starting SSH agent."
+
+    if command -v killall 1>/dev/null 2>&1; then
+        killall -q ssh-agent
+    fi
+
+    (umask 066; ssh-agent >| ~/.ssh-agent)
+    source ~/.ssh-agent >/dev/null
+fi
+
+ssh-add -l &>/dev/null
+if [ "$?" == 2 ]; then
+    echo "### Starting SSH agent."
+
+    if command -v killall 1>/dev/null 2>&1; then
+        killall -q ssh-agent
+    fi
+
+    (umask 066; ssh-agent >| ~/.ssh-agent)
+    source ~/.ssh-agent >/dev/null
+fi
+
+ssh-add -l &>/dev/null
+if [ "$?" == 1 ]; then
+    echo "### Adding SSH keys to SSH agent."
+    ssh-add $(ls ~/.ssh/id_* | grep -v '\.pub')
+fi
+
 if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"
 fi
@@ -210,4 +241,3 @@ fi
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
-

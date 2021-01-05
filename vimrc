@@ -131,7 +131,7 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; isort --ac --fas " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
+        execute "!clear; isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
         " Ensure black changes are seen.
         :edit
         :normal zz

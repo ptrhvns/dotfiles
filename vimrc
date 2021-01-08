@@ -224,6 +224,10 @@ augroup ag_all
     autocmd FileType htmldjango setlocal shiftwidth=0
     autocmd FileType htmldjango setlocal softtabstop=4
     autocmd FileType htmldjango setlocal tabstop=4
+    autocmd FileType markdown setlocal expandtab
+    autocmd FileType markdown setlocal shiftwidth=0
+    autocmd FileType markdown setlocal softtabstop=2
+    autocmd FileType markdown setlocal tabstop=2
     autocmd FileType nerdtree setlocal nolist
     autocmd FileType python setlocal expandtab
     autocmd FileType python setlocal shiftwidth=0

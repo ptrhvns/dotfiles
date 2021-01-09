@@ -25,7 +25,6 @@ set softtabstop=4
 set splitbelow
 set splitright
 set tabstop=4
-set textwidth=79
 set timeout
 set timeoutlen=3000
 set ttimeoutlen=100
@@ -224,6 +223,14 @@ augroup ag_all
     autocmd FileType htmldjango setlocal shiftwidth=0
     autocmd FileType htmldjango setlocal softtabstop=4
     autocmd FileType htmldjango setlocal tabstop=4
+    autocmd FileType javascript setlocal expandtab
+    autocmd FileType javascript setlocal shiftwidth=0
+    autocmd FileType javascript setlocal softtabstop=4
+    autocmd FileType javascript setlocal tabstop=4
+    autocmd FileType javascript.html.css setlocal expandtab
+    autocmd FileType javascript.html.css setlocal shiftwidth=0
+    autocmd FileType javascript.html.css setlocal softtabstop=4
+    autocmd FileType javascript.html.css setlocal tabstop=4
     autocmd FileType markdown setlocal expandtab
     autocmd FileType markdown setlocal shiftwidth=0
     autocmd FileType markdown setlocal softtabstop=2
@@ -233,7 +240,6 @@ augroup ag_all
     autocmd FileType python setlocal shiftwidth=0
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
-    autocmd FileType python setlocal textwidth=88
     autocmd FileType rust setlocal expandtab
     autocmd FileType rust setlocal shiftwidth=0
     autocmd FileType rust setlocal softtabstop=4

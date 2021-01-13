@@ -214,6 +214,10 @@ augroup ag_all
     autocmd BufRead,BufNewFile .babelrc setlocal filetype=json
     autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
     autocmd BufReadPost fugitive://* set bufhidden=delete
+    autocmd FileType css setlocal expandtab
+    autocmd FileType css setlocal shiftwidth=0
+    autocmd FileType css setlocal softtabstop=2
+    autocmd FileType css setlocal tabstop=2
     autocmd FileType gitcommit setlocal nolist
     autocmd FileType help setlocal nolist
     autocmd FileType html setlocal expandtab
@@ -225,12 +229,8 @@ augroup ag_all
     autocmd FileType htmldjango setlocal tabstop=4
     autocmd FileType javascript setlocal expandtab
     autocmd FileType javascript setlocal shiftwidth=0
-    autocmd FileType javascript setlocal softtabstop=4
-    autocmd FileType javascript setlocal tabstop=4
-    autocmd FileType javascript.html.css setlocal expandtab
-    autocmd FileType javascript.html.css setlocal shiftwidth=0
-    autocmd FileType javascript.html.css setlocal softtabstop=4
-    autocmd FileType javascript.html.css setlocal tabstop=4
+    autocmd FileType javascript setlocal softtabstop=2
+    autocmd FileType javascript setlocal tabstop=2
     autocmd FileType markdown setlocal expandtab
     autocmd FileType markdown setlocal shiftwidth=0
     autocmd FileType markdown setlocal softtabstop=2
@@ -244,7 +244,11 @@ augroup ag_all
     autocmd FileType rust setlocal shiftwidth=0
     autocmd FileType rust setlocal softtabstop=4
     autocmd FileType rust setlocal tabstop=4
+    autocmd FileType scss setlocal expandtab
     autocmd FileType scss setlocal iskeyword+=-
+    autocmd FileType scss setlocal shiftwidth=0
+    autocmd FileType scss setlocal softtabstop=2
+    autocmd FileType scss setlocal tabstop=2
     autocmd FileType sh setlocal expandtab
     autocmd FileType sh setlocal shiftwidth=0
     autocmd FileType sh setlocal softtabstop=4

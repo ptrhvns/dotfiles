@@ -24,7 +24,7 @@
 .vscode
 .yardoc
 _site
-build
+# build
 config/initializers/secret_token.rb
 coverage
 db/*.sqlite3

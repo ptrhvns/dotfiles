@@ -284,6 +284,7 @@ let g:GPGExecutable="gpg"
 let g:GPGPreferArmor=1
 
 " snipmate
+let g:snipMate = { 'snippet_version' : 1 }
 let g:snippets_dir=$HOME.'/.vim/snippets'
 nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
 

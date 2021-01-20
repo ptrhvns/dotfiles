@@ -231,6 +231,10 @@ augroup ag_all
     autocmd FileType javascript setlocal shiftwidth=0
     autocmd FileType javascript setlocal softtabstop=2
     autocmd FileType javascript setlocal tabstop=2
+    autocmd FileType javascript.html.css setlocal expandtab
+    autocmd FileType javascript.html.css setlocal shiftwidth=0
+    autocmd FileType javascript.html.css setlocal softtabstop=2
+    autocmd FileType javascript.html.css setlocal tabstop=2
     autocmd FileType markdown setlocal expandtab
     autocmd FileType markdown setlocal shiftwidth=0
     autocmd FileType markdown setlocal softtabstop=2

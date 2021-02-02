@@ -38,8 +38,11 @@ if exists('+undoreload')
     set undoreload=10000
 endif
 
-if has("multi_byte") && &t_Co > 255
+if has("multi_byte")
     set encoding=utf-8
+endif
+
+if has("multi_byte") && &t_Co > 255
     set fillchars=diff:⣿
     set list
     set listchars=extends:❯,nbsp:~,precedes:❮,tab:▸\ ,trail:⋅

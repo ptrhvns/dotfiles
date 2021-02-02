@@ -321,7 +321,7 @@ nmap <Leader>gw :Gwrite<CR>
 let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static|target)',
-    \ 'file': '\v\.(swp|pyc)'
+    \ 'file': '\v(\.(swp|pyc)|tags)'
     \ }
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0

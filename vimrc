@@ -247,6 +247,10 @@ augroup ag_all
     autocmd FileType python setlocal shiftwidth=0
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
+    autocmd FileType ruby setlocal expandtab
+    autocmd FileType ruby setlocal shiftwidth=0
+    autocmd FileType ruby setlocal softtabstop=2
+    autocmd FileType ruby setlocal tabstop=2
     autocmd FileType rust setlocal expandtab
     autocmd FileType rust setlocal shiftwidth=0
     autocmd FileType rust setlocal softtabstop=4

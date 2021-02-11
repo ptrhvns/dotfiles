@@ -170,7 +170,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/kana/vim-smartinput.git'
     Plug 'https://github.com/kien/ctrlp.vim.git'
     Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
-    Plug 'https://github.com/rust-lang/rust.vim.git'
+    Plug 'https://github.com/romainl/vim-cool.git'
     Plug 'https://github.com/scrooloose/nerdcommenter.git'
     Plug 'https://github.com/scrooloose/nerdtree.git'
     Plug 'https://github.com/sheerun/vim-polyglot'
@@ -205,6 +205,7 @@ try
         colorscheme solarized
         highlight IncSearch ctermbg=White ctermfg=DarkGrey
         highlight Search ctermbg=White ctermfg=DarkGrey
+        highlight Visual ctermbg=White ctermfg=DarkGrey
     endif
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme default

@@ -335,4 +335,4 @@ nmap <Leader>rc :Cargo check<CR>
 nmap <Leader>rr :Crun<CR>
 
 " fzf
-nmap <Leader><Tab> :GFiles<CR>
+nmap <Leader><Tab> :Files<CR>

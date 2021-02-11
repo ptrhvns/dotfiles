@@ -165,6 +165,8 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/henrik/vim-indexed-search.git'
     Plug 'https://github.com/itchyny/lightline.vim'
     Plug 'https://github.com/jamessan/vim-gnupg.git'
+    Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'https://github.com/junegunn/fzf.vim'
     Plug 'https://github.com/kana/vim-smartinput.git'
     Plug 'https://github.com/kien/ctrlp.vim.git'
     Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'

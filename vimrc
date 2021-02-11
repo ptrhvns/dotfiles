@@ -333,3 +333,5 @@ nmap <Leader>rb :Cbuild<CR>
 nmap <Leader>rc :Cargo check<CR>
 nmap <Leader>rr :Crun<CR>
 
+" fzf
+nmap <Leader><Tab> :Files<CR>

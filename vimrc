@@ -4,6 +4,7 @@ let mapleader="\\"
 
 set autoindent
 set autoread
+set expandtab
 set hlsearch
 set ignorecase
 set lazyredraw
@@ -67,7 +68,8 @@ nmap <Up> :tabmove +1<CR><C-l>
 nmap K <Nop>
 
 nmap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
-nmap <Leader>sv :source $MYVIMRC<CR>
+
+nmap <Leader>so :source %<CR>
 
 nmap <Leader>$ :set list! number!<CR><C-l>
 
@@ -137,6 +139,8 @@ function! FormatFile()
         " Ensure black changes are seen.
         :edit
         :normal zz
+    elseif (&filetype == 'ruby')
+        execute "!clear; bundle exec rubocop --auto-correct " . t:file
     elseif (&filetype == 'rust')
         execute "!clear; rustfmt " . t:file
     elseif (&filetype == 'scss')
@@ -195,8 +199,8 @@ let g:solarized_termtrans=1
 try
     if &t_Co > 15
         colorscheme solarized
-        highlight IncSearch term=reverse cterm=reverse ctermbg=White ctermfg=Red guibg=Yellow
-        highlight Search term=reverse cterm=reverse ctermbg=White ctermfg=Red guibg=Yellow
+        highlight IncSearch ctermbg=White ctermfg=DarkGrey
+        highlight Search ctermbg=White ctermfg=DarkGrey
     endif
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme default
@@ -212,64 +216,37 @@ filetype plugin on
 augroup ag_all
     autocmd!
 
+    " autocmd BufRead,BufNewFile *.js setlocal filetype=javascript.html.css
+    " autocmd FileType javascript.html.css setlocal softtabstop=2
+    " autocmd FileType javascript.html.css setlocal tabstop=2
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
-    autocmd BufRead,BufNewFile *.js setlocal filetype=javascript.html.css
     autocmd BufRead,BufNewFile .babelrc setlocal filetype=json
     autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
     autocmd BufReadPost fugitive://* set bufhidden=delete
-    autocmd FileType css setlocal expandtab
-    autocmd FileType css setlocal shiftwidth=0
     autocmd FileType css setlocal softtabstop=2
     autocmd FileType css setlocal tabstop=2
-    autocmd FileType gitcommit setlocal nolist
-    autocmd FileType help setlocal nolist
-    autocmd FileType html setlocal expandtab
-    autocmd FileType html setlocal shiftwidth=0
     autocmd FileType html setlocal tabstop=2
-    autocmd FileType htmldjango setlocal expandtab
-    autocmd FileType htmldjango setlocal shiftwidth=0
-    autocmd FileType htmldjango setlocal softtabstop=4
-    autocmd FileType htmldjango setlocal tabstop=4
-    autocmd FileType javascript setlocal expandtab
-    autocmd FileType javascript setlocal shiftwidth=0
+    autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType javascript setlocal softtabstop=2
     autocmd FileType javascript setlocal tabstop=2
-    autocmd FileType javascript.html.css setlocal expandtab
-    autocmd FileType javascript.html.css setlocal shiftwidth=0
-    autocmd FileType javascript.html.css setlocal softtabstop=2
-    autocmd FileType javascript.html.css setlocal tabstop=2
-    autocmd FileType markdown setlocal expandtab
-    autocmd FileType markdown setlocal shiftwidth=0
     autocmd FileType markdown setlocal softtabstop=2
     autocmd FileType markdown setlocal tabstop=2
-    autocmd FileType nerdtree setlocal nolist
-    autocmd FileType python setlocal expandtab
-    autocmd FileType python setlocal shiftwidth=0
     autocmd FileType python setlocal softtabstop=4
-    autocmd FileType python setlocal tabstop=4
-    autocmd FileType ruby setlocal expandtab
-    autocmd FileType ruby setlocal shiftwidth=0
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal tabstop=2
-    autocmd FileType rust setlocal expandtab
-    autocmd FileType rust setlocal shiftwidth=0
     autocmd FileType rust setlocal softtabstop=4
-    autocmd FileType rust setlocal tabstop=4
-    autocmd FileType scss setlocal expandtab
     autocmd FileType scss setlocal iskeyword+=-
-    autocmd FileType scss setlocal shiftwidth=0
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal tabstop=2
-    autocmd FileType sh setlocal expandtab
-    autocmd FileType sh setlocal shiftwidth=0
     autocmd FileType sh setlocal softtabstop=4
-    autocmd FileType sh setlocal tabstop=4
-    autocmd FileType snippets setlocal list
-    autocmd FileType text setlocal nolist
     autocmd FileType text setlocal spell
     autocmd InsertLeave * set nopaste
 
 augroup end
+
+" plug
+nmap <Leader>li :PlugInstall<CR>
+nmap <Leader>lu :PlugUpgrade<CR>:PlugUpdate<CR>
 
 " NERD_commenter
 let NERD_scss_alt_style=1
@@ -324,7 +301,7 @@ nmap <Leader>gw :Gwrite<CR>
 " ctrlp
 let g:ctrlp_arg_map = 1
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static|target)',
+    \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static|target|cache)',
     \ 'file': '\v(\.(swp|pyc)|tags)'
     \ }
 let g:ctrlp_switch_buffer = 0

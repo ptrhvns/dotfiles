@@ -222,9 +222,10 @@ augroup ag_all
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
     autocmd BufRead,BufNewFile .babelrc setlocal filetype=json
     autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
-    autocmd BufReadPost fugitive://* set bufhidden=delete
+    autocmd BufReadPost fugitive://* setlocal bufhidden=delete
     autocmd FileType css setlocal softtabstop=2
     autocmd FileType css setlocal tabstop=2
+    autocmd FileType gitcommit setlocal nolist
     autocmd FileType html setlocal tabstop=2
     autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType javascript setlocal softtabstop=2
@@ -240,7 +241,7 @@ augroup ag_all
     autocmd FileType scss setlocal tabstop=2
     autocmd FileType sh setlocal softtabstop=4
     autocmd FileType text setlocal spell
-    autocmd InsertLeave * set nopaste
+    autocmd InsertLeave * setlocal nopaste
 
 augroup end
 

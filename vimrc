@@ -7,9 +7,9 @@ set autoread
 set expandtab
 set hlsearch
 set ignorecase
+set incsearch
 set lazyredraw
 set nofoldenable
-set noincsearch
 set nojoinspaces
 set nolist
 set nonumber
@@ -27,7 +27,7 @@ set splitbelow
 set splitright
 set tabstop=4
 set timeout
-set timeoutlen=3000
+set timeoutlen=1000
 set ttimeoutlen=100
 set ttyfast
 set undolevels=1000

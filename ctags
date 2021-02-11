@@ -1,0 +1,11 @@
+--exclude=*.egg-info
+--exclude=__pycache__
+--exclude=build
+--exclude=coverage
+--exclude=log
+--exclude=node_modules
+--exclude=storage
+--exclude=tmp
+--exclude=vendor
+--recurse
+--tag-relative=yes

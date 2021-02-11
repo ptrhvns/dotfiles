@@ -157,6 +157,7 @@ nmap <Leader>f :call FormatFile()<CR>
 if filereadable(expand('~/.vim/autoload/plug.vim'))
     call plug#begin('~/.vim/plugged')
 
+    " Plug 'https://github.com/kien/ctrlp.vim.git'
     Plug 'https://github.com/altercation/vim-colors-solarized.git'
     Plug 'https://github.com/bkad/CamelCaseMotion.git'
     Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
@@ -168,7 +169,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'https://github.com/junegunn/fzf.vim'
     Plug 'https://github.com/kana/vim-smartinput.git'
-    Plug 'https://github.com/kien/ctrlp.vim.git'
     Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
     Plug 'https://github.com/romainl/vim-cool.git'
     Plug 'https://github.com/scrooloose/nerdcommenter.git'
@@ -306,13 +306,13 @@ nmap <Leader>gs :Gstatus<CR>
 nmap <Leader>gw :Gwrite<CR>
 
 " ctrlp
-let g:ctrlp_arg_map = 1
-let g:ctrlp_custom_ignore = {
-    \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static|target|cache)',
-    \ 'file': '\v(\.(swp|pyc)|tags)'
-    \ }
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_arg_map = 1
+" let g:ctrlp_custom_ignore = {
+"     \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static|target|cache)',
+"     \ 'file': '\v(\.(swp|pyc)|tags)'
+"     \ }
+" let g:ctrlp_switch_buffer = 0
+" let g:ctrlp_working_path_mode = 0
 
 " dragvisuals
 let g:DVB_TrimWS = 1
@@ -336,4 +336,5 @@ nmap <Leader>rc :Cargo check<CR>
 nmap <Leader>rr :Crun<CR>
 
 " fzf
-nmap <Leader><Tab> :Files<CR>
+" nmap <Leader><Tab> :Files<CR>
+nmap <C-p> :Files<CR>

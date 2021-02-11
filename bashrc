@@ -145,6 +145,7 @@ else
     export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\$${CLRNONE} "
 fi
 
+alias be='bundle exec'
 alias c='cat'
 
 colors() {

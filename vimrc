@@ -175,6 +175,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/scrooloose/nerdtree.git'
     Plug 'https://github.com/sheerun/vim-polyglot'
     Plug 'https://github.com/tomtom/tlib_vim.git'
+    Plug 'https://github.com/tpope/vim-eunuch.git'
     Plug 'https://github.com/tpope/vim-fugitive.git'
     Plug 'https://github.com/tpope/vim-repeat.git'
     Plug 'https://github.com/tpope/vim-surround.git'

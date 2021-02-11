@@ -152,6 +152,8 @@ endfunction
 
 nmap <Leader>f :call FormatFile()<CR>
 
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 if filereadable(expand('~/.vim/autoload/plug.vim'))
     call plug#begin('~/.vim/plugged')
 

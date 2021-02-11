@@ -154,7 +154,8 @@ colors() {
     done
 }
 
-alias e=$EDITOR
+alias e='$EDITOR'
+alias ef='$EDITOR $(fzf)'
 
 if [[ "$EDITOR" = "$(command -v vim)" ]]; then
     if $(vim --version | awk '{ if ($5 >= 7.0) { exit(0) } else { exit(1) } }'); then
@@ -184,6 +185,7 @@ test $? -eq 0 && CR="--color=auto"
 alias l="ls -Al $CR"
 alias la="ls -al $CR"
 alias m=$PAGER
+alias sb='source ~/.bashrc'
 alias ta='tmux att -t'
 alias td='tmux_new_session_pwd'
 alias tg='tmux_new_project_for_all_dirty_git'
@@ -211,3 +213,14 @@ fi
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
+
+fzf_key_bindings="$(dpkg -L fzf | g key-bindings.bash)"
+if [ -f $fzf_key_bindings ]; then
+    source $fzf_key_bindings
+fi
+
+fzf_completion="$(dpkg -L fzf | grep completion.bash)"
+if [ -f $fzf_completion ]; then
+    source $fzf_completion
+fi
+

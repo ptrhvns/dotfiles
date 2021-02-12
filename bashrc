@@ -57,6 +57,7 @@ else
 fi
 
 if command -v rg 1>/dev/null 2>&1; then
+    export FZF_CTRL_T_COMMAND='rg --files --no-ignore-vcs --hidden'
     export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 fi
 

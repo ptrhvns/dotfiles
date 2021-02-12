@@ -58,7 +58,8 @@ nmap <Leader>w :set invwrap wrap?<CR>
 
 nmap <Leader>u :setlocal cursorcolumn! cursorline!<CR><C-l>
 
-vmap <Leader>s :sort iu<CR>
+vmap <Leader>ss :sort! nu<CR>
+vmap <Leader>su :sort iu<CR>
 
 nmap <Left> gT
 nmap <Right> gt

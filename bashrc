@@ -56,6 +56,10 @@ else
     export LESS="-FqiRWX"
 fi
 
+if command -v rg 1>/dev/null 2>&1; then
+    export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+fi
+
 if [[ "$(tty)" = "/dev/console" ]]; then
     export TERM=vt100
 elif [[ "$TERM" = screen* && -z "$TMUX" ]]; then
@@ -194,6 +198,16 @@ alias tl='tmux ls'
 alias tn='tmux_new_session'
 alias tp='tmux_new_project'
 
+fzf_key_bindings="$(dpkg -L fzf | g key-bindings.bash)"
+if [ -f $fzf_key_bindings ]; then
+    source $fzf_key_bindings
+fi
+
+fzf_completion="$(dpkg -L fzf | grep completion.bash)"
+if [ -f $fzf_completion ]; then
+    source $fzf_completion
+fi
+
 if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"
 fi
@@ -213,14 +227,3 @@ fi
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
-
-fzf_key_bindings="$(dpkg -L fzf | g key-bindings.bash)"
-if [ -f $fzf_key_bindings ]; then
-    source $fzf_key_bindings
-fi
-
-fzf_completion="$(dpkg -L fzf | grep completion.bash)"
-if [ -f $fzf_completion ]; then
-    source $fzf_completion
-fi
-

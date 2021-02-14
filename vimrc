@@ -27,8 +27,8 @@ set splitbelow
 set splitright
 set tabstop=4
 set timeout
-set timeoutlen=1000
-set ttimeoutlen=100
+" set timeoutlen=1000
+" set ttimeoutlen=100
 set ttyfast
 set undolevels=1000
 set virtualedit=all

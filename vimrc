@@ -237,9 +237,12 @@ augroup ag_all
     autocmd BufReadPost fugitive://* setlocal bufhidden=delete
     autocmd FileType css setlocal softtabstop=2
     autocmd FileType css setlocal tabstop=2
+    autocmd FileType eruby setlocal softtabstop=2
+    autocmd FileType eruby setlocal tabstop=2
     autocmd FileType gitcommit setlocal nolist
     autocmd FileType html setlocal tabstop=2
     autocmd FileType htmldjango setlocal softtabstop=2
+    autocmd FileType htmldjango setlocal tabstop=2
     autocmd FileType javascript setlocal softtabstop=2
     autocmd FileType javascript setlocal tabstop=2
     autocmd FileType markdown setlocal softtabstop=2

@@ -296,7 +296,8 @@ let g:lightline = {
     \ 'colorscheme': 'solarized',
     \ 'component_function': {
     \   'filename': 'LightlineFilename',
-    \ }
+    \ },
+    \ 'enable': { 'tabline': 0 },
 \ }
 
 function! LightlineFilename()

@@ -183,13 +183,16 @@ alias gv='egrep -iv'
 alias j='jobs'
 
 ls -G &> /dev/null
-test $? -eq 0 && CR="-G"
+test $? -eq 0 && LSCR="-G"
 
 ls --color &> /dev/null
-test $? -eq 0 && CR="--color=auto"
+test $? -eq 0 && LSCR="--color=auto"
 
-alias l="ls -Al $CR"
-alias la="ls -al $CR"
+ls --group-directories-first &> /dev/null
+test $? -eq 0 && LSGD="--group-directories-first"
+
+alias l="ls -AlF --group-directories-first $LSGD $LSCR"
+alias la="ls -alF --group-directories-first $LSGD $LSCR"
 alias m=$PAGER
 alias sb='source ~/.bashrc'
 alias ta='tmux att -t'

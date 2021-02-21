@@ -131,8 +131,6 @@ function! FormatFile()
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
-    elseif (&filetype == 'javascript.html.css')
-        execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
@@ -308,11 +306,11 @@ function! LightlineFilename()
 endfunction
 
 " fugitive
-nmap <Leader>gb :Gblame<CR>
-nmap <Leader>gc :Gcommit --verbose<CR>
-nmap <Leader>gd :Gdiff<CR>
-nmap <Leader>gp :Gpush --verbose<CR>
-nmap <Leader>gs :Gstatus<CR>
+nmap <Leader>gb :Git blame<CR>
+nmap <Leader>gc :Git commit --verbose<CR>
+nmap <Leader>gd :Gitdiffsplit<CR>
+nmap <Leader>gp :Git push --verbose<CR>
+nmap <Leader>gs :Git<CR>
 nmap <Leader>gw :Gwrite<CR>
 
 " dragvisuals

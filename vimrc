@@ -76,28 +76,6 @@ nmap <Leader>$ :set list! number!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-        exec ':edit'
-    endif
-endfunction
-
-nmap <Leader>R :call RenameFile()<CR>
-
-function! DeleteFile()
-    let fname = expand('%')
-    exec ':bdelete!'
-    exec ':silent !rm -f ' . fname
-    redraw!
-endfunction
-
-nmap <Leader>D :call DeleteFile()<CR>
-
 function! RunTestUnderCursor()
     :write
 
@@ -245,6 +223,7 @@ augroup ag_all
     autocmd FileType javascript setlocal tabstop=2
     autocmd FileType markdown setlocal softtabstop=2
     autocmd FileType markdown setlocal tabstop=2
+    autocmd FileType notes setlocal spell
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal tabstop=2

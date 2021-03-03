@@ -232,8 +232,8 @@ augroup ag_all
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal tabstop=2
     autocmd FileType sh setlocal softtabstop=4
-    autocmd FileType text setlocal spell
     autocmd FileType text setlocal textwidth=80
+    autocmd FileType yaml setlocal expandtab
     autocmd InsertLeave * setlocal nopaste
 
 augroup end

@@ -205,6 +205,7 @@ augroup ag_all
     " autocmd BufRead,BufNewFile *.js setlocal filetype=javascript.html.css
     " autocmd FileType javascript.html.css setlocal softtabstop=2
     " autocmd FileType javascript.html.css setlocal tabstop=2
+    " autocmd FileType notes setlocal spell
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
     autocmd BufRead,BufNewFile .babelrc setlocal filetype=json
     autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
@@ -221,7 +222,6 @@ augroup ag_all
     autocmd FileType javascript setlocal tabstop=2
     autocmd FileType markdown setlocal softtabstop=2
     autocmd FileType markdown setlocal tabstop=2
-    autocmd FileType notes setlocal spell
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal tabstop=2

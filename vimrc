@@ -16,6 +16,7 @@ set nonumber
 set norelativenumber
 set noshowmode
 set nostartofline
+set notimeout
 set shell=/bin/bash
 set shiftwidth=0
 set showcmd
@@ -26,9 +27,6 @@ set softtabstop=4
 set splitbelow
 set splitright
 set tabstop=4
-set timeout
-" set timeoutlen=1000
-" set ttimeoutlen=100
 set ttyfast
 set undolevels=1000
 set virtualedit=all

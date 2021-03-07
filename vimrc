@@ -109,13 +109,17 @@ function! FormatFile()
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
+    elseif (&filetype == 'go')
+        " execute "!clear; gofmt -w " . t:file . " && goimports -w " . t:file
+        execute "!clear; goimports -w " . t:file
     elseif (&filetype == 'python')
         execute "!clear; isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
         " Ensure black changes are seen.
         :edit
         :normal zz
     elseif (&filetype == 'ruby')
-        execute "!clear; bundle exec rubocop --auto-correct " . t:file
+        " execute "!clear; bundle exec rubocop --auto-correct " . t:file
+        execute "!clear; bundle exec standardrb --fix " . t:file
     elseif (&filetype == 'rust')
         execute "!clear; rustfmt " . t:file
     elseif (&filetype == 'scss')
@@ -132,11 +136,11 @@ nmap <Leader>f :call FormatFile()<CR>
 if filereadable(expand('~/.vim/autoload/plug.vim'))
     call plug#begin('~/.vim/plugged')
 
-    " Plug 'https://github.com/garbas/vim-snipmate.git'
     Plug 'https://github.com/altercation/vim-colors-solarized.git'
     Plug 'https://github.com/bkad/CamelCaseMotion.git'
     Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
     Plug 'https://github.com/fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'https://github.com/garbas/vim-snipmate.git'
     Plug 'https://github.com/godlygeek/tabular.git'
     Plug 'https://github.com/henrik/vim-indexed-search.git'
     Plug 'https://github.com/itchyny/lightline.vim'
@@ -215,6 +219,10 @@ augroup ag_all
     autocmd FileType eruby setlocal softtabstop=2
     autocmd FileType eruby setlocal tabstop=2
     autocmd FileType gitcommit setlocal nolist
+    autocmd FileType go setlocal noexpandtab
+    autocmd FileType go setlocal nolist
+    autocmd FileType go setlocal softtabstop=4
+    autocmd FileType go setlocal tabstop=4
     autocmd FileType html setlocal tabstop=2
     autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType htmldjango setlocal tabstop=2
@@ -325,3 +333,7 @@ else
     let g:ctrlp_switch_buffer = 0
     let g:ctrlp_working_path_mode = 0
 endif
+
+" vim-go
+let g:go_fmt_autosave = 0
+let g:go_imports_autosave = 0

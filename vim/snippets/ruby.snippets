@@ -60,16 +60,6 @@ snippet resd
 	respond_to(:${1:method})
 snippet ress
 	response
-snippet pry
-	binding.pry # FIXME
-snippet pryi
-	# FIXME
-	if ${1}
-	  binding.pry
-	end
-snippet pryr
-	Pry.rescue do # FIXME
-	end
 snippet let
 	let(:${1:name}) ${2:block}
 snippet bef
@@ -118,9 +108,9 @@ snippet dou
 snippet sub
 	subject(:${1:name}) ${2:block}
 snippet pen
-	pending # FIXME
+	pending # FIXME: write tests
 snippet ski
-	skip # FIXME
+	skip # FIXME: finish test
 snippet objd
 	object_double(${1:instance})
 snippet get
@@ -134,7 +124,7 @@ snippet delete
 snippet patch
 	patch ${1:action_or_path}, ${2:hash_params}
 snippet renp
-	render plain: '${1:FIXME}' # FIXME
+	render plain: '${1:FIXME}' # FIXME: render a real response
 snippet rent
 	render_template(${1:template})
 snippet red
@@ -180,7 +170,7 @@ snippet cas
 	else
 	end
 snippet rh
-	raise 'hell' # FIXME
+	raise 'hell' # FIXME: remove
 snippet facg
 	FactoryBot.define do
 	  factory :${1} do
@@ -198,13 +188,13 @@ snippet bac
 	background do
 	end
 snippet jd
-	require 'ruby-debug'; debugger # FIXME
+	require 'ruby-debug'; debugger # FIXME: remove
 snippet ext
 	extend ${1}
 snippet hea
 	head :${1}
 snippet bye
-	byebug
+	byebug # FIXME: remove
 snippet if
 	if ${1}
 	end

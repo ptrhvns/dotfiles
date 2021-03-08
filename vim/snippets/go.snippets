@@ -70,3 +70,6 @@ snippet sen
 	${1:channel} <- ${2:data}
 snippet rec
 	${1}<-${2:channel}
+snippet tru
+	t.Run("${1:description}", func(t *testing.T) {
+	})

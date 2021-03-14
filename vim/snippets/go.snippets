@@ -40,13 +40,15 @@ snippet fun
 snippet fn
 	func(${1}) ${2}{
 	}
-snippet meth
+snippet met
 	func (${1:name} ${2:type}) ${3:name}(${4}) ${5}{
 	}
-snippet ts
+snippet typ
+	type ${1:name} ${2:type}
+snippet tys
 	type ${1:name} struct {
 	}
-snippet ti
+snippet tyi
 	type ${1:name} interface {
 	}
 snippet sel
@@ -73,3 +75,15 @@ snippet rec
 snippet tru
 	t.Run("${1:description}", func(t *testing.T) {
 	})
+snippet tes
+	func Test${1:Name}(t *testing.T) {
+	}
+snippet tru
+	t.Run("${1:description}", func(t *testing.T) {
+	})
+snippet ter
+	t.Error("${1:message}")
+snippet tef
+	t.Errorf("${1:message}")
+snippet tfa
+	t.Fatal("${1:message}")

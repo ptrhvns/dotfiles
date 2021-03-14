@@ -344,7 +344,6 @@ endif
 " vim-go
 nmap <Leader>ol :GoMetaLinter<CR>
 
-" let g:go_metalinter_enabled = ['vet', 'errcheck']
 let g:go_fmt_autosave = 0
 let g:go_imports_autosave = 0
 let g:go_metalinter_command = "golangci-lint"

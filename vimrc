@@ -110,7 +110,6 @@ function! FormatFile()
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'go')
-        " execute "!clear; gofmt -w " . t:file . " && goimports -w " . t:file
         execute "!clear; goimports -w " . t:file
     elseif (&filetype == 'python')
         execute "!clear; isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
@@ -210,9 +209,9 @@ augroup ag_all
     " autocmd FileType javascript.html.css setlocal softtabstop=2
     " autocmd FileType javascript.html.css setlocal tabstop=2
     " autocmd FileType notes setlocal spell
+    autocmd BufNewFile,BufRead .babelrc setlocal filetype=json
+    autocmd BufNewFile,BufRead .bowerrc setlocal filetype=json
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
-    autocmd BufRead,BufNewFile .babelrc setlocal filetype=json
-    autocmd BufRead,BufNewFile .bowerrc setlocal filetype=json
     autocmd BufReadPost fugitive://* setlocal bufhidden=delete
     autocmd FileType css setlocal softtabstop=2
     autocmd FileType css setlocal tabstop=2
@@ -223,6 +222,10 @@ augroup ag_all
     autocmd FileType go setlocal nolist
     autocmd FileType go setlocal softtabstop=4
     autocmd FileType go setlocal tabstop=4
+    autocmd FileType gomod setlocal noexpandtab
+    autocmd FileType gomod setlocal nolist
+    autocmd FileType gomod setlocal softtabstop=4
+    autocmd FileType gomod setlocal tabstop=4
     autocmd FileType html setlocal tabstop=2
     autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType htmldjango setlocal tabstop=2
@@ -335,5 +338,10 @@ else
 endif
 
 " vim-go
+nmap <Leader>ol :GoMetaLinter<CR>
+
+" let g:go_metalinter_enabled = ['vet', 'errcheck']
 let g:go_fmt_autosave = 0
 let g:go_imports_autosave = 0
+let g:go_metalinter_command = "golangci-lint"
+let g:go_template_autocreate = 0

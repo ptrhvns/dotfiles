@@ -27,6 +27,7 @@ set softtabstop=4
 set splitbelow
 set splitright
 set tabstop=4
+set textwidth=80
 set ttyfast
 set undolevels=1000
 set virtualedit=all
@@ -237,6 +238,7 @@ augroup ag_all
     autocmd FileType javascript setlocal tabstop=2
     autocmd FileType markdown setlocal softtabstop=2
     autocmd FileType markdown setlocal tabstop=2
+    autocmd FileType notes setlocal textwidth=80
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal tabstop=2
@@ -342,9 +344,8 @@ else
 endif
 
 " vim-go
-nmap <Leader>ol :GoMetaLinter<CR>
-
 let g:go_fmt_autosave = 0
 let g:go_imports_autosave = 0
 let g:go_metalinter_command = "golangci-lint"
 let g:go_template_autocreate = 0
+nmap <Leader>ol :GoMetaLinter<CR>

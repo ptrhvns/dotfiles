@@ -5,6 +5,8 @@ snippet /t
 snippet fun
 	function ${1}(${2}) {
 	}
+snippet fn
+	(${1}) => {$2}
 snippet imp
 	import ${1} from '${2}';
 snippet ims
@@ -16,6 +18,8 @@ snippet con
 	const ${1} = ${2};
 snippet cof
 	console.log(\`DEBUG${1}\`); // FIXME
+snippet cod
+	console.dir(${1:object}); // FIXME
 snippet try
 	try {
 	} catch (error) {
@@ -33,3 +37,10 @@ snippet exp
 snippet cla
 	class ${1:Name} {
 	}
+snippet foo
+	for (const ${1:name} of ${2:iterable}) {
+	}
+snippet its
+	it.skip('${1:description}', () => {
+	  // TODO write test
+	});

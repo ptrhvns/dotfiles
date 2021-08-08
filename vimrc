@@ -108,6 +108,8 @@ function! FormatFile()
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'javascript')
         execute "!clear; npx prettier --single-quote --write " . t:file
+    elseif (&filetype == 'javascript.html')
+        execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --single-quote --write " . t:file
     elseif (&filetype == 'python')
@@ -219,6 +221,7 @@ augroup ag_all
     autocmd FileType html setlocal tabstop=2
     autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType htmldjango setlocal tabstop=2
+    autocmd FileType javascript setlocal filetype=javascript.html
     autocmd FileType javascript setlocal softtabstop=2
     autocmd FileType javascript setlocal tabstop=2
     autocmd FileType markdown setlocal softtabstop=2

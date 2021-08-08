@@ -193,6 +193,23 @@ test $? -eq 0 && LSGD="--group-directories-first"
 alias l="ls -AlF --group-directories-first $LSGD $LSCR"
 alias la="ls -alF --group-directories-first $LSGD $LSCR"
 alias m=$PAGER
+
+setup_ssh_agent() {
+    if [ $(ps -ef | grep $(awk '/pid/{print $4}' ~/.ssh-agent | sed -e 's/;//') | grep -c ssh-agent) -lt 1 ]; then
+        ssh-agent -k >& /dev/null
+        ssh-agent |> ~/.ssh-agent
+    fi
+
+    source ~/.ssh-agent > /dev/null
+
+    if [ $(ls ~/.ssh/id_*.pub | wc -l) -gt 0 ]; then
+        if [ $(ssh-add -l | wc -l) -lt 1 ]; then
+            ls ~/.ssh/id_* | grep -v '\.pub' | xargs ssh-add
+        fi
+    fi
+
+}
+
 alias sb='source ~/.bashrc'
 alias ta='tmux att -t'
 alias td='tmux_new_session_pwd'
@@ -201,6 +218,10 @@ alias tk='tmux_kill_session'
 alias tl='tmux ls'
 alias tn='tmux_new_session'
 alias tp='tmux_new_project'
+
+if [ -r ~/.ssh-agent ]; then
+    source ~/.ssh-agent > /dev/null
+fi
 
 fzf_key_bindings="$(dpkg -L fzf | g key-bindings.bash)"
 if [ -f $fzf_key_bindings ]; then

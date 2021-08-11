@@ -7,7 +7,7 @@
 Control-j: menu-complete
 Control-k: menu-complete-backward
 Control-l: clear-screen
-set bell-style visible
+set bell-style none
 set completion-map-case on
 set completion-prefix-display-length 2
 set convert-meta off

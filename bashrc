@@ -194,20 +194,21 @@ alias l="ls -AlF --group-directories-first $LSGD $LSCR"
 alias la="ls -alF --group-directories-first $LSGD $LSCR"
 alias m=$PAGER
 
+new_ssh_agent() {
+    rm -f ~/.ssh-agent
+    ssh-agent > ~/.ssh-agent
+    source ~/.ssh-agent
+}
+
+add_ssh_keys() {
+    source ~/.ssh-agent
+    ssh-add -D
+    ssh-add $(ls ~/.ssh/id_* | grep -v '\.pub')
+}
+
 setup_ssh_agent() {
-    if [ $(ps -ef | grep $(awk '/pid/{print $4}' ~/.ssh-agent | sed -e 's/;//') | grep -c ssh-agent) -lt 1 ]; then
-        ssh-agent -k >& /dev/null
-        ssh-agent |> ~/.ssh-agent
-    fi
-
-    source ~/.ssh-agent > /dev/null
-
-    if [ $(ls ~/.ssh/id_*.pub | wc -l) -gt 0 ]; then
-        if [ $(ssh-add -l | wc -l) -lt 1 ]; then
-            ls ~/.ssh/id_* | grep -v '\.pub' | xargs ssh-add
-        fi
-    fi
-
+    new_ssh_agent
+    add_ssh_keys
 }
 
 alias sb='source ~/.bashrc'

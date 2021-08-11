@@ -4,6 +4,7 @@ let mapleader="\\"
 
 set autoindent
 set autoread
+set belloff=all
 set expandtab
 set hlsearch
 set ignorecase
@@ -17,6 +18,7 @@ set norelativenumber
 set noshowmode
 set nostartofline
 set notimeout
+set novisualbell
 set shell=/bin/bash
 set shiftwidth=0
 set showcmd
@@ -31,7 +33,6 @@ set textwidth=80
 set ttyfast
 set undolevels=1000
 set virtualedit=all
-set visualbell
 set wildmenu
 
 if exists('+undoreload')

@@ -16,7 +16,7 @@ snippet if
 	}
 snippet con
 	const ${1} = ${2};
-snippet cof
+snippet col
 	console.log(\`DEBUG${1}\`); // FIXME
 snippet cod
 	console.dir(${1:object}); // FIXME
@@ -40,7 +40,14 @@ snippet cla
 snippet foo
 	for (const ${1:name} of ${2:iterable}) {
 	}
-snippet its
-	it.skip('${1:description}', () => {
-	  // TODO write test
-	});
+snippet itt
+	it.todo('${1:description}');
+snippet swi
+	switch (${1:expression}) {
+	}
+snippet cas
+	case ${2:value}:
+	  break;
+snippet def
+	default:
+	  break;

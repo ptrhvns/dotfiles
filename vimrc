@@ -173,7 +173,7 @@ endif
 
 map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 
-map <Leader>hd O{# htmldjango #}<Esc>:set ft=htmldjango<CR>
+map <Leader>hd O{# Django template #}<Esc>:set ft=htmldjango<CR>
 
 if &t_Co > 1 || has('gui_running')
     syntax on

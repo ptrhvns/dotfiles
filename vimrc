@@ -107,12 +107,18 @@ function! FormatFile()
 
     if (&filetype == 'css')
         execute "!clear; npx prettier --write " . t:file
+    elseif (&filetype == 'html')
+        execute "!clear; npx prettier --write " . t:file
+    elseif (&filetype == 'htmldjango')
+        execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'javascript')
-        execute "!clear; npx prettier --single-quote --write " . t:file
+        execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'javascript.html')
-        execute "!clear; npx prettier --single-quote --write " . t:file
+        execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'json')
-        execute "!clear; npx prettier --single-quote --write " . t:file
+        execute "!clear; npx prettier --write " . t:file
+    elseif (&filetype == 'markdown')
+        execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'python')
         execute "!clear; isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
         " Ensure black changes are seen.
@@ -173,7 +179,7 @@ endif
 
 map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 
-map <Leader>hd O{# Django template #}<Esc>:set ft=htmldjango<CR>
+map <Leader>dt O{# Django template #}<Esc>:set ft=htmldjango<CR>
 
 if &t_Co > 1 || has('gui_running')
     syntax on
@@ -219,6 +225,7 @@ augroup ag_all
     autocmd FileType eruby setlocal softtabstop=2
     autocmd FileType eruby setlocal tabstop=2
     autocmd FileType gitcommit setlocal nolist
+    autocmd FileType html setlocal softtabstop=2
     autocmd FileType html setlocal tabstop=2
     autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType htmldjango setlocal tabstop=2
@@ -229,9 +236,11 @@ augroup ag_all
     autocmd FileType markdown setlocal tabstop=2
     autocmd FileType notes setlocal textwidth=80
     autocmd FileType python setlocal softtabstop=4
+    autocmd FileType python setlocal tabstop=4
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal tabstop=2
     autocmd FileType rust setlocal softtabstop=4
+    autocmd FileType rust setlocal tabstop=4
     autocmd FileType scss setlocal iskeyword+=-
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal tabstop=2

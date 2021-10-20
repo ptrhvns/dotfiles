@@ -25,6 +25,7 @@ shopt -u mailwarn
 
 
 export EDITOR=$(command -v vim || type -p vi)
+export GOENV_ROOT="$HOME/.goenv"
 export GPG_TTY=$(tty)
 export GUIEDITOR=$(command -v mvim || command -v gvim)
 export HISTCONTROL="erasedups:ignoreboth"
@@ -42,7 +43,7 @@ export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/
 export PAGER=$(command -v less || command -v more)
 export PYENV_ROOT="${HOME}/.pyenv"
 
-export PATH=~/bin:~/.nodenv/bin:${PYENV_ROOT}/bin:~/.rbenv/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
+export PATH=~/bin:~/.goenv/bin:~/.nodenv/bin:${PYENV_ROOT}/bin:~/.rbenv/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
 
 export PROMPT_COMMAND='history -a'
 export SHELL=$(command -v bash)
@@ -232,6 +233,10 @@ fi
 fzf_completion="$(dpkg -L fzf | grep completion.bash)"
 if [ -f $fzf_completion ]; then
     source $fzf_completion
+fi
+
+if command -v goenv 1>/dev/null 2>&1; then
+    eval "$(goenv init -)"
 fi
 
 if command -v nodenv 1>/dev/null 2>&1; then

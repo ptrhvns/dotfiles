@@ -152,6 +152,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/altercation/vim-colors-solarized.git'
     Plug 'https://github.com/bkad/CamelCaseMotion.git'
     Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
+    Plug 'https://github.com/evanleck/vim-svelte', {'branch': 'main'}
     Plug 'https://github.com/fatih/vim-go'
     Plug 'https://github.com/garbas/vim-snipmate.git'
     Plug 'https://github.com/godlygeek/tabular.git'

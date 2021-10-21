@@ -171,6 +171,10 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/tpope/vim-repeat.git'
     Plug 'https://github.com/tpope/vim-surround.git'
 
+    if executable("node")
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    endif
+
     if executable("fzf")
         Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'https://github.com/junegunn/fzf.vim'
@@ -254,6 +258,7 @@ augroup ag_all
     autocmd FileType rust setlocal softtabstop=4
     autocmd FileType rust setlocal tabstop=4
     autocmd FileType scss setlocal iskeyword+=-
+    autocmd FileType scss setlocal iskeyword+=@-@
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal tabstop=2
     autocmd FileType sh setlocal softtabstop=4
@@ -360,3 +365,24 @@ let g:go_imports_autosave = 0
 let g:go_metalinter_command = "golangci-lint"
 let g:go_template_autocreate = 0
 nmap <Leader>ol :GoMetaLinter<CR>
+
+" coc.nvim
+" Install watchman for file watching.
+" https://facebook.github.io/watchman/docs/install.
+" Watchman can use a lot of memory. Run `watchman watch-del-all` to free some.
+let g:coc_global_extensions = [
+    \ 'coc-css',
+    \ 'coc-go',
+    \ 'coc-html',
+    \ 'coc-html-css-support',
+    \ 'coc-htmldjango',
+    \ 'coc-json',
+    \ 'coc-markdownlint',
+    \ 'coc-pyright',
+    \ 'coc-svelte',
+    \ 'coc-tailwindcss',
+    \ 'coc-toml',
+    \ 'coc-vimlsp'
+    \ ]
+nmap <Leader>cd <Plug>(coc-definition)
+nmap <Leader>cr <Plug>(coc-references)

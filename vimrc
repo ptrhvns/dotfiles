@@ -257,6 +257,7 @@ augroup ag_all
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal tabstop=2
     autocmd FileType sh setlocal softtabstop=4
+    autocmd FileType svelte setlocal filetype=svelte.html
     autocmd FileType text setlocal textwidth=80
     autocmd FileType yaml setlocal expandtab
     autocmd InsertLeave * setlocal nopaste

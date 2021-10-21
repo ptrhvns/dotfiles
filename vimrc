@@ -171,9 +171,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/tpope/vim-repeat.git'
     Plug 'https://github.com/tpope/vim-surround.git'
 
-    if executable("node")
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    endif
+    " if executable("node")
+    "     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " endif
 
     if executable("fzf")
         Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }

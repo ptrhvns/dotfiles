@@ -172,7 +172,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/tpope/vim-surround.git'
 
     if executable("node")
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     endif
 
     if executable("fzf")
@@ -383,9 +383,38 @@ let g:coc_global_extensions = [
     \ 'coc-tailwindcss',
     \ 'coc-toml',
     \ 'coc-vimlsp'
-    \ ]
+\ ]
 
 nmap <Leader>cd <Plug>(coc-definition)
 nmap <Leader>cn <Plug>(coc-rename)
 nmap <Leader>cr <Plug>(coc-references)
 nmap <Leader>cu :CocUpdate<CR>
+
+function! s:disable_coc_for_type()
+  if index(g:coc_filetypes_enable, &filetype) == -1
+    :silent! CocDisable
+  else
+    :silent! CocEnable
+  endif
+endfunction
+
+augroup CocGroup
+ autocmd!
+ autocmd BufNew,BufEnter,BufAdd,BufCreate * call s:disable_coc_for_type()
+augroup end
+
+let g:coc_filetypes_enable = [
+    \ 'css',
+    \ 'go',
+    \ 'html',
+    \ 'htmldjango',
+    \ 'json',
+    \ 'markdown',
+    \ 'python',
+    \ 'sass',
+    \ 'scss',
+    \ 'svelte',
+    \ 'toml',
+    \ 'vim'
+\]
+

@@ -171,9 +171,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/tpope/vim-repeat.git'
     Plug 'https://github.com/tpope/vim-surround.git'
 
-    " if executable("node")
-    "     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " endif
+    if executable("node")
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    endif
 
     if executable("fzf")
         Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -384,5 +384,8 @@ let g:coc_global_extensions = [
     \ 'coc-toml',
     \ 'coc-vimlsp'
     \ ]
+
 nmap <Leader>cd <Plug>(coc-definition)
+nmap <Leader>cn <Plug>(coc-rename)
 nmap <Leader>cr <Plug>(coc-references)
+nmap <Leader>cu :CocUpdate<CR>

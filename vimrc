@@ -171,9 +171,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/tpope/vim-repeat.git'
     Plug 'https://github.com/tpope/vim-surround.git'
 
-    if executable("node")
-        Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-    endif
+    " if executable("node")
+    "     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+    " endif
 
     if executable("fzf")
         Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -347,7 +347,7 @@ nmap <Leader>rr :Crun<CR>
 
 if executable("fzf")
     " fzf
-    nmap <C-p> :Files<CR>
+    nmap <C-p> :GFiles<CR>
 else
     " ctrlp
     let g:ctrlp_arg_map = 1
@@ -367,9 +367,6 @@ let g:go_template_autocreate = 0
 nmap <Leader>ol :GoMetaLinter<CR>
 
 " coc.nvim
-" Install watchman for file watching.
-" https://facebook.github.io/watchman/docs/install.
-" Watchman can use a lot of memory. Run `watchman watch-del-all` to free some.
 let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-go',
@@ -418,3 +415,7 @@ let g:coc_filetypes_enable = [
     \ 'vim'
 \]
 
+highlight CocErrorFloat ctermfg=White ctermbg=Black
+highlight CocHintFloat ctermfg=White ctermbg=Black
+highlight CocInfoFloat ctermfg=White ctermbg=Black
+highlight CocWarningFloat ctermfg=White ctermbg=Black

@@ -347,7 +347,7 @@ nmap <Leader>rr :Crun<CR>
 
 if executable("fzf")
     " fzf
-    nmap <C-p> :GFiles<CR>
+    nmap <C-p> :Files<CR>
 else
     " ctrlp
     let g:ctrlp_arg_map = 1
@@ -382,10 +382,10 @@ let g:coc_global_extensions = [
     \ 'coc-vimlsp'
 \ ]
 
-nmap <Leader>cd <Plug>(coc-definition)
-nmap <Leader>cn <Plug>(coc-rename)
-nmap <Leader>cr <Plug>(coc-references)
-nmap <Leader>cu :CocUpdate<CR>
+" nmap <Leader>cd <Plug>(coc-definition)
+" nmap <Leader>cn <Plug>(coc-rename)
+" nmap <Leader>cr <Plug>(coc-references)
+" nmap <Leader>cu :CocUpdate<CR>
 
 function! s:disable_coc_for_type()
   if index(g:coc_filetypes_enable, &filetype) == -1

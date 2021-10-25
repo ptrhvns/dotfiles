@@ -171,10 +171,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/tpope/vim-repeat.git'
     Plug 'https://github.com/tpope/vim-surround.git'
 
-    " if executable("node")
-    "     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-    " endif
-
     if executable("fzf")
         Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'https://github.com/junegunn/fzf.vim'
@@ -365,57 +361,3 @@ let g:go_imports_autosave = 0
 let g:go_metalinter_command = "golangci-lint"
 let g:go_template_autocreate = 0
 nmap <Leader>ol :GoMetaLinter<CR>
-
-" coc.nvim
-let g:coc_global_extensions = [
-    \ 'coc-css',
-    \ 'coc-go',
-    \ 'coc-html',
-    \ 'coc-html-css-support',
-    \ 'coc-htmldjango',
-    \ 'coc-json',
-    \ 'coc-markdownlint',
-    \ 'coc-pyright',
-    \ 'coc-svelte',
-    \ 'coc-tailwindcss',
-    \ 'coc-toml',
-    \ 'coc-vimlsp'
-\ ]
-
-" nmap <Leader>cd <Plug>(coc-definition)
-" nmap <Leader>cn <Plug>(coc-rename)
-" nmap <Leader>cr <Plug>(coc-references)
-" nmap <Leader>cu :CocUpdate<CR>
-
-function! s:disable_coc_for_type()
-  if index(g:coc_filetypes_enable, &filetype) == -1
-    :silent! CocDisable
-  else
-    :silent! CocEnable
-  endif
-endfunction
-
-augroup CocGroup
- autocmd!
- autocmd BufNew,BufEnter,BufAdd,BufCreate * call s:disable_coc_for_type()
-augroup end
-
-let g:coc_filetypes_enable = [
-    \ 'css',
-    \ 'go',
-    \ 'html',
-    \ 'htmldjango',
-    \ 'json',
-    \ 'markdown',
-    \ 'python',
-    \ 'sass',
-    \ 'scss',
-    \ 'svelte',
-    \ 'toml',
-    \ 'vim'
-\]
-
-highlight CocErrorFloat ctermfg=White ctermbg=Black
-highlight CocHintFloat ctermfg=White ctermbg=Black
-highlight CocInfoFloat ctermfg=White ctermbg=Black
-highlight CocWarningFloat ctermfg=White ctermbg=Black

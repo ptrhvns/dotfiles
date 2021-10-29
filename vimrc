@@ -117,6 +117,8 @@ function! FormatFile()
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'javascript.html')
         execute "!clear; npx prettier --write " . t:file
+    elseif (&filetype == 'javascriptreact')
+        execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'markdown')
@@ -171,6 +173,10 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/tpope/vim-repeat.git'
     Plug 'https://github.com/tpope/vim-surround.git'
 
+    if executable("node")
+        Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+    endif
+
     if executable("fzf")
         Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'https://github.com/junegunn/fzf.vim'
@@ -220,6 +226,7 @@ filetype plugin on
 augroup ag_all
     autocmd!
 
+    autocmd BufNew,BufEnter,BufAdd,BufCreate * call s:disable_coc_for_type()
     autocmd BufNewFile,BufRead .babelrc setlocal filetype=json
     autocmd BufNewFile,BufRead .bowerrc setlocal filetype=json
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
@@ -361,3 +368,65 @@ let g:go_imports_autosave = 0
 let g:go_metalinter_command = "golangci-lint"
 let g:go_template_autocreate = 0
 nmap <Leader>ol :GoMetaLinter<CR>
+
+" coc.nvim
+let g:coc_global_extensions = [
+    \ 'coc-css',
+    \ 'coc-go',
+    \ 'coc-html',
+    \ 'coc-html-css-support',
+    \ 'coc-htmldjango',
+    \ 'coc-json',
+    \ 'coc-markdownlint',
+    \ 'coc-pyright',
+    \ 'coc-svelte',
+    \ 'coc-tailwindcss',
+    \ 'coc-toml',
+    \ 'coc-vimlsp'
+\ ]
+
+let g:coc_filetypes_enable = []
+" let g:coc_filetypes_enable = [
+"     \ 'css',
+"     \ 'go',
+"     \ 'html',
+"     \ 'htmldjango',
+"     \ 'json',
+"     \ 'markdown',
+"     \ 'python',
+"     \ 'sass',
+"     \ 'scss',
+"     \ 'svelte',
+"     \ 'toml',
+"     \ 'vim'
+" \]
+
+function! s:disable_coc_for_type()
+  if index(g:coc_filetypes_enable, &filetype) == -1
+    :silent! CocDisable
+  else
+    :silent! CocEnable
+  endif
+endfunction
+
+function! CocToggle()
+    if g:coc_enabled
+        CocDisable
+    else
+        CocEnable
+    endif
+endfunction
+
+command! CocToggle :call CocToggle()
+
+highlight CocErrorFloat ctermfg=White ctermbg=Black
+highlight CocHintFloat ctermfg=White ctermbg=Black
+highlight CocInfoFloat ctermfg=White ctermbg=Black
+highlight CocWarningFloat ctermfg=White ctermbg=Black
+
+nmap <Leader>ad <Plug>(coc-definition)
+nmap <Leader>an <Plug>(coc-rename)
+nmap <Leader>ar <Plug>(coc-references)
+nmap <Leader>at :CocToggle<CR>
+nmap <Leader>au :CocUpdate<CR>
+

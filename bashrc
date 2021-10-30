@@ -154,7 +154,7 @@ fi
 alias b="batcat --style=plain"
 
 ch() {
-    curl -s cht.sh/$* | m
+    curl -s cht.sh/$* | $PAGER
 }
 
 alias be='bundle exec'

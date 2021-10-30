@@ -429,4 +429,3 @@ nmap <Leader>an <Plug>(coc-rename)
 nmap <Leader>ar <Plug>(coc-references)
 nmap <Leader>at :CocToggle<CR>
 nmap <Leader>au :CocUpdate<CR>
-

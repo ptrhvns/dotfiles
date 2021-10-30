@@ -427,5 +427,5 @@ highlight CocWarningFloat ctermfg=White ctermbg=Black
 nmap <Leader>ad <Plug>(coc-definition)
 nmap <Leader>an <Plug>(coc-rename)
 nmap <Leader>ar <Plug>(coc-references)
-nmap <Leader>at :CocToggle<CR>
+nmap <Leader>at :CocToggle<CR><C-l>
 nmap <Leader>au :CocUpdate<CR>

@@ -151,6 +151,12 @@ else
     export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\$${CLRNONE} "
 fi
 
+alias b="batcat --style=plain"
+
+ch() {
+    curl -s cht.sh/$* | m
+}
+
 alias be='bundle exec'
 alias c='cat'
 
@@ -194,6 +200,7 @@ test $? -eq 0 && LSGD="--group-directories-first"
 alias l="ls -AlF --group-directories-first $LSGD $LSCR"
 alias la="ls -alF --group-directories-first $LSGD $LSCR"
 alias m=$PAGER
+alias pm='python manage.py'
 
 new_ssh_agent() {
     rm -f ~/.ssh-agent
@@ -220,6 +227,7 @@ alias tk='tmux_kill_session'
 alias tl='tmux ls'
 alias tn='tmux_new_session'
 alias tp='tmux_new_project'
+alias w='curl wttr.in/80234?2FnQ'
 
 if [ -r ~/.ssh-agent ]; then
     source ~/.ssh-agent > /dev/null

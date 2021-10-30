@@ -13,12 +13,12 @@ set lazyredraw
 set nofoldenable
 set nojoinspaces
 set nolist
-set nonumber
-set norelativenumber
 set noshowmode
 set nostartofline
 set notimeout
 set novisualbell
+set number
+set relativenumber
 set shell=/bin/bash
 set shiftwidth=0
 set showcmd
@@ -219,6 +219,11 @@ endtry
 if exists("g:colors_name") && g:colors_name == 'solarized' && has("multi_byte")
     highlight! NonText ctermfg=235
 endif
+
+" Only highlight absolute line number inside relative numbers.
+highlight LineNr ctermfg=166 guifg=#ff80ff
+highlight LineNrAbove ctermfg=239 ctermbg=235 guifg=Yellow
+highlight LineNrBelow ctermfg=239 ctermbg=235 guifg=Yellow
 
 filetype indent on
 filetype plugin on

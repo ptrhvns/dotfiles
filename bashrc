@@ -24,7 +24,7 @@ shopt -s histappend
 shopt -u mailwarn
 
 
-export EDITOR=$(command -v vim || type -p vi)
+export EDITOR=$(command -v vim)
 export GOENV_ROOT="$HOME/.goenv"
 export GPG_TTY=$(tty)
 export GUIEDITOR=$(command -v mvim || command -v gvim)

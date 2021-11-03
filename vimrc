@@ -121,13 +121,13 @@ function! FormatFile()
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'json')
         execute "!clear; npx prettier --write " . t:file
+    elseif (&filetype == 'jsonc')
+        execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'markdown')
         execute "!clear; npx prettier --write " . t:file
     elseif (&filetype == 'python')
         execute "!clear; isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
-        " Ensure black changes are seen.
-        :edit
-        :normal zz
+        :checktime " Ensure black changes are seen.
     elseif (&filetype == 'ruby')
         " execute "!clear; bundle exec rubocop --auto-correct " . t:file
         execute "!clear; bundle exec standardrb --fix " . t:file
@@ -187,9 +187,11 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     call plug#end()
 endif
 
-map <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
+nmap <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 
-map <Leader>dt O{# Django template #}<Esc>:set ft=htmldjango<CR>
+nmap <Leader>dt O{# Django template #}<Esc>:set ft=htmldjango<CR>
+
+nmap <Leader>h :set number! relativenumber!<CR>
 
 if &t_Co > 1 || has('gui_running')
     syntax on

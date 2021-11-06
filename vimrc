@@ -193,6 +193,14 @@ nmap <Leader>dt O{# Django template #}<Esc>:set ft=htmldjango<CR>
 
 nmap <Leader>h :set number! relativenumber!<CR>
 
+if executable("htop")
+    nmap <Leader>sh :tab term ++close htop<CR>
+endif
+
+if executable("lazygit")
+    nmap <Leader>sl :tab term ++close lazygit<CR>
+endif
+
 if &t_Co > 1 || has('gui_running')
     syntax on
 endif

@@ -173,9 +173,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/tpope/vim-repeat.git'
     Plug 'https://github.com/tpope/vim-surround.git'
 
-    " if executable("node")
-    "     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-    " endif
+    if executable("node")
+        Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+    endif
 
     if executable("fzf")
         Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -284,6 +284,7 @@ augroup ag_all
     autocmd FileType text setlocal textwidth=80
     autocmd FileType yaml setlocal expandtab
     autocmd InsertLeave * setlocal nopaste
+    autocmd VimEnter * silent! CocDisable
 
 augroup end
 
@@ -385,62 +386,41 @@ let g:go_template_autocreate = 0
 nmap <Leader>ol :GoMetaLinter<CR>
 
 " coc.nvim
-" let g:coc_global_extensions = [
-"     \ 'coc-css',
-"     \ 'coc-go',
-"     \ 'coc-html',
-"     \ 'coc-html-css-support',
-"     \ 'coc-htmldjango',
-"     \ 'coc-json',
-"     \ 'coc-markdownlint',
-"     \ 'coc-pyright',
-"     \ 'coc-svelte',
-"     \ 'coc-tailwindcss',
-"     \ 'coc-toml',
-"     \ 'coc-vimlsp'
-" \ ]
+let g:coc_start_at_startup = 0
 
-" let g:coc_filetypes_enable = []
-" let g:coc_filetypes_enable = [
-"     \ 'css',
-"     \ 'go',
-"     \ 'html',
-"     \ 'htmldjango',
-"     \ 'json',
-"     \ 'markdown',
-"     \ 'python',
-"     \ 'sass',
-"     \ 'scss',
-"     \ 'svelte',
-"     \ 'toml',
-"     \ 'vim'
-" \]
+let g:coc_global_extensions = [
+    \ 'coc-css',
+    \ 'coc-go',
+    \ 'coc-html',
+    \ 'coc-html-css-support',
+    \ 'coc-htmldjango',
+    \ 'coc-json',
+    \ 'coc-markdownlint',
+    \ 'coc-pyright',
+    \ 'coc-svelte',
+    \ 'coc-tailwindcss',
+    \ 'coc-toml',
+    \ 'coc-vimlsp'
+\ ]
 
-" function! s:disable_coc_for_type()
-"   if index(g:coc_filetypes_enable, &filetype) == -1
-"     :silent! CocDisable
-"   else
-"     :silent! CocEnable
-"   endif
-" endfunction
+function! CocToggle()
+    if g:coc_enabled
+        :CocDisable
+    else
+        :CocEnable
+        :CocStart
+    endif
+endfunction
 
-" function! CocToggle()
-"     if g:coc_enabled
-"         CocDisable
-"     else
-"         CocEnable
-"     endif
-" endfunction
+command! CocToggle :call CocToggle()
 
-" command! CocToggle :call CocToggle()
+highlight CocErrorFloat ctermfg=White ctermbg=Black
+highlight CocHintFloat ctermfg=White ctermbg=Black
+highlight CocInfoFloat ctermfg=White ctermbg=Black
+highlight CocWarningFloat ctermfg=White ctermbg=Black
 
-" highlight CocErrorFloat ctermfg=White ctermbg=Black
-" highlight CocHintFloat ctermfg=White ctermbg=Black
-" highlight CocInfoFloat ctermfg=White ctermbg=Black
-" highlight CocWarningFloat ctermfg=White ctermbg=Black
-
-" nmap <Leader>ad <Plug>(coc-definition)
-" nmap <Leader>an <Plug>(coc-rename)
-" nmap <Leader>ar <Plug>(coc-references)
-" nmap <Leader>at :CocToggle<CR><C-l>
-" nmap <Leader>au :CocUpdate<CR>
+nmap <Leader>ad <Plug>(coc-definition)
+nmap <Leader>an <Plug>(coc-rename)
+nmap <Leader>ar <Plug>(coc-references)
+nmap <Leader>at :CocToggle<CR>
+nmap <Leader>au :CocUpdate<CR>

@@ -154,7 +154,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'https://github.com/altercation/vim-colors-solarized.git'
     Plug 'https://github.com/bkad/CamelCaseMotion.git'
     Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
-    " Plug 'https://github.com/evanleck/vim-svelte', {'branch': 'main'}
     Plug 'https://github.com/fatih/vim-go'
     Plug 'https://github.com/garbas/vim-snipmate.git'
     Plug 'https://github.com/godlygeek/tabular.git'
@@ -275,7 +274,6 @@ augroup ag_all
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal tabstop=2
     autocmd FileType sh setlocal softtabstop=4
-    autocmd FileType svelte setlocal filetype=svelte.html
     autocmd FileType text setlocal textwidth=80
     autocmd FileType yaml setlocal expandtab
     autocmd InsertLeave * setlocal nopaste

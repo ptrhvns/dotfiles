@@ -23,7 +23,6 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
-
 export EDITOR=$(command -v vim)
 export GOENV_ROOT="$HOME/.goenv"
 export GPG_TTY=$(tty)
@@ -39,6 +38,13 @@ export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
 export LS_COLORS="di=1;37;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
 export LSCOLORS="Hxfxcxdxbxegedabagacad"
 export MANPAGER=$(command -v less || command -v more)
+
+if command -v batcat 1>/dev/null 2>&1; then
+    export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+elif command -v bat 1>/dev/null 2>&1; then
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 export PAGER=$(command -v less || command -v more)
 export PYENV_ROOT="${HOME}/.pyenv"
@@ -158,7 +164,14 @@ ch() {
 }
 
 alias be='bundle exec'
-alias c='cat'
+
+if command -v batcat 1>/dev/null 2>&1; then
+    alias c="batcat -p"
+elif command -v bat 1>/dev/null 2>&1; then
+    alias c="bat -p"
+else
+    alias c='cat'
+fi
 
 colors() {
     for i in {0..255} ; do
@@ -188,17 +201,24 @@ alias g='egrep -i'
 alias gv='egrep -iv'
 alias j='jobs'
 
-ls -G &> /dev/null
-test $? -eq 0 && LSCR="-G"
+if command -v exa 1>/dev/null 2>&1; then
+    alias l='exa -alF --color=always --group-directories-first'
+    alias la='exa -alF --color=always --group-directories-first'
+    alias ls='exa --color=always --group-directories-first'
+else
+    ls -G &> /dev/null
+    test $? -eq 0 && LSCR="-G"
 
-ls --color &> /dev/null
-test $? -eq 0 && LSCR="--color=auto"
+    ls --color &> /dev/null
+    test $? -eq 0 && LSCR="--color=auto"
 
-ls --group-directories-first &> /dev/null
-test $? -eq 0 && LSGD="--group-directories-first"
+    ls --group-directories-first &> /dev/null
+    test $? -eq 0 && LSGD="--group-directories-first"
 
-alias l="ls -AlF --group-directories-first $LSGD $LSCR"
-alias la="ls -alF --group-directories-first $LSGD $LSCR"
+    alias l="ls -AlF --group-directories-first $LSGD $LSCR"
+    alias la="ls -alF --group-directories-first $LSGD $LSCR"
+fi
+
 alias m=$PAGER
 alias pm='python manage.py'
 
@@ -211,7 +231,7 @@ new_ssh_agent() {
 add_ssh_keys() {
     source ~/.ssh-agent
     ssh-add -D
-    ssh-add $(ls ~/.ssh/id_* | grep -v '\.pub')
+    ssh-add $(command ls ~/.ssh/id_* | grep -v '\.pub')
 }
 
 setup_ssh_agent() {

@@ -157,8 +157,6 @@ else
     export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\$${CLRNONE} "
 fi
 
-alias b="batcat --style=plain"
-
 ch() {
     curl -s cht.sh/$* | $PAGER
 }
@@ -219,7 +217,14 @@ else
     alias la="ls -alF --group-directories-first $LSGD $LSCR"
 fi
 
-alias m=$PAGER
+if command -v batcat 1>/dev/null 2>&1; then
+    alias m="batcat -p"
+elif command -v bat 1>/dev/null 2>&1; then
+    alias m="bat -p"
+else
+    alias m=$PAGER
+fi
+
 alias pm='python manage.py'
 
 new_ssh_agent() {

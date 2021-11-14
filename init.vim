@@ -3,3 +3,13 @@ if !exists('g:vscode')
     let &packpath = &runtimepath
     source ~/.vimrc
 end
+
+lua <<EOF
+
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,
+    },
+}
+
+EOF

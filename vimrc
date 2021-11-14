@@ -151,32 +151,49 @@ endif
 if filereadable(expand('~/.vim/autoload/plug.vim'))
     call plug#begin('~/.vim/plugged')
 
-    Plug 'https://github.com/altercation/vim-colors-solarized.git'
-    Plug 'https://github.com/bkad/CamelCaseMotion.git'
-    Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
-    Plug 'https://github.com/fatih/vim-go'
-    Plug 'https://github.com/garbas/vim-snipmate.git'
-    Plug 'https://github.com/godlygeek/tabular.git'
-    Plug 'https://github.com/henrik/vim-indexed-search.git'
-    Plug 'https://github.com/itchyny/lightline.vim'
-    Plug 'https://github.com/jamessan/vim-gnupg.git'
-    Plug 'https://github.com/kana/vim-smartinput.git'
-    Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
-    Plug 'https://github.com/romainl/vim-cool.git'
-    Plug 'https://github.com/scrooloose/nerdcommenter.git'
-    Plug 'https://github.com/scrooloose/nerdtree.git'
-    Plug 'https://github.com/sheerun/vim-polyglot'
-    Plug 'https://github.com/tomtom/tlib_vim.git'
-    Plug 'https://github.com/tpope/vim-eunuch.git'
-    Plug 'https://github.com/tpope/vim-fugitive.git'
-    Plug 'https://github.com/tpope/vim-repeat.git'
-    Plug 'https://github.com/tpope/vim-surround.git'
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'bkad/CamelCaseMotion'
+    Plug 'cakebaker/scss-syntax.vim'
+    Plug 'fatih/vim-go'
+    Plug 'garbas/vim-snipmate'
+    Plug 'godlygeek/tabular'
+    Plug 'henrik/vim-indexed-search'
+    Plug 'itchyny/lightline.vim'
+    Plug 'jamessan/vim-gnupg'
+    Plug 'kana/vim-smartinput'
+    Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'romainl/vim-cool'
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'sheerun/vim-polyglot'
+    Plug 'tomtom/tlib_vim'
+    Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-surround'
 
-    if executable("fzf")
-        Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
-        Plug 'https://github.com/junegunn/fzf.vim'
+    if executable('fzf')
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
     else
-        Plug 'https://github.com/kien/ctrlp.vim.git'
+        Plug 'kien/ctrlp.vim'
+    endif
+
+    if has("nvim")
+        Plug 'neovim/nvim-lspconfig'
+        " Plug 'glepnir/lspsaga.nvim'
+
+        " Telescope
+        " Plug 'nvim-lua/popup.nvim'
+        " Plug 'nvim-lua/plenary.nvim'
+        " Plug 'nvim-telescope/telescope.nvim'
+        " Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+        " Plug 'nvim-lua/completion-nvim'
+
+        " Tree-sitter
+        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    else
+        Plug 'scrooloose/nerdtree' " FIXME Why doesn't this work under nvim?
     endif
 
     call plug#end()

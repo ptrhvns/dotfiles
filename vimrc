@@ -84,7 +84,7 @@ function! RunTestUnderCursor()
         let t:test_line_number = line('.')
     endif
 
-    execute "!clear; run_test " . t:test_file . " -t " . t:test_line_number
+    execute "!run_test " . t:test_file . " -t " . t:test_line_number
 endfunction
 
 nmap <Leader>t :call RunTestUnderCursor()<CR>
@@ -96,7 +96,7 @@ function! RunTestFile()
         let t:test_file = @%
     endif
 
-    execute "!clear; run_test " . t:test_file
+    execute "!run_test " . t:test_file
 endfunction
 
 nmap <Leader>T :call RunTestFile()<CR>
@@ -106,35 +106,35 @@ function! FormatFile()
     let t:file = @%
 
     if (&filetype == 'css')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     elseif (&filetype == 'html')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     elseif (&filetype == 'htmldjango')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     elseif (&filetype == 'go')
-        execute "!clear; goimports -w " . t:file
+        execute "!goimports -w " . t:file
     elseif (&filetype == 'javascript')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     elseif (&filetype == 'javascript.html')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     elseif (&filetype == 'javascriptreact')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     elseif (&filetype == 'json')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     elseif (&filetype == 'jsonc')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     elseif (&filetype == 'markdown')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear; isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
+        execute "!isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
         :checktime " Ensure black changes are seen.
     elseif (&filetype == 'ruby')
-        " execute "!clear; bundle exec rubocop --auto-correct " . t:file
-        execute "!clear; bundle exec standardrb --fix " . t:file
+        " execute "!bundle exec rubocop --auto-correct " . t:file
+        execute "!bundle exec standardrb --fix " . t:file
     elseif (&filetype == 'rust')
-        execute "!clear; rustfmt " . t:file
+        execute "!rustfmt " . t:file
     elseif (&filetype == 'scss')
-        execute "!clear; npx prettier --write " . t:file
+        execute "!npx prettier --write " . t:file
     else
         echo "Failed to format: unknown filetype: " . &filetype
     endif

@@ -171,13 +171,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
 
-    if executable('fzf')
-        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        Plug 'junegunn/fzf.vim'
-    else
-        Plug 'kien/ctrlp.vim'
-    endif
-
     if has("nvim")
         " LSP
         Plug 'neovim/nvim-lspconfig'
@@ -194,6 +187,13 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
         " Tree-sitter
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     else
+        if executable('fzf')
+            Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+            Plug 'junegunn/fzf.vim'
+        else
+            Plug 'kien/ctrlp.vim'
+        endif
+
         " Doesn't work with nvim for some reason.
         Plug 'preservim/nerdtree'
     endif
@@ -372,7 +372,10 @@ nmap <Leader>rb :Cbuild<CR>
 nmap <Leader>rc :Cargo check<CR>
 nmap <Leader>rr :Crun<CR>
 
-if executable("fzf")
+if has('nvim')
+    " Telescope
+    nmap <C-p> :Telescope find_files<CR>
+elseif executable("fzf")
     " fzf
     nmap <C-p> :Files<CR>
 else

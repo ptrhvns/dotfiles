@@ -23,10 +23,9 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
-export EDITOR=$(command -v vim)
+export EDITOR=$(command -v nvim || command -v vim || command -v vi)
 export GOENV_ROOT="$HOME/.goenv"
 export GPG_TTY=$(tty)
-export GUIEDITOR=$(command -v mvim || command -v gvim)
 export HISTCONTROL="erasedups:ignoreboth"
 export HISTFILESIZE=5000
 export HISTSIZE=5000
@@ -54,7 +53,7 @@ export PATH=~/bin:~/.goenv/bin:~/.nodenv/bin:${PYENV_ROOT}/bin:~/.rbenv/bin:~/.l
 export PROMPT_COMMAND='history -a'
 export SHELL=$(command -v bash)
 export UNAME=$(uname)
-export VISUAL=$(command -v vim || command -v vi)
+export VISUAL=$(command -v || command -v vim || command -v vi)
 unset MAILCHECK
 
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
@@ -179,12 +178,7 @@ colors() {
 
 alias e='$EDITOR'
 alias ef='$EDITOR $(fzf)'
-
-if [[ "$EDITOR" = "$(command -v vim)" ]]; then
-    if $(vim --version | awk '{ if ($5 >= 7.0) { exit(0) } else { exit(1) } }'); then
-        alias ep="$EDITOR -p"
-    fi
-fi
+alias ep='$EDITOR -p'
 
 eg() {
     e $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')

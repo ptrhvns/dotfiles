@@ -161,6 +161,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'jamessan/vim-gnupg'
     Plug 'kana/vim-smartinput'
     Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'preservim/nerdcommenter'
     Plug 'romainl/vim-cool'
     Plug 'scrooloose/nerdcommenter'
     Plug 'sheerun/vim-polyglot'
@@ -193,7 +194,8 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
         " Tree-sitter
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     else
-        Plug 'scrooloose/nerdtree' " FIXME Why doesn't this work under nvim?
+        " Doesn't work with nvim for some reason.
+        Plug 'preservim/nerdtree'
     endif
 
     call plug#end()
@@ -314,11 +316,16 @@ vmap <Leader>c <Plug>NERDCommenterToggle<C-l>
 vmap <Leader>x <Plug>NERDCommenterSexy<C-l>
 
 " NERD_tree
-let NERDChristmasTree=1
-let NERDTreeDirArrows= has("multi_byte") ? 1 : 0
-let NERDTreeQuitOnOpen=1
-let NERDTreeWinSize=50
-nmap <Leader>n :NERDTreeToggle<CR>
+" let NERDChristmasTree=1
+" let NERDTreeDirArrows= has("multi_byte") ? 1 : 0
+" let NERDTreeQuitOnOpen=1
+" let NERDTreeWinSize=50
+
+if has('nvim')
+    nmap <Leader>n :edit .<CR>
+else
+    nmap <Leader>n :NERDTreeToggle<CR>
+endif
 
 " gnupg
 let g:GPGExecutable="gpg"

@@ -23,7 +23,8 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
-export EDITOR=$(command -v nvim || command -v vim || command -v vi)
+# export EDITOR=$(command -v nvim || command -v vim || command -v vi)
+export EDITOR=$(command -v vim || command -v vi)
 export GOENV_ROOT="$HOME/.goenv"
 export GPG_TTY=$(tty)
 export HISTCONTROL="erasedups:ignoreboth"

@@ -23,7 +23,6 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
-# export EDITOR=$(command -v nvim || command -v vim || command -v vi)
 export EDITOR=$(command -v vim || command -v vi)
 export GOENV_ROOT="$HOME/.goenv"
 export GPG_TTY=$(tty)
@@ -247,7 +246,6 @@ alias tk='tmux_kill_session'
 alias tl='tmux ls'
 alias tn='tmux_new_session'
 alias tp='tmux_new_project'
-alias w='curl wttr.in/80234?2FnQ'
 
 if [ -r ~/.ssh-agent ]; then
     source ~/.ssh-agent > /dev/null

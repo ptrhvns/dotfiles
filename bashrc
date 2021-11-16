@@ -156,10 +156,6 @@ else
     export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\$${CLRNONE} "
 fi
 
-ch() {
-    curl -s cht.sh/$* | $PAGER
-}
-
 alias be='bundle exec'
 
 if command -v batcat 1>/dev/null 2>&1; then

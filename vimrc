@@ -162,6 +162,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'kana/vim-smartinput'
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'preservim/nerdcommenter'
+    Plug 'preservim/nerdtree'
     Plug 'romainl/vim-cool'
     Plug 'scrooloose/nerdcommenter'
     Plug 'sheerun/vim-polyglot'
@@ -171,29 +172,11 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
 
-    if has("nvim")
-        " LSP
-        Plug 'neovim/nvim-lspconfig'
-        Plug 'glepnir/lspsaga.nvim'
-        Plug 'hrsh7th/nvim-cmp'
-
-        " Telescope
-        Plug 'nvim-lua/popup.nvim'
-        Plug 'nvim-lua/plenary.nvim'
-        Plug 'nvim-telescope/telescope.nvim'
-
-        " Tree-sitter
-        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    if executable('fzf')
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
     else
-        if executable('fzf')
-            Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-            Plug 'junegunn/fzf.vim'
-        else
-            Plug 'kien/ctrlp.vim'
-        endif
-
-        " At last check, nvim screen "hangs" when loading this plugin.
-        Plug 'preservim/nerdtree'
+        Plug 'kien/ctrlp.vim'
     endif
 
     call plug#end()
@@ -251,22 +234,11 @@ augroup ag_all
     autocmd BufReadPost fugitive://* setlocal bufhidden=delete
     autocmd FileType css setlocal softtabstop=2
     autocmd FileType css setlocal tabstop=2
-    autocmd FileType eruby setlocal softtabstop=2
-    autocmd FileType eruby setlocal tabstop=2
     autocmd FileType gitcommit setlocal nolist
-    autocmd FileType go setlocal noexpandtab
-    autocmd FileType go setlocal nolist
-    autocmd FileType go setlocal softtabstop=4
-    autocmd FileType go setlocal tabstop=4
-    autocmd FileType gomod setlocal noexpandtab
-    autocmd FileType gomod setlocal nolist
-    autocmd FileType gomod setlocal softtabstop=4
-    autocmd FileType gomod setlocal tabstop=4
     autocmd FileType html setlocal softtabstop=2
     autocmd FileType html setlocal tabstop=2
     autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType htmldjango setlocal tabstop=2
-    autocmd FileType javascript setlocal filetype=javascript.html
     autocmd FileType javascript setlocal softtabstop=2
     autocmd FileType javascript setlocal tabstop=2
     autocmd FileType markdown setlocal softtabstop=2
@@ -274,10 +246,6 @@ augroup ag_all
     autocmd FileType notes setlocal textwidth=80
     autocmd FileType python setlocal softtabstop=4
     autocmd FileType python setlocal tabstop=4
-    autocmd FileType ruby setlocal softtabstop=2
-    autocmd FileType ruby setlocal tabstop=2
-    autocmd FileType rust setlocal softtabstop=4
-    autocmd FileType rust setlocal tabstop=4
     autocmd FileType scss setlocal iskeyword+=-
     autocmd FileType scss setlocal iskeyword+=@-@
     autocmd FileType scss setlocal softtabstop=2
@@ -306,16 +274,11 @@ vmap <Leader>c <Plug>NERDCommenterToggle<C-l>
 vmap <Leader>x <Plug>NERDCommenterSexy<C-l>
 
 " NERD_tree
-" let NERDChristmasTree=1
-" let NERDTreeDirArrows= has("multi_byte") ? 1 : 0
-" let NERDTreeQuitOnOpen=1
-" let NERDTreeWinSize=50
-
-if has('nvim')
-    nmap <Leader>n :edit .<CR>
-else
-    nmap <Leader>n :NERDTreeToggle<CR>
-endif
+let NERDChristmasTree=1
+let NERDTreeDirArrows= has("multi_byte") ? 1 : 0
+let NERDTreeQuitOnOpen=1
+let NERDTreeWinSize=50
+nmap <Leader>n :NERDTreeToggle<CR>
 
 " gnupg
 let g:GPGExecutable="gpg"
@@ -370,10 +333,7 @@ nmap <Leader>rb :Cbuild<CR>
 nmap <Leader>rc :Cargo check<CR>
 nmap <Leader>rr :Crun<CR>
 
-if has('nvim')
-    " Telescope
-    nmap <C-p> :Telescope find_files<CR>
-elseif executable("fzf")
+if executable("fzf")
     " fzf
     nmap <C-p> :Files<CR>
 else
@@ -386,10 +346,3 @@ else
     let g:ctrlp_switch_buffer = 0
     let g:ctrlp_working_path_mode = 0
 endif
-
-" vim-go
-let g:go_fmt_autosave = 0
-let g:go_imports_autosave = 0
-let g:go_metalinter_command = "golangci-lint"
-let g:go_template_autocreate = 0
-nmap <Leader>ol :GoMetaLinter<CR>

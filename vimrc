@@ -106,33 +106,24 @@ function! FormatFile()
     let t:file = @%
 
     if (&filetype == 'css')
-        execute "!npx prettier --write " . t:file
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'html')
-        execute "!npx prettier --write " . t:file
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'htmldjango')
-        execute "!npx prettier --write " . t:file
-    elseif (&filetype == 'go')
-        execute "!goimports -w " . t:file
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'javascript')
-        execute "!npx prettier --write " . t:file
-    elseif (&filetype == 'javascript.html')
-        execute "!npx prettier --write " . t:file
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'javascriptreact')
-        execute "!npx prettier --write " . t:file
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'json')
-        execute "!npx prettier --write " . t:file
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'jsonc')
-        execute "!npx prettier --write " . t:file
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'markdown')
-        execute "!npx prettier --write " . t:file
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'python')
-        execute "!isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
+        execute "!clear && isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
         :checktime " Ensure black changes are seen.
-    elseif (&filetype == 'ruby')
-        " execute "!bundle exec rubocop --auto-correct " . t:file
-        execute "!bundle exec standardrb --fix " . t:file
-    elseif (&filetype == 'rust')
-        execute "!rustfmt " . t:file
     elseif (&filetype == 'scss')
         execute "!npx prettier --write " . t:file
     else

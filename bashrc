@@ -190,9 +190,8 @@ alias gv='egrep -iv'
 alias j='jobs'
 
 if command -v exa 1>/dev/null 2>&1; then
-    alias l='exa -alF --color=always --group-directories-first'
-    alias la='exa -alF --color=always --group-directories-first'
-    alias ls='exa --color=always --group-directories-first'
+    alias l='exa -alF --group-directories-first'
+    alias la='exa -alF --group-directories-first'
 else
     ls -G &> /dev/null
     test $? -eq 0 && LSCR="-G"

@@ -72,7 +72,7 @@ nmap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
 
 nmap <Leader>so :source %<CR>
 
-nmap <Leader>$ :set list! number!<CR><C-l>
+nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 

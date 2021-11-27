@@ -134,9 +134,11 @@ endfunction
 nmap <Leader>f :call FormatFile()<CR>
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
+    if executable('curl')
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall
+    endif
 endif
 
 if filereadable(expand('~/.vim/autoload/plug.vim'))
@@ -146,7 +148,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
     Plug 'garbas/vim-snipmate'
-    Plug 'godlygeek/tabular'
     Plug 'henrik/vim-indexed-search'
     Plug 'itchyny/lightline.vim'
     Plug 'jamessan/vim-gnupg'
@@ -154,13 +155,10 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'preservim/nerdcommenter'
     Plug 'preservim/nerdtree'
-    Plug 'romainl/vim-cool'
     Plug 'scrooloose/nerdcommenter'
     Plug 'sheerun/vim-polyglot'
     Plug 'tomtom/tlib_vim'
     Plug 'tpope/vim-eunuch'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-surround'
 
     if executable('fzf')
@@ -196,9 +194,6 @@ let g:solarized_termtrans=1
 try
     if &t_Co > 15
         colorscheme solarized
-        highlight IncSearch ctermbg=White ctermfg=DarkGrey
-        highlight Search ctermbg=White ctermfg=DarkGrey
-        highlight Visual ctermbg=White ctermfg=DarkGrey
     endif
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme default
@@ -305,24 +300,14 @@ nmap <Leader>gw :Gwrite<CR>
 
 " dragvisuals
 let g:DVB_TrimWS = 1
-vmap  <expr>  <LEFT>   DVB_Drag('left')
-vmap  <expr>  <RIGHT>  DVB_Drag('right')
-vmap  <expr>  <DOWN>   DVB_Drag('down')
-vmap  <expr>  <UP>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
-
-" json
-let g:vim_json_syntax_conceal = 0
-let g:vim_json_warnings = 1
+vmap <expr><LEFT> DVB_Drag('left')
+vmap <expr><RIGHT> DVB_Drag('right')
+vmap <expr><DOWN> DVB_Drag('down')
+vmap <expr><UP> DVB_Drag('up')
 
 " CamelCaseMotion
 map <silent> ,b <Plug>CamelCaseMotion_b
 map <silent> ,w <Plug>CamelCaseMotion_w
-
-" rust
-nmap <Leader>rb :Cbuild<CR>
-nmap <Leader>rc :Cargo check<CR>
-nmap <Leader>rr :Crun<CR>
 
 if executable("fzf")
     " fzf

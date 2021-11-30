@@ -217,7 +217,6 @@ augroup ag_all
     autocmd BufNewFile,BufRead .babelrc setlocal filetype=json
     autocmd BufNewFile,BufRead .bowerrc setlocal filetype=json
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
-    autocmd BufReadPost fugitive://* setlocal bufhidden=delete
     autocmd FileType css setlocal softtabstop=2
     autocmd FileType css setlocal tabstop=2
     autocmd FileType gitcommit setlocal nolist
@@ -289,14 +288,6 @@ let g:lightline = {
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
-
-" fugitive
-nmap <Leader>gb :Git blame<CR>
-nmap <Leader>gc :Git commit --verbose<CR>
-nmap <Leader>gd :Gitdiffsplit<CR>
-nmap <Leader>gp :Git push --verbose<CR>
-nmap <Leader>gs :Git<CR>
-nmap <Leader>gw :Gwrite<CR>
 
 " dragvisuals
 let g:DVB_TrimWS = 1

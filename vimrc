@@ -70,7 +70,7 @@ nmap K <Nop>
 
 nmap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
 
-nmap <Leader>so :source %<CR>
+nmap <Leader>so :source $MYVIMRC<CR>
 
 nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
@@ -145,7 +145,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     if executable('curl')
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
           \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd VimEnter * PlugInstall
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 endif
 

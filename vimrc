@@ -76,6 +76,14 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
+" Reselect visual selection after indenting.
+vmap < <gv
+vmap > >gv
+
+" Maintain the cursor position when yanking a visual selection.
+vnoremap y myy`y
+vnoremap Y myY`y
+
 function! RunTestUnderCursor()
     :write
 

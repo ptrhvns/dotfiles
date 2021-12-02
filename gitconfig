@@ -18,68 +18,68 @@
 [branch]
 	autosetupmerge = true
 [alias]
-	a        = add
-	aa       = "!git add --all :/; git s"
-	amend    = commit --amend
-	assume   = update-index --assume-unchanged
-	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
-	ba       = branch -av
-	bd       = branch -d
-	bl       = branch
-	cam      = commit -am
-	cav      = commit -a --verbose
-	cleanup  = !git reset --hard && git clean -d -f
-	co       = checkout
-	cob      = checkout -b
-	cv       = commit --verbose
-	d        = diff --ignore-submodules=dirty
-	dc       = diff --ignore-submodules=dirty --cached
-	dn       = pull
-	dno      = diff --name-only
-	dnr      = pull --rebase
-	do       = diff --stat origin/master
-	ds       = diff --ignore-submodules=dirty --stat
-	dt       = difftool
-	fap      = fetch --all --prune
-	fp       = fetch --prune
-	g        = gui
-	l        = log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
-	lg       = log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
-	ll       = log --color --stat --decorate --pretty=medium
-	llg      = log --color --stat --graph --decorate --pretty=medium
-	lll      = log --color --stat --decorate --pretty=medium --patch --minimal
-	lllg     = log --color --stat --graph --decorate --pretty=medium --patch --minimal
-	lno      = log --color --name-only
-	lo       = log --color --graph --pretty=format:'%C(yellow)%h%Creset %C(bold red)%d%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset ' origin/master..
-	ls       = log --color --shortstat --graph --pretty=format:'%C(yellow)%h%Creset %C(bold red)%d%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset '
-	m        = merge
-	mf       = merge --ff-only
-	mnf      = merge --no-ff
-	mt       = mergetool
-	pl       = pull-list
-	pod      = push origin --delete
-	rb       = rebase -i origin/master
-	rename   = branch -m
-	rh       = reset HEAD^
-	s        = status
-	sa       = stash apply
-	sb       = show-branch --color
-	sd       = "!git status -s -uall --ignore-submodule=dirty | awk '{print $2}'"
-	sl       = stash list
-	sm       = "!git stash save --include-untracked; git sl"
-	sp       = "!git stash pop; git sl"
-	svd      = svn dcommit
-	svdn     = svn dcommit -n
-	svf      = svn fetch
-	svr      = svn rebase
-	tam      = tag -a -m
-	tc       = !sh -c 'git rev-list $0 | head -n 1'
-	td       = tag -d
-	tl       = tag -l
-	unassume = update-index --no-assume-unchanged
-	unstage  = reset --soft HEAD --
-	up       = push
-	upt      = push --tags
+	; a        = add
+	; aa       = "!git add --all :/; git s"
+	; amend    = commit --amend
+	; assume   = update-index --assume-unchanged
+	; assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+	; ba       = branch -av
+	; bd       = branch -d
+	; bl       = branch
+	; cam      = commit -am
+	; cav      = commit -a --verbose
+	; cleanup  = !git reset --hard && git clean -d -f
+	; co       = checkout
+	; cob      = checkout -b
+	; cv       = commit --verbose
+	; d        = diff --ignore-submodules=dirty
+	; dc       = diff --ignore-submodules=dirty --cached
+	; dn       = pull
+	; dno      = diff --name-only
+	; dnr      = pull --rebase
+	; do       = diff --stat origin/master
+	; ds       = diff --ignore-submodules=dirty --stat
+	; dt       = difftool
+	; fap      = fetch --all --prune
+	; fp       = fetch --prune
+	; g        = gui
+	; l        = log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
+	; lg       = log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
+	; ll       = log --color --stat --decorate --pretty=medium
+	; llg      = log --color --stat --graph --decorate --pretty=medium
+	; lll      = log --color --stat --decorate --pretty=medium --patch --minimal
+	; lllg     = log --color --stat --graph --decorate --pretty=medium --patch --minimal
+	; lno      = log --color --name-only
+	; lo       = log --color --graph --pretty=format:'%C(yellow)%h%Creset %C(bold red)%d%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset ' origin/master..
+	; ls       = log --color --shortstat --graph --pretty=format:'%C(yellow)%h%Creset %C(bold red)%d%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset '
+	; m        = merge
+	; mf       = merge --ff-only
+	; mnf      = merge --no-ff
+	; mt       = mergetool
+	; pl       = pull-list
+	; pod      = push origin --delete
+	; rb       = rebase -i origin/master
+	; rename   = branch -m
+	; rh       = reset HEAD^
+	; s        = status
+	; sa       = stash apply
+	; sb       = show-branch --color
+	; sd       = "!git status -s -uall --ignore-submodule=dirty | awk '{print $2}'"
+	; sl       = stash list
+	; sm       = "!git stash save --include-untracked; git sl"
+	; sp       = "!git stash pop; git sl"
+	; svd      = svn dcommit
+	; svdn     = svn dcommit -n
+	; svf      = svn fetch
+	; svr      = svn rebase
+	; tam      = tag -a -m
+	; tc       = !sh -c 'git rev-list $0 | head -n 1'
+	; td       = tag -d
+	; tl       = tag -l
+	; unassume = update-index --no-assume-unchanged
+	; unstage  = reset --soft HEAD --
+	; up       = push
+	; upt      = push --tags
 [user]
 	email = peter.havens@gmail.com
 	name = Peter Havens

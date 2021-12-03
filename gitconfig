@@ -43,15 +43,15 @@
 	; fap      = fetch --all --prune
 	; fp       = fetch --prune
 	; g        = gui
-	; l        = log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
-	; lg       = log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
-	; ll       = log --color --stat --decorate --pretty=medium
-	; llg      = log --color --stat --graph --decorate --pretty=medium
-	; lll      = log --color --stat --decorate --pretty=medium --patch --minimal
-	; lllg     = log --color --stat --graph --decorate --pretty=medium --patch --minimal
-	; lno      = log --color --name-only
-	; lo       = log --color --graph --pretty=format:'%C(yellow)%h%Creset %C(bold red)%d%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset ' origin/master..
-	; ls       = log --color --shortstat --graph --pretty=format:'%C(yellow)%h%Creset %C(bold red)%d%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset '
+	l        = log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
+	lg       = log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
+	ll       = log --color --stat --decorate --pretty=medium
+	llg      = log --color --stat --graph --decorate --pretty=medium
+	lll      = log --color --stat --decorate --pretty=medium --patch --minimal
+	lllg     = log --color --stat --graph --decorate --pretty=medium --patch --minimal
+	lno      = log --color --name-only
+	lo       = log --color --graph --pretty=format:'%C(yellow)%h%Creset %C(bold red)%d%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset ' origin/master..
+	ls       = log --color --shortstat --graph --pretty=format:'%C(yellow)%h%Creset %C(bold red)%d%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset '
 	; m        = merge
 	; mf       = merge --ff-only
 	; mnf      = merge --no-ff

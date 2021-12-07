@@ -159,6 +159,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'sheerun/vim-polyglot'
     Plug 'tomtom/tlib_vim'
     Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
 
     if executable('fzf')
@@ -217,6 +218,7 @@ augroup ag_all
     autocmd BufNewFile,BufRead .babelrc setlocal filetype=json
     autocmd BufNewFile,BufRead .bowerrc setlocal filetype=json
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
+    autocmd BufReadPost fugitive://* setlocal bufhidden=delete
     autocmd FileType css setlocal softtabstop=2
     autocmd FileType css setlocal tabstop=2
     autocmd FileType gitcommit setlocal nolist
@@ -313,3 +315,11 @@ else
     let g:ctrlp_switch_buffer = 0
     let g:ctrlp_working_path_mode = 0
 endif
+
+" fugitive
+nmap <Leader>gb :Git blame<CR>
+nmap <Leader>gc :Git commit --verbose<CR>
+nmap <Leader>gd :Gitdiffsplit<CR>
+nmap <Leader>gp :Git push --verbose<CR>
+nmap <Leader>gs :Git<CR>
+nmap <Leader>gw :Gwrite<CR>

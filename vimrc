@@ -147,6 +147,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'altercation/vim-colors-solarized'
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
+    Plug 'evanleck/vim-svelte', {'branch': 'main'}
     Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
     Plug 'itchyny/lightline.vim'

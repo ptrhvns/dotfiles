@@ -324,3 +324,6 @@ nmap <Leader>gd :Gitdiffsplit<CR>
 nmap <Leader>gp :Git push --verbose<CR>
 nmap <Leader>gs :Git<CR>
 nmap <Leader>gw :Gwrite<CR>
+
+" fzf
+nmap <Leader>rg :Rg 

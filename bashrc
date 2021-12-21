@@ -177,7 +177,7 @@ alias ef='$EDITOR $(fzf)'
 alias ep='$EDITOR -p'
 
 eg() {
-    e $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')
+    $EDITOR -p $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')
 }
 
 randgen() {

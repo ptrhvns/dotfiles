@@ -83,3 +83,5 @@
 [user]
 	email = peter.havens@gmail.com
 	name = Peter Havens
+[init]
+	defaultBranch = main

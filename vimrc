@@ -122,10 +122,10 @@ function! FormatFile()
     elseif (&filetype == 'markdown')
         execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'python')
-        execute "!clear && isort --ac " . t:file . " && black " . t:file . " && flake8 --ignore=E231,E501 " . t:file
-        :checktime " Ensure black changes are seen.
+        execute "!clear && black " . t:file
+        :checktime " Ensure black changes are seen in editor.
     elseif (&filetype == 'scss')
-        execute "!npx prettier --write " . t:file
+        execute "!clear && npx prettier --write " . t:file
     else
         echo "Failed to format: unknown filetype: " . &filetype
     endif

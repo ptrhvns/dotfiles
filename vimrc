@@ -123,7 +123,7 @@ function! FormatFile()
         execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == 'python')
         execute "!clear && black " . t:file
-        :checktime " Ensure black changes are seen in editor.
+        :edit " Ensure black changes are seen in editor.
     elseif (&filetype == 'scss')
         execute "!clear && npx prettier --write " . t:file
     else

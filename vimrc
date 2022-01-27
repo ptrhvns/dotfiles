@@ -17,6 +17,8 @@ set noshowmode
 set nostartofline
 set notimeout
 set novisualbell
+set number
+set relativenumber
 set shell=/bin/bash
 set shiftwidth=0
 set showcmd
@@ -70,7 +72,7 @@ nmap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
 
 nmap <Leader>so :source $MYVIMRC<CR>
 
-nmap <Leader>$ :set list!<CR><C-l>
+nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 

@@ -17,8 +17,6 @@ set noshowmode
 set nostartofline
 set notimeout
 set novisualbell
-set number
-set relativenumber
 set shell=/bin/bash
 set shiftwidth=0
 set showcmd
@@ -72,7 +70,7 @@ nmap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
 
 nmap <Leader>so :source $MYVIMRC<CR>
 
-nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
+nmap <Leader>$ :set list!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
@@ -107,25 +105,34 @@ function! FormatFile()
 
     if (&filetype == 'css')
         execute "!clear && npx prettier --write " . t:file
+        :edit
     elseif (&filetype == 'html')
         execute "!clear && npx prettier --write " . t:file
+        :edit
     elseif (&filetype == 'htmldjango')
         execute "!clear && npx prettier --write " . t:file
+        :edit
     elseif (&filetype == 'javascript')
         execute "!clear && npx prettier --write " . t:file
+        :edit
     elseif (&filetype == 'javascriptreact')
         execute "!clear && npx prettier --write " . t:file
+        :edit
     elseif (&filetype == 'json')
         execute "!clear && npx prettier --write " . t:file
+        :edit
     elseif (&filetype == 'jsonc')
         execute "!clear && npx prettier --write " . t:file
+        :edit
     elseif (&filetype == 'markdown')
         execute "!clear && npx prettier --write " . t:file
+        :edit
     elseif (&filetype == 'python')
         execute "!clear && black " . t:file
-        :edit " Ensure black changes are seen in editor.
+        :edit
     elseif (&filetype == 'scss')
         execute "!clear && npx prettier --write " . t:file
+        :edit
     else
         echo "Failed to format: unknown filetype: " . &filetype
     endif
@@ -176,8 +183,6 @@ endif
 nmap <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 
 nmap <Leader>dt O{# Django template #}<Esc>:set ft=htmldjango<CR>
-
-nmap <Leader>h :set number! relativenumber!<CR>
 
 if &t_Co > 1 || has('gui_running')
     syntax on

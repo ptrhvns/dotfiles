@@ -88,11 +88,9 @@ snippet ass
 	assert ${1:expression}
 snippet asf
 	assert False # FIXME
-snippet pmf
+snippet ptf
 	import pytest  # FIXME
 	@pytest.mark.focus  # FIXME
-snippet pms
-	@pytest.mark.skip
 snippet pts
 	@pytest.mark.skip # FIXME
 	def test_${1}():
@@ -100,9 +98,9 @@ snippet pts
 snippet dto
 	from django.test import tag # FIXME
 	@tag("only") # FIXME
-snippet ipd
-	import ipdb # FIXME
-	ipdb.set_trace(context=15) # FIXME
+snippet pdb
+	import pdb # FIXME
+	pdb.set_trace() # FIXME
 snippet bre
 	breakpoint()
 snippet model_style

@@ -76,31 +76,6 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-function! RunTestUnderCursor()
-    :write
-
-    if (match(expand("%"), '\.feature\|test\|spec\|mocha') != -1)
-        let t:test_file = @%
-        let t:test_line_number = line('.')
-    endif
-
-    execute "!run_test " . t:test_file . " -t " . t:test_line_number
-endfunction
-
-nmap <Leader>t :call RunTestUnderCursor()<CR>
-
-function! RunTestFile()
-    :write
-
-    if (match(expand("%"), '\.feature\|test\|spec\|mocha') != -1)
-        let t:test_file = @%
-    endif
-
-    execute "!run_test " . t:test_file
-endfunction
-
-nmap <Leader>T :call RunTestFile()<CR>
-
 function! FormatFile()
     :write
     let t:file = @%
@@ -156,7 +131,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'altercation/vim-colors-solarized'
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
-    Plug 'evanleck/vim-svelte', {'branch': 'main'}
     Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
     Plug 'itchyny/lightline.vim'
@@ -224,7 +198,6 @@ augroup ag_all
     autocmd!
 
     autocmd BufNewFile,BufRead .babelrc setlocal filetype=json
-    autocmd BufNewFile,BufRead .bowerrc setlocal filetype=json
     autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
     autocmd BufReadPost fugitive://* setlocal bufhidden=delete
     autocmd FileType css setlocal softtabstop=2
@@ -333,4 +306,4 @@ nmap <Leader>gs :Git<CR>
 nmap <Leader>gw :Gwrite<CR>
 
 " fzf
-nmap <Leader>rg :Rg 
+nmap <Leader>rg :Rg

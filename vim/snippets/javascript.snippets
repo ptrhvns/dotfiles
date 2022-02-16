@@ -7,6 +7,11 @@ snippet fun
 	}
 snippet fn
 	(${1}) => {${2}}
+snippet afun
+	async function ${1}(${2}) {
+	}
+snippet afn
+	async (${1}) => {${2}}
 snippet imp
 	import ${1} from "${2}";
 snippet ims
@@ -117,7 +122,7 @@ snippet body
 snippet br
 	<br />
 snippet button
-	<button type="button reset submit">${1}</button>
+	<button>${1}</button>
 snippet canvas
 	<canvas>
 	    Your software does not support this object.

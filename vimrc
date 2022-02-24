@@ -82,34 +82,34 @@ function! FormatFile()
 
     if (&filetype == 'css')
         execute "!clear && npx prettier --write " . t:file
-        :edit
+        :checktime
     elseif (&filetype == 'html')
         execute "!clear && npx prettier --write " . t:file
-        :edit
+        :checktime
     elseif (&filetype == 'htmldjango')
         execute "!clear && npx prettier --write " . t:file
-        :edit
+        :checktime
     elseif (&filetype == 'javascript')
         execute "!clear && npx prettier --write " . t:file
-        :edit
+        :checktime
     elseif (&filetype == 'javascriptreact')
         execute "!clear && npx prettier --write " . t:file
-        :edit
+        :checktime
     elseif (&filetype == 'json')
         execute "!clear && npx prettier --write " . t:file
-        :edit
+        :checktime
     elseif (&filetype == 'jsonc')
         execute "!clear && npx prettier --write " . t:file
-        :edit
+        :checktime
     elseif (&filetype == 'markdown')
         execute "!clear && npx prettier --write " . t:file
-        :edit
+        :checktime
     elseif (&filetype == 'python')
         execute "!clear && black " . t:file
-        :edit
+        :checktime
     elseif (&filetype == 'scss')
         execute "!clear && npx prettier --write " . t:file
-        :edit
+        :checktime
     else
         echo "Failed to format: unknown filetype: " . &filetype
     endif

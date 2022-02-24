@@ -214,26 +214,6 @@ else
     alias m=$PAGER
 fi
 
-alias pm='python manage.py'
-
-new_ssh_agent() {
-    rm -f ~/.ssh-agent
-    ssh-agent > ~/.ssh-agent
-    source ~/.ssh-agent
-}
-
-add_ssh_keys() {
-    source ~/.ssh-agent
-    ssh-add -D
-    ssh-add $(command ls ~/.ssh/id_* | grep -v '\.pub')
-}
-
-setup_ssh_agent() {
-    new_ssh_agent
-    add_ssh_keys
-}
-
-alias sb='source ~/.bashrc'
 alias ta='tmux att -t'
 alias td='tmux_new_session_pwd'
 alias tg='tmux_new_project_for_all_dirty_git'

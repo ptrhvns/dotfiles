@@ -306,5 +306,4 @@ nmap <Leader>gs :Git<CR>
 nmap <Leader>gw :Gwrite<CR>
 
 " fzf
-" Trailing whitespace is wanted here:
 nmap <Leader>rg :Rg 

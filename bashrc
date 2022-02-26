@@ -155,59 +155,11 @@ else
     export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\$${CLRNONE} "
 fi
 
-alias be='bundle exec'
-
-if command -v batcat 1>/dev/null 2>&1; then
-    alias c="batcat -p"
-elif command -v bat 1>/dev/null 2>&1; then
-    alias c="bat -p"
-else
-    alias c='cat'
-fi
-
 colors() {
     for i in {0..255} ; do
         printf "\x1b[38;5;${i}mcolor ${i}\n"
     done
 }
-
-alias e='$EDITOR'
-alias ef='$EDITOR $(fzf)'
-alias ep='$EDITOR -p'
-
-eg() {
-    $EDITOR -p $(git status -s -uall --ignore-submodules=dirty | egrep -v '[[:blank:]]D|^D' | awk '{print $2}')
-}
-
-alias f='fg'
-alias g='egrep -i'
-alias gv='egrep -iv'
-alias j='jobs'
-
-if command -v exa 1>/dev/null 2>&1; then
-    alias l='exa -alF --group-directories-first'
-    alias la='exa -alF --group-directories-first'
-else
-    ls -G &> /dev/null
-    test $? -eq 0 && LSCR="-G"
-
-    ls --color &> /dev/null
-    test $? -eq 0 && LSCR="--color=auto"
-
-    ls --group-directories-first &> /dev/null
-    test $? -eq 0 && LSGD="--group-directories-first"
-
-    alias l="ls -AlF --group-directories-first $LSGD $LSCR"
-    alias la="ls -alF --group-directories-first $LSGD $LSCR"
-fi
-
-if command -v batcat 1>/dev/null 2>&1; then
-    alias m="batcat -p"
-elif command -v bat 1>/dev/null 2>&1; then
-    alias m="bat -p"
-else
-    alias m=$PAGER
-fi
 
 alias ta='tmux att -t'
 alias td='tmux_new_session_pwd'
@@ -221,7 +173,7 @@ if [ -r ~/.ssh-agent ]; then
     source ~/.ssh-agent > /dev/null
 fi
 
-fzf_key_bindings="$(dpkg -L fzf | g key-bindings.bash)"
+fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
 if [ -f $fzf_key_bindings ]; then
     source $fzf_key_bindings
 fi

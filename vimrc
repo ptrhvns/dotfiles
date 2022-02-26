@@ -4,12 +4,14 @@ let mapleader="\\"
 
 set autoindent
 set autoread
+set backspace=indent,eol,start
 set belloff=all
 set expandtab
 set hlsearch
 set ignorecase
 set incsearch
 set lazyredraw
+set list
 set nofoldenable
 set nojoinspaces
 set nolist
@@ -35,6 +37,10 @@ set undolevels=1000
 set virtualedit=all
 set wildmenu
 
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j
+endif
+
 if exists('+undoreload')
     set undoreload=10000
 endif
@@ -45,8 +51,9 @@ endif
 
 if has("multi_byte") && &t_Co > 255
     set fillchars=diff:⣿
-    set list
     set listchars=extends:❯,nbsp:~,precedes:❮,tab:▸\ ,trail:⋅
+else
+    set listchars=extends:>,nbsp:+,precedes:<,tab:>\ ,trail:-
 endif
 
 nnoremap <C-l> :nohlsearch<CR><C-l>

@@ -161,14 +161,6 @@ colors() {
     done
 }
 
-alias ta='tmux att -t'
-alias td='tmux_new_session_pwd'
-alias tg='tmux_new_project_for_all_dirty_git'
-alias tk='tmux_kill_session'
-alias tl='tmux ls'
-alias tn='tmux_new_session'
-alias tp='tmux_new_project'
-
 if [ -r ~/.ssh-agent ]; then
     source ~/.ssh-agent > /dev/null
 fi

@@ -58,7 +58,7 @@ unset MAILCHECK
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
     export LESS="-qiX"
 else
-    export LESS="-FqiRWX"
+    export LESS="-FqiRX"
 fi
 
 if command -v rg 1>/dev/null 2>&1; then

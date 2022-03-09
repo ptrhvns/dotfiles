@@ -160,6 +160,12 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
         Plug 'kien/ctrlp.vim'
     endif
 
+    if has("nvim")
+        " Neovim plugin setup
+    else
+        " Vim plugin setup
+    endif
+
     call plug#end()
 endif
 

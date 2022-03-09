@@ -161,6 +161,27 @@ colors() {
     done
 }
 
+if command -v exa 1>/dev/null 2>&1; then
+    alias l="exa -l"
+    alias la="exa -la"
+else
+    alias l="ls -l"
+    alias la="ls -la"
+fi
+
+if command -v batcat 1>/dev/null 2>&1; then
+    alias m="batcat -p"
+elif command -v bat 1>/dev/null 2>&1; then
+    alias m="bat -p"
+else
+    alias m="${PAGER}"
+fi
+
+alias td="tmux_new_session_pwd"
+alias tk="tmux_kill_session"
+alias tl="tmux ls"
+alias tn="tmux_new_session"
+
 if [ -r ~/.ssh-agent ]; then
     source ~/.ssh-agent > /dev/null
 fi

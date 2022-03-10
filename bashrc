@@ -177,6 +177,7 @@ else
     alias m="${PAGER}"
 fi
 
+alias ta="tmux attach -t"
 alias td="tmux_new_session_pwd"
 alias tk="tmux_kill_session"
 alias tl="tmux ls"

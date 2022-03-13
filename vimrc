@@ -1,52 +1,65 @@
-set nocompatible
+if !has("nvim")
+    set nocompatible
+endif
 
 let mapleader="\\"
 
-set autoindent
-set autoread
-set backspace=indent,eol,start
-set belloff=all
+set clipboard="unnamed"
+set completeopt="menu,menuone,preview,noselect"
 set expandtab
-set hlsearch
+set hidden
 set ignorecase
-set incsearch
+set iskeyword+=-
 set lazyredraw
 set list
 set nofoldenable
-set nojoinspaces
 set nolist
 set noshowmode
-set nostartofline
 set notimeout
 set novisualbell
 set number
 set relativenumber
 set shell=/bin/bash
 set shiftwidth=0
-set showcmd
-set sidescroll=1
 set smartcase
-set smarttab
 set softtabstop=4
 set splitbelow
 set splitright
 set tabstop=4
 set textwidth=80
-set ttyfast
 set undolevels=1000
 set virtualedit=all
-set wildmenu
 
-if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j
+if !has("nvim")
+
+    set autoindent
+    set autoread
+    set background=dark
+    set backspace=indent,eol,start
+    set belloff=all
+    set history=10000
+    set hlsearch
+    set incsearch
+    set laststatus=2
+    set nojoinspaces
+    set nostartofline
+    set showcmd
+    set sidescroll=1
+    set smarttab
+    set ttyfast
+    set wildmenu
+
+    if has("multi_byte")
+        set encoding=utf-8
+    endif
+
+    if v:version > 703 || v:version == 703 && has("patch541")
+      set formatoptions+=j
+    endif
 endif
 
-if exists('+undoreload')
+if exists("+undoreload")
     set undoreload=10000
-endif
-
-if has("multi_byte")
-    set encoding=utf-8
 endif
 
 if has("multi_byte") && &t_Co > 255
@@ -83,40 +96,51 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-function! FormatFile()
-    :write
+vmap < <gv
+vmap > >gv
+
+function MaybeExecuteWithClear(cmd)
+    if has("nvim")
+        execute "!" . a:cmd
+    else
+        execute "!clear && " . a:cmd
+    endif
+endfunction
+
+function FormatFile()
+    write
     let t:file = @%
 
-    if (&filetype == 'css')
-        execute "!clear && npx prettier --write " . t:file
-        :checktime
-    elseif (&filetype == 'html')
-        execute "!clear && npx prettier --write " . t:file
-        :checktime
-    elseif (&filetype == 'htmldjango')
-        execute "!clear && npx prettier --write " . t:file
-        :checktime
-    elseif (&filetype == 'javascript')
-        execute "!clear && npx prettier --write " . t:file
-        :checktime
-    elseif (&filetype == 'javascriptreact')
-        execute "!clear && npx prettier --write " . t:file
-        :checktime
-    elseif (&filetype == 'json')
-        execute "!clear && npx prettier --write " . t:file
-        :checktime
-    elseif (&filetype == 'jsonc')
-        execute "!clear && npx prettier --write " . t:file
-        :checktime
-    elseif (&filetype == 'markdown')
-        execute "!clear && npx prettier --write " . t:file
-        :checktime
-    elseif (&filetype == 'python')
-        execute "!clear && black " . t:file
-        :checktime
-    elseif (&filetype == 'scss')
-        execute "!clear && npx prettier --write " . t:file
-        :checktime
+    if (&filetype == "css")
+        call MaybeExecuteWithClear("npx prettier --write " . t:file)
+        checktime
+    elseif (&filetype == "html")
+        call MaybeExecuteWithClear("npx prettier --write " . t:file)
+        checktime
+    elseif (&filetype == "htmldjango")
+        call MaybeExecuteWithClear("npx prettier --write " . t:file)
+        checktime
+    elseif (&filetype == "javascript")
+        call MaybeExecuteWithClear("npx prettier --write " . t:file)
+        checktime
+    elseif (&filetype == "javascriptreact")
+        call MaybeExecuteWithClear("npx prettier --write " . t:file)
+        checktime
+    elseif (&filetype == "json")
+        call MaybeExecuteWithClear("npx prettier --write " . t:file)
+        checktime
+    elseif (&filetype == "jsonc")
+        call MaybeExecuteWithClear("npx prettier --write " . t:file)
+        checktime
+    elseif (&filetype == "markdown")
+        call MaybeExecuteWithClear("npx prettier --write " . t:file)
+        checktime
+    elseif (&filetype == "python")
+        call MaybeExecuteWithClear("black " . t:file)
+        checktime
+    elseif (&filetype == "scss")
+        call MaybeExecuteWithClear("npx prettier --write " . t:file)
+        checktime
     else
         echo "Failed to format: unknown filetype: " . &filetype
     endif
@@ -124,21 +148,20 @@ endfunction
 
 nmap <Leader>f :call FormatFile()<CR>
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-    if executable('curl')
+if empty(glob("~/.vim/autoload/plug.vim"))
+    if executable("curl")
         silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
           \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 endif
 
-if filereadable(expand('~/.vim/autoload/plug.vim'))
-    call plug#begin('~/.vim/plugged')
+if filereadable(expand("~/.vim/autoload/plug.vim"))
+    call plug#begin("~/.vim/plugged")
 
     Plug 'altercation/vim-colors-solarized'
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
-    Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
     Plug 'itchyny/lightline.vim'
     Plug 'jamessan/vim-gnupg'
@@ -153,7 +176,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
 
-    if executable('fzf')
+    if executable("fzf")
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
     else
@@ -161,9 +184,16 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     endif
 
     if has("nvim")
-        " Neovim plugin setup
+        Plug 'hrsh7th/cmp-buffer'
+        Plug 'hrsh7th/cmp-cmdline'
+        Plug 'hrsh7th/cmp-nvim-lsp'
+        Plug 'hrsh7th/cmp-path'
+        Plug 'hrsh7th/nvim-cmp'
+        Plug 'L3MON4D3/LuaSnip'
+        Plug 'neovim/nvim-lspconfig'
+        Plug 'saadparwaiz1/cmp_luasnip'
     else
-        " Vim plugin setup
+        Plug 'garbas/vim-snipmate'
     endif
 
     call plug#end()
@@ -173,11 +203,9 @@ nmap <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
 
 nmap <Leader>dt O{# Django template #}<Esc>:set ft=htmldjango<CR>
 
-if &t_Co > 1 || has('gui_running')
+if &t_Co > 1 || has("gui_running")
     syntax on
 endif
-
-set background=dark
 
 if &t_Co > 255
     let g:solarized_termcolors=256
@@ -195,7 +223,7 @@ catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme default
 endtry
 
-if exists("g:colors_name") && g:colors_name == 'solarized' && has("multi_byte")
+if exists("g:colors_name") && g:colors_name == "solarized" && has("multi_byte")
     highlight! NonText ctermfg=235
 endif
 
@@ -246,7 +274,7 @@ nmap <Leader>lu :PlugUpgrade<CR>:PlugUpdate<CR>
 let NERD_scss_alt_style=1
 let NERDCommentWholeLinesInVMode=2
 let NERDCreateDefaultMappings=0
-let NERDDefaultAlign = 'left'
+let NERDDefaultAlign = "left"
 let NERDSpaceDelims=1
 nmap <Leader>c <Plug>NERDCommenterToggle<C-l>
 nmap <Leader>i <Plug>NERDCommenterAltDelims<C-l>
@@ -266,31 +294,22 @@ let g:GPGExecutable="gpg"
 let g:GPGPreferArmor=1
 
 " snipmate
-let g:snipMate = { 'snippet_version' : 1 }
-let g:snippets_dir=$HOME.'/.vim/snippets'
+let g:snipMate = { "snippet_version" : 1 }
+let g:snippets_dir = $HOME . "/.vim/snippets"
 nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
 
 " lightline
-set laststatus=2
-
 let g:lightline = {
-    \ 'colorscheme': 'solarized',
-    \ 'component_function': {
-    \   'filename': 'LightlineFilename',
+    \ "colorscheme": "solarized",
+    \ "component_function": {
+    \   "filename": "LightlineFilename",
     \ },
-    \ 'enable': { 'tabline': 0 },
+    \ "enable": { "tabline": 0 },
 \ }
 
-function! LightlineFilename()
-  return expand('%:t') !=# '' ? @% : '[No Name]'
+function LightlineFilename()
+  return expand("%:t") !=# "" ? @% : "[No Name]"
 endfunction
-
-" dragvisuals
-let g:DVB_TrimWS = 1
-vmap <expr><LEFT> DVB_Drag('left')
-vmap <expr><RIGHT> DVB_Drag('right')
-vmap <expr><DOWN> DVB_Drag('down')
-vmap <expr><UP> DVB_Drag('up')
 
 " CamelCaseMotion
 map <silent> ,b <Plug>CamelCaseMotion_b
@@ -303,8 +322,8 @@ else
     " ctrlp
     let g:ctrlp_arg_map = 1
     let g:ctrlp_custom_ignore = {
-        \ 'dir': '\v(\.git|node_modules|dist|__pycache__|egg-info|static|target|cache)',
-        \ 'file': '\v(\.(swp|pyc)|tags)'
+        \ "dir": "\v(\.git|node_modules|dist|__pycache__|egg-info|static|target|cache)",
+        \ "file": "\v(\.(swp|pyc)|tags)"
         \ }
     let g:ctrlp_switch_buffer = 0
     let g:ctrlp_working_path_mode = 0
@@ -319,4 +338,4 @@ nmap <Leader>gs :Git<CR>
 nmap <Leader>gw :Gwrite<CR>
 
 " fzf
-nmap <Leader>rg :Rg 
+nmap <Leader>rg :Rg<CR>

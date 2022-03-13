@@ -164,9 +164,14 @@ colors() {
 if command -v exa 1>/dev/null 2>&1; then
     alias l="exa -l"
     alias la="exa -la"
+    alias lt="exa -T"
 else
     alias l="ls -l"
     alias la="ls -la"
+
+    if command -v tree 1>/dev/null 2>&1; then
+        alias lt="tree"
+    fi
 fi
 
 if command -v batcat 1>/dev/null 2>&1; then

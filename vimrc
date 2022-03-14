@@ -1,61 +1,55 @@
-if !has("nvim")
-    set nocompatible
-endif
+set nocompatible
 
 let mapleader="\\"
 
+set autoindent
+set autoread
+set background=dark
+set backspace=indent,eol,start
+set belloff=all
 set clipboard="unnamed"
 set completeopt="menu,menuone,preview,noselect"
 set expandtab
 set hidden
+set history=10000
+set hlsearch
 set ignorecase
+set incsearch
 set iskeyword+=-
+set laststatus=2
 set lazyredraw
 set list
 set nofoldenable
+set nojoinspaces
 set nolist
 set noshowmode
+set nostartofline
 set notimeout
 set novisualbell
 set number
 set relativenumber
 set shell=/bin/bash
 set shiftwidth=0
+set showcmd
+set sidescroll=1
 set smartcase
+set smarttab
 set softtabstop=4
 set splitbelow
 set splitright
 set tabstop=4
 set textwidth=80
+set ttyfast
 set undolevels=1000
 set virtualedit=all
+set wildmenu
 
-if !has("nvim")
+if has("multi_byte")
+    set encoding=utf-8
+endif
 
-    set autoindent
-    set autoread
-    set background=dark
-    set backspace=indent,eol,start
-    set belloff=all
-    set history=10000
-    set hlsearch
-    set incsearch
-    set laststatus=2
-    set nojoinspaces
-    set nostartofline
-    set showcmd
-    set sidescroll=1
-    set smarttab
-    set ttyfast
-    set wildmenu
-
-    if has("multi_byte")
-        set encoding=utf-8
-    endif
-
-    if v:version > 703 || v:version == 703 && has("patch541")
-      set formatoptions+=j
-    endif
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j
 endif
 
 if exists("+undoreload")
@@ -99,51 +93,36 @@ nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 vmap < <gv
 vmap > >gv
 
-function MaybeExecuteWithClear(cmd)
-    if has("nvim")
-        execute "!" . a:cmd
-    else
-        execute "!clear && " . a:cmd
-    endif
-endfunction
-
 function FormatFile()
     write
     let t:file = @%
 
     if (&filetype == "css")
-        call MaybeExecuteWithClear("npx prettier --write " . t:file)
-        checktime
+        execute "!clear && npx prettier --write " . t:file)
     elseif (&filetype == "html")
-        call MaybeExecuteWithClear("npx prettier --write " . t:file)
-        checktime
+        execute "!clear && npx prettier --write " . t:file)
     elseif (&filetype == "htmldjango")
-        call MaybeExecuteWithClear("npx prettier --write " . t:file)
-        checktime
+        execute "!clear && npx prettier --write " . t:file)
     elseif (&filetype == "javascript")
-        call MaybeExecuteWithClear("npx prettier --write " . t:file)
-        checktime
+        execute "!clear && npx prettier --write " . t:file)
     elseif (&filetype == "javascriptreact")
-        call MaybeExecuteWithClear("npx prettier --write " . t:file)
-        checktime
+        execute "!clear && npx prettier --write " . t:file)
     elseif (&filetype == "json")
-        call MaybeExecuteWithClear("npx prettier --write " . t:file)
-        checktime
+        execute "!clear && npx prettier --write " . t:file)
     elseif (&filetype == "jsonc")
-        call MaybeExecuteWithClear("npx prettier --write " . t:file)
-        checktime
+        execute "!clear && npx prettier --write " . t:file)
     elseif (&filetype == "markdown")
-        call MaybeExecuteWithClear("npx prettier --write " . t:file)
-        checktime
+        execute "!clear && npx prettier --write " . t:file)
     elseif (&filetype == "python")
-        call MaybeExecuteWithClear("black " . t:file)
-        checktime
+        execute "!clear && black " . t:file)
     elseif (&filetype == "scss")
-        call MaybeExecuteWithClear("npx prettier --write " . t:file)
-        checktime
+        execute "!clear && npx prettier --write " . t:file)
     else
         echo "Failed to format: unknown filetype: " . &filetype
+        return
     endif
+
+    checktime
 endfunction
 
 nmap <Leader>f :call FormatFile()<CR>
@@ -162,6 +141,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'altercation/vim-colors-solarized'
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
+    Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
     Plug 'itchyny/lightline.vim'
     Plug 'jamessan/vim-gnupg'
@@ -181,19 +161,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
         Plug 'junegunn/fzf.vim'
     else
         Plug 'kien/ctrlp.vim'
-    endif
-
-    if has("nvim")
-        Plug 'hrsh7th/cmp-buffer'
-        Plug 'hrsh7th/cmp-cmdline'
-        Plug 'hrsh7th/cmp-nvim-lsp'
-        Plug 'hrsh7th/cmp-path'
-        Plug 'hrsh7th/nvim-cmp'
-        Plug 'L3MON4D3/LuaSnip'
-        Plug 'neovim/nvim-lspconfig'
-        Plug 'saadparwaiz1/cmp_luasnip'
-    else
-        Plug 'garbas/vim-snipmate'
     endif
 
     call plug#end()

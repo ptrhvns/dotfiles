@@ -98,25 +98,25 @@ function FormatFile()
     let t:file = @%
 
     if (&filetype == "css")
-        execute "!clear && npx prettier --write " . t:file)
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == "html")
-        execute "!clear && npx prettier --write " . t:file)
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == "htmldjango")
-        execute "!clear && npx prettier --write " . t:file)
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == "javascript")
-        execute "!clear && npx prettier --write " . t:file)
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == "javascriptreact")
-        execute "!clear && npx prettier --write " . t:file)
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == "json")
-        execute "!clear && npx prettier --write " . t:file)
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == "jsonc")
-        execute "!clear && npx prettier --write " . t:file)
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == "markdown")
-        execute "!clear && npx prettier --write " . t:file)
+        execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == "python")
         execute "!clear && black " . t:file)
     elseif (&filetype == "scss")
-        execute "!clear && npx prettier --write " . t:file)
+        execute "!clear && npx prettier --write " . t:file
     else
         echo "Failed to format: unknown filetype: " . &filetype
         return

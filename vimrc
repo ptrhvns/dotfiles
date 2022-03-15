@@ -14,7 +14,6 @@ set history=10000
 set hlsearch
 set ignorecase
 set incsearch
-set iskeyword+=-
 set laststatus=2
 set lazyredraw
 set list

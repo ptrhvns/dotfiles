@@ -136,6 +136,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'altercation/vim-colors-solarized'
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
+    Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
     Plug 'itchyny/lightline.vim'
     Plug 'jamessan/vim-gnupg'
@@ -300,3 +301,8 @@ nmap <Leader>rg :Rg
 
 " emmet-vim
 let g:user_emmet_install_global = 0
+
+" vim-snipmate
+let g:snipMate = { 'snippet_version' : 1 }
+let g:snippets_dir = $HOME . "/.vim/snippets"
+nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/

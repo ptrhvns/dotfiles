@@ -114,7 +114,7 @@ function FormatFile()
     elseif (&filetype == "markdown")
         execute "!clear && npx prettier --write " . t:file
     elseif (&filetype == "python")
-        execute "!clear && black " . t:file)
+        execute "!clear && black " . t:file
     elseif (&filetype == "scss")
         execute "!clear && npx prettier --write " . t:file
     else

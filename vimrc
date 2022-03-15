@@ -89,9 +89,6 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-vmap < <gv
-vmap > >gv
-
 function FormatFile()
     write
     let t:file = @%
@@ -145,6 +142,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'jamessan/vim-gnupg'
     Plug 'kana/vim-smartinput'
     Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'mattn/emmet-vim'
     Plug 'preservim/nerdcommenter'
     Plug 'preservim/nerdtree'
     Plug 'scrooloose/nerdcommenter'
@@ -208,6 +206,7 @@ augroup ag_all
     autocmd BufReadPost fugitive://* setlocal bufhidden=delete
     autocmd FileType css setlocal softtabstop=2
     autocmd FileType css setlocal tabstop=2
+    autocmd FileType css,html,htmldjango,javascript,sass,scss EmmetInstall
     autocmd FileType gitcommit setlocal nolist
     autocmd FileType html setlocal softtabstop=2
     autocmd FileType html setlocal tabstop=2
@@ -300,9 +299,5 @@ nmap <Leader>gw :Gwrite<CR>
 " fzf
 nmap <Leader>rg :Rg 
 
-" dragvisuals
-let g:DVB_TrimWS = 1
-vmap <expr><LEFT> DVB_Drag('left')
-vmap <expr><RIGHT> DVB_Drag('right')
-vmap <expr><DOWN> DVB_Drag('down')
-vmap <expr><UP> DVB_Drag('up')
+" emmet-vim
+let g:user_emmet_install_global = 0

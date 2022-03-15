@@ -306,3 +306,10 @@ nmap <Leader>gw :Gwrite<CR>
 
 " fzf
 nmap <Leader>rg :Rg<CR>
+
+" dragvisuals
+let g:DVB_TrimWS = 1
+vmap <expr><LEFT> DVB_Drag('left')
+vmap <expr><RIGHT> DVB_Drag('right')
+vmap <expr><DOWN> DVB_Drag('down')
+vmap <expr><UP> DVB_Drag('up')

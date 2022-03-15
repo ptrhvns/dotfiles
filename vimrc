@@ -140,7 +140,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'altercation/vim-colors-solarized'
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
-    Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
     Plug 'itchyny/lightline.vim'
     Plug 'jamessan/vim-gnupg'
@@ -258,11 +257,6 @@ nmap <Leader>n :NERDTreeToggle<CR>
 " gnupg
 let g:GPGExecutable="gpg"
 let g:GPGPreferArmor=1
-
-" snipmate
-let g:snipMate = { "snippet_version" : 1 }
-let g:snippets_dir = $HOME . "/.vim/snippets"
-nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
 
 " lightline
 let g:lightline = {

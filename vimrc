@@ -8,7 +8,6 @@ set background=dark
 set backspace=indent,eol,start
 set belloff=all
 set clipboard="unnamed"
-set completeopt="menu,menuone,preview,noselect"
 set expandtab
 set hidden
 set history=10000

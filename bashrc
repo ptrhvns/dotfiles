@@ -162,11 +162,13 @@ colors() {
 }
 
 if command -v exa 1>/dev/null 2>&1; then
-    alias l="exa -l"
+    alias l="exa"
     alias la="exa -la"
+    alias ll="exa -l"
     alias lt="exa -T"
 else
-    alias l="ls -l"
+    alias l="ls"
+    alias ll="ls -l"
     alias la="ls -la"
 
     if command -v tree 1>/dev/null 2>&1; then

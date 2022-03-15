@@ -18,6 +18,8 @@
 	autosetupmerge = true
 [alias]
 	l = log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
+	ll = log --color --stat --decorate --pretty=medium
+	lll = log --color --stat --decorate --pretty=medium --patch --minimal
 [user]
 	email = peter.havens@gmail.com
 	name = Peter Havens

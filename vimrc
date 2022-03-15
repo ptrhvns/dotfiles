@@ -304,7 +304,7 @@ nmap <Leader>gs :Git<CR>
 nmap <Leader>gw :Gwrite<CR>
 
 " fzf
-nmap <Leader>rg :Rg<CR>
+nmap <Leader>rg :Rg 
 
 " dragvisuals
 let g:DVB_TrimWS = 1

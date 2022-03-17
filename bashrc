@@ -161,6 +161,9 @@ colors() {
     done
 }
 
+alias g="grep -E"
+alias gv="grep -Ev"
+
 if command -v exa 1>/dev/null 2>&1; then
     alias l="exa"
     alias la="exa -la"

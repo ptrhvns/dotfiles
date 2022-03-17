@@ -1,16 +1,66 @@
+snippet /f
+	// FIXME${1}
+snippet /t
+	// TODO${1}
+snippet afn
+	async () => {
+	}
+snippet afun
+	async function ${1:name}(${2}) {
+	}
+snippet cas
+	case ${1:value}:
+	  ${2:break};
+snippet col
+	console.log("DEBUG${1}"); // FIXME
 snippet con
 	const ${1:name} = ${2:value};
+snippet def
+	default:
+	  ${1:statement};
 snippet des
 	describe("${1}", () => {
 	});
 snippet exp
 	expect(${1:actual}).${2:assertion}(${3});
-snippet /f
-	// FIXME${1}
 snippet fn
-	() => {}
+	() => {
+	}
+snippet fun
+	function ${1:name}(${2}) {
+	}
+snippet if
+	if (${1:condition}) {
+	}
+snippet imp
+	import ${1:targets} from "${2:source}";
 snippet it
 	it("${1}", () => {
 	});
 snippet itt
 	it.todo("${1}");
+snippet rc
+	function ${1:Component}() {
+	  return (
+	    <div>
+	      ${2:$1}
+	    </div>
+	  );
+	}
+
+	export default ${3:$1};
+snippet rt
+	import ${1:Component} from "./${2:$1}";
+	import ReactDOM from "react-dom";
+	
+	function buildComponent(props = {}) {
+	  return <${3:$1} {...props} />;
+	}
+	
+	it("renders successfully", () => {
+	  const div = document.createElement("div");
+	  ReactDOM.render(buildComponent(), div);
+	});
+snippet swi
+	switch (${1:expression}) {
+	}

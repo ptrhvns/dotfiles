@@ -1,2 +1,37 @@
 snippet bre
 	breakpoint() # FIXME
+snippet def
+	def ${1:name}(${2}):
+	    ${3:pass}
+snippet eli
+	elif ${1:condition}:
+	    ${2:pass}
+snippet els
+	else:
+	    ${1:pass}
+snippet for
+	for ${1:name} in ${2:iterable}:
+	    ${3:pass}
+snippet fro
+	from ${1:module} import ${2:name}
+snippet if
+	if ${1:condition}:
+	  ${2:pass}
+snippet ifn
+	if not ${1:condition}:
+	  ${2:pass}
+snippet imp
+	import ${1:module}
+snippet main
+	def main(${1}):
+	    ${2:pass}
+	
+	
+	if __name__ == "__main__":
+	    main(${3:$1})
+snippet wit
+	with ${1:expression}:
+	    ${2:pass}
+snippet wita
+	with ${1:expression} as ${2:target}:
+	    ${3:pass}

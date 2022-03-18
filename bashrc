@@ -188,10 +188,10 @@ else
 fi
 
 alias ta="tmux attach -t"
-alias td="tmux_new_session_pwd"
-alias tk="tmux_kill_session"
+alias td="tmux-new-session-pwd"
+alias tk="tmux-kill-session"
 alias tl="tmux ls"
-alias tn="tmux_new_session"
+alias tn="tmux-new-session"
 
 if [ -r ~/.ssh-agent ]; then
     source ~/.ssh-agent > /dev/null

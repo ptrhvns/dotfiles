@@ -16,14 +16,12 @@ set ignorecase
 set incsearch
 set laststatus=2
 set lazyredraw
-set list
 set nofoldenable
 set nojoinspaces
 set nolist
 set noshowmode
 set nostartofline
 set notimeout
-set novisualbell
 set number
 set relativenumber
 set shell=/bin/bash

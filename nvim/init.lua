@@ -46,7 +46,7 @@ keymap("n", "<Up>", ":tabmove +1<CR><C-l>", keymap_opts)
 
 keymap("n", "K", "<Nop>", keymap_opts)
 
-keymap("n", "<Leader>ev", ":tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>", keymap_opts)
+keymap("n", "<Leader>ev", ":tabedit $HOME/src/personal/remote/dotfiles/nvim/init.lua<CR>", keymap_opts)
 
 keymap("n", "<Leader>so", ":source $MYVIMRC<CR>", keymap_opts)
 

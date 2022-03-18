@@ -197,7 +197,7 @@ vim.cmd [[
         \ "enable": { "tabline": 0 },
     \ }
     
-    function LightlineFilename()
+    function! LightlineFilename()
       return expand("%:t") !=# "" ? @% : "[No Name]"
     endfunction
 ]]
@@ -231,7 +231,7 @@ keymap("n", "<Leader>gs", ":Git<CR>", keymap_opts)
 keymap("n", "<Leader>gw", ":Gwrite<CR>", keymap_opts)
 
 -- fzf
-keymap("n", "<Leader>rg", ":Rg", keymap_opts)
+keymap("n", "<Leader>rg", ":Rg<Space>", keymap_opts)
 
 -- emmet-vim
 vim.g.user_emmet_install_global = 0

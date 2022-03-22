@@ -112,6 +112,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'altercation/vim-colors-solarized'
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
+    Plug 'fatih/vim-go'
     Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
     Plug 'itchyny/lightline.vim'
@@ -180,6 +181,14 @@ augroup ag_all
     autocmd FileType css setlocal tabstop=2
     autocmd FileType css,html,htmldjango,javascript,sass,scss EmmetInstall
     autocmd FileType gitcommit setlocal nolist
+    autocmd FileType go setlocal noexpandtab
+    autocmd FileType go setlocal nolist
+    autocmd FileType go setlocal softtabstop=4
+    autocmd FileType go setlocal tabstop=4
+    autocmd FileType gomod setlocal noexpandtab
+    autocmd FileType gomod setlocal nolist
+    autocmd FileType gomod setlocal softtabstop=4
+    autocmd FileType gomod setlocal tabstop=4
     autocmd FileType html setlocal softtabstop=2
     autocmd FileType html setlocal tabstop=2
     autocmd FileType htmldjango setlocal softtabstop=2
@@ -278,3 +287,10 @@ let g:user_emmet_install_global = 0
 let g:snipMate = { 'snippet_version' : 1 }
 let g:snippets_dir = $HOME . "/.vim/snippets"
 nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
+
+" vim-go
+let g:go_fmt_autosave = 0
+let g:go_imports_autosave = 0
+let g:go_metalinter_command = "golangci-lint"
+let g:go_template_autocreate = 0
+nmap <Leader>ol :GoMetaLinter<CR>

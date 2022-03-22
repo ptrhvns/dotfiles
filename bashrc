@@ -45,9 +45,8 @@ fi
 
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 export PAGER=$(command -v less || command -v more)
-export PYENV_ROOT="${HOME}/.pyenv"
 
-export PATH=~/bin:~/.nodenv/bin:${PYENV_ROOT}/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
+export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
 
 export PROMPT_COMMAND='history -a'
 export SHELL=$(command -v bash)
@@ -207,6 +206,9 @@ if [ -f $fzf_completion ]; then
     source $fzf_completion
 fi
 
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH=${PATH}:${PYENV_ROOT}/bin
+
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
@@ -216,8 +218,18 @@ if command -v pyenv 1>/dev/null 2>&1; then
     fi
 fi
 
+export NODENV_ROOT=${HOME}/.nodenv
+export PATH=${PATH}:${NODENV_ROOT}/bin
+
 if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"
+fi
+
+export GOENV_ROOT="${HOME}/.goenv"
+export PATH=${PATH}:${GOENV_ROOT}/bin
+
+if command -v goenv 1>/dev/null 2>&1; then
+    eval "$(goenv init -)"
 fi
 
 if [ -f ~/.bash_local ]; then

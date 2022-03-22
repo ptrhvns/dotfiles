@@ -88,8 +88,14 @@ nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
 function FormatFile()
     write
-    execute "!clear && run-formatters " . @%
-    checktime
+
+    if (&filetype == "go")
+        GoFmt
+        GoImports
+    else
+        execute "!clear && run-formatters " . @%
+        checktime
+    endif
 endfunction
 
 nmap <Leader>f :call FormatFile()<CR>

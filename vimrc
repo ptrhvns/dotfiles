@@ -92,6 +92,7 @@ function FormatFile()
     if (&filetype == "go")
         GoFmt
         GoImports
+        write
     else
         execute "!clear && run-formatters " . @%
         checktime

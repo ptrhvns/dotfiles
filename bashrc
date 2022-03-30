@@ -54,6 +54,8 @@ export UNAME=$(uname)
 export VISUAL=$(command -v || command -v vim || command -v vi)
 unset MAILCHECK
 
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
     export LESS="-qiX"
 else
@@ -102,7 +104,7 @@ if [[ $MYCOLORS -gt 255 ]]; then
     VIOLET="$(color256 '61')"
     WHITE="$(color256 '254')"
     YELLOW="$(color256 '136')"
-elif [[ $MYCOLORS -gt 7 ]]; then
+else
     BLUE="$(color16 '1;34')"
     CYAN="$(color16 '1;36')"
     GREEN="$(color16 '1;32')"
@@ -115,50 +117,47 @@ elif [[ $MYCOLORS -gt 7 ]]; then
     YELLOW="$(color16 '1;33')"
 fi
 
-CLRDIR=$VIOLET
-CLRGIT=$YELLOW
-CLRGITCHG=$RED
-CLRGITSTASH=$RED
-CLRHOST=$GREY
-CLRNODE=$MAGENTA
-CLRRB=$MAGENTA
-
-if [[ "root" == "$(whoami)" ]]; then
-    CLRID=$RED
-else
-    CLRID=$GREEN
-fi
-
-CLRJBS=$RED
-CLRNONE=$NOCOLOR
-CLRPRMT=$GREY
-
-ps_jobs() {
-    local jbs=$(jobs 2>/dev/null | wc -l | awk '{print $1}')
-    if test $jbs -gt 0; then
-        echo -ne " [$jbs]"
-    fi
-}
-
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 if [ -f "$HOME/.git-prompt.sh" ]; then
     source $HOME/.git-prompt.sh
 
+    GIT_PS1=1
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
-
-    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'"${CLRGIT}"'$(__git_ps1 " %s")'" ${CLRPRMT}\$${CLRNONE} "
-else
-    export PS1="${CLRHOST}\h ${CLRID}\u ${CLRDIR}\w${CLRJBS}"'$(ps_jobs)'" ${CLRPRMT}\$${CLRNONE} "
 fi
 
-colors() {
-    for i in {0..255} ; do
-        printf "\x1b[38;5;${i}mcolor ${i}\n"
-    done
+build_prompt() {
+    local exit_code=$?
+
+    PS1="${GREY}\h"
+
+    if [[ "root" == "$(whoami)" ]]; then
+        PS1+=" ${RED}\u"
+    else
+        PS1+=" ${GREEN}\u"
+    fi
+
+    PS1+=" ${VIOLET}\w"
+
+    local num_jobs=$(jobs 2>/dev/null | wc -l)
+
+    if [ $num_jobs -gt 0 ]; then
+        PS1+=" ${ORANGE}[${num_jobs}]"
+    fi
+
+    if [ $GIT_PS1 -gt 0 ]; then
+        PS1+="${YELLOW}$(__git_ps1 ' %s')"
+    fi
+
+    if [ $exit_code -gt 0 ]; then
+        PS1+=" ${RED}(${exit_code})"
+    fi
+
+    PS1+=" ${GREY}\$"
+    PS1+=" ${NOCOLOR}"
 }
+
+PROMPT_COMMAND=build_prompt
 
 alias g="grep -E"
 alias gv="grep -Ev"

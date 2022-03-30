@@ -86,6 +86,8 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
+nmap <Leader>t :! git ls-files \| ctags
+
 function FormatFile()
     write
 

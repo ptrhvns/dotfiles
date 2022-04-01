@@ -86,7 +86,11 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-nmap <Leader>t :! clear && git ls-files \| ctags<CR>
+if has("nvim")
+    nmap <Leader>t :! git ls-files \| ctags<CR>
+else
+    nmap <Leader>t :! clear && git ls-files \| ctags<CR>
+endif
 
 function FormatFile()
     write
@@ -96,7 +100,11 @@ function FormatFile()
         GoImports
         write
     else
-        execute "!clear && run-formatters " . @%
+        if has("nvim")
+            execute "!run-formatters " . @%
+        else
+            execute "!clear && run-formatters " . @%
+        endif
         checktime
     endif
 endfunction
@@ -122,7 +130,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
     Plug 'fatih/vim-go'
-    Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
     Plug 'itchyny/lightline.vim'
     Plug 'jamessan/vim-gnupg'
@@ -143,6 +150,12 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
         Plug 'junegunn/fzf.vim'
     else
         Plug 'kien/ctrlp.vim'
+    endif
+
+    if has("nvim")
+        " ...
+    else
+        Plug 'garbas/vim-snipmate'
     endif
 
     call plug#end()

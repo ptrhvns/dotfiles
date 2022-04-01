@@ -2,6 +2,14 @@ set nocompatible
 
 let mapleader="\\"
 
+set history=10000
+set undolevels=1000
+set textwidth=80
+set softtabstop=4
+set tabstop=4
+set laststatus=2
+set sidescroll=1
+set shiftwidth=0
 set autoindent
 set autoread
 set background=dark
@@ -10,33 +18,25 @@ set belloff=all
 set clipboard="unnamed"
 set expandtab
 set hidden
-set history=10000
 set hlsearch
 set ignorecase
 set incsearch
-set laststatus=2
 set lazyredraw
+set list
 set nofoldenable
 set nojoinspaces
-set nolist
 set noshowmode
 set nostartofline
 set notimeout
 set number
 set relativenumber
 set shell=/bin/bash
-set shiftwidth=0
 set showcmd
-set sidescroll=1
 set smartcase
 set smarttab
-set softtabstop=4
 set splitbelow
 set splitright
-set tabstop=4
-set textwidth=80
 set ttyfast
-set undolevels=1000
 set virtualedit=all
 set wildmenu
 
@@ -86,7 +86,7 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-nmap <Leader>t :! git ls-files \| ctags
+nmap <Leader>t :! clear && git ls-files \| ctags<CR>
 
 function FormatFile()
     write

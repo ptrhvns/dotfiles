@@ -217,6 +217,9 @@ augroup ag_all
     autocmd FileType htmldjango setlocal tabstop=2
     autocmd FileType javascript setlocal softtabstop=2
     autocmd FileType javascript setlocal tabstop=2
+    autocmd FileType lua setlocal softtabstop=2
+    autocmd FileType lua setlocal tabstop=2
+    autocmd FileType lua setlocal textwidth=80
     autocmd FileType markdown setlocal softtabstop=2
     autocmd FileType markdown setlocal tabstop=2
     autocmd FileType notes setlocal textwidth=80
@@ -280,6 +283,7 @@ map <silent> ,w <Plug>CamelCaseMotion_w
 if executable("fzf")
     " fzf
     nmap <C-p> :Files<CR>
+    nmap <Leader>rg :Rg 
 else
     " ctrlp
     let g:ctrlp_arg_map = 1
@@ -298,9 +302,6 @@ nmap <Leader>gd :Gitdiffsplit<CR>
 nmap <Leader>gp :Git push --verbose<CR>
 nmap <Leader>gs :Git<CR>
 nmap <Leader>gw :Gwrite<CR>
-
-" fzf
-nmap <Leader>rg :Rg 
 
 " emmet-vim
 let g:user_emmet_install_global = 0

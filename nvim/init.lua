@@ -102,7 +102,7 @@ vim.g.lightline = {
 }
 
 vim.cmd [[
-    function LightlineFilename()
+    function! LightlineFilename()
       return expand("%:t") !=# "" ? @% : "[No Name]"
     endfunction
 ]]
@@ -154,7 +154,7 @@ keymap("n", "<Leader>gw", ":Gwrite<CR>", keymap_opts)
 -- General mappings
 
 vim.cmd [[
-    function FormatFile()
+    function! FormatFile()
         write
 
         if (&filetype == "go")

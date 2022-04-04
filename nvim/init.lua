@@ -25,7 +25,7 @@ opt.tabstop = 4
 opt.textwidth = 80
 opt.timeout = false
 opt.undolevels = 1000
-opt.virtualedit=all
+opt.virtualedit = "all"
 
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'

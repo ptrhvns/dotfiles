@@ -9,6 +9,7 @@ opt.expandtab = true
 opt.foldenable = false
 opt.ignorecase = true
 opt.joinspaces = false
+opt.laststatus = 3
 opt.lazyredraw = true
 opt.list = true
 opt.listchars = "extends:❯,nbsp:~,precedes:❮,tab:▸ ,trail:⋅"
@@ -204,6 +205,8 @@ vim.cmd [[
   highlight LineNr ctermfg=166 ctermbg=Black
   highlight LineNrAbove ctermfg=239 ctermbg=Black
   highlight LineNrBelow ctermfg=239 ctermbg=Black
+
+  highlight WinSeparator guibg=None
 ]]
 
 vim.cmd [[

@@ -57,6 +57,7 @@ if packer_was_required then
       use {'junegunn/fzf', run = function() vim.fn['fzf#install()'](0) end}
       use 'junegunn/fzf.vim'
       use 'kana/vim-smartinput'
+      use 'L3MON4D3/LuaSnip'
       use 'MarcWeber/vim-addon-mw-utils'
       use 'mattn/emmet-vim'
       use 'preservim/nerdcommenter'
@@ -77,17 +78,11 @@ end
 local keymap_opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
--- bkad/CamelCaseMotion
-keymap("", ",b", "<Plug>CamelCaseMotion_b", keymap_opts)
-keymap("", ",w", "<Plug>CamelCaseMotion_w", keymap_opts)
-
 -- fatih/vim-go
 vim.g.go_fmt_autosave = 0
 vim.g.go_imports_autosave = 0
 vim.g.go_metalinter_command = "golangci-lint"
 vim.g.go_template_autocreate = 0
-keymap("n", "<Leader>ol", ":GoMetaLinter<CR>", keymap_opts)
-keymap("n", "<C-l>", ":nohlsearch<CR><C-l>", keymap_opts)
 
 -- 'itchyny/lightline.vim',
 vim.g.lightline = {
@@ -106,9 +101,26 @@ vim.cmd [[
 vim.g.GPGExecutable = "gpg"
 vim.g.GPGPreferArmor = 1
 
--- junegunn/fzf.vim
-keymap("n", "<C-p>", ":Files<CR>", keymap_opts)
-keymap("n", "<Leader>rg", ":Rg ", keymap_opts)
+-- L3MON4D3/LuaSnip
+luasnip_required, luasnip = pcall(require, "luasnip")
+if luasnip_required then
+  luasnip.config.set_config {
+    enable_autosnippets = true,
+    history = true,
+    updateevents = "TextChanged,TextChangedI",
+  }
+
+  vim.keymap.set(
+    { "i", "s" },
+    "<C-k>",
+    function()
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      end
+    end,
+    { silent = true }
+  )
+end
 
 -- mattn/emmet-vim
 vim.g.user_emmet_install_global = 0
@@ -122,11 +134,6 @@ vim.cmd [[
     let NERDSpaceDelims=1
 ]]
 
-keymap("n", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>", keymap_opts)
-keymap("n", "<Leader>i", "<Plug>NERDCommenterAltDelims<C-l>", keymap_opts)
-keymap("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>", keymap_opts)
-keymap("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>", keymap_opts)
-keymap("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>", keymap_opts)
 
 -- preservim/nerdtree
 vim.cmd [[
@@ -135,18 +142,6 @@ vim.cmd [[
     let NERDTreeQuitOnOpen=1
     let NERDTreeWinSize=50
 ]]
-
-keymap("n", "<Leader>n", ":NERDTreeToggle<CR>", keymap_opts)
-
--- tpope/vim-fugitive
-keymap("n", "<Leader>gb", ":Git blame<CR>", keymap_opts)
-keymap("n", "<Leader>gc", ":Git commit --verbose<CR>", keymap_opts)
-keymap("n", "<Leader>gd", ":Gitdiffsplit<CR>", keymap_opts)
-keymap("n", "<Leader>gp", ":Git push --verbose<CR>", keymap_opts)
-keymap("n", "<Leader>gs", ":Git<CR>", keymap_opts)
-keymap("n", "<Leader>gw", ":Gwrite<CR>", keymap_opts)
-
--- General mappings
 
 vim.cmd [[
     function! FormatFile()
@@ -167,25 +162,43 @@ vim.cmd [[
     endfunction
 ]]
 
+keymap("", ",b", "<Plug>CamelCaseMotion_b", keymap_opts)
+keymap("", ",w", "<Plug>CamelCaseMotion_w", keymap_opts)
 keymap("i", "<C-l>", "<C-o>:nohlsearch<CR>", keymap_opts)
+keymap("n", "<C-l>", ":nohlsearch<CR><C-l>", keymap_opts)
+keymap("n", "<C-p>", ":Files<CR>", keymap_opts)
 keymap("n", "<Down>", ":tabmove -1<CR><C-l>", keymap_opts)
 keymap("n", "<Leader>$", ":set list! number! relativenumber!<CR><C-l>", keymap_opts)
+keymap("n", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>", keymap_opts)
 keymap("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>", keymap_opts)
 keymap("n", "<Leader>ev", ":tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>", keymap_opts)
 keymap("n", "<Leader>f", ":call FormatFile()<CR>", keymap_opts)
+keymap("n", "<Leader>gb", ":Git blame<CR>", keymap_opts)
+keymap("n", "<Leader>gc", ":Git commit --verbose<CR>", keymap_opts)
+keymap("n", "<Leader>gd", ":Gitdiffsplit<CR>", keymap_opts)
+keymap("n", "<Leader>gp", ":Git push --verbose<CR>", keymap_opts)
+keymap("n", "<Leader>gs", ":Git<CR>", keymap_opts)
+keymap("n", "<Leader>gw", ":Gwrite<CR>", keymap_opts)
+keymap("n", "<Leader>i", "<Plug>NERDCommenterAltDelims<C-l>", keymap_opts)
+keymap("n", "<Leader>n", ":NERDTreeToggle<CR>", keymap_opts)
+keymap("n", "<Leader>ol", ":GoMetaLinter<CR>", keymap_opts)
 keymap("n", "<Leader>p", ":set invpaste paste?<CR>", keymap_opts)
+keymap("n", "<Leader>rg", ":Rg ", keymap_opts)
 keymap("n", "<Leader>so", ":source $MYVIMRC<CR>", keymap_opts)
 keymap("n", "<Leader>t", ":! git ls-files | ctags<CR>", keymap_opts)
 keymap("n", "<Leader>u", ":setlocal cursorcolumn! cursorline!<CR><C-l>", keymap_opts)
 keymap("n", "<Leader>vn", "Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>", keymap_opts)
 keymap("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>", keymap_opts)
 keymap("n", "<Leader>w", ":set invwrap wrap?<CR>", keymap_opts)
+keymap("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>", keymap_opts)
 keymap("n", "<Left>", "gT", keymap_opts)
 keymap("n", "<Right>", "gt", keymap_opts)
 keymap("n", "<Up>", ":tabmove +1<CR><C-l>", keymap_opts)
 keymap("n", "K", "<Nop>", keymap_opts)
+keymap("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>", keymap_opts)
 keymap("v", "<Leader>sd", ":sort! n<CR>", keymap_opts)
 keymap("v", "<Leader>ss", ":sort iu<CR>", keymap_opts)
+keymap("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>", keymap_opts)
 
 vim.g.solarized_termcolors = 256
 vim.g.solarized_termtrans = 1

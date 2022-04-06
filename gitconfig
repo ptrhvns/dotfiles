@@ -17,6 +17,7 @@
 [branch]
 	autosetupmerge = true
 [alias]
+	ap = git add -p
 	cav = commit -av
 	cv = commit -v
 	l = log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '

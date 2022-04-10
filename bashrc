@@ -49,6 +49,7 @@ export PAGER=$(command -v less || command -v more)
 export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
 
 export PROMPT_COMMAND='history -a'
+export REDWOOD_DISABLE_TELEMETRY=1
 export SHELL=$(command -v bash)
 export UNAME=$(uname)
 export VISUAL=$(command -v || command -v vim || command -v vi)
@@ -159,8 +160,8 @@ build_prompt() {
 
 PROMPT_COMMAND=build_prompt
 
-alias g="grep -E"
-alias gv="grep -Ev"
+alias g="grep -iE"
+alias gv="grep -iEv"
 
 if command -v exa 1>/dev/null 2>&1; then
     alias l="exa"

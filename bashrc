@@ -23,6 +23,8 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
+unset MAILCHECK
+
 export EDITOR=$(command -v vim || command -v vi)
 export GPG_TTY=$(tty)
 export HISTCONTROL="erasedups:ignoreboth"
@@ -36,26 +38,15 @@ export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
 export LS_COLORS="di=1;37;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
 export LSCOLORS="Hxfxcxdxbxegedabagacad"
 export MANPAGER=$(command -v less || command -v more)
-
-if command -v batcat 1>/dev/null 2>&1; then
-    export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-elif command -v bat 1>/dev/null 2>&1; then
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-fi
-
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 export PAGER=$(command -v less || command -v more)
-
 export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
-
 export PROMPT_COMMAND='history -a'
 export REDWOOD_DISABLE_TELEMETRY=1
 export SHELL=$(command -v bash)
 export UNAME=$(uname)
-export VISUAL=$(command -v || command -v vim || command -v vi)
-unset MAILCHECK
-
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+export VISUAL=$(command -v || command -v vim || command -v vi)
 
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
     export LESS="-qiX"
@@ -120,7 +111,6 @@ fi
 
 if [ -f "$HOME/.git-prompt.sh" ]; then
     source $HOME/.git-prompt.sh
-
     GIT_PS1=1
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
@@ -162,30 +152,10 @@ PROMPT_COMMAND=build_prompt
 
 alias g="grep -iE"
 alias gv="grep -iEv"
-
-if command -v exa 1>/dev/null 2>&1; then
-    alias l="exa"
-    alias la="exa -la"
-    alias ll="exa -l"
-    alias lt="exa -T"
-else
-    alias l="ls"
-    alias ll="ls -l"
-    alias la="ls -la"
-
-    if command -v tree 1>/dev/null 2>&1; then
-        alias lt="tree"
-    fi
-fi
-
-if command -v batcat 1>/dev/null 2>&1; then
-    alias m="batcat -p"
-elif command -v bat 1>/dev/null 2>&1; then
-    alias m="bat -p"
-else
-    alias m="${PAGER}"
-fi
-
+alias l="ls"
+alias la="ls -la"
+alias ll="ls -l"
+alias m="${PAGER}"
 alias ta="tmux attach -t"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"

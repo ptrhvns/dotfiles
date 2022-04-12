@@ -103,8 +103,6 @@ endfunction
 
 nmap <Leader>f :call FormatFile()<CR>
 
-nmap <Leader>vn Ovim:ft=notes<Esc>:set ft=notes<CR><C-l>
-
 nmap <Leader>dt O{# Django template #}<Esc>:set ft=htmldjango<CR>
 
 if empty(glob("~/.vim/autoload/plug.vim"))

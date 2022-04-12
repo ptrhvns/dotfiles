@@ -109,14 +109,6 @@ else
     YELLOW="$(color16 '1;33')"
 fi
 
-if [ -f "$HOME/.git-prompt.sh" ]; then
-    source $HOME/.git-prompt.sh
-    GIT_PS1=1
-    GIT_PS1_SHOWDIRTYSTATE=1
-    GIT_PS1_SHOWSTASHSTATE=1
-    GIT_PS1_SHOWUNTRACKEDFILES=1
-fi
-
 build_prompt() {
     local exit_code=$?
 
@@ -134,14 +126,6 @@ build_prompt() {
 
     if [ $num_jobs -gt 0 ]; then
         PS1+=" ${ORANGE}[${num_jobs}]"
-    fi
-
-    if [ $GIT_PS1 -gt 0 ]; then
-        PS1+="${YELLOW}$(__git_ps1 ' %s')"
-    fi
-
-    if [ $exit_code -gt 0 ]; then
-        PS1+=" ${RED}(${exit_code})"
     fi
 
     PS1+=" ${GREY}\$"

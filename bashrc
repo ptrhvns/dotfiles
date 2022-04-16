@@ -136,9 +136,17 @@ PROMPT_COMMAND=build_prompt
 
 alias g="grep -iE"
 alias gv="grep -iEv"
-alias l="ls"
-alias la="ls -la"
-alias ll="ls -l"
+
+if command -v exa 1>/dev/null 2>&1; then
+    alias l="exa"
+    alias la="exa -la"
+    alias ll="exa -l"
+else
+    alias l="ls"
+    alias la="ls -la"
+    alias ll="ls -l"
+fi
+
 alias m="${PAGER}"
 alias ta="tmux attach -t"
 alias td="tmux-new-session-pwd"

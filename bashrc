@@ -37,9 +37,17 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
 export LS_COLORS="di=1;37;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
 export LSCOLORS="Hxfxcxdxbxegedabagacad"
-export MANPAGER=$(command -v less || command -v more)
+
+if command -v batcat 1>/dev/null 2>&1; then
+    export MANPAGER="sh -c 'col -bx | $(command -v batcat) -l man -p'"
+elif command -v bat 1>/dev/null 2>&1; then
+    export MANPAGER="sh -c 'col -bx | $(command -v bat) -l man -p'"
+else
+    export MANPAGER=$(command -v less || command -v more)
+fi
+
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
-export PAGER=$(command -v less || command -v more)
+export PAGER="$(command -v less || command -v more)"
 export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
 export PROMPT_COMMAND='history -a'
 export REDWOOD_DISABLE_TELEMETRY=1
@@ -147,7 +155,14 @@ else
     alias ll="ls -l"
 fi
 
-alias m="${PAGER}"
+if command -v batcat 1>/dev/null 2>&1; then
+    alias m="batcat -p"
+elif command -v bat 1>/dev/null 2>&1; then
+    alias m="bat -p"
+else
+    alias m="${PAGER}"
+fi
+
 alias ta="tmux attach -t"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"

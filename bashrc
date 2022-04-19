@@ -186,13 +186,6 @@ if command -v goenv 1>/dev/null 2>&1; then
     eval "$(goenv init -)"
 fi
 
-export LUAENV_ROOT="${HOME}/.luaenv"
-export PATH=${PATH}:${LUAENV_ROOT}/bin
-
-if command -v luaenv 1>/dev/null 2>&1; then
-    eval "$(luaenv init -)"
-fi
-
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi

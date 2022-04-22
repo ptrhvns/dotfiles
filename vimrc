@@ -85,8 +85,6 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-nmap <Leader>t :! clear && git ls-files \| ctags<CR>
-
 function FormatFile()
     write
 
@@ -111,6 +109,8 @@ if empty(glob("~/.vim/autoload/plug.vim"))
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 endif
+
+nmap <Leader>j :! clear && git ls-files \| ctags<CR>
 
 if filereadable(expand("~/.vim/autoload/plug.vim"))
     call plug#begin("~/.vim/plugged")
@@ -197,6 +197,7 @@ augroup ag_all
     autocmd FileType gomod setlocal tabstop=4
     autocmd FileType html setlocal softtabstop=2
     autocmd FileType html setlocal tabstop=2
+    autocmd FileType htmldjango set commentstring={#\ %s\ #}
     autocmd FileType htmldjango setlocal softtabstop=2
     autocmd FileType htmldjango setlocal tabstop=2
     autocmd FileType javascript setlocal softtabstop=2

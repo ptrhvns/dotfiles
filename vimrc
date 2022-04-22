@@ -78,9 +78,8 @@ nmap <Up> :tabmove +1<CR><C-l>
 
 nmap K <Nop>
 
-nmap <Leader>ev :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
-
-nmap <Leader>so :source $MYVIMRC<CR>
+nmap <Leader>ve :tabedit $HOME/src/personal/remote/dotfiles/vimrc<CR>
+nmap <Leader>vs :source $MYVIMRC<CR>
 
 nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 

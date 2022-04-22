@@ -266,11 +266,9 @@ map <silent> ,b <Plug>CamelCaseMotion_b
 map <silent> ,w <Plug>CamelCaseMotion_w
 
 if executable("fzf")
-    " fzf
     nmap <C-p> :Files<CR>
     nmap <Leader>rg :Rg 
 else
-    " ctrlp
     let g:ctrlp_arg_map = 1
     let g:ctrlp_custom_ignore = {
         \ "dir": "\v(\.git|node_modules|dist|__pycache__|egg-info|static|target|cache)",

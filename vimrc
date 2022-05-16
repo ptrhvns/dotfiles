@@ -93,7 +93,12 @@ function FormatFile()
         GoImports
         write
     else
-        execute "!clear && run-formatters " . @%
+        if has("nvim")
+            execute "run-formatters " . @%
+        else
+            execute "!clear && run-formatters " . @%
+        endif
+
         checktime
     endif
 endfunction
@@ -110,7 +115,11 @@ if empty(glob("~/.vim/autoload/plug.vim"))
     endif
 endif
 
-nmap <Leader>j :! clear && git ls-files \| ctags<CR>
+if has("nvim")
+    nmap <Leader>j :! git ls-files \| ctags<CR>
+else
+    nmap <Leader>j :! clear && git ls-files \| ctags<CR>
+endif
 
 if filereadable(expand("~/.vim/autoload/plug.vim"))
     call plug#begin("~/.vim/plugged")

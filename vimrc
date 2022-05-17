@@ -94,7 +94,7 @@ function FormatFile()
         write
     else
         if has("nvim")
-            execute "run-formatters " . @%
+            execute "!run-formatters " . @%
         else
             execute "!clear && run-formatters " . @%
         endif

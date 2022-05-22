@@ -85,33 +85,37 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-function FormatFile()
-    write
-
-    if (&filetype == "go")
-        GoFmt
-        GoImports
+if !exists("g:vscode")
+    function FormatFile()
         write
-    else
-        if has("nvim")
-            execute "!run-formatters " . @%
+
+        if (&filetype == "go")
+            GoFmt
+            GoImports
+            write
         else
-            execute "!clear && run-formatters " . @%
+            if has("nvim")
+                execute "!run-formatters " . @%
+            else
+                execute "!clear && run-formatters " . @%
+            endif
+
+            checktime
         endif
+    endfunction
 
-        checktime
-    endif
-endfunction
-
-nmap <Leader>f :call FormatFile()<CR>
+    nmap <Leader>f :call FormatFile()<CR>
+endif
 
 nmap <Leader>dt O{# Django template #}<Esc>:set ft=htmldjango<CR>
 
-if empty(glob("~/.vim/autoload/plug.vim"))
-    if executable("curl")
-        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+if !exists("g:vscode")
+    if empty(glob("~/.vim/autoload/plug.vim"))
+        if executable("curl")
+            silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+              \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+            autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+        endif
     endif
 endif
 
@@ -127,28 +131,31 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'altercation/vim-colors-solarized'
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
-    Plug 'fatih/vim-go'
     Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
-    Plug 'itchyny/lightline.vim'
     Plug 'jamessan/vim-gnupg'
     Plug 'kana/vim-smartinput'
+    Plug 'ludovicchabant/vim-gutentags'
     Plug 'MarcWeber/vim-addon-mw-utils'
-    Plug 'mattn/emmet-vim'
     Plug 'preservim/nerdcommenter'
-    Plug 'preservim/nerdtree'
-    Plug 'scrooloose/nerdcommenter'
     Plug 'sheerun/vim-polyglot'
     Plug 'tomtom/tlib_vim'
     Plug 'tpope/vim-eunuch'
-    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
 
-    if executable("fzf")
-        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        Plug 'junegunn/fzf.vim'
-    else
-        Plug 'kien/ctrlp.vim'
+    if !exists("g:vscode")
+        Plug 'fatih/vim-go'
+        Plug 'itchyny/lightline.vim'
+        Plug 'mattn/emmet-vim'
+        Plug 'preservim/nerdtree'
+        Plug 'tpope/vim-fugitive'
+
+        if executable("fzf")
+            Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+            Plug 'junegunn/fzf.vim'
+        else
+            Plug 'kien/ctrlp.vim'
+        endif
     endif
 
     call plug#end()
@@ -251,7 +258,10 @@ let NERDChristmasTree=1
 let NERDTreeDirArrows= has("multi_byte") ? 1 : 0
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=50
-nmap <Leader>n :NERDTreeToggle<CR>
+
+if !exists("g:vscode")
+    nmap <Leader>n :NERDTreeToggle<CR>
+endif
 
 " gnupg
 let g:GPGExecutable="gpg"

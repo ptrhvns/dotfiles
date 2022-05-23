@@ -85,46 +85,40 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
-if !exists("g:vscode")
-    function FormatFile()
+function FormatFile()
+    write
+
+    if (&filetype == "go")
+        GoFmt
+        GoImports
         write
-
-        if (&filetype == "go")
-            GoFmt
-            GoImports
-            write
+    else
+        if has("nvim")
+            execute "!run-formatters " . @%
         else
-            if has("nvim")
-                execute "!run-formatters " . @%
-            else
-                execute "!clear && run-formatters " . @%
-            endif
-
-            checktime
+            execute "!clear && run-formatters " . @%
         endif
-    endfunction
 
-    nmap <Leader>f :call FormatFile()<CR>
-endif
+        checktime
+    endif
+endfunction
+
+nmap <Leader>f :call FormatFile()<CR>
 
 nmap <Leader>dt O{# Django template #}<Esc>:set ft=htmldjango<CR>
 
-if !exists("g:vscode")
-    if empty(glob("~/.vim/autoload/plug.vim"))
-        if executable("curl")
-            silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-              \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-            autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        endif
+if empty(glob("~/.vim/autoload/plug.vim"))
+    if executable("curl")
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 endif
 
-if !exists("g:vscode")
-    if has("nvim")
-        nmap <Leader>j :! git ls-files \| ctags<CR>
-    else
-        nmap <Leader>j :! clear && git ls-files \| ctags<CR>
-    endif
+if has("nvim")
+    nmap <Leader>j :! git ls-files \| ctags<CR>
+else
+    nmap <Leader>j :! clear && git ls-files \| ctags<CR>
 endif
 
 if filereadable(expand("~/.vim/autoload/plug.vim"))
@@ -133,31 +127,28 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'altercation/vim-colors-solarized'
     Plug 'bkad/CamelCaseMotion'
     Plug 'cakebaker/scss-syntax.vim'
+    Plug 'fatih/vim-go'
     Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
+    Plug 'itchyny/lightline.vim'
+    Plug 'jamessan/vim-gnupg'
     Plug 'kana/vim-smartinput'
+    Plug 'ludovicchabant/vim-gutentags'
     Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'mattn/emmet-vim'
     Plug 'preservim/nerdcommenter'
+    Plug 'preservim/nerdtree'
     Plug 'sheerun/vim-polyglot'
     Plug 'tomtom/tlib_vim'
+    Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-surround'
 
-    if !exists("g:vscode")
-        Plug 'fatih/vim-go'
-        Plug 'itchyny/lightline.vim'
-        Plug 'jamessan/vim-gnupg'
-        Plug 'ludovicchabant/vim-gutentags'
-        Plug 'mattn/emmet-vim'
-        Plug 'preservim/nerdtree'
-        Plug 'tpope/vim-eunuch'
-        Plug 'tpope/vim-fugitive'
-
-        if executable("fzf")
-            Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-            Plug 'junegunn/fzf.vim'
-        else
-            Plug 'kien/ctrlp.vim'
-        endif
+    if executable("fzf")
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
+    else
+        Plug 'kien/ctrlp.vim'
     endif
 
     call plug#end()
@@ -261,9 +252,7 @@ let NERDTreeDirArrows= has("multi_byte") ? 1 : 0
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=50
 
-if !exists("g:vscode")
-    nmap <Leader>n :NERDTreeToggle<CR>
-endif
+nmap <Leader>n :NERDTreeToggle<CR>
 
 " gnupg
 let g:GPGExecutable="gpg"
@@ -299,15 +288,13 @@ else
     let g:ctrlp_working_path_mode = 0
 endif
 
-if !exists("g:vscode")
-    " fugitive
-    nmap <Leader>gb :Git blame<CR>
-    nmap <Leader>gc :Git commit --verbose<CR>
-    nmap <Leader>gd :Gitdiffsplit<CR>
-    nmap <Leader>gp :Git push --verbose<CR>
-    nmap <Leader>gs :Git<CR>
-    nmap <Leader>gw :Gwrite<CR>
-endif
+" fugitive
+nmap <Leader>gb :Git blame<CR>
+nmap <Leader>gc :Git commit --verbose<CR>
+nmap <Leader>gd :Gitdiffsplit<CR>
+nmap <Leader>gp :Git push --verbose<CR>
+nmap <Leader>gs :Git<CR>
+nmap <Leader>gw :Gwrite<CR>
 
 " emmet-vim
 let g:user_emmet_install_global = 0
@@ -316,9 +303,7 @@ let g:user_emmet_install_global = 0
 let g:snipMate = { 'snippet_version' : 1 }
 let g:snippets_dir = $HOME . "/.vim/snippets"
 
-if !exists("g:vscode")
-    nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
-endif
+nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
 
 " vim-go
 let g:go_fmt_autosave = 0
@@ -326,6 +311,4 @@ let g:go_imports_autosave = 0
 let g:go_metalinter_command = "golangci-lint"
 let g:go_template_autocreate = 0
 
-if !exists("g:vscode")
-    nmap <Leader>ol :GoMetaLinter<CR>
-endif
+nmap <Leader>ol :GoMetaLinter<CR>

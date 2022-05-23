@@ -119,10 +119,12 @@ if !exists("g:vscode")
     endif
 endif
 
-if has("nvim")
-    nmap <Leader>j :! git ls-files \| ctags<CR>
-else
-    nmap <Leader>j :! clear && git ls-files \| ctags<CR>
+if !exists("g:vscode")
+    if has("nvim")
+        nmap <Leader>j :! git ls-files \| ctags<CR>
+    else
+        nmap <Leader>j :! clear && git ls-files \| ctags<CR>
+    endif
 endif
 
 if filereadable(expand("~/.vim/autoload/plug.vim"))
@@ -133,21 +135,21 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'cakebaker/scss-syntax.vim'
     Plug 'garbas/vim-snipmate'
     Plug 'henrik/vim-indexed-search'
-    Plug 'jamessan/vim-gnupg'
     Plug 'kana/vim-smartinput'
-    Plug 'ludovicchabant/vim-gutentags'
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'preservim/nerdcommenter'
     Plug 'sheerun/vim-polyglot'
     Plug 'tomtom/tlib_vim'
-    Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-surround'
 
     if !exists("g:vscode")
         Plug 'fatih/vim-go'
         Plug 'itchyny/lightline.vim'
+        Plug 'jamessan/vim-gnupg'
+        Plug 'ludovicchabant/vim-gutentags'
         Plug 'mattn/emmet-vim'
         Plug 'preservim/nerdtree'
+        Plug 'tpope/vim-eunuch'
         Plug 'tpope/vim-fugitive'
 
         if executable("fzf")
@@ -297,13 +299,15 @@ else
     let g:ctrlp_working_path_mode = 0
 endif
 
-" fugitive
-nmap <Leader>gb :Git blame<CR>
-nmap <Leader>gc :Git commit --verbose<CR>
-nmap <Leader>gd :Gitdiffsplit<CR>
-nmap <Leader>gp :Git push --verbose<CR>
-nmap <Leader>gs :Git<CR>
-nmap <Leader>gw :Gwrite<CR>
+if !exists("g:vscode")
+    " fugitive
+    nmap <Leader>gb :Git blame<CR>
+    nmap <Leader>gc :Git commit --verbose<CR>
+    nmap <Leader>gd :Gitdiffsplit<CR>
+    nmap <Leader>gp :Git push --verbose<CR>
+    nmap <Leader>gs :Git<CR>
+    nmap <Leader>gw :Gwrite<CR>
+endif
 
 " emmet-vim
 let g:user_emmet_install_global = 0
@@ -311,11 +315,17 @@ let g:user_emmet_install_global = 0
 " vim-snipmate
 let g:snipMate = { 'snippet_version' : 1 }
 let g:snippets_dir = $HOME . "/.vim/snippets"
-nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
+
+if !exists("g:vscode")
+    nmap <Leader>es :tabedit $HOME/src/personal/remote/dotfiles/vim/snippets/
+endif
 
 " vim-go
 let g:go_fmt_autosave = 0
 let g:go_imports_autosave = 0
 let g:go_metalinter_command = "golangci-lint"
 let g:go_template_autocreate = 0
-nmap <Leader>ol :GoMetaLinter<CR>
+
+if !exists("g:vscode")
+    nmap <Leader>ol :GoMetaLinter<CR>
+endif

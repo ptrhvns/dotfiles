@@ -18,6 +18,22 @@ snippet ded
 snippet dem
 	def ${1:name}(self${2}):
 	    ${3:pass}
+snippet doc
+	```
+	Document behavior, important attributes, and subclass behavior. Omit type
+	annotation information if used.
+	```
+snippet dof
+	```
+	Document every argument, returned value, raised exception, side effects, and
+	other behaviors. Omit type annotation information if used.
+	```
+snippet dom
+	```
+	Introduce the contents of the module and any important classes, functions or
+	variables the user should know about. Omit type annotation information if
+	used.
+	```
 snippet eli
 	elif ${1:condition}:
 	    ${2:pass}
@@ -48,6 +64,11 @@ snippet main
 	
 	if __name__ == "__main__":
 	    main(${3:$1})
+snippet pts
+	# fmt: off
+	import pytest # isort: skip # noqa
+	# fmt: on
+	@pytest.mark.skip(reason="TODO") # noqa
 snippet try
 	try:
 	    pass

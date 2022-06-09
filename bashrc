@@ -46,7 +46,6 @@ export REDWOOD_DISABLE_TELEMETRY=1
 export SHELL=$(command -v bash)
 export UNAME=$(uname)
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-export VISUAL=$(command -v || command -v vim || command -v vi)
 
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
     export LESS="-qiX"
@@ -136,25 +135,10 @@ PROMPT_COMMAND=build_prompt
 
 alias g="grep -iE"
 alias gv="grep -iEv"
-
-if command -v exa 1>/dev/null 2>&1; then
-    alias l="exa"
-    alias la="exa -la"
-    alias ll="exa -l"
-else
-    alias l="ls"
-    alias la="ls -la"
-    alias ll="ls -l"
-fi
-
-if command -v batcat 1>/dev/null 2>&1; then
-    alias m="batcat -p"
-elif command -v bat 1>/dev/null 2>&1; then
-    alias m="bat -p"
-else
-    alias m="${PAGER}"
-fi
-
+alias l="ls"
+alias la="ls -la"
+alias ll="ls -l"
+alias m="${PAGER}"
 alias ta="tmux attach -t"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"

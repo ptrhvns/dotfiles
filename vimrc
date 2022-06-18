@@ -140,7 +140,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
         Plug 'garbas/vim-snipmate'
         Plug 'itchyny/lightline.vim'
         Plug 'jamessan/vim-gnupg'
-        Plug 'ludovicchabant/vim-gutentags'
         Plug 'mattn/emmet-vim'
         Plug 'preservim/nerdtree'
         Plug 'tpope/vim-eunuch'

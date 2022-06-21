@@ -140,6 +140,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
         Plug 'garbas/vim-snipmate'
         Plug 'itchyny/lightline.vim'
         Plug 'jamessan/vim-gnupg'
+        Plug 'ludovicchabant/vim-gutentags'
         Plug 'mattn/emmet-vim'
         Plug 'preservim/nerdtree'
         Plug 'tpope/vim-eunuch'
@@ -323,4 +324,13 @@ let g:go_template_autocreate = 0
 
 if !exists("g:vscode")
     nmap <Leader>ol :GoMetaLinter<CR>
+endif
+
+" vim-gutentags
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_enabled = 0
+
+if !exists("g:vscode")
+    nmap <Leader>te :GutentagsToggleEnabled<CR>
+    nmap <Leader>tu :GutentagsUpdate<CR>
 endif

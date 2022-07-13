@@ -55,7 +55,7 @@ end
 
 map("n", "K", "<Nop>")
 
-map("n", "<Leader>ve", ":tabedit $MYVIMRC")
+map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
 map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
 
 map("n", "<Leader>$", ":set list! number! relativenumber!<CR><C-l>")
@@ -210,7 +210,7 @@ vim.g.GPGPreferArmor = 1
 
 -- lightline
 vim.cmd [[
-    function LightlineFilename()
+    function! LightlineFilename()
       return expand("%:t") !=# "" ? @% : "[No Name]"
     endfunction
 

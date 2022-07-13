@@ -1,4 +1,5 @@
 *.swp
+nvim/plugin/packer_compiled.lua
 tags
 vim/autoload/plug.vim.old
 vim/plugged

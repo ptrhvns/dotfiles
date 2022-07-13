@@ -72,15 +72,16 @@ snippet rn
 	className="${1:class}"
 snippet rt
 	import ${1:Component} from "./${2:$1}";
-	import ReactDOM from "react-dom";
+	import { createRoot } from "react-dom/client";
 	
 	function buildComponent(props = {}) {
 	  return <${3:$1} {...props} />;
 	}
 	
 	it("renders successfully", () => {
-	  const div = document.createElement("div");
-	  ReactDOM.render(buildComponent(), div);
+	  const container = document.createElement("div");
+	  const root = createRoot(container);
+	  root.render(buildComponent());
 	});
 snippet scd
 	screen.debug(); // FIXME

@@ -99,7 +99,9 @@ require("packer").startup(function(use)
     if not vim.g.vscode then
         use "itchyny/lightline.vim"
         use "jamessan/vim-gnupg"
+        use "L3MON4D3/LuaSnip"
         use "mattn/emmet-vim"
+        use "neovim/nvim-lspconfig"
         use "preservim/nerdtree"
         use "tpope/vim-eunuch"
         use "tpope/vim-fugitive"
@@ -174,15 +176,21 @@ vim.cmd [[
     augroup end
 ]]
 
+---------------------------------------------------------------
 -- packer.nvim
+
 map("n", "<Leader>li", ":PackerInstall<CR>")
 map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
+---------------------------------------------------------------
 -- telescope.nvim
+
 map("n", "<Leader>ff", "<Cmd>lua require('telescope.builtin').find_files()<CR>")
 map("n", "<Leader>fg", "<Cmd>lua require('telescope.builtin').live_grep()<CR>")
 
--- " NERD_commenter
+---------------------------------------------------------------
+-- NERD_commenter
+
 vim.g.NERD_scss_alt_style = 1
 vim.g.NERDCommentWholeLinesInVMode = 2
 vim.g.NERDCreateDefaultMappings = 0
@@ -195,7 +203,9 @@ map("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
 map("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
 map("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
 
+---------------------------------------------------------------
 -- NERD_tree
+
 vim.g.NERDChristmasTree = 1
 vim.g.NERDTreeQuitOnOpen = 1
 vim.g.NERDTreeWinSize = 50
@@ -204,11 +214,29 @@ if not vim.g.vscode then
     map("n", "<Leader>n", ":NERDTreeToggle<CR>")
 end
 
+---------------------------------------------------------------
 -- gnupg
+
 vim.g.GPGExecutable = "gpg"
 vim.g.GPGPreferArmor = 1
 
+---------------------------------------------------------------
+-- LuaSnip
+
+require("luasnip.loaders.from_snipmate").lazy_load()
+
+vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'"
+vim.cmd "inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>" -- jump backwards
+vim.cmd "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>"
+vim.cmd "snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>"
+
+-- For changing choices in choiceNodes (not strictly necessary for a basic setup).
+vim.cmd "imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
+vim.cmd "smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
+
+---------------------------------------------------------------
 -- lightline
+
 vim.cmd [[
     function! LightlineFilename()
       return expand("%:t") !=# "" ? @% : "[No Name]"
@@ -223,11 +251,15 @@ vim.cmd [[
     \ }
 ]]
 
+---------------------------------------------------------------
 -- CamelCaseMotion
+
 map("", ",b", "<Plug>CamelCaseMotion_b", { silent = true })
 map("", ",w", "<Plug>CamelCaseMotion_w", { silent = true })
 
+---------------------------------------------------------------
 -- fugitive
+
 if not vim.g.vscode then
     map("n", "<Leader>gb", ":Git blame<CR>")
     map("n", "<Leader>gc", ":Git commit --verbose<CR>")
@@ -237,5 +269,7 @@ if not vim.g.vscode then
     map("n", "<Leader>gw", ":Gwrite<CR>")
 end
 
+---------------------------------------------------------------
 -- emmet-vim
+
 vim.g.user_emmet_install_global = 0

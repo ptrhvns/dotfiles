@@ -25,7 +25,7 @@ shopt -u mailwarn
 
 unset MAILCHECK
 
-export EDITOR=$(command -v vim || command -v vi)
+export EDITOR=$(command -v nvim || command -v vim || command -v vi)
 export GPG_TTY=$(tty)
 export HISTCONTROL="erasedups:ignoreboth"
 export HISTFILESIZE=5000

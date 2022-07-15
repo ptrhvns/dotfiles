@@ -327,13 +327,13 @@ function filter_array_in_place(arr, fn)
 end
 
 function filter_diagnostics(diagnostic)
-    if diagnostic.source ~= "Pyright" then
+    if string.match(diagnostic.source, "Pyright") then
         -- Ignore diagnostic hints about unused variables. These should normally
         -- make the variable "greyed" out, but the Neovim client shows them as
         -- virtual text just like error diagnostics. Also, there are legitimate
         -- reasons why a variable might not be used (e.g. a view function in
         -- Django must accept a request object that is never used.)
-        if string.match(diagnostic.message, 'is not accessed') then
+        if string.match(diagnostic.message, "is not accessed") then
             return false
         end
     end

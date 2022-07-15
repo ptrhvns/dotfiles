@@ -1,3 +1,2 @@
-*.swp
-.gnupg/random_seed
-vim/.netrwhist
+pyrightconfig.json
+tags

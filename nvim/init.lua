@@ -281,31 +281,6 @@ map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
 map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
 function on_attach(client, bufnr)
-    local cmp = require('cmp')
-
-    cmp.setup({
-        snippet = {
-            expand = function(args)
-                require('luasnip').lsp_expand(args.body)
-            end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        }),
-        sources = cmp.config.sources(
-            {
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' },
-            },
-            {
-                { name = 'buffer' },
-            }
-        )
-    })
 
     local on_attach_opts = { silent=true, buffer=bufnr }
 
@@ -344,12 +319,14 @@ end
 
 function filter_diagnostics(diagnostic)
     if diagnostic.source ~= "Pyright" then
-        return true
-    end
-
-    -- Ignore diagnostic hints about unused variables.
-    if string.match(diagnostic.message, 'is not accessed') then
-        return false
+        -- Ignore diagnostic hints about unused variables. These should normally
+        -- make the variable "greyed" out, but the Neovim client shows them as
+        -- virtual text just like error diagnostics. Also, there are legitimate
+        -- reasons why a variable might not be used (e.g. a view function in
+        -- Django must accept a request object that is never used.)
+        if string.match(diagnostic.message, 'is not accessed') then
+            return false
+        end
     end
 
     return true
@@ -380,3 +357,34 @@ lspconfig.tsserver.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
+
+-- nvim-cmp -------------------------------------------------------------
+
+local cmp = require('cmp')
+
+local cmp_setup_config = {
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources(
+        {
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+        },
+        {
+            { name = 'buffer' },
+        }
+    )
+}
+
+cmp.setup.filetype("javascript", cmp_setup_config)
+cmp.setup.filetype("python", cmp_setup_config)

@@ -82,6 +82,11 @@ end
 
 map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
 
+local diagnostic_opts = { silent=true }
+map("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)
+map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
+map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
+
 require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
 
@@ -135,7 +140,7 @@ vim.cmd "highlight LineNrBelow ctermfg=239 ctermbg=Black"
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
 
--- TODO convert this to Lua.
+-- TODO convert automatic commands to Lua.
 vim.cmd [[
     augroup ag_all
         autocmd!
@@ -189,10 +194,13 @@ map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
 -- telescope.nvim --------------------------------------------------------
 
-map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
-map("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>")
-map("n", "<Leader>td", "<Cmd>Telescope diagnostics<CR>", { silent = true })
-map("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>")
+if not vim.g.vscode then
+    -- General settings are here. LSP-specific are with nvim-lspconfig.
+    map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
+    map("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>")
+    map("n", "<Leader>td", "<Cmd>Telescope diagnostics<CR>")
+    map("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>")
+end
 
 -- NERD_commenter --------------------------------------------------------
 
@@ -202,10 +210,12 @@ vim.g.NERDCreateDefaultMappings = 0
 vim.g.NERDDefaultAlign = "left"
 vim.g.NERDSpaceDelims = 1
 
-map("n", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
-map("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
-map("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
-map("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
+if not vim.g.vscode then
+    map("n", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
+    map("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
+    map("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
+    map("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
+end
 
 -- NERD_tree -------------------------------------------------------------
 
@@ -226,30 +236,32 @@ vim.g.GPGPreferArmor = 1
 
 require("luasnip.loaders.from_snipmate").lazy_load()
 
-vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'"
-vim.cmd "inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>" -- jump backwards
-vim.cmd "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>"
-vim.cmd "snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>"
-
--- For changing choices in choiceNodes (not strictly necessary for a basic setup).
-vim.cmd "imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
-vim.cmd "smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
+if not vim.g.vscode then
+    vim.cmd "imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
+    vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'"
+    vim.cmd "inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>"
+    vim.cmd "smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
+    vim.cmd "snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>"
+    vim.cmd "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>"
+end
 
 -- lightline -------------------------------------------------------------
 
-vim.cmd [[
-    function! LightlineFilename()
-      return expand("%:t") !=# "" ? @% : "[No Name]"
-    endfunction
+if not vim.g.vscode then
+    vim.cmd [[
+        function! LightlineFilename()
+          return expand("%:t") !=# "" ? @% : "[No Name]"
+        endfunction
 
-    let g:lightline = {
-        \ "colorscheme": "solarized",
-        \ "component_function": {
-        \   "filename": "LightlineFilename",
-        \ },
-        \ "enable": { "tabline": 0 },
-    \ }
-]]
+        let g:lightline = {
+            \ "colorscheme": "solarized",
+            \ "component_function": {
+            \   "filename": "LightlineFilename",
+            \ },
+            \ "enable": { "tabline": 0 },
+        \ }
+    ]]
+end
 
 -- CamelCaseMotion -------------------------------------------------------
 
@@ -271,18 +283,14 @@ vim.g.user_emmet_install_global = 0
 
 -- nvim-lsp-installer ----------------------------------------------------
 
--- This setup must come before any lspconfig setup.
-require("nvim-lsp-installer").setup {}
+if not vim.g.vscode then
+    -- This setup must come before any lspconfig setup.
+    require("nvim-lsp-installer").setup {}
+end
 
 -- nvim-lspconfig --------------------------------------------------------
 
-local diagnostic_opts = { silent=true }
-map("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)
-map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
-map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
-
 function on_attach(client, bufnr)
-
     local on_attach_opts = { silent=true, buffer=bufnr }
 
     map("n", "<Leader>tc", "<Cmd>Telescope lsp_incoming_calls<CR>", on_attach_opts)
@@ -338,54 +346,58 @@ function custom_on_publish_diagnostics(a, params, client_id, c, config)
     vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    custom_on_publish_diagnostics,
-    {}
-)
+if not vim.g.vscode then
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+        custom_on_publish_diagnostics,
+        {}
+    )
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+    )
 
-local lspconfig = require("lspconfig")
+    local lspconfig = require("lspconfig")
 
-lspconfig.pyright.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+    lspconfig.pyright.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+    }
 
-lspconfig.tsserver.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+    lspconfig.tsserver.setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+    }
+end
 
 -- nvim-cmp -------------------------------------------------------------
 
-local cmp = require('cmp')
+if not vim.g.vscode then
+    local cmp = require('cmp')
 
-local cmp_setup_config = {
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    }),
-    sources = cmp.config.sources(
-        {
-            { name = 'nvim_lsp' },
-            { name = 'luasnip' },
+    local cmp_setup_config = {
+        snippet = {
+            expand = function(args)
+                require('luasnip').lsp_expand(args.body)
+            end,
         },
-        {
-            { name = 'buffer' },
-        }
-    )
-}
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        }),
+        sources = cmp.config.sources(
+            {
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' },
+            },
+            {
+                { name = 'buffer' },
+            }
+        )
+    }
 
-cmp.setup.filetype("javascript", cmp_setup_config)
-cmp.setup.filetype("python", cmp_setup_config)
+    cmp.setup.filetype("javascript", cmp_setup_config)
+    cmp.setup.filetype("python", cmp_setup_config)
+end

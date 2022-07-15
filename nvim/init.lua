@@ -135,6 +135,7 @@ vim.cmd "highlight LineNrBelow ctermfg=239 ctermbg=Black"
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
 
+-- TODO convert this to Lua.
 vim.cmd [[
     augroup ag_all
         autocmd!

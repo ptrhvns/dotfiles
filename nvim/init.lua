@@ -47,12 +47,10 @@ map("n", "<Leader>u", ":setlocal cursorcolumn! cursorline!<CR><C-l>")
 map("v", "<Leader>sd", ":sort! n<CR>")
 map("v", "<Leader>ss", ":sort iu<CR>")
 
-if not vim.g.vscode then
-    map("n", "<Left>", "gT")
-    map("n", "<Right>", "gt")
-    map("n", "<Down>", ":tabmove -1<CR><C-l>")
-    map("n", "<Up>", ":tabmove +1<CR><C-l>")
-end
+map("n", "<Left>", "gT")
+map("n", "<Right>", "gt")
+map("n", "<Down>", ":tabmove -1<CR><C-l>")
+map("n", "<Up>", ":tabmove +1<CR><C-l>")
 
 map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
 map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
@@ -61,24 +59,22 @@ map("n", "<Leader>$", ":set list! number! relativenumber!<CR><C-l>")
 
 map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 
-if not vim.g.vscode then
-    function run_formatters()
-        vim.cmd [[
+function run_formatters()
+    vim.cmd [[
+        write
+
+        if (&filetype == "go")
+            GoFmt
+            GoImports
             write
-
-            if (&filetype == "go")
-                GoFmt
-                GoImports
-                write
-            else
-                execute "!run-formatters " . @%
-                checktime
-            endif
-        ]]
-    end
-
-    map("n", "<Leader>rf", ":lua run_formatters()<CR>")
+        else
+            execute "!run-formatters " . @%
+            checktime
+        endif
+    ]]
 end
+
+map("n", "<Leader>rf", ":lua run_formatters()<CR>")
 
 map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
 
@@ -88,40 +84,32 @@ map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
 map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
 require("packer").startup(function(use)
-    use "wbthomason/packer.nvim"
-
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
     use "henrik/vim-indexed-search"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/nvim-cmp"
+    use "itchyny/lightline.vim"
+    use "jamessan/vim-gnupg"
     use "kana/vim-smartinput"
+    use "L3MON4D3/LuaSnip"
     use "MarcWeber/vim-addon-mw-utils"
+    use "mattn/emmet-vim"
+    use "neovim/nvim-lspconfig"
+    use "nvim-lua/plenary.nvim"
+    use "nvim-telescope/telescope.nvim"
     use "preservim/nerdcommenter"
+    use "preservim/nerdtree"
+    use "saadparwaiz1/cmp_luasnip"
     use "sheerun/vim-polyglot"
     use "tomtom/tlib_vim"
+    use "tpope/vim-eunuch"
+    use "tpope/vim-fugitive"
     use "tpope/vim-surround"
-
-    if not vim.g.vscode then
-        use "hrsh7th/cmp-buffer"
-        use "hrsh7th/cmp-nvim-lsp"
-        use "hrsh7th/cmp-path"
-        use "hrsh7th/nvim-cmp"
-        use "itchyny/lightline.vim"
-        use "jamessan/vim-gnupg"
-        use "L3MON4D3/LuaSnip"
-        use "mattn/emmet-vim"
-        use "neovim/nvim-lspconfig"
-        use "preservim/nerdtree"
-        use "saadparwaiz1/cmp_luasnip"
-        use "tpope/vim-eunuch"
-        use "tpope/vim-fugitive"
-        use "williamboman/nvim-lsp-installer"
-
-        use {
-            'nvim-telescope/telescope.nvim',
-            tag = '0.1.0',
-            requires = { {'nvim-lua/plenary.nvim'} }
-        }
-    end
+    use "wbthomason/packer.nvim"
+    use "williamboman/nvim-lsp-installer"
 end)
 
 vim.g.solarized_termcolors = 256
@@ -188,13 +176,11 @@ map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
 -- telescope.nvim --------------------------------------------------------
 
-if not vim.g.vscode then
-    -- General settings are here. LSP-specific are with nvim-lspconfig.
-    map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
-    map("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>")
-    map("n", "<Leader>td", "<Cmd>Telescope diagnostics<CR>")
-    map("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>")
-end
+-- General settings are here. LSP-specific are with nvim-lspconfig.
+map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
+map("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>")
+map("n", "<Leader>td", "<Cmd>Telescope diagnostics<CR>")
+map("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>")
 
 -- NERD_commenter --------------------------------------------------------
 
@@ -204,12 +190,10 @@ vim.g.NERDCreateDefaultMappings = 0
 vim.g.NERDDefaultAlign = "left"
 vim.g.NERDSpaceDelims = 1
 
-if not vim.g.vscode then
-    map("n", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
-    map("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
-    map("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
-    map("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
-end
+map("n", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
+map("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
+map("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
+map("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
 
 -- NERD_tree -------------------------------------------------------------
 
@@ -217,9 +201,7 @@ vim.g.NERDChristmasTree = 1
 vim.g.NERDTreeQuitOnOpen = 1
 vim.g.NERDTreeWinSize = 50
 
-if not vim.g.vscode then
-    map("n", "<Leader>nt", ":NERDTreeToggle<CR>")
-end
+map("n", "<Leader>nt", ":NERDTreeToggle<CR>")
 
 -- gnupg -----------------------------------------------------------------
 
@@ -230,32 +212,28 @@ vim.g.GPGPreferArmor = 1
 
 require("luasnip.loaders.from_snipmate").lazy_load()
 
-if not vim.g.vscode then
-    vim.cmd "imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
-    vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'"
-    vim.cmd "inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>"
-    vim.cmd "smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
-    vim.cmd "snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>"
-    vim.cmd "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>"
-end
+vim.cmd "imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
+vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'"
+vim.cmd "inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>"
+vim.cmd "smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
+vim.cmd "snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>"
+vim.cmd "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>"
 
 -- lightline -------------------------------------------------------------
 
-if not vim.g.vscode then
-    vim.cmd [[
-        function! LightlineFilename()
-          return expand("%:t") !=# "" ? @% : "[No Name]"
-        endfunction
+vim.cmd [[
+    function! LightlineFilename()
+      return expand("%:t") !=# "" ? @% : "[No Name]"
+    endfunction
 
-        let g:lightline = {
-            \ "colorscheme": "solarized",
-            \ "component_function": {
-            \   "filename": "LightlineFilename",
-            \ },
-            \ "enable": { "tabline": 0 },
-        \ }
-    ]]
-end
+    let g:lightline = {
+        \ "colorscheme": "solarized",
+        \ "component_function": {
+        \   "filename": "LightlineFilename",
+        \ },
+        \ "enable": { "tabline": 0 },
+    \ }
+]]
 
 -- CamelCaseMotion -------------------------------------------------------
 
@@ -264,12 +242,10 @@ map("", ",w", "<Plug>CamelCaseMotion_w", { silent = true })
 
 -- fugitive --------------------------------------------------------------
 
-if not vim.g.vscode then
-    map("n", "<Leader>gb", ":Git blame<CR>")
-    map("n", "<Leader>gc", ":Git commit --verbose<CR>")
-    map("n", "<Leader>gp", ":Git push --verbose<CR>")
-    map("n", "<Leader>gw", ":Gwrite<CR>")
-end
+map("n", "<Leader>gb", ":Git blame<CR>")
+map("n", "<Leader>gc", ":Git commit --verbose<CR>")
+map("n", "<Leader>gp", ":Git push --verbose<CR>")
+map("n", "<Leader>gw", ":Gwrite<CR>")
 
 -- emmet-vim -------------------------------------------------------------
 
@@ -277,10 +253,8 @@ vim.g.user_emmet_install_global = 0
 
 -- nvim-lsp-installer ----------------------------------------------------
 
-if not vim.g.vscode then
-    -- This setup must come before any lspconfig setup.
-    require("nvim-lsp-installer").setup {}
-end
+-- This setup must come before any lspconfig setup.
+require("nvim-lsp-installer").setup {}
 
 -- nvim-lspconfig --------------------------------------------------------
 
@@ -340,58 +314,54 @@ function custom_on_publish_diagnostics(a, params, client_id, c, config)
     vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
 end
 
-if not vim.g.vscode then
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-        custom_on_publish_diagnostics,
-        {}
-    )
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    custom_on_publish_diagnostics,
+    {}
+)
 
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(
-        vim.lsp.protocol.make_client_capabilities()
-    )
+local capabilities = require('cmp_nvim_lsp').update_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+)
 
-    local lspconfig = require("lspconfig")
+local lspconfig = require("lspconfig")
 
-    lspconfig.pyright.setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-    }
+lspconfig.pyright.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
 
-    lspconfig.tsserver.setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-    }
-end
+lspconfig.tsserver.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
 
 -- nvim-cmp -------------------------------------------------------------
 
-if not vim.g.vscode then
-    local cmp = require('cmp')
+local cmp = require('cmp')
 
-    local cmp_setup_config = {
-        snippet = {
-            expand = function(args)
-                require('luasnip').lsp_expand(args.body)
-            end,
+local cmp_setup_config = {
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources(
+        {
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
         },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        }),
-        sources = cmp.config.sources(
-            {
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' },
-            },
-            {
-                { name = 'buffer' },
-            }
-        )
-    }
+        {
+            { name = 'buffer' },
+        }
+    )
+}
 
-    cmp.setup.filetype("javascript", cmp_setup_config)
-    cmp.setup.filetype("python", cmp_setup_config)
-end
+cmp.setup.filetype("javascript", cmp_setup_config)
+cmp.setup.filetype("python", cmp_setup_config)

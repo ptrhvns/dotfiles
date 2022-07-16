@@ -140,52 +140,46 @@ vim.cmd "highlight LineNrBelow ctermfg=239 ctermbg=Black"
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
 
--- TODO convert automatic commands to Lua.
-vim.cmd [[
-    augroup ag_all
-        autocmd!
+local augroup = vim.api.nvim_create_augroup("agall", { clear = true })
 
-        autocmd BufNewFile,BufRead .babelrc setlocal filetype=json
-        autocmd BufNewFile,BufRead supervisord.conf setlocal filetype=dosini
-        autocmd BufReadPost fugitive://* setlocal bufhidden=delete
-        autocmd FileType css setlocal softtabstop=2
-        autocmd FileType css setlocal tabstop=2
-        autocmd FileType css,html,htmldjango,javascript,sass,scss EmmetInstall
-        autocmd FileType gitcommit setlocal nolist
-        autocmd FileType go setlocal noexpandtab
-        autocmd FileType go setlocal nolist
-        autocmd FileType go setlocal softtabstop=4
-        autocmd FileType go setlocal tabstop=4
-        autocmd FileType gomod setlocal noexpandtab
-        autocmd FileType gomod setlocal nolist
-        autocmd FileType gomod setlocal softtabstop=4
-        autocmd FileType gomod setlocal tabstop=4
-        autocmd FileType html setlocal softtabstop=2
-        autocmd FileType html setlocal tabstop=2
-        autocmd FileType htmldjango set commentstring={#\ %s\ #}
-        autocmd FileType htmldjango setlocal softtabstop=2
-        autocmd FileType htmldjango setlocal tabstop=2
-        autocmd FileType javascript setlocal softtabstop=2
-        autocmd FileType javascript setlocal tabstop=2
-        autocmd FileType lua setlocal softtabstop=2
-        autocmd FileType lua setlocal tabstop=2
-        autocmd FileType lua setlocal textwidth=80
-        autocmd FileType markdown setlocal softtabstop=2
-        autocmd FileType markdown setlocal tabstop=2
-        autocmd FileType notes setlocal textwidth=80
-        autocmd FileType python setlocal softtabstop=4
-        autocmd FileType python setlocal tabstop=4
-        autocmd FileType scss setlocal iskeyword+=-
-        autocmd FileType scss setlocal iskeyword+=@-@
-        autocmd FileType scss setlocal softtabstop=2
-        autocmd FileType scss setlocal tabstop=2
-        autocmd FileType sh setlocal softtabstop=4
-        autocmd FileType text setlocal textwidth=80
-        autocmd FileType yaml setlocal expandtab
-        autocmd InsertLeave * setlocal nopaste
-
-    augroup end
-]]
+vim.api.nvim_create_autocmd("BufNewFile,BufRead", { group = augroup, pattern = ".babelrc", command = "setlocal filetype=json" })
+vim.api.nvim_create_autocmd("BufNewFile,BufRead", { group = augroup, pattern = "supervisord.conf", command = "setlocal filetype=dosini" })
+vim.api.nvim_create_autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal tabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,sass,scss", command = "EmmetInstall" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal nolist" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal softtabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal tabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal noexpandtab" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal nolist" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal softtabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal tabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal commentstring={#\\ %s\\ #}" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal softtabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal tabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal softtabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal tabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal softtabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal tabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal textwidth=80" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal softtabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal tabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "notes", command = "setlocal textwidth=80" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal tabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=-" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=@-@" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal softtabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal tabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "sh", command = "setlocal softtabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "text", command = "setlocal textwidth=80" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "yaml", command = "setlocal expandtab" })
+vim.api.nvim_create_autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
 -- packer.nvim -----------------------------------------------------------
 

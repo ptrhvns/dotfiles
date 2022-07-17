@@ -180,6 +180,24 @@ map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
 -- telescope.nvim --------------------------------------------------------
 
+local telescope_mappings = {
+    i = {
+        ["<Esc>"] = "close",
+    },
+    n = {
+        ["<Esc>"] = "close",
+    },
+}
+
+require("telescope").setup({
+    pickers = {
+        buffers = { mappings = telescope_mappings },
+        diagnostics = { mappings = telescope_mappings }, 
+        find_files = { mappings = telescope_mappings }, 
+        live_grep = { mappings = telescope_mappings }, 
+    },
+})
+
 -- General settings are here. LSP-specific are with nvim-lspconfig.
 map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
 map("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>")

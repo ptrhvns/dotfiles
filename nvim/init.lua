@@ -8,7 +8,7 @@ vim.opt.ignorecase = true
 vim.opt.joinspaces = false
 vim.opt.lazyredraw = true
 vim.opt.list = true
-vim.opt.listchars = "extends:❯,nbsp:~,precedes:❮,tab:▸\\ ,trail:⋅"
+vim.opt.listchars = "extends:❯,nbsp:~,precedes:❮,tab:▸ ,trail:⋅"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shell = "/bin/bash"
@@ -176,26 +176,22 @@ vim.api.nvim_create_autocmd("InsertLeave", { group = augroup, command = "setloca
 -- packer.nvim -----------------------------------------------------------
 
 map("n", "<Leader>li", ":PackerInstall<CR>")
+map("n", "<Leader>ls", ":PackerSync<CR>")
 map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
 -- telescope.nvim --------------------------------------------------------
 
-local telescope_mappings = {
-    i = {
-        ["<Esc>"] = "close",
-    },
-    n = {
-        ["<Esc>"] = "close",
-    },
-}
-
 require("telescope").setup({
-    pickers = {
-        buffers = { mappings = telescope_mappings },
-        diagnostics = { mappings = telescope_mappings }, 
-        find_files = { mappings = telescope_mappings }, 
-        live_grep = { mappings = telescope_mappings }, 
-    },
+    defaults = {
+        mappings = {
+            i = {
+                ["<Esc>"] = "close",
+            },
+            n = {
+                ["<Esc>"] = "close",
+            },
+        },
+    }
 })
 
 -- General settings are here. LSP-specific are with nvim-lspconfig.
@@ -233,6 +229,9 @@ vim.g.GPGPreferArmor = 1
 -- LuaSnip ---------------------------------------------------------------
 
 require("luasnip.loaders.from_snipmate").lazy_load()
+
+-- LuaSnip version of this seems to have issues, so we do our own.
+map("n", "<Leader>se", ":tabedit " .. vim.fn.stdpath("config") .. "/snippets/")
 
 vim.cmd "imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
 vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'"

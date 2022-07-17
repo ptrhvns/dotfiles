@@ -84,6 +84,7 @@ map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
 map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
 require("packer").startup(function(use)
+
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
     use "henrik/vim-indexed-search"
@@ -95,6 +96,7 @@ require("packer").startup(function(use)
     use "jamessan/vim-gnupg"
     use "kana/vim-smartinput"
     use "L3MON4D3/LuaSnip"
+    use "lewis6991/gitsigns.nvim"
     use "MarcWeber/vim-addon-mw-utils"
     use "mattn/emmet-vim"
     use "neovim/nvim-lspconfig"
@@ -110,6 +112,7 @@ require("packer").startup(function(use)
     use "tpope/vim-surround"
     use "wbthomason/packer.nvim"
     use "williamboman/nvim-lsp-installer"
+
 end)
 
 vim.g.solarized_termcolors = 256
@@ -117,6 +120,7 @@ vim.g.solarized_termtrans = 1
 
 vim.cmd "colorscheme solarized"
 
+vim.cmd "highlight SignColumn ctermbg=Black"
 vim.cmd "highlight WinSeparator guibg=None"
 vim.cmd "highlight! NonText ctermfg=235"
 
@@ -297,10 +301,10 @@ end
 function filter_diagnostics(diagnostic)
     if string.match(diagnostic.source, "Pyright") then
         -- Ignore diagnostic hints about unused variables. These should normally
-        -- make the variable "greyed" out, but the Neovim client shows them as
-        -- virtual text just like error diagnostics. Also, there are legitimate
-        -- reasons why a variable might not be used (e.g. a view function in
-        -- Django must accept a request object that is never used.)
+        -- make the variable "greyed" out, but the Neovim client seems to show
+        -- them as virtual text just like error diagnostics. Also, there are
+        -- legitimate reasons why a variable might not be used (e.g. a function
+        -- used by a framework that requires arguments that aren't used).
         if string.match(diagnostic.message, "is not accessed") then
             return false
         end
@@ -365,3 +369,7 @@ local cmp_setup_config = {
 
 cmp.setup.filetype("javascript", cmp_setup_config)
 cmp.setup.filetype("python", cmp_setup_config)
+
+-- gitsigns.nvim --------------------------------------------------------
+
+require("gitsigns").setup()

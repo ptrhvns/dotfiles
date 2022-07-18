@@ -230,8 +230,9 @@ vim.g.GPGPreferArmor = 1
 
 require("luasnip.loaders.from_snipmate").lazy_load()
 
--- LuaSnip version of this seems to have issues, so we do our own.
-map("n", "<Leader>se", ":tabedit " .. vim.fn.stdpath("config") .. "/snippets/")
+-- XXX Do edits in a split to get reloading to work.
+map("n", "<Leader>se", "<Cmd>split +lua\\ require('luasnip.loaders').edit_snippet_files()<CR>")
+map("n", "<Leader>sl", "<Cmd>lua require('luasnip.loaders.from_snipmate').lazy_load()<CR>")
 
 vim.cmd "imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
 vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'"

@@ -2,10 +2,15 @@ snippet #f
 	# FIXME${1}
 snippet #t
 	# TODO${1}
+snippet #x
+	# XXX${1}
 snippet asf
 	assert False # FIXME
 snippet bre
 	breakpoint() # FIXME
+snippet cas
+	case ${1:pattern}:
+	    ${2:pass}
 snippet cla
 	class ${1:Name}:
 	    ${2:pass}
@@ -64,6 +69,10 @@ snippet main
 	
 	if __name__ == "__main__":
 	    main(${3:$1})
+snippet mat
+	match ${1:subject}:
+	  case ${2:pattern}:
+	      ${3:pass}
 snippet pts
 	# fmt: off
 	import pytest # isort: skip # noqa

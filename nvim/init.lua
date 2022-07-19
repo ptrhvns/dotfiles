@@ -221,11 +221,6 @@ vim.g.NERDTreeWinSize = 50
 
 map("n", "<Leader>nt", ":NERDTreeToggle<CR>")
 
--- gnupg -----------------------------------------------------------------
-
-vim.g.GPGExecutable = "gpg"
-vim.g.GPGPreferArmor = 1
-
 -- LuaSnip ---------------------------------------------------------------
 
 require("luasnip.loaders.from_snipmate").lazy_load()

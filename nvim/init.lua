@@ -93,7 +93,6 @@ require("packer").startup(function(use)
     use "hrsh7th/cmp-path"
     use "hrsh7th/nvim-cmp"
     use "itchyny/lightline.vim"
-    use "jamessan/vim-gnupg"
     use "kana/vim-smartinput"
     use "L3MON4D3/LuaSnip"
     use "lewis6991/gitsigns.nvim"

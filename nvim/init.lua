@@ -182,16 +182,16 @@ map("n", "<Leader>lu", ":PackerUpdate<CR>")
 -- telescope.nvim --------------------------------------------------------
 
 require("telescope").setup({
-    defaults = {
-        mappings = {
-            i = {
-                ["<Esc>"] = "close",
-            },
-            n = {
-                ["<Esc>"] = "close",
-            },
-        },
-    }
+    -- defaults = {
+    --     mappings = {
+    --         i = {
+    --             ["<Esc>"] = "close",
+    --         },
+    --         n = {
+    --             ["<Esc>"] = "close",
+    --         },
+    --     },
+    -- }
 })
 
 -- General settings are here. LSP-specific are with nvim-lspconfig.
@@ -376,10 +376,8 @@ local cmp_setup_config = {
     }),
     sources = cmp.config.sources(
         {
-            { name = 'nvim_lsp' },
             { name = 'luasnip' },
-        },
-        {
+            { name = 'nvim_lsp' },
             { name = 'buffer' },
         }
     )

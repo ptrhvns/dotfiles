@@ -182,6 +182,7 @@ map("n", "<Leader>lu", ":PackerUpdate<CR>")
 -- telescope.nvim --------------------------------------------------------
 
 require("telescope").setup({
+    -- TODO find more effective way to exit telescope windows
     -- defaults = {
     --     mappings = {
     --         i = {

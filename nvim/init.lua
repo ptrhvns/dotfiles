@@ -102,7 +102,6 @@ require("packer").startup(function(use)
     use "numToStr/Comment.nvim"
     use "nvim-lua/plenary.nvim"
     use "nvim-telescope/telescope.nvim"
-    -- use "preservim/nerdcommenter"
     use "preservim/nerdtree"
     use "saadparwaiz1/cmp_luasnip"
     use "sheerun/vim-polyglot"
@@ -223,19 +222,6 @@ map('n', '<Leader>cM', '<Plug>(comment_toggle_blockwise)')
 -- Toggle in VISUAL mode
 map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
 map('v', '<Leader>cC', '<Plug>(comment_toggle_blockwise_visual)')
-
--- NERD_commenter --------------------------------------------------------
-
--- vim.g.NERD_scss_alt_style = 1
--- vim.g.NERDCommentWholeLinesInVMode = 2
--- vim.g.NERDCreateDefaultMappings = 0
--- vim.g.NERDDefaultAlign = "left"
--- vim.g.NERDSpaceDelims = 1
-
--- map("n", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
--- map("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
--- map("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
--- map("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
 
 -- NERD_tree -------------------------------------------------------------
 

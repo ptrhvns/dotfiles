@@ -314,8 +314,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     {
         -- Disable signs and virtual_text (but leave underline) for hints as
-        -- Neovim LSP treats hints as diagnostics even though they're not, and
-        -- sometimes the hints are not valid or useful.
+        -- Neovim LSP treats hints as diagnostics. Also, the hints are sometimes
+        -- invalid or not useful.
         signs = { severity = { min = vim.diagnostic.severity.INFO } },
         virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
     }

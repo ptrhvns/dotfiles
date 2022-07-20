@@ -310,43 +310,15 @@ function on_attach(client, bufnr)
     map('n', 'K', vim.lsp.buf.hover, on_attach_opts)
 end
 
-function filter_array_in_place(arr, fn)
-    local new_index = 1
-    local size_orig = #arr
-
-    for old_index, v in ipairs(arr) do
-        if fn(v, old_index) then
-             arr[new_index] = v
-             new_index = new_index + 1
-        end
-    end
-
-    for i = new_index, size_orig do arr[i] = nil end
-end
-
-function filter_diagnostics(diagnostic)
-    if string.match(diagnostic.source, "Pyright") then
-        -- Ignore diagnostic hints about unused variables. These should normally
-        -- make the variable "greyed" out, but the Neovim client seems to show
-        -- them as virtual text just like error diagnostics. Also, there are
-        -- legitimate reasons why a variable might not be used (e.g. a function
-        -- used by a framework that requires arguments that aren't used).
-        if string.match(diagnostic.message, "is not accessed") then
-            return false
-        end
-    end
-
-    return true
-end
-
-function custom_on_publish_diagnostics(a, params, client_id, c, config)
-    filter_array_in_place(params.diagnostics, filter_diagnostics)
-    vim.lsp.diagnostic.on_publish_diagnostics(a, params, client_id, c, config)
-end
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    custom_on_publish_diagnostics,
-    {}
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
+        -- Disable signs and virtual_text (but leave underline) for hints as
+        -- Neovim LSP treats hints as diagnostics even though they're not, and
+        -- sometimes the hints are not valid or useful.
+        signs = { severity = { min = vim.diagnostic.severity.INFO } },
+        virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
+    }
 )
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(

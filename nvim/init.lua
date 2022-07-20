@@ -99,9 +99,10 @@ require("packer").startup(function(use)
     use "MarcWeber/vim-addon-mw-utils"
     use "mattn/emmet-vim"
     use "neovim/nvim-lspconfig"
+    use "numToStr/Comment.nvim"
     use "nvim-lua/plenary.nvim"
     use "nvim-telescope/telescope.nvim"
-    use "preservim/nerdcommenter"
+    -- use "preservim/nerdcommenter"
     use "preservim/nerdtree"
     use "saadparwaiz1/cmp_luasnip"
     use "sheerun/vim-polyglot"
@@ -200,18 +201,41 @@ map("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>")
 map("n", "<Leader>td", "<Cmd>Telescope diagnostics<CR>")
 map("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>")
 
+-- Comment.nvim ----------------------------------------------------------
+
+require('Comment').setup {
+    mappings = {
+        basic = false,
+        extra = false,
+    }
+}
+
+-- local commentopt = { expr = true, remap = true }
+
+-- Toggle using count
+-- map('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", commentopt)
+-- map('n', '<Leader>cC', "v:count == 0 ? '<Plug>(comment_toggle_current_blockwise)' : '<Plug>(comment_toggle_blockwise_count)'", commentopt)
+
+-- Toggle in Op-pending mode
+-- map('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
+-- map('n', '<Leader>cM', '<Plug>(comment_toggle_blockwise)')
+
+-- Toggle in VISUAL mode
+map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
+map('v', '<Leader>cC', '<Plug>(comment_toggle_blockwise_visual)')
+
 -- NERD_commenter --------------------------------------------------------
 
-vim.g.NERD_scss_alt_style = 1
-vim.g.NERDCommentWholeLinesInVMode = 2
-vim.g.NERDCreateDefaultMappings = 0
-vim.g.NERDDefaultAlign = "left"
-vim.g.NERDSpaceDelims = 1
+-- vim.g.NERD_scss_alt_style = 1
+-- vim.g.NERDCommentWholeLinesInVMode = 2
+-- vim.g.NERDCreateDefaultMappings = 0
+-- vim.g.NERDDefaultAlign = "left"
+-- vim.g.NERDSpaceDelims = 1
 
-map("n", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
-map("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
-map("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
-map("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
+-- map("n", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
+-- map("n", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
+-- map("v", "<Leader>c", "<Plug>NERDCommenterToggle<C-l>")
+-- map("v", "<Leader>x", "<Plug>NERDCommenterSexy<C-l>")
 
 -- NERD_tree -------------------------------------------------------------
 

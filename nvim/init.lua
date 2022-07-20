@@ -178,19 +178,7 @@ map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
 -- telescope.nvim --------------------------------------------------------
 
-require("telescope").setup({
-    -- TODO find more effective way to exit telescope windows
-    -- defaults = {
-    --     mappings = {
-    --         i = {
-    --             ["<Esc>"] = "close",
-    --         },
-    --         n = {
-    --             ["<Esc>"] = "close",
-    --         },
-    --     },
-    -- }
-})
+require("telescope").setup {}
 
 -- General settings are here. LSP-specific are with nvim-lspconfig.
 map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")

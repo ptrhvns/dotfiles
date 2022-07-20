@@ -195,11 +195,11 @@ require('Comment').setup {
     }
 }
 
-local commentopts = { expr = true, remap = true }
+local comment_opts = { expr = true, remap = true }
 
 -- Toggle using count
-map('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", commentopts)
-map('n', '<Leader>cC', "v:count == 0 ? '<Plug>(comment_toggle_current_blockwise)' : '<Plug>(comment_toggle_blockwise_count)'", commentopts)
+map('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", comment_opts)
+map('n', '<Leader>cC', "v:count == 0 ? '<Plug>(comment_toggle_current_blockwise)' : '<Plug>(comment_toggle_blockwise_count)'", comment_opts)
 
 -- Toggle in Op-pending mode
 map('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
@@ -224,15 +224,15 @@ require("hlslens").setup {
     enable_incsearch = true,
 }
 
-local hlslensopts = { silent = true }
+local hlslens_opts = { silent = true }
 
 map("i", "<C-l>", "<C-o>:nohlsearch<CR>")
 map("n", "<C-l>", ":nohlsearch<CR><C-l>")
-map('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", kopts)
-map('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", kopts)
-map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", kopts)
-map('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", kopts)
-map('n', 'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", kopts)
+map('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
+map('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
+map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
+map('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
+map('n', 'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
 
 -- LuaSnip ---------------------------------------------------------------
 

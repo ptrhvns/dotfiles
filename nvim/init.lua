@@ -35,9 +35,6 @@ function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
-map("n", "<C-l>", ":nohlsearch<CR><C-l>")
-map("i", "<C-l>", "<C-o>:nohlsearch<CR>")
-
 map("n", "<Leader>ip", ":set invpaste paste?<CR>")
 
 map("n", "<Leader>iw", ":set invwrap wrap?<CR>")
@@ -85,15 +82,16 @@ map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
 require("packer").startup(function(use)
 
+    
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
-    use "henrik/vim-indexed-search"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-path"
     use "hrsh7th/nvim-cmp"
     use "itchyny/lightline.vim"
     use "kana/vim-smartinput"
+    use "kevinhwang91/nvim-hlslens"
     use "L3MON4D3/LuaSnip"
     use "lewis6991/gitsigns.nvim"
     use "MarcWeber/vim-addon-mw-utils"
@@ -209,11 +207,11 @@ require('Comment').setup {
     }
 }
 
-local commentopt = { expr = true, remap = true }
+local commentopts = { expr = true, remap = true }
 
 -- Toggle using count
-map('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", commentopt)
-map('n', '<Leader>cC', "v:count == 0 ? '<Plug>(comment_toggle_current_blockwise)' : '<Plug>(comment_toggle_blockwise_count)'", commentopt)
+map('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", commentopts)
+map('n', '<Leader>cC', "v:count == 0 ? '<Plug>(comment_toggle_current_blockwise)' : '<Plug>(comment_toggle_blockwise_count)'", commentopts)
 
 -- Toggle in Op-pending mode
 map('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
@@ -230,6 +228,23 @@ vim.g.NERDTreeQuitOnOpen = 1
 vim.g.NERDTreeWinSize = 50
 
 map("n", "<Leader>nt", ":NERDTreeToggle<CR>")
+
+-- nvim-hlslens ----------------------------------------------------------
+
+require("hlslens").setup {
+    calm_down = true,
+    enable_incsearch = true,
+}
+
+local hlslensopts = { silent = true }
+
+map("i", "<C-l>", "<C-o>:nohlsearch<CR>")
+map("n", "<C-l>", ":nohlsearch<CR><C-l>")
+map('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", kopts)
+map('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", kopts)
+map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", kopts)
+map('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", kopts)
+map('n', 'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", kopts)
 
 -- LuaSnip ---------------------------------------------------------------
 

@@ -210,15 +210,15 @@ require('Comment').setup {
     }
 }
 
--- local commentopt = { expr = true, remap = true }
+local commentopt = { expr = true, remap = true }
 
 -- Toggle using count
--- map('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", commentopt)
--- map('n', '<Leader>cC', "v:count == 0 ? '<Plug>(comment_toggle_current_blockwise)' : '<Plug>(comment_toggle_blockwise_count)'", commentopt)
+map('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", commentopt)
+map('n', '<Leader>cC', "v:count == 0 ? '<Plug>(comment_toggle_current_blockwise)' : '<Plug>(comment_toggle_blockwise_count)'", commentopt)
 
 -- Toggle in Op-pending mode
--- map('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
--- map('n', '<Leader>cM', '<Plug>(comment_toggle_blockwise)')
+map('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
+map('n', '<Leader>cM', '<Plug>(comment_toggle_blockwise)')
 
 -- Toggle in VISUAL mode
 map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')

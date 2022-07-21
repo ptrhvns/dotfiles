@@ -14,6 +14,7 @@ vim.opt.relativenumber = true
 vim.opt.shell = "/bin/bash"
 vim.opt.shiftwidth = 0
 vim.opt.showmode = false
+vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.softtabstop = 4
 vim.opt.splitbelow = true

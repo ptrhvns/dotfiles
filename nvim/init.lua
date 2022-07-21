@@ -60,15 +60,8 @@ map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 function run_formatters()
     vim.cmd [[
         write
-
-        if (&filetype == "go")
-            GoFmt
-            GoImports
-            write
-        else
-            execute "!run-formatters " . @%
-            checktime
-        endif
+        execute "!run-formatters " . @%
+        checktime
     ]]
 end
 
@@ -82,7 +75,6 @@ map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
 map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
 require("packer").startup(function(use)
-
     
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"

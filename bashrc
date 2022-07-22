@@ -85,32 +85,30 @@ export NOCOLOR="$(color16 '0')"
 export MYCOLORS=$(tput colors)
 
 if [[ $MYCOLORS -gt 255 ]]; then
-    BLUE="$(color256 '33')"
-    CYAN="$(color256 '37')"
+    # BLUE="$(color256 '33')"
+    # CYAN="$(color256 '37')"
     GREEN="$(color256 '64')"
     GREY="$(color256 '241')"
-    MAGENTA="$(color256 '125')"
+    # MAGENTA="$(color256 '125')"
     ORANGE="$(color256 '166')"
     RED="$(color256 '124')"
     VIOLET="$(color256 '61')"
-    WHITE="$(color256 '254')"
-    YELLOW="$(color256 '136')"
+    # WHITE="$(color256 '254')"
+    # YELLOW="$(color256 '136')"
 else
-    BLUE="$(color16 '1;34')"
-    CYAN="$(color16 '1;36')"
+    # BLUE="$(color16 '1;34')"
+    # CYAN="$(color16 '1;36')"
     GREEN="$(color16 '1;32')"
     GREY="$(color16 '1;30')"
-    MAGENTA="$(color16 '1;34')"
+    # MAGENTA="$(color16 '1;34')"
     ORANGE="$(color16 '1;33')"
     RED="$(color16 '1;31')"
     VIOLET="$(color16 '1;35')"
-    WHITE="$(color16 '1;37')"
-    YELLOW="$(color16 '1;33')"
+    # WHITE="$(color16 '1;37')"
+    # YELLOW="$(color16 '1;33')"
 fi
 
 build_prompt() {
-    local exit_code=$?
-
     PS1="${GREY}\h"
 
     if [[ "root" == "$(whoami)" ]]; then
@@ -123,7 +121,7 @@ build_prompt() {
 
     local num_jobs=$(jobs 2>/dev/null | wc -l)
 
-    if [ $num_jobs -gt 0 ]; then
+    if [ "$num_jobs" -gt 0 ]; then
         PS1+=" ${ORANGE}[${num_jobs}]"
     fi
 
@@ -138,7 +136,7 @@ alias gv="grep -iEv"
 alias l="ls"
 alias la="ls -la"
 alias ll="ls -l"
-alias m="${PAGER}"
+alias m="\$PAGER"
 alias ta="tmux attach -t"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"
@@ -150,13 +148,13 @@ if [ -r ~/.ssh-agent ]; then
 fi
 
 fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
-if [ -f $fzf_key_bindings ]; then
-    source $fzf_key_bindings
+if [ -f "$fzf_key_bindings" ]; then
+    source "$fzf_key_bindings"
 fi
 
 fzf_completion="$(dpkg -L fzf | grep completion.bash)"
-if [ -f $fzf_completion ]; then
-    source $fzf_completion
+if [ -f "$fzf_completion" ]; then
+    source "$fzf_completion"
 fi
 
 export PYENV_ROOT="${HOME}/.pyenv"

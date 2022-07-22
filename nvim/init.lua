@@ -69,7 +69,7 @@ map("n", "<Leader>rf", ":lua run_formatters()<CR>")
 
 map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
 
-local diagnostic_opts = { silent=true }
+local diagnostic_opts = { silent = true }
 map("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)
 map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
 map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)

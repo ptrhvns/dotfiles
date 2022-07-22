@@ -318,22 +318,24 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
     vim.lsp.protocol.make_client_capabilities()
 )
 
-require("lspconfig").bashls.setup {
+local lspconfig = require("lspconfig")
+
+lspconfig.bashls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
 
-require("lspconfig").cssls.setup {
+lspconfig.cssls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
 
-require("lspconfig").pyright.setup {
+lspconfig.pyright.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
 
-require("lspconfig").tsserver.setup {
+lspconfig.tsserver.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }

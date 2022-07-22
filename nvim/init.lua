@@ -83,7 +83,6 @@ require("packer").startup(function(use)
     use "hrsh7th/cmp-path"
     use "hrsh7th/nvim-cmp"
     use "itchyny/lightline.vim"
-    use "j-hui/fidget.nvim"
     use "kana/vim-smartinput"
     use "kevinhwang91/nvim-hlslens"
     use "L3MON4D3/LuaSnip"
@@ -210,10 +209,6 @@ vim.g.NERDTreeQuitOnOpen = 1
 vim.g.NERDTreeWinSize = 50
 
 map("n", "<Leader>nt", ":NERDTreeToggle<CR>")
-
--- fidget.nvim -----------------------------------------------------------
-
-require"fidget".setup{}
 
 -- nvim-hlslens ----------------------------------------------------------
 

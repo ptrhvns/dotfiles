@@ -325,6 +325,11 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
 
 local lspconfig = require("lspconfig")
 
+lspconfig.bashls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
 lspconfig.cssls.setup {
     capabilities = capabilities,
     on_attach = on_attach,

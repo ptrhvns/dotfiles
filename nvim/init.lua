@@ -174,7 +174,7 @@ map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
 require("telescope").setup {}
 
--- General settings are here. LSP-specific are with nvim-lspconfig.
+-- General settings are here. LSP-related are with nvim-lspconfig.
 map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
 map("n", "<Leader>tb", "<Cmd>Telescope buffers<CR>")
 map("n", "<Leader>td", "<Cmd>Telescope diagnostics<CR>")

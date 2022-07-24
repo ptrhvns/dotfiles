@@ -1,6 +1,6 @@
 vim.g.mapleader = "\\"
 
-vim.opt.completeopt = {"menu", "menuone", "noselect"}
+vim.opt.completeopt = {"menu", "menuone"}
 vim.opt.expandtab = true
 vim.opt.fillchars = "diff:⣿"
 vim.opt.foldenable = false

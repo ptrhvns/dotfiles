@@ -178,6 +178,7 @@ map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
 map("n", "<Leader>td", "<Cmd>Telescope diagnostics<CR>")
 map("n", "<Leader>tg", "<Cmd>Telescope git_branches<CR>")
 map("n", "<Leader>th", "<Cmd>Telescope help_tags<CR>")
+map("n", "<Leader>tk", "<Cmd>Telescope keymaps<CR>")
 map("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>")
 
 -- Comment.nvim ----------------------------------------------------------

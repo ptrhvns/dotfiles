@@ -122,7 +122,7 @@ vim.cmd "highlight LineNrBelow ctermfg=239 ctermbg=Black"
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
 
-local augroup = vim.api.nvim_create_augroup("agall", { clear = true })
+local augroup = vim.api.nvim_create_augroup("all", { clear = true })
 
 vim.api.nvim_create_autocmd("BufNewFile,BufRead", { group = augroup, pattern = ".babelrc", command = "setlocal filetype=json" })
 vim.api.nvim_create_autocmd("BufNewFile,BufRead", { group = augroup, pattern = "supervisord.conf", command = "setlocal filetype=dosini" })

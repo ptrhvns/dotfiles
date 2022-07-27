@@ -84,6 +84,7 @@ require("packer").startup(function(use)
     use "hrsh7th/nvim-cmp"
     use "itchyny/lightline.vim"
     use "kana/vim-smartinput"
+    use "kdheepak/lazygit.nvim"
     use "kevinhwang91/nvim-hlslens"
     use "L3MON4D3/LuaSnip"
     use "lewis6991/gitsigns.nvim"
@@ -211,6 +212,10 @@ vim.g.NERDTreeQuitOnOpen = 1
 vim.g.NERDTreeWinSize = 50
 
 map("n", "<Leader>nt", ":NERDTreeToggle<CR>")
+
+-- lazygit.nvim ----------------------------------------------------------
+
+map("n", "<Leader>gg", ":LazyGit<CR>", { silent = true })
 
 -- nvim-hlslens ----------------------------------------------------------
 

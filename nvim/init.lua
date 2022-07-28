@@ -9,6 +9,7 @@ vim.opt.joinspaces = false
 vim.opt.lazyredraw = true
 vim.opt.list = true
 vim.opt.listchars = "extends:❯,nbsp:~,precedes:❮,tab:▸ ,trail:⋅"
+vim.opt.mouse = ""
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shell = "/bin/bash"
@@ -76,6 +77,9 @@ map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
 require("packer").startup(function(use)
     
+    -- FIXME nerdtree is suddenly taking a long time to load.
+    -- use "preservim/nerdtree"
+
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
     use "hrsh7th/cmp-buffer"
@@ -94,7 +98,6 @@ require("packer").startup(function(use)
     use "numToStr/Comment.nvim"
     use "nvim-lua/plenary.nvim"
     use "nvim-telescope/telescope.nvim"
-    use "preservim/nerdtree"
     use "saadparwaiz1/cmp_luasnip"
     use "sheerun/vim-polyglot"
     use "tomtom/tlib_vim"

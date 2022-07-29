@@ -76,9 +76,10 @@ map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
 map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
 require("packer").startup(function(use)
-    
+
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
+    use "folke/trouble.nvim"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-path"
@@ -374,6 +375,29 @@ cmp.setup.filetype("sh", cmp_setup_config)
 cmp.setup.filetype("toml", cmp_setup_config)
 cmp.setup.filetype("typescript", cmp_setup_config)
 
--- gitsigns.nvim --------------------------------------------------------
+-- gitsigns.nvim ---------------------------------------------------------
 
 require("gitsigns").setup()
+
+-- trouble.nvim ----------------------------------------------------------
+
+require("trouble").setup {
+    icons = false,
+    fold_open = "v",
+    fold_closed = ">",
+    indent_lines = false,
+    signs = {
+        error = "error",
+        warning = "warn",
+        hint = "hint",
+        information = "info"
+    },
+    use_diagnostic_signs = false,
+}
+
+map("n", "<Leader>xd", "<Cmd>TroubleToggle document_diagnostics<CR>", {silent = true })
+map("n", "<Leader>xl", "<Cmd>TroubleToggle loclist<CR>", {silent = true })
+map("n", "<Leader>xq", "<Cmd>TroubleToggle quickfix<CR>", {silent = true })
+map("n", "<Leader>xw", "<Cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true })
+map("n", "<Leader>xx", "<Cmd>TroubleToggle<CR>", {silent = true })
+map("n", "gR", "<Cmd>TroubleToggle lsp_references<CR>", {silent = true })

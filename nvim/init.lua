@@ -77,9 +77,6 @@ map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
 require("packer").startup(function(use)
     
-    -- FIXME nerdtree is suddenly taking a long time to load.
-    -- use "preservim/nerdtree"
-
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
     use "hrsh7th/cmp-buffer"
@@ -207,14 +204,6 @@ map('n', '<Leader>cM', '<Plug>(comment_toggle_blockwise)')
 -- Toggle in VISUAL mode
 map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
 map('v', '<Leader>cC', '<Plug>(comment_toggle_blockwise_visual)')
-
--- NERD_tree -------------------------------------------------------------
-
-vim.g.NERDChristmasTree = 1
-vim.g.NERDTreeQuitOnOpen = 1
-vim.g.NERDTreeWinSize = 50
-
-map("n", "<Leader>nt", ":NERDTreeToggle<CR>")
 
 -- lazygit.nvim ----------------------------------------------------------
 

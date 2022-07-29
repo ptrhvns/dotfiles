@@ -365,8 +365,14 @@ local cmp_setup_config = {
     )
 }
 
+cmp.setup.filetype("css", cmp_setup_config)
+cmp.setup.filetype("html", cmp_setup_config)
 cmp.setup.filetype("javascript", cmp_setup_config)
 cmp.setup.filetype("python", cmp_setup_config)
+cmp.setup.filetype("scss", cmp_setup_config)
+cmp.setup.filetype("sh", cmp_setup_config)
+cmp.setup.filetype("toml", cmp_setup_config)
+cmp.setup.filetype("typescript", cmp_setup_config)
 
 -- gitsigns.nvim --------------------------------------------------------
 

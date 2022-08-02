@@ -332,7 +332,22 @@ lspconfig.cssls.setup {
     on_attach = on_attach,
 }
 
+lspconfig.html.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+lspconfig.jsonls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
 lspconfig.pyright.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+lspconfig.taplo.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
@@ -371,6 +386,7 @@ local cmp_setup_config = {
 cmp.setup.filetype("css", cmp_setup_config)
 cmp.setup.filetype("html", cmp_setup_config)
 cmp.setup.filetype("javascript", cmp_setup_config)
+cmp.setup.filetype("json", cmp_setup_config)
 cmp.setup.filetype("python", cmp_setup_config)
 cmp.setup.filetype("scss", cmp_setup_config)
 cmp.setup.filetype("sh", cmp_setup_config)

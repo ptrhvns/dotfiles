@@ -88,6 +88,7 @@ require("packer").startup(function(use)
     use "kana/vim-smartinput"
     use "kdheepak/lazygit.nvim"
     use "kevinhwang91/nvim-hlslens"
+    use "kyazdani42/nvim-tree.lua" 
     use "L3MON4D3/LuaSnip"
     use "lewis6991/gitsigns.nvim"
     use "MarcWeber/vim-addon-mw-utils"
@@ -148,6 +149,7 @@ vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "htmldjango
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal tabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal softtabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal tabstop=2" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal expandtab" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal softtabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal tabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal textwidth=80" })
@@ -401,3 +403,36 @@ map("n", "<Leader>xq", "<Cmd>TroubleToggle quickfix<CR>", {silent = true })
 map("n", "<Leader>xw", "<Cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true })
 map("n", "<Leader>xx", "<Cmd>TroubleToggle<CR>", {silent = true })
 map("n", "gR", "<Cmd>TroubleToggle lsp_references<CR>", {silent = true })
+
+-- nvim-tree.lua ---------------------------------------------------------
+
+ require("nvim-tree").setup({
+  actions = {
+      open_file = {
+          quit_on_open = true,
+      }
+  },
+  renderer = {
+      icons = {
+          show = {
+              git = false,
+          },
+          glyphs = {
+              default = "",
+              symlink = "",
+              folder = {
+                  arrow_closed = "",
+                  arrow_open = "",
+                  default = "+",
+                  open = "-",
+                  empty = "+",
+                  empty_open = "-",
+                  symlink = "+",
+                  symlink_open = "-",
+              },
+          },
+      },
+  },
+})
+
+map("n", "<Leader>nn", "<Cmd>NvimTreeToggle<CR>")

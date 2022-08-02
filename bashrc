@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC1090,SC2155
+
 ulimit -c unlimited
 umask 022
 

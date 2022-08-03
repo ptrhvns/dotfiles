@@ -405,10 +405,11 @@ require("trouble").setup {
     fold_closed = ">",
     indent_lines = false,
     signs = {
-        error = "error",
-        warning = "warn",
-        hint = "hint",
-        information = "info"
+        error = "E",
+        hint = "H",
+        information = "I",
+        other = "O",
+        warning = "W",
     },
     use_diagnostic_signs = false,
 }

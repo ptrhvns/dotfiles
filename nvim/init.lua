@@ -215,7 +215,6 @@ map("n", "<Leader>gg", ":LazyGit<CR>", { silent = true })
 -- nvim-hlslens ----------------------------------------------------------
 
 require("hlslens").setup {
-    calm_down = true,
     enable_incsearch = true,
 }
 

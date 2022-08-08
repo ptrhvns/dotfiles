@@ -15,7 +15,6 @@ vim.opt.relativenumber = true
 vim.opt.shell = "/bin/bash"
 vim.opt.shiftwidth = 0
 vim.opt.showmode = false
-vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.softtabstop = 4
 vim.opt.splitbelow = true
@@ -134,14 +133,6 @@ vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css", comm
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal tabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,sass,scss", command = "EmmetInstall" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
-vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab" })
-vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal nolist" })
-vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal softtabstop=4" })
-vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal tabstop=4" })
-vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal noexpandtab" })
-vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal nolist" })
-vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal softtabstop=4" })
-vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal tabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal commentstring={#\\ %s\\ #}" })

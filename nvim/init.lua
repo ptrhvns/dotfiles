@@ -293,6 +293,7 @@ function on_attach(client, bufnr)
     map('n', '<Leader>lR', vim.lsp.buf.rename, on_attach_opts)
     map('n', '<Leader>lt', vim.lsp.buf.type_definition, on_attach_opts)
     map('n', 'K', vim.lsp.buf.hover, on_attach_opts)
+
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

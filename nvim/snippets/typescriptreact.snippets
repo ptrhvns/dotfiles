@@ -1,0 +1,97 @@
+snippet /f
+	// FIXME${1}
+snippet /t
+	// TODO${1}
+snippet /x
+	// XXX${1}
+snippet afn
+	async () => {
+	}
+snippet afun
+	async function ${1:name}(${2}) {
+	}
+snippet cas
+	case ${1:value}:
+	  ${2:break};
+snippet cof
+	const ${1:name} = () => {
+	};
+snippet col
+	console.log("DEBUG${1}"); // FIXME
+snippet con
+	const ${1:name} = ${2:value};
+snippet def
+	default:
+	  ${1:statement};
+snippet des
+	describe("${1}", () => {
+	});
+snippet eli
+	else if (${1:condition}) {
+	}
+snippet els
+	else {
+	}
+snippet exp
+	expect(${1:actual}).${2:assertion}(${3});
+snippet fin
+	finally {
+	}
+snippet fn
+	() => {
+	}
+snippet fun
+	function ${1:name}(${2}) {
+	}
+snippet for
+	for (let ${1:i} = ${2:0}; ${3:$1} < ${4:stop}; ${5:$1}++) {
+	}
+snippet if
+	if (${1:condition}) {
+	}
+snippet imp
+	import ${1:targets} from "${2:source}";
+snippet it
+	it("${1}", () => {
+	});
+snippet itt
+	it.todo("${1}");
+snippet jf
+	{/* FIXME${1} */}
+snippet let
+	let ${1:name};
+snippet rc
+	function ${1:Component}() {
+	  return (
+	    <div>
+	      ${2:$1}
+	    </div>
+	  );
+	}
+
+	export default ${3:$1};
+snippet rn
+	className="${1:class}"
+snippet rt
+	import ${1:Component} from "./${2:$1}";
+	import { createRoot } from "react-dom/client";
+	
+	function buildComponent(props = {}) {
+	  return <${3:$1} {...props} />;
+	}
+	
+	it("renders successfully", () => {
+	  const container = document.createElement("div");
+	  const root = createRoot(container);
+	  root.render(buildComponent());
+	});
+snippet scd
+	screen.debug(); // FIXME
+snippet swi
+	switch (${1:expression}) {
+	}
+snippet try
+	try {
+	}
+	catch (error) {
+	}

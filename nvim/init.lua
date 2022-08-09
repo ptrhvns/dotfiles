@@ -15,6 +15,7 @@ vim.opt.relativenumber = true
 vim.opt.shell = "/bin/bash"
 vim.opt.shiftwidth = 0
 vim.opt.showmode = false
+vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.softtabstop = 4
 vim.opt.splitbelow = true
@@ -36,6 +37,7 @@ function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
+
 map("n", "<Leader>ip", ":set invpaste paste?<CR>")
 
 map("n", "<Leader>iw", ":set invwrap wrap?<CR>")
@@ -53,7 +55,15 @@ map("n", "<Up>", ":tabmove +1<CR><C-l>")
 map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
 map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
 
-map("n", "<Leader>$", ":set list! number! relativenumber!<CR><C-l>")
+map("n", "<Leader>$", function ()
+    vim.cmd("set list! number! relativenumber!")
+
+    if vim.opt.signcolumn:get() == "no" then
+        vim.cmd("set signcolumn=yes")
+    else
+        vim.cmd("set signcolumn=no")
+    end
+end)
 
 map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 

@@ -141,7 +141,7 @@ vim.api.nvim_create_autocmd("BufNewFile,BufRead", { group = augroup, pattern = "
 vim.api.nvim_create_autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal tabstop=2" })
-vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,sass,scss", command = "EmmetInstall" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,sass,scss,typescriptreact", command = "EmmetInstall" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal tabstop=2" })
@@ -195,19 +195,19 @@ require('Comment').setup {
     }
 }
 
-local comment_opts = { expr = true, remap = true }
+local comment_opts = { expr = true, remap = true, replace_keycodes = false }
 
--- Toggle using count
-map('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", comment_opts)
-map('n', '<Leader>cC', "v:count == 0 ? '<Plug>(comment_toggle_current_blockwise)' : '<Plug>(comment_toggle_blockwise_count)'", comment_opts)
+ -- Toggle using count
+vim.keymap.set('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Plug>(comment_toggle_linewise_count)'", comment_opts)
+vim.keymap.set('n', '<Leader>cb', "v:count == 0 ? '<Plug>(comment_toggle_blockwise_current)' : '<Plug>(comment_toggle_blockwise_count)'", comment_opts)
 
 -- Toggle in Op-pending mode
-map('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
-map('n', '<Leader>cM', '<Plug>(comment_toggle_blockwise)')
+vim.keymap.set('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
+vim.keymap.set('n', '<Leader>cM', '<Plug>(comment_toggle_blockwise)')
 
 -- Toggle in VISUAL mode
-map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
-map('v', '<Leader>cC', '<Plug>(comment_toggle_blockwise_visual)')
+vim.keymap.set('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
+vim.keymap.set('v', '<Leader>cC', '<Plug>(comment_toggle_blockwise_visual)')
 
 -- lazygit.nvim ----------------------------------------------------------
 

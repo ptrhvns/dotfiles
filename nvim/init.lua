@@ -67,15 +67,15 @@ end)
 
 map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 
-function run_formatters()
+function run_code_commands()
     vim.cmd [[
         write
-        execute "!run-formatters " . @%
+        execute "!run-code-commands " . @%
         checktime
     ]]
 end
 
-map("n", "<Leader>rf", ":lua run_formatters()<CR>")
+map("n", "<Leader>rf", ":lua run_code_commands()<CR>")
 
 map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
 

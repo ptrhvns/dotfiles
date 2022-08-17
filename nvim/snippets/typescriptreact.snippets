@@ -4,9 +4,11 @@ snippet /t
 	// TODO${1}
 snippet /x
 	// XXX${1}
-snippet afn
-	async () => {
+snippet afns
+	async (${1}) => {
 	}
+snippet afne
+	async (${1}) => (${2})
 snippet afun
 	async function ${1:name}(${2}) {
 	}
@@ -37,8 +39,10 @@ snippet exp
 snippet fin
 	finally {
 	}
-snippet fn
-	() => {
+snippet fne
+	(${1}) => (${2})
+snippet fns
+	(${1}) => {
 	}
 snippet fun
 	function ${1:name}(${2}) {

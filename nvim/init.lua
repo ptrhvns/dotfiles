@@ -197,17 +197,12 @@ require('Comment').setup {
 
 local comment_opts = { expr = true, remap = true, replace_keycodes = false }
 
- -- Toggle using count
-vim.keymap.set('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Plug>(comment_toggle_linewise_count)'", comment_opts)
 vim.keymap.set('n', '<Leader>cb', "v:count == 0 ? '<Plug>(comment_toggle_blockwise_current)' : '<Plug>(comment_toggle_blockwise_count)'", comment_opts)
-
--- Toggle in Op-pending mode
-vim.keymap.set('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
+vim.keymap.set('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_linewise_current)' : '<Plug>(comment_toggle_linewise_count)'", comment_opts)
 vim.keymap.set('n', '<Leader>cM', '<Plug>(comment_toggle_blockwise)')
-
--- Toggle in VISUAL mode
-vim.keymap.set('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
+vim.keymap.set('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
 vim.keymap.set('v', '<Leader>cC', '<Plug>(comment_toggle_blockwise_visual)')
+vim.keymap.set('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
 
 -- lazygit.nvim ----------------------------------------------------------
 

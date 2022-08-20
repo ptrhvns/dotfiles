@@ -88,14 +88,12 @@ require("packer").startup(function(use)
 
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
-    use "folke/trouble.nvim"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-path"
     use "hrsh7th/nvim-cmp"
     use "itchyny/lightline.vim"
     use "kana/vim-smartinput"
-    use "kdheepak/lazygit.nvim"
     use "kevinhwang91/nvim-hlslens"
     use "kyazdani42/nvim-tree.lua" 
     use "L3MON4D3/LuaSnip"
@@ -204,10 +202,6 @@ vim.keymap.set('n', '<Leader>cM', '<Plug>(comment_toggle_blockwise)')
 vim.keymap.set('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
 vim.keymap.set('v', '<Leader>cC', '<Plug>(comment_toggle_blockwise_visual)')
 vim.keymap.set('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
-
--- lazygit.nvim ----------------------------------------------------------
-
-map("n", "<Leader>gg", ":LazyGit<CR>", { silent = true })
 
 -- nvim-hlslens ----------------------------------------------------------
 
@@ -381,30 +375,6 @@ cmp.setup.filetype("typescript", cmp_setup_config)
 -- gitsigns.nvim ---------------------------------------------------------
 
 require("gitsigns").setup()
-
--- trouble.nvim ----------------------------------------------------------
-
-require("trouble").setup {
-    icons = false,
-    fold_open = "v",
-    fold_closed = ">",
-    indent_lines = false,
-    signs = {
-        error = "E",
-        hint = "H",
-        information = "I",
-        other = "O",
-        warning = "W",
-    },
-    use_diagnostic_signs = false,
-}
-
-map("n", "<Leader>xd", "<Cmd>TroubleToggle document_diagnostics<CR>", {silent = true })
-map("n", "<Leader>xl", "<Cmd>TroubleToggle loclist<CR>", {silent = true })
-map("n", "<Leader>xq", "<Cmd>TroubleToggle quickfix<CR>", {silent = true })
-map("n", "<Leader>xw", "<Cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true })
-map("n", "<Leader>xx", "<Cmd>TroubleToggle<CR>", {silent = true })
-map("n", "gR", "<Cmd>TroubleToggle lsp_references<CR>", {silent = true })
 
 -- nvim-tree.lua ---------------------------------------------------------
 

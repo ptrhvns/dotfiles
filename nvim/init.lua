@@ -113,7 +113,8 @@ require("packer").startup(function(use)
     use "tpope/vim-fugitive"
     use "tpope/vim-surround"
     use "wbthomason/packer.nvim"
-    use "williamboman/nvim-lsp-installer"
+    use "williamboman/mason-lspconfig.nvim" 
+    use "williamboman/mason.nvim" 
 
 end)
 
@@ -271,10 +272,13 @@ map("n", "<Leader>gw", ":Gwrite<CR>")
 
 vim.g.user_emmet_install_global = 0
 
--- nvim-lsp-installer ----------------------------------------------------
+-- mason.nvim ------------------------------------------------------------
 
--- This setup must come before any lspconfig setup.
-require("nvim-lsp-installer").setup {}
+require("mason").setup {}
+
+-- mason-lspconfig.nvim  -------------------------------------------------
+
+require("mason-lspconfig").setup {}
 
 -- nvim-lspconfig --------------------------------------------------------
 
@@ -318,11 +322,6 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
 
 local lspconfig = require("lspconfig")
 
-lspconfig.bashls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
 lspconfig.cssls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -333,17 +332,7 @@ lspconfig.html.setup {
     on_attach = on_attach,
 }
 
-lspconfig.jsonls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
 lspconfig.pyright.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
-lspconfig.taplo.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }

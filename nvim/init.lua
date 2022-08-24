@@ -86,6 +86,7 @@ map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
 require("packer").startup(function(use)
 
+    use "akinsho/toggleterm.nvim"
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
     use "hrsh7th/cmp-buffer"
@@ -408,3 +409,16 @@ require("gitsigns").setup()
 })
 
 map("n", "<Leader>nn", "<Cmd>NvimTreeToggle<CR>")
+
+-- toggleterm.nvim -------------------------------------------------------
+
+require("toggleterm").setup()
+
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
+
+function lazygit_toggle()
+  lazygit:toggle()
+end
+
+map("n", "<Leader>gg", "<Cmd>lua lazygit_toggle()<CR>", {silent = true})

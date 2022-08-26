@@ -89,6 +89,7 @@ require("packer").startup(function(use)
     use "akinsho/toggleterm.nvim"
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
+    use "folke/trouble.nvim"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-path"
@@ -428,4 +429,28 @@ function lazygit_toggle()
   lazygit:toggle()
 end
 
-map("n", "<Leader>gg", "<Cmd>lua lazygit_toggle()<CR>", {silent = true})
+ map("n", "<Leader>gg", "<Cmd>lua lazygit_toggle()<CR>", {silent = true})
+
+-- trouble.nvim ----------------------------------------------------------
+
+require("trouble").setup {
+    icons = false,
+    fold_open = "v",
+    fold_closed = ">",
+    indent_lines = false,
+    signs = {
+        error = "E",
+        hint = "H",
+        information = "I",
+        other = "O",
+        warning = "W",
+    },
+    use_diagnostic_signs = false,
+}
+
+map("n", "<Leader>xd", "<Cmd>TroubleToggle document_diagnostics<CR>", {silent = true })
+map("n", "<Leader>xl", "<Cmd>TroubleToggle loclist<CR>", {silent = true })
+map("n", "<Leader>xq", "<Cmd>TroubleToggle quickfix<CR>", {silent = true })
+map("n", "<Leader>xw", "<Cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true })
+map("n", "<Leader>xx", "<Cmd>TroubleToggle<CR>", {silent = true })
+map("n", "gR", "<Cmd>TroubleToggle lsp_references<CR>", {silent = true })

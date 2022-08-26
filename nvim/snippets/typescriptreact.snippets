@@ -15,6 +15,10 @@ snippet afun
 snippet cas
 	case ${1:value}:
 	  ${2:break};
+snippet cne
+	className={${1}}
+snippet cns
+	className="${1}"
 snippet cof
 	const ${1:name} = () => {
 	};
@@ -74,8 +78,6 @@ snippet rc
 	}
 
 	export default ${3:$1};
-snippet rn
-	className="${1:class}"
 snippet rt
 	import ${1:Component} from "./${2:$1}";
 	import { createRoot } from "react-dom/client";

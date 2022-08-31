@@ -156,6 +156,7 @@ vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", comm
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal softtabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal tabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal textwidth=80" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal expandtab" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal softtabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal tabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "notes", command = "setlocal textwidth=80" })

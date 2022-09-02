@@ -75,7 +75,7 @@ function run_code_commands()
     ]]
 end
 
-map("n", "<Leader>rf", ":lua run_code_commands()<CR>")
+map("n", "<Leader>rc", ":lua run_code_commands()<CR>")
 
 map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
 

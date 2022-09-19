@@ -68,11 +68,15 @@ end)
 map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 
 function run_code_commands()
-    vim.cmd [[
-        write
-        execute "!run-code-commands " . @%
-        checktime
-    ]]
+    if vim.bo.filetype == "go" then
+        vim.lsp.buf.format()
+    else
+        vim.cmd [[
+            write
+            execute "!run-code-commands " . @%
+            checktime
+        ]]
+    end
 end
 
 map("n", "<Leader>rc", ":lua run_code_commands()<CR>")
@@ -145,6 +149,14 @@ vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css", comm
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal tabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,sass,scss,typescriptreact", command = "EmmetInstall" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal nolist" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal softtabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal tabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal noexpandtab" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal nolist" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal softtabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal tabstop=2" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal commentstring={#\\ %s\\ #}" })
@@ -332,6 +344,11 @@ lspconfig.cssls.setup {
     on_attach = on_attach,
 }
 
+lspconfig.gopls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
 lspconfig.html.setup {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -374,6 +391,7 @@ local cmp_setup_config = {
 }
 
 cmp.setup.filetype("css", cmp_setup_config)
+cmp.setup.filetype("go", cmp_setup_config)
 cmp.setup.filetype("html", cmp_setup_config)
 cmp.setup.filetype("javascript", cmp_setup_config)
 cmp.setup.filetype("json", cmp_setup_config)

@@ -128,14 +128,15 @@ vim.g.solarized_termtrans = 1
 
 vim.cmd "colorscheme solarized"
 
-vim.cmd "highlight SignColumn ctermbg=Black"
-vim.cmd "highlight WinSeparator guibg=None"
-vim.cmd "highlight! NonText ctermfg=235"
-
--- Only highlight absolute line number inside relative numbers.
+vim.cmd "highlight CursorColumn ctermbg=234"
+vim.cmd "highlight CursorLine ctermbg=234"
+vim.cmd "highlight CursorLineNr cterm=NONE ctermfg=166 ctermbg=Black"
 vim.cmd "highlight LineNr ctermfg=166 ctermbg=Black"
 vim.cmd "highlight LineNrAbove ctermfg=239 ctermbg=Black"
 vim.cmd "highlight LineNrBelow ctermfg=239 ctermbg=Black"
+vim.cmd "highlight SignColumn ctermbg=Black"
+vim.cmd "highlight WinSeparator guibg=None"
+vim.cmd "highlight! NonText ctermfg=235"
 
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"

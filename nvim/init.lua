@@ -109,6 +109,7 @@ require("packer").startup(function(use)
     use "neovim/nvim-lspconfig"
     use "numToStr/Comment.nvim"
     use "nvim-lua/plenary.nvim"
+    use "nvim-telescope/telescope-ui-select.nvim" 
     use "nvim-telescope/telescope.nvim"
     use "saadparwaiz1/cmp_luasnip"
     use "sheerun/vim-polyglot"
@@ -199,7 +200,17 @@ map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
 -- telescope.nvim --------------------------------------------------------
 
-require("telescope").setup {}
+local telescope = require("telescope")
+
+telescope.setup {
+    extensions = {
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {}
+        }
+    }
+}
+
+telescope.load_extension("ui-select")
 
 -- General settings are here. LSP-related are with nvim-lspconfig.
 map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")

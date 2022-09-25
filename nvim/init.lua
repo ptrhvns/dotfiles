@@ -93,7 +93,6 @@ require("packer").startup(function(use)
     use "akinsho/toggleterm.nvim"
     use "altercation/vim-colors-solarized"
     use "bkad/CamelCaseMotion"
-    use "folke/trouble.nvim"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-path"
@@ -177,6 +176,10 @@ vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "markdown",
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "notes", command = "setlocal textwidth=80" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal tabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal nolist" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal softtabstop=4" })
+vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal tabstop=4" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=-" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=@-@" })
 vim.api.nvim_create_autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal softtabstop=2" })
@@ -371,6 +374,11 @@ lspconfig.pyright.setup {
     on_attach = on_attach,
 }
 
+lspconfig.rust_analyzer.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
 lspconfig.tsserver.setup {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -408,6 +416,7 @@ cmp.setup.filetype("html", cmp_setup_config)
 cmp.setup.filetype("javascript", cmp_setup_config)
 cmp.setup.filetype("json", cmp_setup_config)
 cmp.setup.filetype("python", cmp_setup_config)
+cmp.setup.filetype("rust", cmp_setup_config)
 cmp.setup.filetype("scss", cmp_setup_config)
 cmp.setup.filetype("sh", cmp_setup_config)
 cmp.setup.filetype("toml", cmp_setup_config)
@@ -462,30 +471,6 @@ function lazygit_toggle()
 end
 
  map("n", "<Leader>gg", "<Cmd>lua lazygit_toggle()<CR>", {silent = true})
-
--- trouble.nvim ----------------------------------------------------------
-
-require("trouble").setup {
-    icons = false,
-    fold_open = "v",
-    fold_closed = ">",
-    indent_lines = false,
-    signs = {
-        error = "E",
-        hint = "H",
-        information = "I",
-        other = "O",
-        warning = "W",
-    },
-    use_diagnostic_signs = false,
-}
-
-map("n", "<Leader>xd", "<Cmd>TroubleToggle document_diagnostics<CR>", {silent = true })
-map("n", "<Leader>xl", "<Cmd>TroubleToggle loclist<CR>", {silent = true })
-map("n", "<Leader>xq", "<Cmd>TroubleToggle quickfix<CR>", {silent = true })
-map("n", "<Leader>xw", "<Cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true })
-map("n", "<Leader>xx", "<Cmd>TroubleToggle<CR>", {silent = true })
-map("n", "gR", "<Cmd>TroubleToggle lsp_references<CR>", {silent = true })
 
 -- vim-doge --------------------------------------------------------------
 

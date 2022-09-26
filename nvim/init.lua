@@ -455,6 +455,10 @@ require("gitsigns").setup()
           },
       },
   },
+  view = {
+      adaptive_size = true,
+      centralize_selection = true,
+  },
 })
 
 map("n", "<Leader>nn", "<Cmd>NvimTreeToggle<CR>")

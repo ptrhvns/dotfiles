@@ -37,24 +37,24 @@ function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
-map("n", "<Leader>ip", "<Cmd>set invpaste paste?<CR>")
+map("n", "<Leader>ip", ":set invpaste paste?<CR>")
 
-map("n", "<Leader>iw", "<Cmd>set invwrap wrap?<CR>")
+map("n", "<Leader>iw", ":set invwrap wrap?<CR>")
 
-map("n", "<Leader>u", "<Cmd>setlocal cursorcolumn! cursorline!<CR><C-l>")
+map("n", "<Leader>u", ":setlocal cursorcolumn! cursorline!<CR><C-l>")
 
 map("v", "<Leader>sd", ":sort! n<CR>")
 map("v", "<Leader>ss", ":sort iu<CR>")
 
 map("n", "<Left>", "gT")
 map("n", "<Right>", "gt")
-map("n", "<Down>", "<Cmd>tabmove -1<CR><C-l>")
-map("n", "<Up>", "<Cmd>tabmove +1<CR><C-l>")
+map("n", "<Down>", ":tabmove -1<CR><C-l>")
+map("n", "<Up>", ":tabmove +1<CR><C-l>")
 
-map("n", "<Leader>ve", "<Cmd>tabedit $MYVIMRC<CR>")
-map("n", "<Leader>vs", "<Cmd>source $MYVIMRC<CR>")
+map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
+map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
 
-map("n", "<Leader>bdc", "<Cmd>bufdo bd<CR>")
+map("n", "<Leader>bdc", ":bufdo bd<CR>")
 
 map("n", "<Leader>$", function ()
     vim.cmd("set list! number! relativenumber!")
@@ -66,7 +66,7 @@ map("n", "<Leader>$", function ()
     end
 end)
 
-map("n", "<Leader>W", "<Cmd>%s/\\s\\+$//<CR>:let @/=''<CR>")
+map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 
 function run_code_commands()
     if vim.bo.filetype == "go" then
@@ -80,7 +80,7 @@ function run_code_commands()
     end
 end
 
-map("n", "<Leader>rc", "<Cmd>lua run_code_commands()<CR>")
+map("n", "<Leader>rc", ":lua run_code_commands()<CR>")
 
 map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
 
@@ -120,7 +120,7 @@ require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
     use "williamboman/mason-lspconfig.nvim" 
     use "williamboman/mason.nvim" 
-    use { "kkoomen/vim-doge", run = "<Cmd>call doge#install()" }
+    use { "kkoomen/vim-doge", run = ":call doge#install()" }
 
 end)
 
@@ -199,9 +199,9 @@ autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
 -- packer.nvim -----------------------------------------------------------
 
-map("n", "<Leader>li", "<Cmd>PackerInstall<CR>")
-map("n", "<Leader>ls", "<Cmd>PackerSync<CR>")
-map("n", "<Leader>lu", "<Cmd>PackerUpdate<CR>")
+map("n", "<Leader>li", ":PackerInstall<CR>")
+map("n", "<Leader>ls", ":PackerSync<CR>")
+map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
 -- telescope.nvim --------------------------------------------------------
 
@@ -218,12 +218,12 @@ telescope.setup {
 telescope.load_extension("ui-select")
 
 -- General settings are here. LSP-related are with nvim-lspconfig.
-map("n", "<Leader>ff", "<Cmd>Telescope find_files<CR>")
-map("n", "<Leader>td", "<Cmd>Telescope diagnostics<CR>")
-map("n", "<Leader>tg", "<Cmd>Telescope git_branches<CR>")
-map("n", "<Leader>th", "<Cmd>Telescope help_tags<CR>")
-map("n", "<Leader>tk", "<Cmd>Telescope keymaps<CR>")
-map("n", "<Leader>tl", "<Cmd>Telescope live_grep<CR>")
+map("n", "<Leader>ff", ":Telescope find_files<CR>")
+map("n", "<Leader>td", ":Telescope diagnostics<CR>")
+map("n", "<Leader>tg", ":Telescope git_branches<CR>")
+map("n", "<Leader>th", ":Telescope help_tags<CR>")
+map("n", "<Leader>tk", ":Telescope keymaps<CR>")
+map("n", "<Leader>tl", ":Telescope live_grep<CR>")
 
 -- Comment.nvim ----------------------------------------------------------
 
@@ -252,20 +252,20 @@ require("hlslens").setup {
 local hlslens_opts = { silent = true }
 
 map("i", "<C-l>", "<C-o>:nohlsearch<CR>")
-map("n", "<C-l>", "<Cmd>nohlsearch<CR><C-l>")
+map("n", "<C-l>", ":nohlsearch<CR><C-l>")
 map('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
 map('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
 map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
 map('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
-map('n', 'n', "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
+map('n', 'n', ":execute('normal! ' . v:count1 . 'n')<CR>:lua require('hlslens').start()<CR>", hlslens_opts)
 
 -- LuaSnip ---------------------------------------------------------------
 
 require("luasnip.loaders.from_snipmate").lazy_load()
 
 -- XXX Do edits in a split to get reloading to work.
-map("n", "<Leader>se", "<Cmd>split +lua\\ require('luasnip.loaders').edit_snippet_files()<CR>")
-map("n", "<Leader>sl", "<Cmd>lua require('luasnip.loaders.from_snipmate').lazy_load()<CR>")
+map("n", "<Leader>se", ":split +lua\\ require('luasnip.loaders').edit_snippet_files()<CR>")
+map("n", "<Leader>sl", ":lua require('luasnip.loaders.from_snipmate').lazy_load()<CR>")
 
 vim.cmd "imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
 vim.cmd "imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'"
@@ -297,10 +297,10 @@ map("", ",w", "<Plug>CamelCaseMotion_w", { silent = true })
 
 -- fugitive --------------------------------------------------------------
 
-map("n", "<Leader>gb", "<Cmd>Git blame<CR>")
-map("n", "<Leader>gc", "<Cmd>Git commit --verbose<CR>")
-map("n", "<Leader>gp", "<Cmd>Git push --verbose<CR>")
-map("n", "<Leader>gw", "<Cmd>Gwrite<CR>")
+map("n", "<Leader>gb", ":Git blame<CR>")
+map("n", "<Leader>gc", ":Git commit --verbose<CR>")
+map("n", "<Leader>gp", ":Git push --verbose<CR>")
+map("n", "<Leader>gw", ":Gwrite<CR>")
 
 -- emmet-vim -------------------------------------------------------------
 
@@ -319,13 +319,13 @@ require("mason-lspconfig").setup {}
 function on_attach(client, bufnr)
     local on_attach_opts = { silent=true, buffer=bufnr }
 
-    map("n", "<Leader>tc", "<Cmd>Telescope lsp_incoming_calls<CR>", on_attach_opts)
-    map("n", "<Leader>tC", "<Cmd>Telescope lsp_outgoing_calls<CR>", on_attach_opts)
-    map("n", "<Leader>tD", "<Cmd>Telescope lsp_definitions<CR>", on_attach_opts)
-    map("n", "<Leader>ti", "<Cmd>Telescope lsp_implementations<CR>", on_attach_opts)
-    map("n", "<Leader>tr", "<Cmd>Telescope lsp_references<CR>", on_attach_opts)
-    map("n", "<Leader>ts", "<Cmd>Telescope lsp_document_symbols<CR>", on_attach_opts)
-    map("n", "<Leader>tt", "<Cmd>Telescope lsp_type_definitions<CR>", on_attach_opts)
+    map("n", "<Leader>tc", ":Telescope lsp_incoming_calls<CR>", on_attach_opts)
+    map("n", "<Leader>tC", ":Telescope lsp_outgoing_calls<CR>", on_attach_opts)
+    map("n", "<Leader>tD", ":Telescope lsp_definitions<CR>", on_attach_opts)
+    map("n", "<Leader>ti", ":Telescope lsp_implementations<CR>", on_attach_opts)
+    map("n", "<Leader>tr", ":Telescope lsp_references<CR>", on_attach_opts)
+    map("n", "<Leader>ts", ":Telescope lsp_document_symbols<CR>", on_attach_opts)
+    map("n", "<Leader>tt", ":Telescope lsp_type_definitions<CR>", on_attach_opts)
 
     map('n', '<C-k>', vim.lsp.buf.signature_help, on_attach_opts)
     map('n', '<Leader>lc', vim.lsp.buf.code_action, on_attach_opts)
@@ -465,7 +465,7 @@ require("gitsigns").setup()
   },
 })
 
-map("n", "<Leader>nn", "<Cmd>NvimTreeToggle<CR>")
+map("n", "<Leader>nn", ":NvimTreeToggle<CR>")
 
 -- toggleterm.nvim -------------------------------------------------------
 
@@ -478,10 +478,10 @@ function lazygit_toggle()
   lazygit:toggle()
 end
 
- map("n", "<Leader>gg", "<Cmd>lua lazygit_toggle()<CR>", {silent = true})
+ map("n", "<Leader>gg", ":lua lazygit_toggle()<CR>", {silent = true})
 
 -- vim-doge --------------------------------------------------------------
 
 vim.g.doge_enable_mappings = 0
 
-map("n", "<Leader>cd", "<Cmd>DogeGenerate<CR>")
+map("n", "<Leader>cd", ":DogeGenerate<CR>")

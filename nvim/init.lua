@@ -54,6 +54,8 @@ map("n", "<Up>", ":tabmove +1<CR><C-l>")
 map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
 map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
 
+map("n", "<Leader>bdc", "<Cmd>bufdo bd<CR>")
+
 map("n", "<Leader>$", function ()
     vim.cmd("set list! number! relativenumber!")
 

@@ -43,8 +43,8 @@ map("n", "<Leader>iw", "<Cmd>set invwrap wrap?<CR>")
 
 map("n", "<Leader>u", "<Cmd>setlocal cursorcolumn! cursorline!<CR><C-l>")
 
-map("v", "<Leader>sd", "<Cmd>sort! n<CR>")
-map("v", "<Leader>ss", "<Cmd>sort iu<CR>")
+map("v", "<Leader>sd", ":sort! n<CR>")
+map("v", "<Leader>ss", ":sort iu<CR>")
 
 map("n", "<Left>", "gT")
 map("n", "<Right>", "gt")

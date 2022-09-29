@@ -37,22 +37,22 @@ function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
-map("n", "<Leader>ip", ":set invpaste paste?<CR>")
+map("n", "<Leader>ip", "<Cmd>set invpaste paste?<CR>")
 
-map("n", "<Leader>iw", ":set invwrap wrap?<CR>")
+map("n", "<Leader>iw", "<Cmd>set invwrap wrap?<CR>")
 
-map("n", "<Leader>u", ":setlocal cursorcolumn! cursorline!<CR><C-l>")
+map("n", "<Leader>u", "<Cmd>setlocal cursorcolumn! cursorline!<CR><C-l>")
 
-map("v", "<Leader>sd", ":sort! n<CR>")
-map("v", "<Leader>ss", ":sort iu<CR>")
+map("v", "<Leader>sd", "<Cmd>sort! n<CR>")
+map("v", "<Leader>ss", "<Cmd>sort iu<CR>")
 
 map("n", "<Left>", "gT")
 map("n", "<Right>", "gt")
-map("n", "<Down>", ":tabmove -1<CR><C-l>")
-map("n", "<Up>", ":tabmove +1<CR><C-l>")
+map("n", "<Down>", "<Cmd>tabmove -1<CR><C-l>")
+map("n", "<Up>", "<Cmd>tabmove +1<CR><C-l>")
 
-map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
-map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
+map("n", "<Leader>ve", "<Cmd>tabedit $MYVIMRC<CR>")
+map("n", "<Leader>vs", "<Cmd>source $MYVIMRC<CR>")
 
 map("n", "<Leader>bdc", "<Cmd>bufdo bd<CR>")
 
@@ -66,7 +66,7 @@ map("n", "<Leader>$", function ()
     end
 end)
 
-map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
+map("n", "<Leader>W", "<Cmd>%s/\\s\\+$//<CR>:let @/=''<CR>")
 
 function run_code_commands()
     if vim.bo.filetype == "go" then
@@ -80,7 +80,7 @@ function run_code_commands()
     end
 end
 
-map("n", "<Leader>rc", ":lua run_code_commands()<CR>")
+map("n", "<Leader>rc", "<Cmd>lua run_code_commands()<CR>")
 
 map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
 
@@ -120,7 +120,7 @@ require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
     use "williamboman/mason-lspconfig.nvim" 
     use "williamboman/mason.nvim" 
-    use { "kkoomen/vim-doge", run = ":call doge#install()" }
+    use { "kkoomen/vim-doge", run = "<Cmd>call doge#install()" }
 
 end)
 
@@ -199,9 +199,9 @@ autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
 -- packer.nvim -----------------------------------------------------------
 
-map("n", "<Leader>li", ":PackerInstall<CR>")
-map("n", "<Leader>ls", ":PackerSync<CR>")
-map("n", "<Leader>lu", ":PackerUpdate<CR>")
+map("n", "<Leader>li", "<Cmd>PackerInstall<CR>")
+map("n", "<Leader>ls", "<Cmd>PackerSync<CR>")
+map("n", "<Leader>lu", "<Cmd>PackerUpdate<CR>")
 
 -- telescope.nvim --------------------------------------------------------
 
@@ -252,7 +252,7 @@ require("hlslens").setup {
 local hlslens_opts = { silent = true }
 
 map("i", "<C-l>", "<C-o>:nohlsearch<CR>")
-map("n", "<C-l>", ":nohlsearch<CR><C-l>")
+map("n", "<C-l>", "<Cmd>nohlsearch<CR><C-l>")
 map('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
 map('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
 map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
@@ -297,10 +297,10 @@ map("", ",w", "<Plug>CamelCaseMotion_w", { silent = true })
 
 -- fugitive --------------------------------------------------------------
 
-map("n", "<Leader>gb", ":Git blame<CR>")
-map("n", "<Leader>gc", ":Git commit --verbose<CR>")
-map("n", "<Leader>gp", ":Git push --verbose<CR>")
-map("n", "<Leader>gw", ":Gwrite<CR>")
+map("n", "<Leader>gb", "<Cmd>Git blame<CR>")
+map("n", "<Leader>gc", "<Cmd>Git commit --verbose<CR>")
+map("n", "<Leader>gp", "<Cmd>Git push --verbose<CR>")
+map("n", "<Leader>gw", "<Cmd>Gwrite<CR>")
 
 -- emmet-vim -------------------------------------------------------------
 

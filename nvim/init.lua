@@ -54,7 +54,7 @@ map("n", "<Up>", ":tabmove +1<CR><C-l>")
 map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
 map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
 
-map("n", "<Leader>bdc", ":bufdo bd<CR>")
+map("n", "<Leader>bdc", ":wall | bufdo bdelete<CR>")
 
 map("n", "<Leader>$", function ()
     vim.cmd("set list! number! relativenumber!")
@@ -246,6 +246,7 @@ map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
 -- nvim-hlslens ----------------------------------------------------------
 
 require("hlslens").setup {
+    calm_down = true,
     enable_incsearch = true,
 }
 

@@ -99,6 +99,7 @@ require("packer").startup(function(use)
     use "hrsh7th/cmp-path"
     use "hrsh7th/nvim-cmp"
     use "itchyny/lightline.vim"
+    use "j-hui/fidget.nvim"
     use "kana/vim-smartinput"
     use "kevinhwang91/nvim-hlslens"
     use "kyazdani42/nvim-tree.lua" 
@@ -486,3 +487,7 @@ end
 vim.g.doge_enable_mappings = 0
 
 map("n", "<Leader>cd", ":DogeGenerate<CR>")
+
+-- fidget.nvim -----------------------------------------------------------
+
+require("fidget").setup()

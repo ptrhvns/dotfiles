@@ -121,7 +121,6 @@ require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
     use "williamboman/mason-lspconfig.nvim" 
     use "williamboman/mason.nvim" 
-    use { "kkoomen/vim-doge", run = ":call doge#install()" }
 
 end)
 
@@ -333,6 +332,7 @@ function on_attach(client, bufnr)
     map('n', '<Leader>lc', vim.lsp.buf.code_action, on_attach_opts)
     map('n', '<Leader>lD', vim.lsp.buf.declaration, on_attach_opts)
     map('n', '<Leader>ld', vim.lsp.buf.definition, on_attach_opts)
+    map('n', '<Leader>lf', vim.lsp.buf.format, on_attach_opts)
     map('n', '<Leader>li', vim.lsp.buf.implementation, on_attach_opts)
     map('n', '<Leader>lr', vim.lsp.buf.references, on_attach_opts)
     map('n', '<Leader>lR', vim.lsp.buf.rename, on_attach_opts)
@@ -481,12 +481,6 @@ function lazygit_toggle()
 end
 
  map("n", "<Leader>gg", ":lua lazygit_toggle()<CR>", {silent = true})
-
--- vim-doge --------------------------------------------------------------
-
-vim.g.doge_enable_mappings = 0
-
-map("n", "<Leader>cd", ":DogeGenerate<CR>")
 
 -- fidget.nvim -----------------------------------------------------------
 

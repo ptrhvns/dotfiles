@@ -430,6 +430,7 @@ filetype("scss", cmp_setup_config)
 filetype("sh", cmp_setup_config)
 filetype("toml", cmp_setup_config)
 filetype("typescript", cmp_setup_config)
+filetype("typescriptreact", cmp_setup_config)
 
 -- gitsigns.nvim ---------------------------------------------------------
 

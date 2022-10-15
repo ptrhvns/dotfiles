@@ -311,6 +311,8 @@ vim.g.user_emmet_install_global = 0
 
 require("mason").setup {}
 
+map("n", "<Leader>lm", ":Mason<CR>")
+
 -- mason-lspconfig.nvim  -------------------------------------------------
 
 require("mason-lspconfig").setup {}
@@ -329,6 +331,7 @@ function on_attach(client, bufnr)
     map("n", "<Leader>tt", ":Telescope lsp_type_definitions<CR>", on_attach_opts)
 
     map('n', '<C-k>', vim.lsp.buf.signature_help, on_attach_opts)
+    map('n', '<Leader>lb', ":LspRestart<CR>", on_attach_opts)
     map('n', '<Leader>lc', vim.lsp.buf.code_action, on_attach_opts)
     map('n', '<Leader>lD', vim.lsp.buf.declaration, on_attach_opts)
     map('n', '<Leader>ld', vim.lsp.buf.definition, on_attach_opts)

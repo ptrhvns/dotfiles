@@ -12,6 +12,9 @@ snippet afne
 snippet afun
 	async function ${1:name}(${2}) {
 	}
+snippet aiife
+	(async (${1}) => {
+	})(${2})
 snippet cas
 	case ${1:value}:
 	  ${2:break};
@@ -35,6 +38,9 @@ snippet def
 snippet des
 	describe("${1}", () => {
 	});
+snippet edf
+	export default function ${1:name}(${2}) {
+	}
 snippet eli
 	else if (${1:condition}) {
 	}
@@ -60,6 +66,9 @@ snippet for
 snippet if
 	if (${1:condition}) {
 	}
+snippet iife
+	((${1}) => {
+	})(${2})
 snippet int
 	interface ${1:Name} {
 	}
@@ -75,15 +84,9 @@ snippet jf
 snippet let
 	let ${1:name};
 snippet rc
-	function ${1:Component}() {
-	  return (
-	    <div>
-	      ${2:$1}
-	    </div>
-	  );
+	export default function ${1:Component}(${2}) {
+	  return <div>${3:$1}</div>;
 	}
-
-	export default ${3:$1};
 snippet rt
 	import ${1:Component} from "./${2:$1}";
 	import { createRoot } from "react-dom/client";

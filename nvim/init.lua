@@ -355,9 +355,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require("lspconfig")
 
@@ -410,8 +408,10 @@ local cmp_setup_config = {
     }),
     sources = cmp.config.sources(
         {
-            { name = 'luasnip' },
             { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+        },
+        {
             { name = 'buffer' },
         }
     )

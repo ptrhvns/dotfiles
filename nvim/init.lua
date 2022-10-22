@@ -122,6 +122,7 @@ require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
     use "williamboman/mason-lspconfig.nvim" 
     use "williamboman/mason.nvim" 
+    use { "kkoomen/vim-doge", run = ":call doge#install()" }
 
 end)
 
@@ -514,3 +515,9 @@ map("n", "<Leader>xq", "<Cmd>TroubleToggle quickfix<CR>", {silent = true })
 map("n", "<Leader>xw", "<Cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true })
 map("n", "<Leader>xx", "<Cmd>TroubleToggle<CR>", {silent = true })
 map("n", "gR", "<Cmd>TroubleToggle lsp_references<CR>", {silent = true })
+
+--- vim-doge --------------------------------------------------------------
+
+vim.g.doge_enable_mappings = 0
+
+map("n", "<Leader>cd", ":DogeGenerate<CR>")

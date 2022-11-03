@@ -479,7 +479,7 @@ map("n", "<Leader>nn", ":NvimTreeToggle<CR>")
 
 require("toggleterm").setup()
 
-local Terminal  = require('toggleterm.terminal').Terminal
+local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
 
 function lazygit_toggle()

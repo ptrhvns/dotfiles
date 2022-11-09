@@ -27,6 +27,7 @@ shopt -u mailwarn
 
 unset MAILCHECK
 
+export DISPLAY=$(awk '/nameserver/{print $2}' /etc/resolv.conf):0.0
 export EDITOR=$(command -v nvim || command -v vim || command -v vi)
 export GPG_TTY=$(tty)
 export HISTCONTROL="erasedups:ignoreboth"
@@ -133,12 +134,18 @@ build_prompt() {
 
 PROMPT_COMMAND=build_prompt
 
+alias checkipaws="curl http://checkip.amazonaws.com/"
+alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
+alias foxit="/mnt/c/Program\ Files\ \(x86\)/Foxit\ Software/Foxit\ Reader/FoxitPDFReader.exe"
 alias g="grep -iE"
 alias gv="grep -iEv"
 alias l="ls"
 alias la="ls -la"
+alias lg="lazygit"
 alias ll="ls -l"
 alias m="\$PAGER"
+alias notepad='/mnt/c/windows/system32/notepad.exe'
+alias pm='python manage.py'
 alias ta="tmux attach -t"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"

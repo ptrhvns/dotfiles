@@ -84,9 +84,11 @@ snippet jf
 snippet let
 	let ${1:name};
 snippet rc
-	export default function ${1:Component}(${2}) {
+	import React from "react";
+	
+	export default function ${1:Component}(${2}){
 	  return <div>${3:$1}</div>;
-	}
+	};
 snippet rt
 	import ${1:Component} from "./${2:$1}";
 	import { createRoot } from "react-dom/client";
@@ -110,3 +112,5 @@ snippet try
 	}
 	catch (error) {
 	}
+snippet typ
+	type ${1:Alias} = ${2:type};

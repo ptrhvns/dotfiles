@@ -136,12 +136,12 @@ build_prompt() {
         PS1+=" ${ORANGE}[${num_jobs}]"
     fi
 
-    if [ $GIT_PROMPT -gt 0 ]; then
-        PS1+="${YELLOW}$(__git_ps1 ' %s')"
-    fi
-
     if [ ! -z "${VIRTUAL_ENV}" ]; then
         PS1+=" ${BLUE}venv"
+    fi
+
+    if [ $GIT_PROMPT -gt 0 ]; then
+        PS1+="${YELLOW}$(__git_ps1 ' %s')"
     fi
 
     PS1+=" ${GREY}\$"

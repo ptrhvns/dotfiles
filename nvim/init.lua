@@ -69,15 +69,15 @@ end)
 map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 
 function run_code_commands()
-    if vim.bo.filetype == "go" then
-        vim.lsp.buf.format()
-    else
+    -- if vim.bo.filetype == "go" then
+    --     vim.lsp.buf.format()
+    -- else
         vim.cmd [[
             write
             execute "!run-code-commands " . @%
             checktime
         ]]
-    end
+    -- end
 end
 
 map("n", "<Leader>rc", ":lua run_code_commands()<CR>")
@@ -112,6 +112,7 @@ require("packer").startup(function(use)
     use "nvim-lua/plenary.nvim"
     use "nvim-telescope/telescope-ui-select.nvim" 
     use "nvim-telescope/telescope.nvim"
+    use "nvim-treesitter/nvim-treesitter"
     use "saadparwaiz1/cmp_luasnip"
     use "sheerun/vim-polyglot"
     use "tomtom/tlib_vim"
@@ -151,16 +152,16 @@ autocmd("BufNewFile,BufRead", { group = augroup, pattern = "supervisord.conf", c
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,sass,scss,typescriptreact", command = "EmmetInstall" })
+autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,sass,scss,typescript,typescriptreact", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
-autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab" })
-autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal nolist" })
-autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal softtabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal tabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal noexpandtab" })
-autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal nolist" })
-autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal softtabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4" })
+-- autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab" })
+-- autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal nolist" })
+-- autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal softtabstop=4" })
+-- autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal tabstop=4" })
+-- autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal noexpandtab" })
+-- autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal nolist" })
+-- autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal softtabstop=4" })
+-- autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal commentstring={#\\ %s\\ #}" })
@@ -179,10 +180,10 @@ autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal
 autocmd("FileType", { group = augroup, pattern = "notes", command = "setlocal textwidth=80" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal tabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab" })
-autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal nolist" })
-autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal softtabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal tabstop=4" })
+-- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab" })
+-- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal nolist" })
+-- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal softtabstop=4" })
+-- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=-" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=@-@" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal softtabstop=2" })
@@ -365,10 +366,10 @@ lspconfig.cssls.setup {
     on_attach = on_attach,
 }
 
-lspconfig.gopls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+-- lspconfig.gopls.setup {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+-- }
 
 lspconfig.html.setup {
     capabilities = capabilities,
@@ -380,10 +381,10 @@ lspconfig.pyright.setup {
     on_attach = on_attach,
 }
 
-lspconfig.rust_analyzer.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
+-- lspconfig.rust_analyzer.setup {
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+-- }
 
 lspconfig.tsserver.setup {
     capabilities = capabilities,
@@ -421,12 +422,12 @@ local cmp_setup_config = {
 local filetype = cmp.setup.filetype
 
 filetype("css", cmp_setup_config)
-filetype("go", cmp_setup_config)
+-- filetype("go", cmp_setup_config)
 filetype("html", cmp_setup_config)
 filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
 filetype("python", cmp_setup_config)
-filetype("rust", cmp_setup_config)
+-- filetype("rust", cmp_setup_config)
 filetype("scss", cmp_setup_config)
 filetype("sh", cmp_setup_config)
 filetype("toml", cmp_setup_config)
@@ -496,3 +497,29 @@ require("fidget").setup()
 vim.g.doge_enable_mappings = 0
 
 map("n", "<Leader>cd", ":DogeGenerate<CR>")
+
+-- 
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = {
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "python",
+    "scss",
+    "typescript",
+    "vim"
+  },
+
+  sync_install = false,
+
+  highlight = {
+    enable = false,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    -- additional_vim_regex_highlighting = false,
+  },
+}

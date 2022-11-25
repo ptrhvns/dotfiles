@@ -180,10 +180,10 @@ autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal
 autocmd("FileType", { group = augroup, pattern = "notes", command = "setlocal textwidth=80" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal tabstop=4" })
--- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab" })
--- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal nolist" })
--- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal softtabstop=4" })
--- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal tabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab" })
+autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal nolist" })
+autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal softtabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=-" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=@-@" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal softtabstop=2" })
@@ -381,10 +381,10 @@ lspconfig.pyright.setup {
     on_attach = on_attach,
 }
 
--- lspconfig.rust_analyzer.setup {
---     capabilities = capabilities,
---     on_attach = on_attach,
--- }
+lspconfig.rust_analyzer.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
 
 lspconfig.tsserver.setup {
     capabilities = capabilities,
@@ -427,7 +427,7 @@ filetype("html", cmp_setup_config)
 filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
 filetype("python", cmp_setup_config)
--- filetype("rust", cmp_setup_config)
+filetype("rust", cmp_setup_config)
 filetype("scss", cmp_setup_config)
 filetype("sh", cmp_setup_config)
 filetype("toml", cmp_setup_config)
@@ -506,6 +506,7 @@ require('nvim-treesitter.configs').setup {
     "html",
     "javascript",
     "json",
+    "lua",
     "python",
     "scss",
     "typescript",
@@ -515,7 +516,8 @@ require('nvim-treesitter.configs').setup {
   sync_install = false,
 
   highlight = {
-    enable = false,
+    enable = true,
+    disable = { "lua" }
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.

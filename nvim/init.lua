@@ -27,6 +27,44 @@ vim.opt.timeout = false
 vim.opt.undolevels = 1000
 vim.opt.virtualedit = "all"
 
+require("packer").startup(function(use)
+
+    use "akinsho/toggleterm.nvim"
+    use "altercation/vim-colors-solarized"
+    use "bkad/CamelCaseMotion"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/nvim-cmp"
+    use "itchyny/lightline.vim"
+    use "j-hui/fidget.nvim"
+    use "kana/vim-smartinput"
+    use "kevinhwang91/nvim-hlslens"
+    use "kyazdani42/nvim-tree.lua" 
+    use "L3MON4D3/LuaSnip"
+    use "lewis6991/gitsigns.nvim"
+    use "lukas-reineke/indent-blankline.nvim"
+    use "MarcWeber/vim-addon-mw-utils"
+    use "mattn/emmet-vim"
+    use "neovim/nvim-lspconfig"
+    use "numToStr/Comment.nvim"
+    use "nvim-lua/plenary.nvim"
+    use "nvim-telescope/telescope-ui-select.nvim" 
+    use "nvim-telescope/telescope.nvim"
+    use "nvim-treesitter/nvim-treesitter"
+    use "saadparwaiz1/cmp_luasnip"
+    use "sheerun/vim-polyglot"
+    use "tomtom/tlib_vim"
+    use "tpope/vim-eunuch"
+    use "tpope/vim-fugitive"
+    use "tpope/vim-surround"
+    use "wbthomason/packer.nvim"
+    use "williamboman/mason-lspconfig.nvim" 
+    use "williamboman/mason.nvim" 
+    use { "kkoomen/vim-doge", run = ":call doge#install()" }
+
+end)
+
 function map(mode, lhs, rhs, opts)
     local options = { noremap = true }
 
@@ -58,6 +96,7 @@ map("n", "<Leader>bdc", ":wall | bufdo bdelete<CR>")
 
 map("n", "<Leader>$", function ()
     vim.cmd("set list! number! relativenumber!")
+    vim.cmd("IndentBlanklineToggle")
 
     if vim.opt.signcolumn:get() == "no" then
         vim.cmd("set signcolumn=yes")
@@ -88,43 +127,6 @@ local diagnostic_opts = { silent = true }
 map("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)
 map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
 map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
-
-require("packer").startup(function(use)
-
-    use "akinsho/toggleterm.nvim"
-    use "altercation/vim-colors-solarized"
-    use "bkad/CamelCaseMotion"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/nvim-cmp"
-    use "itchyny/lightline.vim"
-    use "j-hui/fidget.nvim"
-    use "kana/vim-smartinput"
-    use "kevinhwang91/nvim-hlslens"
-    use "kyazdani42/nvim-tree.lua" 
-    use "L3MON4D3/LuaSnip"
-    use "lewis6991/gitsigns.nvim"
-    use "MarcWeber/vim-addon-mw-utils"
-    use "mattn/emmet-vim"
-    use "neovim/nvim-lspconfig"
-    use "numToStr/Comment.nvim"
-    use "nvim-lua/plenary.nvim"
-    use "nvim-telescope/telescope-ui-select.nvim" 
-    use "nvim-telescope/telescope.nvim"
-    use "nvim-treesitter/nvim-treesitter"
-    use "saadparwaiz1/cmp_luasnip"
-    use "sheerun/vim-polyglot"
-    use "tomtom/tlib_vim"
-    use "tpope/vim-eunuch"
-    use "tpope/vim-fugitive"
-    use "tpope/vim-surround"
-    use "wbthomason/packer.nvim"
-    use "williamboman/mason-lspconfig.nvim" 
-    use "williamboman/mason.nvim" 
-    use { "kkoomen/vim-doge", run = ":call doge#install()" }
-
-end)
 
 vim.g.solarized_termcolors = 256
 vim.g.solarized_termtrans = 1
@@ -520,4 +522,22 @@ require('nvim-treesitter.configs').setup {
     -- enable = true,
     -- disable = { "lua" },
   },
+}
+
+-- indent-blankline.nvim -------------------------------------------------
+
+ require("indent_blankline").setup {
+  filetype = {
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "python",
+    "scss",
+    "typescript",
+    "vim",
+  },
+  use_treesitter = true,
 }

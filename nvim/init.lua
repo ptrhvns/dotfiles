@@ -108,15 +108,11 @@ end)
 map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 
 function run_code_commands()
-    -- if vim.bo.filetype == "go" then
-    --     vim.lsp.buf.format()
-    -- else
-        vim.cmd [[
-            write
-            execute "!run-code-commands " . @%
-            checktime
-        ]]
-    -- end
+  vim.cmd [[
+    write
+    execute "!run-code-commands " . @%
+    checktime
+  ]]
 end
 
 map("n", "<Leader>rc", ":lua run_code_commands()<CR>")
@@ -156,19 +152,14 @@ autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal soft
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,sass,scss,typescript,typescriptreact", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
--- autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab" })
--- autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal nolist" })
--- autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal softtabstop=4" })
--- autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal tabstop=4" })
--- autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal noexpandtab" })
--- autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal nolist" })
--- autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal softtabstop=4" })
--- autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "html", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal tabstop=2" })
+autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal commentstring={#\\ %s\\ #}" })
 autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal tabstop=2" })
+autocmd("FileType", { group = augroup, pattern = "javascript", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal expandtab" })
 autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal tabstop=2" })
@@ -186,15 +177,19 @@ autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noe
 autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal nolist" })
 autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal tabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "sass", command = "EmmetInstall" })
+autocmd("FileType", { group = augroup, pattern = "scss", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=-" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=@-@" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "sh", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "text", command = "setlocal textwidth=80" })
+autocmd("FileType", { group = augroup, pattern = "typescript", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal expandtab" })
 autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal tabstop=2" })
+autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "setlocal expandtab" })
 autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "setlocal tabstop=2" })
@@ -368,11 +363,6 @@ lspconfig.cssls.setup {
     on_attach = on_attach,
 }
 
--- lspconfig.gopls.setup {
---     capabilities = capabilities,
---     on_attach = on_attach,
--- }
-
 lspconfig.html.setup {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -424,7 +414,6 @@ local cmp_setup_config = {
 local filetype = cmp.setup.filetype
 
 filetype("css", cmp_setup_config)
--- filetype("go", cmp_setup_config)
 filetype("html", cmp_setup_config)
 filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
@@ -519,8 +508,6 @@ require('nvim-treesitter.configs').setup {
 
   highlight = {
     enable = false,
-    -- enable = true,
-    -- disable = { "lua" },
   },
 }
 

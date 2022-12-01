@@ -524,6 +524,7 @@ require('nvim-treesitter.configs').setup {
     "python",
     "scss",
     "typescript",
+    "typescriptreact",
     "vim",
   },
   use_treesitter = true,

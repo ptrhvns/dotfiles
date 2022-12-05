@@ -43,7 +43,6 @@ require("packer").startup(function(use)
     use "kyazdani42/nvim-tree.lua" 
     use "L3MON4D3/LuaSnip"
     use "lewis6991/gitsigns.nvim"
-    use "lukas-reineke/indent-blankline.nvim"
     use "MarcWeber/vim-addon-mw-utils"
     use "mattn/emmet-vim"
     use "neovim/nvim-lspconfig"
@@ -509,23 +508,4 @@ require('nvim-treesitter.configs').setup {
   highlight = {
     enable = false,
   },
-}
-
--- indent-blankline.nvim -------------------------------------------------
-
- require("indent_blankline").setup {
-  filetype = {
-    "css",
-    "html",
-    "javascript",
-    "json",
-    "lua",
-    "markdown",
-    "python",
-    "scss",
-    "typescript",
-    "typescriptreact",
-    "vim",
-  },
-  use_treesitter = true,
 }

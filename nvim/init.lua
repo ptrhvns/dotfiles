@@ -39,7 +39,6 @@ require("packer").startup(function(use)
     use "itchyny/lightline.vim"
     use "j-hui/fidget.nvim"
     use "kana/vim-smartinput"
-    use "kevinhwang91/nvim-hlslens"
     use "kyazdani42/nvim-tree.lua" 
     use "L3MON4D3/LuaSnip"
     use "lewis6991/gitsigns.nvim"
@@ -95,7 +94,6 @@ map("n", "<Leader>bdc", ":wall | bufdo bdelete<CR>")
 
 map("n", "<Leader>$", function ()
     vim.cmd("set list! number! relativenumber!")
-    vim.cmd("IndentBlanklineToggle")
 
     if vim.opt.signcolumn:get() == "no" then
         vim.cmd("set signcolumn=yes")
@@ -243,21 +241,21 @@ map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
 
 -- nvim-hlslens ----------------------------------------------------------
 
-require("hlslens").setup {
-    calm_down = true,
-    enable_incsearch = true,
-}
-
-local hlslens_opts = { silent = true }
-
-map("i", "<C-l>", "<C-o>:nohlsearch<CR>")
-map("n", "<C-l>", ":nohlsearch<CR><C-l>")
-map('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
-map('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
-map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
-map('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
-map('n', 'n', ":execute('normal! ' . v:count1 . 'n')<CR>:lua require('hlslens').start()<CR>", hlslens_opts)
-
+-- require("hlslens").setup {
+--     calm_down = true,
+--     enable_incsearch = true,
+-- }
+--
+-- local hlslens_opts = { silent = true }
+--
+-- map("i", "<C-l>", "<C-o>:nohlsearch<CR>")
+-- map("n", "<C-l>", ":nohlsearch<CR><C-l>")
+-- map('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
+-- map('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
+-- map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
+-- map('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
+-- map('n', 'n', ":execute('normal! ' . v:count1 . 'n')<CR>:lua require('hlslens').start()<CR>", hlslens_opts)
+--
 -- LuaSnip ---------------------------------------------------------------
 
 require("luasnip.loaders.from_snipmate").lazy_load()

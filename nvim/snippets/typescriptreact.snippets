@@ -84,10 +84,8 @@ snippet jf
 snippet let
 	let ${1:name};
 snippet rc
-	import React from "react";
-	
-	export default function ${1:Component}(${2}){
-	  return <div>${3:$1}</div>;
+	export default function ${1:Component}(${2}) {
+	  return <div>${3:$1}</div>; // TODO implement component
 	};
 snippet rt
 	import ${1:Component} from "./${2:$1}";

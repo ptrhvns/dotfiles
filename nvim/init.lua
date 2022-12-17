@@ -120,6 +120,9 @@ map("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)
 map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
 map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
+map("v", "J", ":move '>+1<CR>gv=gv")
+map("v", "K", ":move '<-2<CR>gv=gv")
+
 vim.g.solarized_termcolors = 256
 vim.g.solarized_termtrans = 1
 
@@ -192,6 +195,7 @@ map("n", "<Leader>lu", ":PackerUpdate<CR>")
 -- telescope.nvim --------------------------------------------------------
 
 local telescope = require("telescope")
+local telescope_builtin = require("telescope.builtin")
 
 telescope.setup {
     extensions = {
@@ -206,7 +210,7 @@ telescope.load_extension("ui-select")
 -- General settings are here. LSP-related are with nvim-lspconfig.
 map("n", "<Leader>ff", ":Telescope find_files<CR>")
 map("n", "<Leader>td", ":Telescope diagnostics<CR>")
-map("n", "<Leader>tg", ":Telescope git_branches<CR>")
+map("n", "<Leader>tg", telescope_builtin.git_files)
 map("n", "<Leader>th", ":Telescope help_tags<CR>")
 map("n", "<Leader>tk", ":Telescope keymaps<CR>")
 map("n", "<Leader>tl", ":Telescope live_grep<CR>")

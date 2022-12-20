@@ -233,23 +233,6 @@ map('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
 map('v', '<Leader>cC', '<Plug>(comment_toggle_blockwise_visual)')
 map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
 
--- nvim-hlslens ----------------------------------------------------------
-
--- require("hlslens").setup {
---     calm_down = true,
---     enable_incsearch = true,
--- }
---
--- local hlslens_opts = { silent = true }
---
--- map("i", "<C-l>", "<C-o>:nohlsearch<CR>")
--- map("n", "<C-l>", ":nohlsearch<CR><C-l>")
--- map('n', '#', "#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
--- map('n', '*', "*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
--- map('n', 'g#', "g#<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
--- map('n', 'g*', "g*<Cmd>lua require('hlslens').start()<CR>", hlslens_opts)
--- map('n', 'n', ":execute('normal! ' . v:count1 . 'n')<CR>:lua require('hlslens').start()<CR>", hlslens_opts)
---
 -- LuaSnip ---------------------------------------------------------------
 
 require("luasnip.loaders.from_snipmate").lazy_load()

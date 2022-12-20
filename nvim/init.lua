@@ -168,10 +168,6 @@ autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal
 autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal tabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab" })
-autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal nolist" })
-autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal softtabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=-" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=@-@" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal softtabstop=2" })
@@ -347,11 +343,6 @@ lspconfig.pyright.setup {
     on_attach = on_attach,
 }
 
-lspconfig.rust_analyzer.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
 lspconfig.tsserver.setup {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -392,7 +383,6 @@ filetype("html", cmp_setup_config)
 filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
 filetype("python", cmp_setup_config)
-filetype("rust", cmp_setup_config)
 filetype("scss", cmp_setup_config)
 filetype("sh", cmp_setup_config)
 filetype("toml", cmp_setup_config)

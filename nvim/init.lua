@@ -379,6 +379,7 @@ local cmp_setup_config = {
     {
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
+    }, {
       { name = 'buffer' },
     }
   )

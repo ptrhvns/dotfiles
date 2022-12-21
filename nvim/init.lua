@@ -28,13 +28,13 @@ vim.opt.undolevels = 1000
 vim.opt.virtualedit = "all"
 
 function map(mode, lhs, rhs, opts)
-    local options = { noremap = true }
+  local options = { noremap = true }
 
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
+ if opts then
+     options = vim.tbl_extend("force", options, opts)
+ end
 
-    vim.keymap.set(mode, lhs, rhs, options)
+ vim.keymap.set(mode, lhs, rhs, options)
 end
 
 map("n", "<Leader>ip", ":set invpaste paste?<CR>")
@@ -57,13 +57,13 @@ map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
 map("n", "<Leader>bdc", ":wall | bufdo bdelete<CR>")
 
 map("n", "<Leader>$", function ()
-    vim.cmd("set list! number! relativenumber!")
+ vim.cmd("set list! number! relativenumber!")
 
-    if vim.opt.signcolumn:get() == "no" then
-        vim.cmd("set signcolumn=yes")
-    else
-        vim.cmd("set signcolumn=no")
-    end
+ if vim.opt.signcolumn:get() == "no" then
+   vim.cmd("set signcolumn=yes")
+ else
+   vim.cmd("set signcolumn=no")
+ end
 end)
 
 map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
@@ -160,35 +160,35 @@ autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
 require("packer").startup(function(use)
 
-    use "akinsho/toggleterm.nvim"
-    use "altercation/vim-colors-solarized"
-    use "bkad/CamelCaseMotion"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/nvim-cmp"
-    use "itchyny/lightline.vim"
-    use "j-hui/fidget.nvim"
-    use "kana/vim-smartinput"
-    use "kyazdani42/nvim-tree.lua"
-    use "L3MON4D3/LuaSnip"
-    use "lewis6991/gitsigns.nvim"
-    use "MarcWeber/vim-addon-mw-utils"
-    use "mattn/emmet-vim"
-    use "neovim/nvim-lspconfig"
-    use "numToStr/Comment.nvim"
-    use "nvim-lua/plenary.nvim"
-    use "nvim-telescope/telescope-ui-select.nvim"
-    use "nvim-telescope/telescope.nvim"
-    use "saadparwaiz1/cmp_luasnip"
-    use "sheerun/vim-polyglot"
-    use "tomtom/tlib_vim"
-    use "tpope/vim-eunuch"
-    use "tpope/vim-fugitive"
-    use "tpope/vim-surround"
-    use "wbthomason/packer.nvim"
-    use "williamboman/mason-lspconfig.nvim"
-    use "williamboman/mason.nvim"
+  use "akinsho/toggleterm.nvim"
+  use "altercation/vim-colors-solarized"
+  use "bkad/CamelCaseMotion"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/nvim-cmp"
+  use "itchyny/lightline.vim"
+  use "j-hui/fidget.nvim"
+  use "kana/vim-smartinput"
+  use "kyazdani42/nvim-tree.lua"
+  use "L3MON4D3/LuaSnip"
+  use "lewis6991/gitsigns.nvim"
+  use "MarcWeber/vim-addon-mw-utils"
+  use "mattn/emmet-vim"
+  use "neovim/nvim-lspconfig"
+  use "numToStr/Comment.nvim"
+  use "nvim-lua/plenary.nvim"
+  use "nvim-telescope/telescope-ui-select.nvim"
+  use "nvim-telescope/telescope.nvim"
+  use "saadparwaiz1/cmp_luasnip"
+  use "sheerun/vim-polyglot"
+  use "tomtom/tlib_vim"
+  use "tpope/vim-eunuch"
+  use "tpope/vim-fugitive"
+  use "tpope/vim-surround"
+  use "wbthomason/packer.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use "williamboman/mason.nvim"
 
 end)
 
@@ -204,11 +204,11 @@ local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")
 
 telescope.setup {
-    extensions = {
-        ["ui-select"] = {
-            require("telescope.themes").get_dropdown {}
-        }
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {}
     }
+  }
 }
 
 telescope.load_extension("ui-select")
@@ -224,10 +224,10 @@ map("n", "<Leader>tl", ":Telescope live_grep<CR>")
 -- Comment.nvim ----------------------------------------------------------
 
 require('Comment').setup {
-    mappings = {
-        basic = false,
-        extra = false,
-    }
+  mappings = {
+    basic = false,
+    extra = false,
+  }
 }
 
 local comment_opts = { expr = true, remap = true, replace_keycodes = false }
@@ -257,17 +257,17 @@ vim.cmd "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>"
 -- lightline -------------------------------------------------------------
 
 vim.cmd [[
-    function! LightlineFilename()
-      return expand("%:t") !=# "" ? @% : "[No Name]"
-    endfunction
+  function! LightlineFilename()
+    return expand("%:t") !=# "" ? @% : "[No Name]"
+  endfunction
 
-    let g:lightline = {
-        \ "colorscheme": "solarized",
-        \ "component_function": {
-        \   "filename": "LightlineFilename",
-        \ },
-        \ "enable": { "tabline": 0 },
-    \ }
+  let g:lightline = {
+    \ "colorscheme": "solarized",
+    \ "component_function": {
+    \   "filename": "LightlineFilename",
+    \ },
+    \ "enable": { "tabline": 0 },
+  \ }
 ]]
 
 -- CamelCaseMotion -------------------------------------------------------
@@ -299,39 +299,39 @@ require("mason-lspconfig").setup {}
 -- nvim-lspconfig --------------------------------------------------------
 
 function on_attach(client, bufnr)
-    local on_attach_opts = { silent=true, buffer=bufnr }
+  local on_attach_opts = { silent=true, buffer=bufnr }
 
-    map("n", "<Leader>tc", ":Telescope lsp_incoming_calls<CR>", on_attach_opts)
-    map("n", "<Leader>tC", ":Telescope lsp_outgoing_calls<CR>", on_attach_opts)
-    map("n", "<Leader>tD", ":Telescope lsp_definitions<CR>", on_attach_opts)
-    map("n", "<Leader>ti", ":Telescope lsp_implementations<CR>", on_attach_opts)
-    map("n", "<Leader>tr", ":Telescope lsp_references<CR>", on_attach_opts)
-    map("n", "<Leader>ts", ":Telescope lsp_document_symbols<CR>", on_attach_opts)
-    map("n", "<Leader>tt", ":Telescope lsp_type_definitions<CR>", on_attach_opts)
+  map("n", "<Leader>tc", ":Telescope lsp_incoming_calls<CR>", on_attach_opts)
+  map("n", "<Leader>tC", ":Telescope lsp_outgoing_calls<CR>", on_attach_opts)
+  map("n", "<Leader>tD", ":Telescope lsp_definitions<CR>", on_attach_opts)
+  map("n", "<Leader>ti", ":Telescope lsp_implementations<CR>", on_attach_opts)
+  map("n", "<Leader>tr", ":Telescope lsp_references<CR>", on_attach_opts)
+  map("n", "<Leader>ts", ":Telescope lsp_document_symbols<CR>", on_attach_opts)
+  map("n", "<Leader>tt", ":Telescope lsp_type_definitions<CR>", on_attach_opts)
 
-    map('n', '<C-k>', vim.lsp.buf.signature_help, on_attach_opts)
-    map('n', '<Leader>lb', ":LspRestart<CR>", on_attach_opts)
-    map('n', '<Leader>lc', vim.lsp.buf.code_action, on_attach_opts)
-    map('n', '<Leader>lD', vim.lsp.buf.declaration, on_attach_opts)
-    map('n', '<Leader>ld', vim.lsp.buf.definition, on_attach_opts)
-    map('n', '<Leader>lf', vim.lsp.buf.format, on_attach_opts)
-    map('n', '<Leader>li', vim.lsp.buf.implementation, on_attach_opts)
-    map('n', '<Leader>lr', vim.lsp.buf.references, on_attach_opts)
-    map('n', '<Leader>lR', vim.lsp.buf.rename, on_attach_opts)
-    map('n', '<Leader>lt', vim.lsp.buf.type_definition, on_attach_opts)
-    map('n', 'K', vim.lsp.buf.hover, on_attach_opts)
+  map('n', '<C-k>', vim.lsp.buf.signature_help, on_attach_opts)
+  map('n', '<Leader>lb', ":LspRestart<CR>", on_attach_opts)
+  map('n', '<Leader>lc', vim.lsp.buf.code_action, on_attach_opts)
+  map('n', '<Leader>lD', vim.lsp.buf.declaration, on_attach_opts)
+  map('n', '<Leader>ld', vim.lsp.buf.definition, on_attach_opts)
+  map('n', '<Leader>lf', vim.lsp.buf.format, on_attach_opts)
+  map('n', '<Leader>li', vim.lsp.buf.implementation, on_attach_opts)
+  map('n', '<Leader>lr', vim.lsp.buf.references, on_attach_opts)
+  map('n', '<Leader>lR', vim.lsp.buf.rename, on_attach_opts)
+  map('n', '<Leader>lt', vim.lsp.buf.type_definition, on_attach_opts)
+  map('n', 'K', vim.lsp.buf.hover, on_attach_opts)
 
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-        -- Disable hints for signs and virtual_text (but leave underline) since
-        -- Neovim LSP seems to treat hints as diagnostics. Also, hints are
-        -- sometimes not useful.
-        signs = { severity = { min = vim.diagnostic.severity.INFO } },
-        virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
-    }
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    -- Disable hints for signs and virtual_text (but leave underline) since
+    -- Neovim LSP seems to treat hints as diagnostics. Also, hints are
+    -- sometimes not useful.
+    signs = { severity = { min = vim.diagnostic.severity.INFO } },
+    virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
+  }
 )
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -339,23 +339,23 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require("lspconfig")
 
 lspconfig.cssls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
+  capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 lspconfig.html.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
+  capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 lspconfig.pyright.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
+  capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 lspconfig.tsserver.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
+  capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 -- nvim-cmp -------------------------------------------------------------
@@ -363,27 +363,25 @@ lspconfig.tsserver.setup {
 local cmp = require('cmp')
 
 local cmp_setup_config = {
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    }),
-    sources = cmp.config.sources(
-        {
-            { name = 'nvim_lsp' },
-            { name = 'luasnip' },
-        },
-        {
-            { name = 'buffer' },
-        }
-    )
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources(
+    {
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+      { name = 'buffer' },
+    }
+  )
 }
 
 local filetype = cmp.setup.filetype
@@ -405,36 +403,36 @@ require("gitsigns").setup()
 
 -- nvim-tree.lua ---------------------------------------------------------
 
- require("nvim-tree").setup({
+require("nvim-tree").setup({
   actions = {
-      open_file = {
-          quit_on_open = true,
-      }
+    open_file = {
+      quit_on_open = true,
+    }
   },
   renderer = {
-      icons = {
-          show = {
-              git = false,
-          },
-          glyphs = {
-              default = "",
-              symlink = "",
-              folder = {
-                  arrow_closed = "",
-                  arrow_open = "",
-                  default = "+",
-                  open = "-",
-                  empty = "+",
-                  empty_open = "-",
-                  symlink = "+",
-                  symlink_open = "-",
-              },
-          },
+    icons = {
+      show = {
+        git = false,
       },
+      glyphs = {
+        default = "",
+        symlink = "",
+        folder = {
+          arrow_closed = "",
+          arrow_open = "",
+          default = "+",
+          open = "-",
+          empty = "+",
+          empty_open = "-",
+          symlink = "+",
+          symlink_open = "-",
+        },
+      },
+    },
   },
   view = {
-      adaptive_size = true,
-      centralize_selection = true,
+    adaptive_size = true,
+    centralize_selection = true,
   },
 })
 

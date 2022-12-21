@@ -441,7 +441,7 @@ function lazygit_toggle()
   lazygit:toggle()
 end
 
- map("n", "<Leader>gg", ":lua lazygit_toggle()<CR>", {silent = true})
+map("n", "<Leader>gg", ":lua lazygit_toggle()<CR>", {silent = true})
 
 -- fidget.nvim -----------------------------------------------------------
 

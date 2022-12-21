@@ -58,7 +58,6 @@ require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use "williamboman/mason.nvim"
-    use { "kkoomen/vim-doge", run = ":call doge#install()" }
 
 end)
 
@@ -446,9 +445,3 @@ map("n", "<Leader>gg", ":lua lazygit_toggle()<CR>", {silent = true})
 -- fidget.nvim -----------------------------------------------------------
 
 require("fidget").setup()
-
--- vim-doge --------------------------------------------------------------
-
-vim.g.doge_enable_mappings = 0
-
-map("n", "<Leader>cd", ":DogeGenerate<CR>")

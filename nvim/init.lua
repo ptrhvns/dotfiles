@@ -150,7 +150,7 @@ autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "text", command = "setlocal commentstring=//\\ %s" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,sass,scss,typescript,typescriptreact", command = "EmmetInstall" })
+autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,javascriptreact,sass,scss,typescript,typescriptreact", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal tabstop=2" })

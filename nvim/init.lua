@@ -27,40 +27,6 @@ vim.opt.timeout = false
 vim.opt.undolevels = 1000
 vim.opt.virtualedit = "all"
 
-require("packer").startup(function(use)
-
-    use "akinsho/toggleterm.nvim"
-    use "altercation/vim-colors-solarized"
-    use "bkad/CamelCaseMotion"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/nvim-cmp"
-    use "itchyny/lightline.vim"
-    use "j-hui/fidget.nvim"
-    use "kana/vim-smartinput"
-    use "kyazdani42/nvim-tree.lua"
-    use "L3MON4D3/LuaSnip"
-    use "lewis6991/gitsigns.nvim"
-    use "MarcWeber/vim-addon-mw-utils"
-    use "mattn/emmet-vim"
-    use "neovim/nvim-lspconfig"
-    use "numToStr/Comment.nvim"
-    use "nvim-lua/plenary.nvim"
-    use "nvim-telescope/telescope-ui-select.nvim"
-    use "nvim-telescope/telescope.nvim"
-    use "saadparwaiz1/cmp_luasnip"
-    use "sheerun/vim-polyglot"
-    use "tomtom/tlib_vim"
-    use "tpope/vim-eunuch"
-    use "tpope/vim-fugitive"
-    use "tpope/vim-surround"
-    use "wbthomason/packer.nvim"
-    use "williamboman/mason-lspconfig.nvim"
-    use "williamboman/mason.nvim"
-
-end)
-
 function map(mode, lhs, rhs, opts)
     local options = { noremap = true }
 
@@ -146,19 +112,25 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufNewFile,BufRead", { group = augroup, pattern = ".babelrc", command = "setlocal filetype=json" })
 autocmd("BufNewFile,BufRead", { group = augroup, pattern = "supervisord.conf", command = "setlocal filetype=dosini" })
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
+autocmd("FileType", { group = augroup, pattern = "css", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "text", command = "setlocal commentstring=//\\ %s" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "css,html,htmldjango,javascript,javascriptreact,sass,scss,typescript,typescriptreact", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
+autocmd("FileType", { group = augroup, pattern = "html", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal tabstop=2" })
+autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal commentstring={#\\ %s\\ #}" })
 autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal tabstop=2" })
+autocmd("FileType", { group = augroup, pattern = "javascript", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal expandtab" })
 autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal tabstop=2" })
+autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "EmmetInstall" })
+autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "setlocal expandtab" })
+autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "setlocal softtabstop=2" })
+autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "setlocal tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal expandtab" })
 autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal tabstop=2" })
@@ -167,19 +139,58 @@ autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal
 autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal tabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "sass", command = "EmmetInstall" })
+autocmd("FileType", { group = augroup, pattern = "scss", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=-" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=@-@" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "sh", command = "setlocal softtabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "text", command = "setlocal commentstring=//\\ %s" })
+autocmd("FileType", { group = augroup, pattern = "typescript", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal expandtab" })
 autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal tabstop=2" })
+autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "setlocal expandtab" })
 autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "setlocal softtabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "setlocal tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "yaml", command = "setlocal expandtab" })
 autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
+
+require("packer").startup(function(use)
+
+    use "akinsho/toggleterm.nvim"
+    use "altercation/vim-colors-solarized"
+    use "bkad/CamelCaseMotion"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/nvim-cmp"
+    use "itchyny/lightline.vim"
+    use "j-hui/fidget.nvim"
+    use "kana/vim-smartinput"
+    use "kyazdani42/nvim-tree.lua"
+    use "L3MON4D3/LuaSnip"
+    use "lewis6991/gitsigns.nvim"
+    use "MarcWeber/vim-addon-mw-utils"
+    use "mattn/emmet-vim"
+    use "neovim/nvim-lspconfig"
+    use "numToStr/Comment.nvim"
+    use "nvim-lua/plenary.nvim"
+    use "nvim-telescope/telescope-ui-select.nvim"
+    use "nvim-telescope/telescope.nvim"
+    use "saadparwaiz1/cmp_luasnip"
+    use "sheerun/vim-polyglot"
+    use "tomtom/tlib_vim"
+    use "tpope/vim-eunuch"
+    use "tpope/vim-fugitive"
+    use "tpope/vim-surround"
+    use "wbthomason/packer.nvim"
+    use "williamboman/mason-lspconfig.nvim"
+    use "williamboman/mason.nvim"
+
+end)
 
 -- packer.nvim -----------------------------------------------------------
 

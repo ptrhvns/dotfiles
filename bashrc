@@ -200,13 +200,6 @@ if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"
 fi
 
-export GOENV_ROOT="${HOME}/.goenv"
-export PATH=${PATH}:${GOENV_ROOT}/bin
-
-if command -v goenv 1>/dev/null 2>&1; then
-    eval "$(goenv init -)"
-fi
-
 if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi

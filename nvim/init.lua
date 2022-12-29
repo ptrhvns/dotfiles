@@ -164,7 +164,6 @@ autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
 require("packer").startup(function(use)
 
-  use "akinsho/toggleterm.nvim"
   use "altercation/vim-colors-solarized"
   use "bkad/CamelCaseMotion"
   use "hrsh7th/cmp-buffer"
@@ -184,6 +183,7 @@ require("packer").startup(function(use)
   use "nvim-lua/plenary.nvim"
   use "nvim-telescope/telescope-ui-select.nvim"
   use "nvim-telescope/telescope.nvim"
+  use "nvim-treesitter/nvim-treesitter"
   use "saadparwaiz1/cmp_luasnip"
   use "sheerun/vim-polyglot"
   use "tomtom/tlib_vim"
@@ -449,19 +449,29 @@ require("nvim-tree").setup({
 
 map("n", "<Leader>nn", ":NvimTreeToggle<CR>")
 
--- toggleterm.nvim -------------------------------------------------------
-
-require("toggleterm").setup()
-
-local Terminal = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
-
-function lazygit_toggle()
-  lazygit:toggle()
-end
-
-map("n", "<Leader>gg", ":lua lazygit_toggle()<CR>", {silent = true})
-
 -- fidget.nvim -----------------------------------------------------------
 
 require("fidget").setup()
+
+-- nvim-treesitter -------------------------------------------------------
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = {
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "python",
+    "rust",
+    "scss",
+    "typescript",
+    "vim",
+  },
+
+  sync_install = false,
+
+  highlight = {
+    enable = false,
+  },
+}

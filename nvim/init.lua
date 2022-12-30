@@ -1,6 +1,6 @@
 vim.g.mapleader = "\\"
 
-vim.opt.completeopt = {"menu", "menuone"}
+vim.opt.completeopt = {"menu", "menuone", "preview"}
 vim.opt.expandtab = true
 vim.opt.fillchars = "diff:⣿"
 vim.opt.foldenable = false
@@ -168,6 +168,8 @@ require("packer").startup(function(use)
   use "bkad/CamelCaseMotion"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-nvim-lsp-signature-help"
+  use "hrsh7th/cmp-nvim-lua"
   use "hrsh7th/cmp-path"
   use "hrsh7th/nvim-cmp"
   use "itchyny/lightline.vim"
@@ -372,9 +374,16 @@ lspconfig.tsserver.setup {
 local cmp = require('cmp')
 
 local cmp_setup_config = {
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+  formatting = {
+    format = function(entry, item)
+      local menu_text ={
+        nvim_lsp = 'LSP',
+        luasnip = 'LuaSnip',
+        buffer = 'Buffer',
+        path = 'Path'
+      }
+      item.menu = menu_text[entry.source.name]
+      return item
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -384,14 +393,21 @@ local cmp_setup_config = {
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
   sources = cmp.config.sources(
     {
+      { name = 'path' },
       { name = 'nvim_lsp' },
-      { name = 'luasnip' },
-    }, {
+      { name = 'nvim_lsp_signature_help'}, 
+      { name = 'nvim_lua'},
       { name = 'buffer' },
+      { name = 'luasnip' },
     }
-  )
+  ),
 }
 
 local filetype = cmp.setup.filetype
@@ -400,6 +416,7 @@ filetype("css", cmp_setup_config)
 filetype("html", cmp_setup_config)
 filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
+filetype("lua", cmp_setup_config)
 filetype("python", cmp_setup_config)
 filetype("rust", cmp_setup_config)
 filetype("scss", cmp_setup_config)
@@ -475,3 +492,4 @@ require('nvim-treesitter.configs').setup {
     enable = false,
   },
 }
+

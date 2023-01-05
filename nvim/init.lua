@@ -76,7 +76,16 @@ function run_code_commands()
   ]]
 end
 
+function run_code_commands_format_only()
+  vim.cmd [[
+    write
+    execute "!run-code-commands -f " . @%
+    checktime
+  ]]
+end
+
 map("n", "<Leader>rc", ":lua run_code_commands()<CR>")
+map("n", "<Leader>rf", ":lua run_code_commands_format_only()<CR>")
 
 map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
 

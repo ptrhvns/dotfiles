@@ -99,7 +99,6 @@ map("v", "K", ":move '<-2<CR>gv=gv")
 
 vim.g.solarized_termcolors = 256
 vim.g.solarized_termtrans = 1
-
 vim.cmd "colorscheme solarized"
 
 vim.cmd "highlight CursorColumn ctermbg=234"
@@ -177,7 +176,6 @@ require("packer").startup(function(use)
   use "bkad/CamelCaseMotion"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lsp-signature-help"
   use "hrsh7th/cmp-nvim-lua"
   use "hrsh7th/cmp-path"
   use "hrsh7th/nvim-cmp"
@@ -194,7 +192,6 @@ require("packer").startup(function(use)
   use "nvim-lua/plenary.nvim"
   use "nvim-telescope/telescope-ui-select.nvim"
   use "nvim-telescope/telescope.nvim"
-  use "nvim-treesitter/nvim-treesitter"
   use "saadparwaiz1/cmp_luasnip"
   use "sheerun/vim-polyglot"
   use "tomtom/tlib_vim"
@@ -411,7 +408,6 @@ local cmp_setup_config = {
     {
       { name = 'path' },
       { name = 'nvim_lsp' },
-      { name = 'nvim_lsp_signature_help'}, 
       { name = 'nvim_lua'},
       { name = 'buffer' },
       { name = 'luasnip' },
@@ -478,26 +474,3 @@ map("n", "<Leader>nn", ":NvimTreeToggle<CR>")
 -- fidget.nvim -----------------------------------------------------------
 
 require("fidget").setup()
-
--- nvim-treesitter -------------------------------------------------------
-
-require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    "css",
-    "html",
-    "javascript",
-    "json",
-    "lua",
-    "python",
-    "rust",
-    "scss",
-    "typescript",
-    "vim",
-  },
-
-  sync_install = false,
-
-  highlight = {
-    enable = false,
-  },
-}

@@ -97,20 +97,6 @@ map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 map("v", "J", ":move '>+1<CR>gv=gv")
 map("v", "K", ":move '<-2<CR>gv=gv")
 
-vim.g.solarized_termcolors = 256
-vim.g.solarized_termtrans = 1
-vim.cmd "colorscheme solarized"
-
-vim.cmd "highlight CursorColumn ctermbg=234"
-vim.cmd "highlight CursorLine ctermbg=234"
-vim.cmd "highlight CursorLineNr cterm=NONE ctermfg=166 ctermbg=Black"
-vim.cmd "highlight LineNr ctermfg=166 ctermbg=Black"
-vim.cmd "highlight LineNrAbove ctermfg=239 ctermbg=Black"
-vim.cmd "highlight LineNrBelow ctermfg=239 ctermbg=Black"
-vim.cmd "highlight NonText ctermfg=239"
-vim.cmd "highlight SignColumn ctermbg=Black"
-vim.cmd "highlight WinSeparator guibg=None"
-
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
 
@@ -203,6 +189,24 @@ require("packer").startup(function(use)
   use "williamboman/mason.nvim"
 
 end)
+
+-- vim-colors-solarized --------------------------------------------------
+
+vim.g.solarized_termcolors = 256
+vim.g.solarized_termtrans = 1
+
+vim.cmd "colorscheme solarized"
+
+vim.cmd "highlight CursorColumn ctermbg=234"
+vim.cmd "highlight CursorLine ctermbg=234"
+vim.cmd "highlight CursorLineNr cterm=NONE ctermfg=166 ctermbg=Black"
+vim.cmd "highlight LineNr ctermfg=166 ctermbg=Black"
+vim.cmd "highlight LineNrAbove ctermfg=239 ctermbg=Black"
+vim.cmd "highlight LineNrBelow ctermfg=239 ctermbg=Black"
+vim.cmd "highlight NonText ctermfg=239"
+vim.cmd "highlight Normal ctermbg=NONE guibg=NONE"
+vim.cmd "highlight SignColumn ctermbg=Black"
+vim.cmd "highlight WinSeparator guibg=None"
 
 -- packer.nvim -----------------------------------------------------------
 

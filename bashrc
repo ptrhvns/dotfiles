@@ -93,15 +93,6 @@ export MYCOLORS=$(tput colors)
 
 if [[ $MYCOLORS -gt 255 ]]; then
 
-    # BLUE="$(color256 '33')"
-    # CYAN="$(color256 '37')"
-    # GREEN="$(color256 '64')"
-    # GREY="$(color256 '241')"
-    # MAGENTA="$(color256 '125')"
-    # ORANGE="$(color256 '166')"
-    # RED="$(color256 '124')"
-    # VIOLET="$(color256 '61')"
-    # YELLOW="$(color256 '136')"
     BLUE="$(truecolor '126;156;216')" # 7e 9c d8
     CYAN="$(truecolor '106;149;137')" # 6a 95 89
     GREEN="$(truecolor '118;148;106')" # 76 94 6a

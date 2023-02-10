@@ -105,6 +105,7 @@ if [[ $MYCOLORS -gt 255 ]]; then
     YELLOW="$(truecolor '255;158;59')" # ff 9e 3b
 
 else
+
     BLUE="$(color16 '1;34')"
     CYAN="$(color16 '1;36')"
     GREEN="$(color16 '1;32')"
@@ -115,6 +116,7 @@ else
     VIOLET="$(color16 '1;35')"
     WHITE="$(color16 '1;37')"
     YELLOW="$(color16 '1;33')"
+
 fi
 
 if [ -f /usr/lib/git-core/git-sh-prompt ]; then

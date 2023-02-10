@@ -84,20 +84,35 @@ color256() {
     echo -ne "\[\033[38;5;${1}m\]";
 }
 
+truecolor() {
+    echo -ne "\033[38;2;${1}m";
+}
+
 export NOCOLOR="$(color16 '0')"
 export MYCOLORS=$(tput colors)
 
 if [[ $MYCOLORS -gt 255 ]]; then
-    BLUE="$(color256 '33')"
-    CYAN="$(color256 '37')"
-    GREEN="$(color256 '64')"
-    GREY="$(color256 '241')"
-    MAGENTA="$(color256 '125')"
-    ORANGE="$(color256 '166')"
-    RED="$(color256 '124')"
-    VIOLET="$(color256 '61')"
-    WHITE="$(color256 '254')"
-    YELLOW="$(color256 '136')"
+
+    # BLUE="$(color256 '33')"
+    # CYAN="$(color256 '37')"
+    # GREEN="$(color256 '64')"
+    # GREY="$(color256 '241')"
+    # MAGENTA="$(color256 '125')"
+    # ORANGE="$(color256 '166')"
+    # RED="$(color256 '124')"
+    # VIOLET="$(color256 '61')"
+    # YELLOW="$(color256 '136')"
+    BLUE="$(truecolor '126;156;216')" # 7e 9c d8
+    CYAN="$(truecolor '106;149;137')" # 6a 95 89
+    GREEN="$(truecolor '118;148;106')" # 76 94 6a
+    GREY="$(truecolor '114;113;105')" # 72 71 69
+    MAGENTA="$(truecolor '149;127;184')" # 95 7f b8
+    ORANGE="$(truecolor '255;160;102')" # ff a0 66
+    RED="$(truecolor '255;93;98')" # ff 5d 62
+    VIOLET="$(truecolor '149;127;184')" # 95 7f b8
+    WHITE="$(truecolor '220;215;186')" # dc d7 ba
+    YELLOW="$(truecolor '255;158;59')" # ff 9e 3b
+
 else
     BLUE="$(color16 '1;34')"
     CYAN="$(color16 '1;36')"

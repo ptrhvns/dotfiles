@@ -1,6 +1,6 @@
 [core]
 	autocrlf = input
-	editor = vim
+	editor = nvim
 	excludesFile = ~/.gitignore
 	whitespace = blank-at-eol,space-before-tab
 [merge]

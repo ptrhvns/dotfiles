@@ -158,8 +158,6 @@ autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
 require("packer").startup(function(use)
 
-  -- use "altercation/vim-colors-solarized"
-  -- use "itchyny/lightline.vim"
   use "bkad/CamelCaseMotion"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-nvim-lsp"
@@ -179,7 +177,7 @@ require("packer").startup(function(use)
   use "nvim-lualine/lualine.nvim"
   use "nvim-telescope/telescope-ui-select.nvim"
   use "nvim-telescope/telescope.nvim"
-  use "nvim-treesitter/nvim-treesitter"
+  -- use "nvim-treesitter/nvim-treesitter"
   use "rebelot/kanagawa.nvim"
   use "saadparwaiz1/cmp_luasnip"
   use "sheerun/vim-polyglot"
@@ -195,67 +193,30 @@ end)
 
 -- nvim-treesitter -------------------------------------------------------
 
-require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    "css",
-    "html",
-    "javascript",
-    "json",
-    "lua",
-    "python",
-    "rust",
-    "scss",
-    "typescript",
-    "vim",
-  },
-
-  sync_install = false,
-
-  -- highlight = {
-  --   enable = false,
-  -- },
-}
+-- require('nvim-treesitter.configs').setup {
+--   ensure_installed = {
+--     "bash",
+--     "css",
+--     "html",
+--     "javascript",
+--     "json",
+--     "lua",
+--     "python",
+--     "rust",
+--     "scss",
+--     "typescript",
+--     "vim",
+--   },
+--   sync_install = false,
+-- }
 
 -- kanagawa.nvim ---------------------------------------------------------
 
 require('kanagawa').setup({
-    -- undercurl = true,           -- enable undercurls
-    -- commentStyle = { italic = true },
-    -- functionStyle = {},
-    -- keywordStyle = { italic = true},
-    -- statementStyle = { bold = true },
-    -- typeStyle = {},
-    -- variablebuiltinStyle = { italic = true},
-    -- specialReturn = true,       -- special highlight for the return keyword
-    -- specialException = true,    -- special highlight for exception handling keywords
-    transparent = true,        -- do not set background color
-    -- dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
-    -- globalStatus = false,       -- adjust window separators highlight for laststatus=3
-    -- terminalColors = true,      -- define vim.g.terminal_color_{0,17}
-    -- colors = {},
-    -- overrides = {},
-    -- theme = "default"           -- Load "default" theme or the experimental "light" theme
+    transparent = true,
 })
 
 vim.cmd "colorscheme kanagawa"
-
--- vim-colors-solarized --------------------------------------------------
-
--- vim.g.solarized_termcolors = 256
--- vim.g.solarized_termtrans = 1
---
--- vim.cmd "colorscheme solarized"
---
--- vim.cmd "highlight CursorColumn ctermbg=234"
--- vim.cmd "highlight CursorLine ctermbg=234"
--- vim.cmd "highlight CursorLineNr cterm=NONE ctermfg=166 ctermbg=Black"
--- vim.cmd "highlight LineNr ctermfg=166 ctermbg=Black"
--- vim.cmd "highlight LineNrAbove ctermfg=239 ctermbg=Black"
--- vim.cmd "highlight LineNrBelow ctermfg=239 ctermbg=Black"
--- vim.cmd "highlight NonText ctermfg=239"
--- vim.cmd "highlight Normal ctermbg=NONE guibg=NONE"
--- vim.cmd "highlight SignColumn ctermbg=Black"
--- vim.cmd "highlight WinSeparator guibg=None"
 
 -- packer.nvim -----------------------------------------------------------
 
@@ -318,25 +279,6 @@ vim.cmd "inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>"
 vim.cmd "smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'"
 vim.cmd "snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>"
 vim.cmd "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>"
-
--- lightline -------------------------------------------------------------
-
--- vim.cmd [[
---   function! LightlineFilename()
---     return expand("%:t") !=# "" ? @% : "[No Name]"
---   endfunction
--- ]]
---
--- vim.g.lightline = {
---   -- colorscheme = "solarized",
---   colorscheme = "kanagawa",
---   component_function = {
---     filename = "LightlineFilename",
---   },
---   enable = {
---     tabline = 0
---   },
--- }
 
 -- CamelCaseMotion -------------------------------------------------------
 
@@ -536,40 +478,7 @@ require("fidget").setup()
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    -- theme = 'auto',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
-    -- disabled_filetypes = {
-    --   statusline = {},
-    --   winbar = {},
-    -- },
-    -- ignore_focus = {},
-    -- always_divide_middle = true,
-    -- globalstatus = false,
-    -- refresh = {
-    --   statusline = 1000,
-    --   tabline = 1000,
-    --   winbar = 1000,
-    -- }
   },
-  -- sections = {
-  --   lualine_a = {'mode'},
-  --   lualine_b = {'branch', 'diff', 'diagnostics'},
-  --   lualine_c = {'filename'},
-  --   lualine_x = {'encoding', 'fileformat', 'filetype'},
-  --   lualine_y = {'progress'},
-  --   lualine_z = {'location'}
-  -- },
-  -- inactive_sections = {
-  --   lualine_a = {},
-  --   lualine_b = {},
-  --   lualine_c = {'filename'},
-  --   lualine_x = {'location'},
-  --   lualine_y = {},
-  --   lualine_z = {}
-  -- },
-  -- tabline = {},
-  -- winbar = {},
-  -- inactive_winbar = {},
-  -- extensions = {}
 }

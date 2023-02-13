@@ -99,6 +99,7 @@ if [[ $MYCOLORS -gt 255 ]]; then
     GREY="$(truecolor '114;113;105')" # 72 71 69
     MAGENTA="$(truecolor '149;127;184')" # 95 7f b8
     ORANGE="$(truecolor '255;160;102')" # ff a0 66
+    PINK="$(truecolor '210;115;153')" # d2 7e 99
     RED="$(truecolor '255;93;98')" # ff 5d 62
     VIOLET="$(truecolor '149;127;184')" # 95 7f b8
     WHITE="$(truecolor '220;215;186')" # dc d7 ba
@@ -128,7 +129,7 @@ if [ -f /usr/lib/git-core/git-sh-prompt ]; then
 fi
 
 build_prompt() {
-    PS1="${GREY}\h"
+    PS1="${PINK}\h"
 
     if [[ "root" == "$(whoami)" ]]; then
         PS1+=" ${RED}\u"

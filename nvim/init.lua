@@ -177,6 +177,7 @@ require("packer").startup(function(use)
   use "nvim-lualine/lualine.nvim"
   use "nvim-telescope/telescope-ui-select.nvim"
   use "nvim-telescope/telescope.nvim"
+  use "nvim-treesitter/nvim-treesitter"
   use "rebelot/kanagawa.nvim"
   use "saadparwaiz1/cmp_luasnip"
   use "sheerun/vim-polyglot"
@@ -189,6 +190,28 @@ require("packer").startup(function(use)
   use "williamboman/mason.nvim"
 
 end)
+
+-- nvim-treesitter -------------------------------------------------------
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = {
+    "bash",
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "python",
+    "rust",
+    "scss",
+    "typescript",
+    "vim",
+  },
+  highlight = {
+    enable = true,
+  },
+  sync_install = false,
+}
 
 -- kanagawa.nvim ---------------------------------------------------------
 

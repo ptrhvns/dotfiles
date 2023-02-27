@@ -209,10 +209,6 @@ if command -v nodenv 1>/dev/null 2>&1; then
     eval "$(nodenv init -)"
 fi
 
-if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env"
-fi
-
 if [ -f "$HOME/.bash_local" ]; then
     source "$HOME/.bash_local"
 fi

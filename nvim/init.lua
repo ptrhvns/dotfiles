@@ -1,6 +1,7 @@
 vim.g.mapleader = "\\"
 
-vim.opt.completeopt = {"menu", "menuone", "preview"}
+vim.opt.clipboard = "unnamedplus"
+vim.opt.completeopt = { "menu", "menuone", "preview" }
 vim.opt.expandtab = true
 vim.opt.fillchars = "diff:⣿"
 vim.opt.foldenable = false
@@ -8,7 +9,7 @@ vim.opt.ignorecase = true
 vim.opt.joinspaces = false
 vim.opt.lazyredraw = true
 vim.opt.list = true
-vim.opt.listchars = "extends:❯,nbsp:~,precedes:❮,tab:▸ ,trail:⋅"
+vim.opt.listchars = { extends = "❯", nbsp = "~", precedes = "❮", tab = "▸ ", trail = "⋅" }
 vim.opt.mouse = ""
 vim.opt.number = true
 vim.opt.relativenumber = true

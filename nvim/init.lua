@@ -223,6 +223,11 @@ require('kanagawa').setup({
 
 vim.cmd "colorscheme kanagawa"
 
+vim.cmd "highlight LineNr guibg=NONE guifg=#ffa066"
+vim.cmd "highlight LineNrAbove guibg=NONE guifg=#54546d"
+vim.cmd "highlight LineNrBelow guibg=NONE guifg=#54546d"
+vim.cmd "highlight SignColumn guibg=NONE"
+
 -- packer.nvim -----------------------------------------------------------
 
 map("n", "<Leader>li", ":PackerInstall<CR>")
@@ -482,8 +487,8 @@ require("fidget").setup()
 
 require('lualine').setup {
   options = {
-    icons_enabled = false,
     component_separators = { left = "", right = ""},
+    icons_enabled = false,
     section_separators = { left = "", right = ""},
   },
   sections = {

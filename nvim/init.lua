@@ -490,6 +490,7 @@ require('lualine').setup {
     component_separators = { left = "", right = ""},
     icons_enabled = false,
     section_separators = { left = "", right = ""},
+    theme = "dracula", -- TODO: change to "auto" when kanagawa works again
   },
   sections = {
     lualine_c = {

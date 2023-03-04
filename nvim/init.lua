@@ -104,6 +104,7 @@ vim.cmd "filetype plugin on"
 local augroup = vim.api.nvim_create_augroup("all", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
+
 autocmd("BufNewFile,BufRead", { group = augroup, pattern = ".babelrc", command = "setlocal filetype=json" })
 autocmd("BufNewFile,BufRead", { group = augroup, pattern = "supervisord.conf", command = "setlocal filetype=dosini" })
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
@@ -134,6 +135,10 @@ autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal
 autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal tabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab" })
+autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal nolist" })
+autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal softtabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "sass", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal iskeyword+=-" })
@@ -199,6 +204,7 @@ require('nvim-treesitter.configs').setup {
     "json",
     "lua",
     "python",
+    "rust",
     "scss",
     "typescript",
     "vim",
@@ -362,6 +368,11 @@ lspconfig.pyright.setup {
   on_attach = on_attach,
 }
 
+lspconfig.rust_analyzer.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 lspconfig.tsserver.setup {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -415,6 +426,7 @@ filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
 filetype("lua", cmp_setup_config)
 filetype("python", cmp_setup_config)
+filetype("rust", cmp_setup_config)
 filetype("scss", cmp_setup_config)
 filetype("sh", cmp_setup_config)
 filetype("toml", cmp_setup_config)

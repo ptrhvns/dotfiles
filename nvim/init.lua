@@ -193,7 +193,8 @@ require("packer").startup(function(use)
 
 end)
 
--- nvim-treesitter -------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- nvim-treesitter
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
@@ -215,7 +216,8 @@ require('nvim-treesitter.configs').setup {
   sync_install = false,
 }
 
--- kanagawa.nvim ---------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- kanagawa.nvim
 
 require('kanagawa').setup({
     transparent = true,
@@ -228,13 +230,15 @@ vim.cmd "highlight LineNrAbove guibg=NONE guifg=#54546d"
 vim.cmd "highlight LineNrBelow guibg=NONE guifg=#54546d"
 vim.cmd "highlight SignColumn guibg=NONE"
 
--- packer.nvim -----------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- packer.nvim
 
 map("n", "<Leader>li", ":PackerInstall<CR>")
 map("n", "<Leader>ls", ":PackerSync<CR>")
 map("n", "<Leader>lu", ":PackerUpdate<CR>")
 
--- telescope.nvim --------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- telescope.nvim
 
 local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")
@@ -257,7 +261,8 @@ map("n", "<Leader>th", ":Telescope help_tags<CR><C-l>")
 map("n", "<Leader>tk", ":Telescope keymaps<CR><C-l>")
 map("n", "<Leader>tl", ":Telescope live_grep<CR><C-l>")
 
--- Comment.nvim ----------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- Comment.nvim
 
 require('Comment').setup {
   mappings = {
@@ -275,7 +280,8 @@ map('n', '<Leader>cm', '<Plug>(comment_toggle_linewise)')
 map('v', '<Leader>cC', '<Plug>(comment_toggle_blockwise_visual)')
 map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
 
--- LuaSnip ---------------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- LuaSnip
 
 require("luasnip.loaders.from_snipmate").lazy_load()
 
@@ -290,33 +296,39 @@ vim.cmd "smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next
 vim.cmd "snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>"
 vim.cmd "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>"
 
--- CamelCaseMotion -------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- CamelCaseMotion
 
 map("", ",b", "<Plug>CamelCaseMotion_b", { silent = true })
 map("", ",w", "<Plug>CamelCaseMotion_w", { silent = true })
 
--- fugitive --------------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- fugitive
 
 map("n", "<Leader>gb", ":Git blame<CR>")
 map("n", "<Leader>gc", ":Git commit --verbose<CR>")
 map("n", "<Leader>gp", ":Git push --verbose<CR>")
 map("n", "<Leader>gw", ":Gwrite<CR>")
 
--- emmet-vim -------------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- emmet-vim
 
 vim.g.user_emmet_install_global = 0
 
--- mason.nvim ------------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- mason.nvim
 
 require("mason").setup {}
 
 map("n", "<Leader>lm", ":Mason<CR>")
 
--- mason-lspconfig.nvim  -------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- mason-lspconfig.nvim
 
 require("mason-lspconfig").setup {}
 
--- nvim-lspconfig --------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- nvim-lspconfig
 
 function on_attach(client, bufnr)
   local on_attach_opts = { silent=true, buffer=bufnr }
@@ -383,7 +395,8 @@ lspconfig.tsserver.setup {
   on_attach = on_attach,
 }
 
--- nvim-cmp -------------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- nvim-cmp
 
 local cmp = require('cmp')
 
@@ -438,11 +451,13 @@ filetype("toml", cmp_setup_config)
 filetype("typescript", cmp_setup_config)
 filetype("typescriptreact", cmp_setup_config)
 
--- gitsigns.nvim ---------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- gitsigns.nvim
 
 require("gitsigns").setup()
 
--- nvim-tree.lua ---------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- nvim-tree.lua
 
 require("nvim-tree").setup({
   actions = {
@@ -479,11 +494,13 @@ require("nvim-tree").setup({
 
 map("n", "<Leader>nn", ":NvimTreeToggle<CR>")
 
--- fidget.nvim -----------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- fidget.nvim
 
 require("fidget").setup()
 
--- lualine.nvim ----------------------------------------------------------
+-- ///////////////////////////////////////////////////////////////////////
+-- lualine.nvim
 
 require('lualine').setup {
   options = {

@@ -158,40 +158,56 @@ autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "s
 autocmd("FileType", { group = augroup, pattern = "yaml", command = "setlocal expandtab" })
 autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
-require("packer").startup(function(use)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-  use "bkad/CamelCaseMotion"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-nvim-lua"
-  use "hrsh7th/cmp-path"
-  use "hrsh7th/nvim-cmp"
-  use "j-hui/fidget.nvim"
-  use "kana/vim-smartinput"
-  use "kyazdani42/nvim-tree.lua"
-  use "L3MON4D3/LuaSnip"
-  use "lewis6991/gitsigns.nvim"
-  use "MarcWeber/vim-addon-mw-utils"
-  use "mattn/emmet-vim"
-  use "neovim/nvim-lspconfig"
-  use "numToStr/Comment.nvim"
-  use "nvim-lua/plenary.nvim"
-  use "nvim-lualine/lualine.nvim"
-  use "nvim-telescope/telescope-ui-select.nvim"
-  use "nvim-telescope/telescope.nvim"
-  use "nvim-treesitter/nvim-treesitter"
-  use "rebelot/kanagawa.nvim"
-  use "saadparwaiz1/cmp_luasnip"
-  use "sheerun/vim-polyglot"
-  use "tomtom/tlib_vim"
-  use "tpope/vim-eunuch"
-  use "tpope/vim-fugitive"
-  use "tpope/vim-surround"
-  use "wbthomason/packer.nvim"
-  use "williamboman/mason-lspconfig.nvim"
-  use "williamboman/mason.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
 
-end)
+vim.opt.rtp:prepend(lazypath)
+
+local plugins = {
+
+    "bkad/CamelCaseMotion",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-path",
+    "hrsh7th/nvim-cmp",
+    "j-hui/fidget.nvim",
+    "kana/vim-smartinput",
+    "kyazdani42/nvim-tree.lua",
+    "L3MON4D3/LuaSnip",
+    "lewis6991/gitsigns.nvim",
+    "MarcWeber/vim-addon-mw-utils",
+    "mattn/emmet-vim",
+    "neovim/nvim-lspconfig",
+    "numToStr/Comment.nvim",
+    "nvim-lua/plenary.nvim",
+    "nvim-lualine/lualine.nvim",
+    "nvim-telescope/telescope-ui-select.nvim",
+    "nvim-telescope/telescope.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "rebelot/kanagawa.nvim",
+    "saadparwaiz1/cmp_luasnip",
+    "sheerun/vim-polyglot",
+    "tomtom/tlib_vim",
+    "tpope/vim-eunuch",
+    "tpope/vim-fugitive",
+    "tpope/vim-surround",
+    "williamboman/mason-lspconfig.nvim",
+    "williamboman/mason.nvim", 
+
+}
+
+require("lazy").setup(plugins, {})
 
 -- ///////////////////////////////////////////////////////////////////////
 -- nvim-treesitter

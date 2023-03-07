@@ -247,13 +247,6 @@ vim.cmd "highlight LineNrBelow guibg=NONE guifg=#54546d"
 vim.cmd "highlight SignColumn guibg=NONE"
 
 -- ///////////////////////////////////////////////////////////////////////
--- packer.nvim
-
-map("n", "<Leader>li", ":PackerInstall<CR>")
-map("n", "<Leader>ls", ":PackerSync<CR>")
-map("n", "<Leader>lu", ":PackerUpdate<CR>")
-
--- ///////////////////////////////////////////////////////////////////////
 -- telescope.nvim
 
 local telescope = require("telescope")

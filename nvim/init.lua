@@ -1,5 +1,6 @@
 vim.g.mapleader = "\\"
 
+vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "menuone", "preview" }
 vim.opt.expandtab = true
@@ -8,6 +9,7 @@ vim.opt.foldenable = false
 vim.opt.ignorecase = true
 vim.opt.joinspaces = false
 vim.opt.lazyredraw = true
+vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = { extends = "❯", nbsp = "~", precedes = "❮", tab = "▸ ", trail = "⋅" }
 vim.opt.mouse = ""
@@ -27,6 +29,7 @@ vim.opt.textwidth = 80
 vim.opt.timeout = false
 vim.opt.undolevels = 1000
 vim.opt.virtualedit = "all"
+vim.opt.wrap = false
 
 function map(mode, lhs, rhs, opts)
   local options = { noremap = true }

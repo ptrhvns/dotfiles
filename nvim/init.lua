@@ -178,35 +178,36 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
-    "bkad/CamelCaseMotion",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-path",
-    "hrsh7th/nvim-cmp",
-    "j-hui/fidget.nvim",
-    "kana/vim-smartinput",
-    "kyazdani42/nvim-tree.lua",
-    "L3MON4D3/LuaSnip",
-    "lewis6991/gitsigns.nvim",
-    "MarcWeber/vim-addon-mw-utils",
-    "mattn/emmet-vim",
-    "neovim/nvim-lspconfig",
-    "numToStr/Comment.nvim",
-    "nvim-lua/plenary.nvim",
-    "nvim-lualine/lualine.nvim",
-    "nvim-telescope/telescope-ui-select.nvim",
-    "nvim-telescope/telescope.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    "rebelot/kanagawa.nvim",
-    "saadparwaiz1/cmp_luasnip",
-    "sheerun/vim-polyglot",
-    "tomtom/tlib_vim",
-    "tpope/vim-eunuch",
-    "tpope/vim-fugitive",
-    "tpope/vim-surround",
-    "williamboman/mason-lspconfig.nvim",
-    "williamboman/mason.nvim", 
+  "akinsho/toggleterm.nvim",
+  "bkad/CamelCaseMotion",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-nvim-lua",
+  "hrsh7th/cmp-path",
+  "hrsh7th/nvim-cmp",
+  "j-hui/fidget.nvim",
+  "kana/vim-smartinput",
+  "kyazdani42/nvim-tree.lua",
+  "L3MON4D3/LuaSnip",
+  "lewis6991/gitsigns.nvim",
+  "MarcWeber/vim-addon-mw-utils",
+  "mattn/emmet-vim",
+  "neovim/nvim-lspconfig",
+  "numToStr/Comment.nvim",
+  "nvim-lua/plenary.nvim",
+  "nvim-lualine/lualine.nvim",
+  "nvim-telescope/telescope-ui-select.nvim",
+  "nvim-telescope/telescope.nvim",
+  "nvim-treesitter/nvim-treesitter",
+  "rebelot/kanagawa.nvim",
+  "saadparwaiz1/cmp_luasnip",
+  "sheerun/vim-polyglot",
+  "tomtom/tlib_vim",
+  "tpope/vim-eunuch",
+  "tpope/vim-fugitive",
+  "tpope/vim-surround",
+  "williamboman/mason-lspconfig.nvim",
+  "williamboman/mason.nvim", 
 
 }
 
@@ -537,3 +538,17 @@ require('lualine').setup {
     }
   },
 }
+
+-- ///////////////////////////////////////////////////////////////////////
+-- toggleterm.nvim
+
+require("toggleterm").setup()
+
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
+
+function lazygit_toggle()
+  lazygit:toggle()
+end
+
+map("n", "<Leader>gg", ":lua lazygit_toggle()<CR>", {silent = true})

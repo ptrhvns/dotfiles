@@ -178,7 +178,6 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
-  "akinsho/toggleterm.nvim",
   "bkad/CamelCaseMotion",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-nvim-lsp",
@@ -281,7 +280,7 @@ require('Comment').setup {
   mappings = {
     basic = false,
     extra = false,
-  }
+  },
 }
 
 local comment_opts = { expr = true, remap = true, replace_keycodes = false }
@@ -538,17 +537,3 @@ require('lualine').setup {
     }
   },
 }
-
--- ///////////////////////////////////////////////////////////////////////
--- toggleterm.nvim
-
-require("toggleterm").setup()
-
-local Terminal = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
-
-function lazygit_toggle()
-  lazygit:toggle()
-end
-
-map("n", "<Leader>gg", ":lua lazygit_toggle()<CR>", {silent = true})

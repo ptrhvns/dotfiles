@@ -1,7 +1,7 @@
 vim.g.mapleader = "\\"
 
 vim.opt.breakindent = true
--- vim.opt.clipboard = "unnamedplus" -- TODO remove when startup time is fixed
+vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "menuone", "preview" }
 vim.opt.expandtab = true
 vim.opt.fillchars = "diff:⣿"

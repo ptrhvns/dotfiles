@@ -29,7 +29,6 @@ vim.opt.textwidth = 80
 vim.opt.timeout = false
 vim.opt.undolevels = 1000
 vim.opt.virtualedit = "all"
-vim.opt.wrap = false
 
 function map(mode, lhs, rhs, opts)
   local options = { noremap = true }

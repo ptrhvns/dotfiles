@@ -366,6 +366,12 @@ function on_attach(client, bufnr)
 
 end
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "single"
+  }
+)
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
   {
@@ -376,6 +382,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
   }
 )
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = "single"
+  }
+)
+
+vim.diagnostic.config{
+  float={border="single"}
+}
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 

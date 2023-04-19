@@ -129,32 +129,53 @@ if [ -f /usr/lib/git-core/git-sh-prompt ]; then
 fi
 
 build_prompt() {
-    PS1="${PINK}\h"
+    # TODO: figure out why colors cause Windows Terminal to lose the cursor
+    # position on Ctrl-l and other commands.
+    #
+    # PS1="${PINK}\h"
+    #
+    # if [[ "root" == "$(whoami)" ]]; then
+    #     PS1+=" ${RED}\u"
+    # else
+    #     PS1+=" ${GREEN}\u"
+    # fi
+    #
+    # PS1+=" ${VIOLET}\w"
+    #
+    # local num_jobs=$(jobs 2>/dev/null | wc -l)
+    #
+    # if [ "$num_jobs" -gt 0 ]; then
+    #     PS1+=" ${ORANGE}[${num_jobs}]"
+    # fi
+    #
+    # if [ ! -z "${VIRTUAL_ENV}" ]; then
+    #     PS1+=" ${BLUE}venv"
+    # fi
+    #
+    # if [ $GIT_PROMPT -gt 0 ]; then
+    #     PS1+="${YELLOW}$(__git_ps1 ' %s')"
+    # fi
+    #
+    # PS1+=" ${GREY}\$"
+    # PS1+=" ${NOCOLOR}"
 
-    if [[ "root" == "$(whoami)" ]]; then
-        PS1+=" ${RED}\u"
-    else
-        PS1+=" ${GREEN}\u"
-    fi
-
-    PS1+=" ${VIOLET}\w"
+    PS1="\h \u \w"
 
     local num_jobs=$(jobs 2>/dev/null | wc -l)
 
     if [ "$num_jobs" -gt 0 ]; then
-        PS1+=" ${ORANGE}[${num_jobs}]"
+        PS1+=" [${num_jobs}]"
     fi
 
     if [ ! -z "${VIRTUAL_ENV}" ]; then
-        PS1+=" ${BLUE}venv"
+        PS1+=" venv"
     fi
 
     if [ $GIT_PROMPT -gt 0 ]; then
-        PS1+="${YELLOW}$(__git_ps1 ' %s')"
+        PS1+="$(__git_ps1 ' %s')"
     fi
 
-    PS1+=" ${GREY}\$"
-    PS1+=" ${NOCOLOR}"
+    PS1+=" \$ "
 }
 
 PROMPT_COMMAND=build_prompt
@@ -183,14 +204,18 @@ if [ -r ~/.ssh-agent ]; then
     source ~/.ssh-agent > /dev/null
 fi
 
-fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
-if [ -f "$fzf_key_bindings" ]; then
-    source "$fzf_key_bindings"
-fi
+if command -v fzf 1>/dev/null 2>&1; then
+    fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
 
-fzf_completion="$(dpkg -L fzf | grep completion.bash)"
-if [ -f "$fzf_completion" ]; then
-    source "$fzf_completion"
+    if [ -f "$fzf_key_bindings" ]; then
+        source "$fzf_key_bindings"
+    fi
+
+    fzf_completion="$(dpkg -L fzf | grep completion.bash)"
+
+    if [ -f "$fzf_completion" ]; then
+        source "$fzf_completion"
+    fi
 fi
 
 export PYENV_ROOT="${HOME}/.pyenv"

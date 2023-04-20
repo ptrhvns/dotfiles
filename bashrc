@@ -88,50 +88,32 @@ truecolor() {
     echo -ne "\033[38;2;${1}m";
 }
 
-export NOCOLOR="$(color16 '0')"
-export MYCOLORS=$(tput colors)
+# These colors seem to mess up Windows Terminal:
+#
+# BLUE="$(truecolor '126;156;216')" # 7e 9c d8
+# CYAN="$(truecolor '106;149;137')" # 6a 95 89
+# GREEN="$(truecolor '118;148;106')" # 76 94 6a
+# GREY="$(truecolor '114;113;105')" # 72 71 69
+# MAGENTA="$(truecolor '149;127;184')" # 95 7f b8
+# ORANGE="$(truecolor '255;160;102')" # ff a0 66
+# PINK="$(truecolor '210;115;153')" # d2 7e 99
+# RED="$(truecolor '255;93;98')" # ff 5d 62
+# VIOLET="$(truecolor '149;127;184')" # 95 7f b8
+# WHITE="$(truecolor '220;215;186')" # dc d7 ba
+# YELLOW="$(truecolor '255;158;59')" # ff 9e 3b
 
-if [[ $MYCOLORS -gt 255 ]]; then
-
-    # These colors seem to mess up Windows Terminal:
-    #
-    # BLUE="$(truecolor '126;156;216')" # 7e 9c d8
-    # CYAN="$(truecolor '106;149;137')" # 6a 95 89
-    # GREEN="$(truecolor '118;148;106')" # 76 94 6a
-    # GREY="$(truecolor '114;113;105')" # 72 71 69
-    # MAGENTA="$(truecolor '149;127;184')" # 95 7f b8
-    # ORANGE="$(truecolor '255;160;102')" # ff a0 66
-    # PINK="$(truecolor '210;115;153')" # d2 7e 99
-    # RED="$(truecolor '255;93;98')" # ff 5d 62
-    # VIOLET="$(truecolor '149;127;184')" # 95 7f b8
-    # WHITE="$(truecolor '220;215;186')" # dc d7 ba
-    # YELLOW="$(truecolor '255;158;59')" # ff 9e 3b
-
-    BLUE="$(color256 '33')"
-    CYAN="$(color256 '37')"
-    GREEN="$(color256 '64')"
-    GREY="$(color256 '241')"
-    MAGENTA="$(color256 '125')"
-    ORANGE="$(color256 '166')"
-    RED="$(color256 '124')"
-    VIOLET="$(color256 '61')"
-    WHITE="$(color256 '254')"
-    YELLOW="$(color256 '136')"
-
-else
-
-    BLUE="$(color16 '1;34')"
-    CYAN="$(color16 '1;36')"
-    GREEN="$(color16 '1;32')"
-    GREY="$(color16 '1;30')"
-    MAGENTA="$(color16 '1;34')"
-    ORANGE="$(color16 '1;33')"
-    RED="$(color16 '1;31')"
-    VIOLET="$(color16 '1;35')"
-    WHITE="$(color16 '1;37')"
-    YELLOW="$(color16 '1;33')"
-
-fi
+BLUE="$(color256 '105')"
+CYAN="$(color256 '37')"
+GREEN="$(color256 '65')"
+GREY="$(color256 '241')"
+MAGENTA="$(color256 '125')"
+NOCOLOR="$(color16 '0')"
+ORANGE="$(color256 '166')"
+PINK="$(color256 '211')"
+RED="$(color256 '124')"
+VIOLET="$(color256 '97')"
+WHITE="$(color256 '254')"
+YELLOW="$(color256 '215')"
 
 if [ -f /usr/lib/git-core/git-sh-prompt ]; then
     source /usr/lib/git-core/git-sh-prompt
@@ -142,15 +124,7 @@ if [ -f /usr/lib/git-core/git-sh-prompt ]; then
 fi
 
 build_prompt() {
-    PS1="${PINK}\h"
-
-    if [[ "root" == "$(whoami)" ]]; then
-        PS1+=" ${RED}\u"
-    else
-        PS1+=" ${GREEN}\u"
-    fi
-
-    PS1+=" ${VIOLET}\w"
+    PS1="${PINK}\h ${GREEN}\u ${VIOLET}\w"
 
     local num_jobs=$(jobs 2>/dev/null | wc -l)
 
@@ -166,8 +140,7 @@ build_prompt() {
         PS1+="${YELLOW}$(__git_ps1 ' %s')"
     fi
 
-    PS1+=" ${GREY}\$"
-    PS1+=" ${NOCOLOR}"
+    PS1+=" ${GREY}\$${NOCOLOR} "
 }
 
 PROMPT_COMMAND=build_prompt

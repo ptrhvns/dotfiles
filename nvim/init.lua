@@ -1,7 +1,6 @@
 vim.g.mapleader = "\\"
 
 vim.opt.breakindent = true
--- vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "menuone", "preview" }
 vim.opt.expandtab = true
 vim.opt.fillchars = "diff:⣿"
@@ -179,7 +178,7 @@ local plugins = {
   "hrsh7th/cmp-nvim-lua",
   "hrsh7th/cmp-path",
   "hrsh7th/nvim-cmp",
-  -- "j-hui/fidget.nvim",
+  "j-hui/fidget.nvim",
   "kana/vim-smartinput",
   "kyazdani42/nvim-tree.lua",
   "L3MON4D3/LuaSnip",
@@ -513,7 +512,7 @@ map("n", "<Leader>nn", ":NvimTreeToggle<CR>")
 -- ///////////////////////////////////////////////////////////////////////
 -- fidget.nvim
 
--- require("fidget").setup()
+require("fidget").setup()
 
 -- ///////////////////////////////////////////////////////////////////////
 -- lualine.nvim

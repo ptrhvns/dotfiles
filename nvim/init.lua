@@ -181,7 +181,7 @@ local plugins = {
   -- "j-hui/fidget.nvim",
   "kana/vim-smartinput",
   "kyazdani42/nvim-tree.lua",
-  -- "L3MON4D3/LuaSnip",
+  "L3MON4D3/LuaSnip",
   "lewis6991/gitsigns.nvim",
   "MarcWeber/vim-addon-mw-utils",
   "mattn/emmet-vim",
@@ -288,7 +288,7 @@ map('v', '<Leader>cc', '<Plug>(comment_toggle_linewise_visual)')
 -- ///////////////////////////////////////////////////////////////////////
 -- LuaSnip
 
--- require("luasnip.loaders.from_snipmate").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 -- XXX Do edits in a split to get reloading to work.
 map("n", "<Leader>se", ":split +lua\\ require('luasnip.loaders').edit_snippet_files()<CR>")

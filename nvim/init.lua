@@ -172,20 +172,24 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
-  "bkad/CamelCaseMotion",
   -- "hrsh7th/cmp-buffer",
   -- "hrsh7th/cmp-nvim-lsp",
   -- "hrsh7th/cmp-nvim-lua",
   -- "hrsh7th/cmp-path",
   -- "hrsh7th/nvim-cmp",
   -- "j-hui/fidget.nvim",
+  -- "neovim/nvim-lspconfig",
+  -- "saadparwaiz1/cmp_luasnip",
+  -- "williamboman/mason-lspconfig.nvim",
+  -- "williamboman/mason.nvim", 
+
+  "bkad/CamelCaseMotion",
   "kana/vim-smartinput",
   "kyazdani42/nvim-tree.lua",
   "L3MON4D3/LuaSnip",
   "lewis6991/gitsigns.nvim",
   "MarcWeber/vim-addon-mw-utils",
   "mattn/emmet-vim",
-  -- "neovim/nvim-lspconfig",
   "numToStr/Comment.nvim",
   "nvim-lua/plenary.nvim",
   "nvim-lualine/lualine.nvim",
@@ -193,14 +197,11 @@ local plugins = {
   "nvim-telescope/telescope.nvim",
   "nvim-treesitter/nvim-treesitter",
   "rebelot/kanagawa.nvim",
-  -- "saadparwaiz1/cmp_luasnip",
   "sheerun/vim-polyglot",
   "tomtom/tlib_vim",
   "tpope/vim-eunuch",
   "tpope/vim-fugitive",
   "tpope/vim-surround",
-  -- "williamboman/mason-lspconfig.nvim",
-  -- "williamboman/mason.nvim", 
 
 }
 
@@ -415,7 +416,7 @@ end
 -- nvim-cmp
 
 -- local cmp = require('cmp')
-
+--
 -- local cmp_setup_config = {
 --   formatting = {
 --     format = function(entry, item)
@@ -451,9 +452,9 @@ end
 --     }
 --   ),
 -- }
-
+--
 -- local filetype = cmp.setup.filetype
-
+--
 -- filetype("css", cmp_setup_config)
 -- filetype("html", cmp_setup_config)
 -- filetype("javascript", cmp_setup_config)

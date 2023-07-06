@@ -172,24 +172,20 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
-  -- "hrsh7th/cmp-buffer",
-  -- "hrsh7th/cmp-nvim-lsp",
-  -- "hrsh7th/cmp-nvim-lua",
-  -- "hrsh7th/cmp-path",
-  -- "hrsh7th/nvim-cmp",
-  -- "j-hui/fidget.nvim",
-  -- "neovim/nvim-lspconfig",
-  -- "saadparwaiz1/cmp_luasnip",
-  -- "williamboman/mason-lspconfig.nvim",
-  -- "williamboman/mason.nvim", 
-
   "bkad/CamelCaseMotion",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-nvim-lua",
+  "hrsh7th/cmp-path",
+  "hrsh7th/nvim-cmp",
+  "j-hui/fidget.nvim",
   "kana/vim-smartinput",
   "kyazdani42/nvim-tree.lua",
   "L3MON4D3/LuaSnip",
   "lewis6991/gitsigns.nvim",
   "MarcWeber/vim-addon-mw-utils",
   "mattn/emmet-vim",
+  "neovim/nvim-lspconfig",
   "numToStr/Comment.nvim",
   "nvim-lua/plenary.nvim",
   "nvim-lualine/lualine.nvim",
@@ -197,11 +193,14 @@ local plugins = {
   "nvim-telescope/telescope.nvim",
   "nvim-treesitter/nvim-treesitter",
   "rebelot/kanagawa.nvim",
+  "saadparwaiz1/cmp_luasnip",
   "sheerun/vim-polyglot",
   "tomtom/tlib_vim",
   "tpope/vim-eunuch",
   "tpope/vim-fugitive",
   "tpope/vim-surround",
+  "williamboman/mason-lspconfig.nvim",
+  "williamboman/mason.nvim", 
 
 }
 
@@ -324,14 +323,14 @@ vim.g.user_emmet_install_global = 0
 -- ///////////////////////////////////////////////////////////////////////
 -- mason.nvim
 
--- require("mason").setup {}
+require("mason").setup {}
 
 map("n", "<Leader>lm", ":Mason<CR>")
 
 -- ///////////////////////////////////////////////////////////////////////
 -- mason-lspconfig.nvim
 
--- require("mason-lspconfig").setup {}
+require("mason-lspconfig").setup {}
 
 -- ///////////////////////////////////////////////////////////////////////
 -- nvim-lspconfig
@@ -361,37 +360,37 @@ function on_attach(client, bufnr)
 
 end
 
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
---   vim.lsp.handlers.hover, {
---     border = "single"
---   }
--- )
---
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---   vim.lsp.diagnostic.on_publish_diagnostics,
---   {
---     -- Disable hints for signs and virtual_text (but leave underline) since
---     -- Neovim LSP seems to treat hints as diagnostics. Also, hints are
---     -- sometimes not useful.
---     signs = { severity = { min = vim.diagnostic.severity.INFO } },
---     virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
---   }
--- )
---
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
---   vim.lsp.handlers.signature_help, {
---     border = "single"
---   }
--- )
---
--- vim.diagnostic.config{
---   float={border="single"}
--- }
---
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
---
--- local lspconfig = require("lspconfig")
---
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "single"
+  }
+)
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    -- Disable hints for signs and virtual_text (but leave underline) since
+    -- Neovim LSP seems to treat hints as diagnostics. Also, hints are
+    -- sometimes not useful.
+    signs = { severity = { min = vim.diagnostic.severity.INFO } },
+    virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = "single"
+  }
+)
+
+vim.diagnostic.config{
+  float={border="single"}
+}
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local lspconfig = require("lspconfig")
+
 -- lspconfig.cssls.setup {
 --   capabilities = capabilities,
 --   on_attach = on_attach,
@@ -415,57 +414,57 @@ end
 -- ///////////////////////////////////////////////////////////////////////
 -- nvim-cmp
 
--- local cmp = require('cmp')
---
--- local cmp_setup_config = {
---   formatting = {
---     format = function(entry, item)
---       local menu_text ={
---         nvim_lsp = 'LSP',
---         luasnip = 'LuaSnip',
---         buffer = 'Buffer',
---         path = 'Path'
---       }
---       item.menu = menu_text[entry.source.name]
---       return item
---     end,
---   },
---   mapping = cmp.mapping.preset.insert({
---     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
---     ['<C-f>'] = cmp.mapping.scroll_docs(4),
---     ['<C-Space>'] = cmp.mapping.complete(),
---     ['<C-e>'] = cmp.mapping.abort(),
---     ['<CR>'] = cmp.mapping.confirm({ select = true }),
---   }),
---   snippet = {
---     expand = function(args)
---       require('luasnip').lsp_expand(args.body)
---     end,
---   },
---   sources = cmp.config.sources(
---     {
---       { name = 'path' },
---       { name = 'nvim_lsp' },
---       { name = 'nvim_lua'},
---       { name = 'buffer' },
---       { name = 'luasnip' },
---     }
---   ),
--- }
---
--- local filetype = cmp.setup.filetype
---
--- filetype("css", cmp_setup_config)
--- filetype("html", cmp_setup_config)
--- filetype("javascript", cmp_setup_config)
--- filetype("json", cmp_setup_config)
--- filetype("lua", cmp_setup_config)
--- filetype("python", cmp_setup_config)
--- filetype("scss", cmp_setup_config)
--- filetype("sh", cmp_setup_config)
--- filetype("toml", cmp_setup_config)
--- filetype("typescript", cmp_setup_config)
--- filetype("typescriptreact", cmp_setup_config)
+local cmp = require('cmp')
+
+local cmp_setup_config = {
+  formatting = {
+    format = function(entry, item)
+      local menu_text ={
+        -- nvim_lsp = 'LSP',
+        luasnip = 'LuaSnip',
+        buffer = 'Buffer',
+        path = 'Path'
+      }
+      item.menu = menu_text[entry.source.name]
+      return item
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  sources = cmp.config.sources(
+    {
+      { name = 'path' },
+      -- { name = 'nvim_lsp' },
+      { name = 'nvim_lua'},
+      { name = 'buffer' },
+      { name = 'luasnip' },
+    }
+  ),
+}
+
+local filetype = cmp.setup.filetype
+
+filetype("css", cmp_setup_config)
+filetype("html", cmp_setup_config)
+filetype("javascript", cmp_setup_config)
+filetype("json", cmp_setup_config)
+filetype("lua", cmp_setup_config)
+filetype("python", cmp_setup_config)
+filetype("scss", cmp_setup_config)
+filetype("sh", cmp_setup_config)
+filetype("toml", cmp_setup_config)
+filetype("typescript", cmp_setup_config)
+filetype("typescriptreact", cmp_setup_config)
 
 -- ///////////////////////////////////////////////////////////////////////
 -- gitsigns.nvim
@@ -513,7 +512,7 @@ map("n", "<Leader>nn", ":NvimTreeToggle<CR>")
 -- ///////////////////////////////////////////////////////////////////////
 -- fidget.nvim
 
--- require("fidget").setup()
+require("fidget").setup()
 
 -- ///////////////////////////////////////////////////////////////////////
 -- lualine.nvim

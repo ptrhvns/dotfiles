@@ -178,7 +178,7 @@ local plugins = {
   "hrsh7th/cmp-nvim-lua",
   "hrsh7th/cmp-path",
   "hrsh7th/nvim-cmp",
-  "j-hui/fidget.nvim",
+  { "j-hui/fidget.nvim", tag = "legacy", event = "LspAttach" },
   "kana/vim-smartinput",
   "kyazdani42/nvim-tree.lua",
   "L3MON4D3/LuaSnip",
@@ -391,25 +391,26 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require("lspconfig")
 
--- lspconfig.cssls.setup {
---   capabilities = capabilities,
---   on_attach = on_attach,
--- }
---
--- lspconfig.html.setup {
---   capabilities = capabilities,
---   on_attach = on_attach,
--- }
---
+lspconfig.cssls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+lspconfig.html.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+-- FIXME performance when using pyright is too slow.
 -- lspconfig.pyright.setup {
 --   capabilities = capabilities,
 --   on_attach = on_attach,
 -- }
---
--- lspconfig.tsserver.setup {
---   capabilities = capabilities,
---   on_attach = on_attach,
--- }
+
+lspconfig.tsserver.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
 
 -- ///////////////////////////////////////////////////////////////////////
 -- nvim-cmp

@@ -406,11 +406,29 @@ lspconfig.html.setup {
   on_attach = on_attach,
 }
 
--- FIXME performance is bad
+-- FIXME pyright performance is too slow.
 -- lspconfig.pyright.setup {
 --   capabilities = capabilities,
 --   on_attach = on_attach,
 -- }
+lspconfig.pylsp.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    pylsp = {
+      plugins = {
+        -- :PylspInstall pylsp-rope
+        autopep8 = { enabled = false },
+        mccabe = { enabled = false },
+        pycodestyle = { enabled = false },
+        pydocstyle = { enabled = false },
+        pyflakes = { enabled = false },
+        pylint = { enabled = false },
+        yapf = { enabled = false },
+      },
+    },
+  },
+}
 
 lspconfig.rust_analyzer.setup {
   capabilities = capabilities,
@@ -431,7 +449,7 @@ local cmp_setup_config = {
   formatting = {
     format = function(entry, item)
       local menu_text ={
-        -- nvim_lsp = 'LSP',
+        nvim_lsp = 'LSP',
         luasnip = 'LuaSnip',
         buffer = 'Buffer',
         path = 'Path'
@@ -455,7 +473,7 @@ local cmp_setup_config = {
   sources = cmp.config.sources(
     {
       { name = 'path' },
-      -- { name = 'nvim_lsp' },
+      { name = 'nvim_lsp' },
       { name = 'nvim_lua'},
       { name = 'buffer' },
       { name = 'luasnip' },

@@ -264,12 +264,12 @@ telescope.setup {
 telescope.load_extension("ui-select")
 
 -- General settings are here. LSP-related are with nvim-lspconfig.
-map("n", "<Leader>ff", ":Telescope find_files<CR><C-l>")
-map("n", "<Leader>td", ":Telescope diagnostics<CR><C-l>")
+map("n", "<Leader>ff", ":Telescope find_files<CR>")
+map("n", "<Leader>td", ":Telescope diagnostics<CR>")
 map("n", "<Leader>tg", telescope_builtin.git_files)
-map("n", "<Leader>th", ":Telescope help_tags<CR><C-l>")
-map("n", "<Leader>tk", ":Telescope keymaps<CR><C-l>")
-map("n", "<Leader>tl", ":Telescope live_grep<CR><C-l>")
+map("n", "<Leader>th", ":Telescope help_tags<CR>")
+map("n", "<Leader>tk", ":Telescope keymaps<CR>")
+map("n", "<Leader>tl", ":Telescope live_grep<CR>")
 
 -- ///////////////////////////////////////////////////////////////////////
 -- Comment.nvim
@@ -417,7 +417,9 @@ lspconfig.pylsp.setup {
   settings = {
     pylsp = {
       plugins = {
+        -- :PylspInstall pylsp-mypy
         -- :PylspInstall pylsp-rope
+        -- :PylspInstall python-lsp-ruff
         autopep8 = { enabled = false },
         mccabe = { enabled = false },
         pycodestyle = { enabled = false },

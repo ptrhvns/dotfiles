@@ -406,11 +406,6 @@ lspconfig.html.setup {
   on_attach = on_attach,
 }
 
--- FIXME pyright performance is too slow.
--- lspconfig.pyright.setup {
---   capabilities = capabilities,
---   on_attach = on_attach,
--- }
 lspconfig.pylsp.setup {
   capabilities = capabilities,
   on_attach = on_attach,

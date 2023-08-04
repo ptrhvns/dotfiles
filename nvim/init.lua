@@ -3,7 +3,7 @@ vim.g.mapleader = "\\"
 vim.opt.breakindent = true
 vim.opt.completeopt = { "menu", "menuone", "preview" }
 vim.opt.expandtab = true
-vim.opt.fillchars = "diff:⣿"
+vim.opt.fillchars = { diff = "⣿", vert = "|" }
 vim.opt.foldenable = false
 vim.opt.ignorecase = true
 vim.opt.joinspaces = false
@@ -32,11 +32,11 @@ vim.opt.virtualedit = "all"
 function map(mode, lhs, rhs, opts)
   local options = { noremap = true }
 
- if opts then
-   options = vim.tbl_extend("force", options, opts)
- end
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
 
- vim.keymap.set(mode, lhs, rhs, options)
+  vim.keymap.set(mode, lhs, rhs, options)
 end
 
 map("n", "<Leader>ip", ":set invpaste paste?<CR>")
@@ -245,6 +245,7 @@ vim.cmd "colorscheme kanagawa"
 vim.cmd "highlight LineNr guibg=NONE guifg=#ffa066"
 vim.cmd "highlight LineNrAbove guibg=NONE guifg=#54546d"
 vim.cmd "highlight LineNrBelow guibg=NONE guifg=#54546d"
+vim.cmd "highlight Normal guibg=NONE guifg=#c5c9c5"
 vim.cmd "highlight SignColumn guibg=NONE"
 
 -- ///////////////////////////////////////////////////////////////////////

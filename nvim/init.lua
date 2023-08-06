@@ -204,7 +204,7 @@ local plugins = {
   "tpope/vim-fugitive",
   "tpope/vim-surround",
   "williamboman/mason-lspconfig.nvim",
-  "williamboman/mason.nvim", 
+  "williamboman/mason.nvim",
 
 }
 

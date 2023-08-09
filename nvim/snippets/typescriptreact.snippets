@@ -88,8 +88,10 @@ snippet rc
 	  return <div>${3:$1}</div>; // TODO implement component
 	};
 snippet rt
-	import ${1:Component} from "./${2:$1}";
+	import ${1:Component} from "../../${2:$1}";
+	import { act } from "@testing-library/react";
 	import { createRoot } from "react-dom/client";
+	import { it } from "vitest";
 	
 	function buildComponent(props = {}) {
 	  return <${3:$1} {...props} />;
@@ -98,7 +100,7 @@ snippet rt
 	it("renders successfully", () => {
 	  const container = document.createElement("div");
 	  const root = createRoot(container);
-	  root.render(buildComponent());
+	  act(() => root.render(buildComponent()));
 	});
 snippet scd
 	screen.debug(); // FIXME

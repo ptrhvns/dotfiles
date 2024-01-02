@@ -106,8 +106,6 @@ local augroup = vim.api.nvim_create_augroup("all", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
 
-autocmd("BufNewFile,BufRead", { group = augroup, pattern = ".babelrc", command = "setlocal filetype=json" })
-autocmd("BufNewFile,BufRead", { group = augroup, pattern = "supervisord.conf", command = "setlocal filetype=dosini" })
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2" })

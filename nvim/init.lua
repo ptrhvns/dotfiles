@@ -410,9 +410,11 @@ lspconfig.pylsp.setup {
   settings = {
     pylsp = {
       plugins = {
+        -- Commands to run:
         -- :PylspInstall pylsp-mypy
         -- :PylspInstall pylsp-rope
         -- :PylspInstall python-lsp-ruff
+
         autopep8 = { enabled = false },
         mccabe = { enabled = false },
         pycodestyle = { enabled = false },
@@ -429,7 +431,7 @@ lspconfig.pylsp.setup {
 --   capabilities = capabilities,
 --   on_attach = on_attach,
 -- }
---
+
 lspconfig.tsserver.setup {
   capabilities = capabilities,
   on_attach = on_attach,

@@ -94,12 +94,21 @@ colorscheme slate
 filetype indent on
 filetype plugin on
 
-augroup ag_all
-    autocmd!
-
-    autocmd FileType gitcommit setlocal nolist
-    autocmd FileType sh setlocal softtabstop=4
-    autocmd FileType text setlocal textwidth=80
-    autocmd InsertLeave * setlocal nopaste
-
-augroup end
+autocmd FileType css setlocal softtabstop=2 tabstop=2
+autocmd FileType gitcommit setlocal nolist
+autocmd FileType go setlocal noexpandtab nolist softtabstop=4 tabstop=4
+autocmd FileType gomod setlocal noexpandtab nolist softtabstop=4 tabstop=4
+autocmd FileType html setlocal softtabstop=2 tabstop=2
+autocmd FileType htmldjango setlocal commentstring={#\\ %s\\ #} softtabstop=2 tabstop=2
+autocmd FileType javascript setlocal expandtab softtabstop=2 tabstop=2
+autocmd FileType javascriptreact setlocal expandtab softtabstop=2 tabstop=2
+autocmd FileType markdown setlocal expandtab softtabstop=2 tabstop=2
+autocmd FileType python setlocal softtabstop=4 tabstop=4
+autocmd FileType rust setlocal noexpandtab nolist softtabstop=4 tabstop=4
+autocmd FileType scss setlocal iskeyword+=- iskeyword+=@-@ softtabstop=2 tabstop=2
+autocmd FileType sh setlocal softtabstop=4
+autocmd FileType text setlocal commentstring=//\\ %s textwidth=80
+autocmd FileType typescript setlocal expandtab softtabstop=2 tabstop=2
+autocmd FileType typescriptreact setlocal expandtab softtabstop=2 tabstop=2
+autocmd FileType yaml setlocal expandtab
+autocmd InsertLeave * setlocal nopaste

@@ -80,6 +80,11 @@ nmap <Leader>$ :set list! number! relativenumber!<CR><C-l>
 
 nmap <Leader>W :%s/\s\+$//<CR>:let @/=''<CR>
 
+nmap <Down> :tabmove -1<CR><C-l>
+nmap <Left> gT
+nmap <Right> gt
+nmap <Up> :tabmove +1<CR><C-l>
+
 if &t_Co > 1 || has("gui_running")
     syntax on
 endif

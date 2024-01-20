@@ -62,9 +62,9 @@ endif
 nnoremap <C-l> :nohlsearch<CR><C-l>
 inoremap <C-l> <C-o>:nohlsearch<CR>
 
-nmap <Leader>p :set invpaste paste?<CR>
+nmap <Leader>ip :set invpaste paste?<CR>
 
-nmap <Leader>w :set invwrap wrap?<CR>
+nmap <Leader>iw :set invwrap wrap?<CR>
 
 nmap <Leader>u :setlocal cursorcolumn! cursorline!<CR><C-l>
 

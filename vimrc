@@ -7,7 +7,9 @@ set autoread
 set background=dark
 set backspace=indent,eol,start
 set belloff=all
+set breakindent
 set clipboard="unnamed"
+set completeopt=menu,menuone,preview
 set expandtab
 set hidden
 set history=10000
@@ -16,6 +18,7 @@ set ignorecase
 set incsearch
 set laststatus=2
 set lazyredraw
+set linebreak
 set list
 set nofoldenable
 set nojoinspaces
@@ -53,7 +56,7 @@ if exists("+undoreload")
 endif
 
 if has("multi_byte") && &t_Co > 255
-    set fillchars=diff:⣿
+    set fillchars=diff:⣿,vert:\|
     set listchars=extends:❯,nbsp:~,precedes:❮,tab:▸\ ,trail:⋅
 else
     set listchars=extends:>,nbsp:+,precedes:<,tab:>\ ,trail:-

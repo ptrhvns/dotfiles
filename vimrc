@@ -9,7 +9,7 @@ set backspace=indent,eol,start
 set belloff=all
 set breakindent
 set clipboard="unnamed"
-set completeopt=menu,menuone,preview
+set completeopt=menu,preview
 set expandtab
 set hidden
 set history=10000

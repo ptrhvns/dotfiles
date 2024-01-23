@@ -25,8 +25,8 @@ set nojoinspaces
 set noshowmode
 set nostartofline
 set notimeout
-" set number
-" set relativenumber
+set number
+set relativenumber
 set shell=/bin/bash
 set shiftwidth=0
 set showcmd

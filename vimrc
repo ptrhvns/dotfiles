@@ -88,6 +88,20 @@ nmap <Left> gT
 nmap <Right> gt
 nmap <Up> :tabmove +1<CR><C-l>
 
+function! Comment()
+    execute 's:\(.*\):\=printf(&commentstring, submatch(1)):'
+endfunction
+
+nmap <Leader>cc :call Comment()<CR>
+vmap <Leader>cc :call Comment()<CR>
+
+function! Uncomment()
+    execute 's:' . substitute(&commentstring, "%s", '\\(.*\\)', "") . ':\1:'
+endfunction
+
+nmap <Leader>cu :call Uncomment()<CR>
+vmap <Leader>cu :call Uncomment()<CR>
+
 if &t_Co > 1 || has("gui_running")
     syntax on
 endif
@@ -97,21 +111,26 @@ colorscheme slate
 filetype indent on
 filetype plugin on
 
-autocmd FileType css setlocal softtabstop=2 tabstop=2
-autocmd FileType gitcommit setlocal nolist
-autocmd FileType go setlocal noexpandtab nolist softtabstop=4 tabstop=4
-autocmd FileType gomod setlocal noexpandtab nolist softtabstop=4 tabstop=4
-autocmd FileType html setlocal softtabstop=2 tabstop=2
-autocmd FileType htmldjango setlocal commentstring="{# %s #}" softtabstop=2 tabstop=2
-autocmd FileType javascript setlocal expandtab softtabstop=2 tabstop=2
-autocmd FileType javascriptreact setlocal expandtab softtabstop=2 tabstop=2
-autocmd FileType markdown setlocal expandtab softtabstop=2 tabstop=2
-autocmd FileType python setlocal softtabstop=4 tabstop=4
-autocmd FileType rust setlocal noexpandtab nolist softtabstop=4 tabstop=4
-autocmd FileType scss setlocal iskeyword+=- iskeyword+=@-@ softtabstop=2 tabstop=2
-autocmd FileType sh setlocal softtabstop=4
-autocmd FileType text setlocal commentstring="// %s" textwidth=80
-autocmd FileType typescript setlocal expandtab softtabstop=2 tabstop=2
-autocmd FileType typescriptreact setlocal expandtab softtabstop=2 tabstop=2
-autocmd FileType yaml setlocal expandtab
-autocmd InsertLeave * setlocal nopaste
+augroup ag_all
+    autocmd!
+
+    autocmd FileType css setlocal softtabstop=2 tabstop=2
+    autocmd FileType gitcommit setlocal nolist
+    autocmd FileType go setlocal noexpandtab nolist softtabstop=4 tabstop=4
+    autocmd FileType gomod setlocal noexpandtab nolist softtabstop=4 tabstop=4
+    autocmd FileType html setlocal softtabstop=2 tabstop=2
+    autocmd FileType htmldjango setlocal commentstring="{# %s #}" softtabstop=2 tabstop=2
+    autocmd FileType javascript setlocal expandtab softtabstop=2 tabstop=2
+    autocmd FileType javascriptreact setlocal expandtab softtabstop=2 tabstop=2
+    autocmd FileType markdown setlocal expandtab softtabstop=2 tabstop=2
+    autocmd FileType python setlocal softtabstop=4 tabstop=4
+    autocmd FileType rust setlocal noexpandtab nolist softtabstop=4 tabstop=4
+    autocmd FileType scss setlocal iskeyword+=- iskeyword+=@-@ softtabstop=2 tabstop=2
+    autocmd FileType sh setlocal softtabstop=4
+    autocmd FileType text setlocal commentstring="// %s" textwidth=80
+    autocmd FileType typescript setlocal expandtab softtabstop=2 tabstop=2
+    autocmd FileType typescriptreact setlocal expandtab softtabstop=2 tabstop=2
+    autocmd FileType yaml setlocal expandtab
+    autocmd InsertLeave * setlocal nopaste
+
+augroup end

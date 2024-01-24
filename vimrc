@@ -134,7 +134,7 @@ augroup ag_all
     autocmd FileType rust setlocal noexpandtab nolist softtabstop=4 tabstop=4
     autocmd FileType scss setlocal iskeyword+=- iskeyword+=@-@ softtabstop=2 tabstop=2
     autocmd FileType sh setlocal softtabstop=4
-    autocmd FileType text setlocal commentstring="// %s" textwidth=80
+    autocmd FileType text setlocal commentstring=//\ %s textwidth=80
     autocmd FileType typescript setlocal expandtab softtabstop=2 tabstop=2
     autocmd FileType typescriptreact setlocal expandtab softtabstop=2 tabstop=2
     autocmd FileType yaml setlocal expandtab

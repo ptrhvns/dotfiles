@@ -26,6 +26,7 @@ set noshowmode
 set nostartofline
 set notimeout
 set number
+set path+=**
 set relativenumber
 set shell=/bin/bash
 set shiftwidth=0
@@ -101,6 +102,8 @@ endfunction
 
 nmap <Leader>cu :call Uncomment()<CR>
 vmap <Leader>cu :call Uncomment()<CR>
+
+nmap <Leader>ct :!ctags -R .<CR>
 
 if &t_Co > 1 || has("gui_running")
     syntax on

@@ -127,9 +127,9 @@ endif
 
 colorscheme slate
 
-highlight LineNr guibg=NONE guifg=yellow
-highlight LineNrAbove guibg=NONE guifg=White
-highlight LineNrBelow guibg=NONE guifg=White
+highlight LineNr ctermfg=yellow
+highlight LineNrAbove ctermfg=darkgrey
+highlight LineNrBelow ctermfg=darkgrey
 
 filetype indent on
 filetype plugin on

@@ -105,6 +105,22 @@ vmap <Leader>cu :call Uncomment()<CR>
 
 nmap <Leader>ct :!ctags -R .<CR>
 
+function! RunCodeCommands()
+    write
+    execute "!clear && run-code-commands " . @%
+    checktime
+endfunction
+
+nmap <Leader>rc :call RunCodeCommands()<CR>
+
+function! RunCodeCommandsFormatOnly()
+    write
+    execute "!clear && run-code-commands -f " . @%
+    checktime
+endfunction
+
+nmap <Leader>rf :call RunCodeCommandsFormatOnly()<CR>
+
 if &t_Co > 1 || has("gui_running")
     syntax on
 endif
@@ -121,6 +137,7 @@ filetype plugin on
 augroup ag_all
     autocmd!
 
+    autocmd BufEnter,CursorHold,CursorHoldI,FocusGained * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
     autocmd FileType css setlocal softtabstop=2 tabstop=2
     autocmd FileType gitcommit setlocal nolist
     autocmd FileType go setlocal noexpandtab nolist softtabstop=4 tabstop=4

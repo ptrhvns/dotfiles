@@ -1,7 +1,7 @@
 vim.g.mapleader = "\\"
 
 vim.opt.breakindent = true
-vim.opt.completeopt = { "menu", "menuone", "preview" }
+vim.opt.completeopt = { "menu", "preview" }
 vim.opt.expandtab = true
 vim.opt.fillchars = { diff = "⣿", vert = "|" }
 vim.opt.foldenable = false

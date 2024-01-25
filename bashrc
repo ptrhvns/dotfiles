@@ -149,6 +149,7 @@ PROMPT_COMMAND=build_prompt
 alias act="source venv/bin/activate"
 alias checkipaws="curl http://checkip.amazonaws.com/"
 alias e="\$EDITOR"
+alias ep="\$EDITOR -p"
 alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
 alias foxit="/mnt/c/Program\ Files\ \(x86\)/Foxit\ Software/Foxit\ Reader/FoxitPDFReader.exe"
 alias g="grep -iE"

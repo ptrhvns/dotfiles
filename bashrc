@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1090,SC2155
+# shellcheck disable=SC1090,SC2155,SC1091
 
 ulimit -c unlimited
 umask 022
@@ -103,25 +103,25 @@ truecolor() {
 # WHITE="$(truecolor '220;215;186')" # dc d7 ba
 # YELLOW="$(truecolor '255;158;59')" # ff 9e 3b
 
+# CYAN="$(color256 '37')"
+# MAGENTA="$(color256 '125')"
+# RED="$(color256 '124')"
+# WHITE="$(color256 '254')"
 BLUE="$(color256 '105')"
-CYAN="$(color256 '37')"
 GREEN="$(color256 '65')"
 GREY="$(color256 '241')"
-MAGENTA="$(color256 '125')"
 NOCOLOR="$(color16 '0')"
 ORANGE="$(color256 '166')"
 PINK="$(color256 '211')"
-RED="$(color256 '124')"
 VIOLET="$(color256 '97')"
-WHITE="$(color256 '254')"
 YELLOW="$(color256 '215')"
 
 if [ -f /usr/lib/git-core/git-sh-prompt ]; then
     source /usr/lib/git-core/git-sh-prompt
-    GIT_PROMPT=1
-    GIT_PS1_SHOWDIRTYSTATE=1
-    GIT_PS1_SHOWSTASHSTATE=1
-    GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PROMPT=1
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
 fi
 
 build_prompt() {
@@ -133,7 +133,7 @@ build_prompt() {
         PS1+=" ${ORANGE}[${num_jobs}]"
     fi
 
-    if [ ! -z "${VIRTUAL_ENV}" ]; then
+    if [ -n "${VIRTUAL_ENV}" ]; then
         PS1+=" ${BLUE}venv"
     fi
 

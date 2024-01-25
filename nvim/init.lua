@@ -470,6 +470,7 @@ local cmp_setup_config = {
 
 local filetype = cmp.setup.filetype
 
+filetype("bash", cmp_setup_config)
 filetype("css", cmp_setup_config)
 filetype("go", cmp_setup_config)
 filetype("html", cmp_setup_config)

@@ -116,7 +116,7 @@ PINK="$(color256 '211')"
 VIOLET="$(color256 '97')"
 YELLOW="$(color256 '215')"
 
-if [ -f /usr/lib/git-core/git-sh-prompt ]; then
+if [[ -f /usr/lib/git-core/git-sh-prompt ]]; then
     source /usr/lib/git-core/git-sh-prompt
     export GIT_PROMPT=1
     export GIT_PS1_SHOWDIRTYSTATE=1
@@ -129,15 +129,15 @@ build_prompt() {
 
     local num_jobs=$(jobs 2>/dev/null | wc -l)
 
-    if [ "${num_jobs}" -gt 0 ]; then
+    if [[ "${num_jobs}" -gt 0 ]]; then
         PS1+=" ${ORANGE}[${num_jobs}]"
     fi
 
-    if [ -n "${VIRTUAL_ENV}" ]; then
+    if [[ -n "${VIRTUAL_ENV}" ]]; then
         PS1+=" ${BLUE}venv"
     fi
 
-    if [ "${GIT_PROMPT}" -gt 0 ]; then
+    if [[ "${GIT_PROMPT}" -gt 0 ]]; then
         PS1+="${YELLOW}$(__git_ps1 ' %s')"
     fi
 
@@ -167,20 +167,20 @@ alias tl="tmux ls"
 alias tn="tmux-new-session"
 alias ven="python -m venv venv && source venv/bin/activate && pip install --upgrade pip setuptools wheel pip-tools"
 
-if [ -r ~/.ssh-agent ]; then
+if [[ -r ~/.ssh-agent ]]; then
     source ~/.ssh-agent > /dev/null
 fi
 
 if command -v fzf 1>/dev/null 2>&1; then
     fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
 
-    if [ -f "$fzf_key_bindings" ]; then
+    if [[ -f "$fzf_key_bindings" ]]; then
         source "$fzf_key_bindings"
     fi
 
     fzf_completion="$(dpkg -L fzf | grep completion.bash)"
 
-    if [ -f "$fzf_completion" ]; then
+    if [[ -f "$fzf_completion" ]]; then
         source "$fzf_completion"
     fi
 fi
@@ -191,7 +191,7 @@ export PATH=${PATH}:${PYENV_ROOT}/bin
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 
-    if [ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]; then
+    if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
         eval "$(pyenv virtualenv-init -)"
     fi
 fi
@@ -209,10 +209,10 @@ if command -v goenv 1>/dev/null 2>&1; then
     export PATH="${PATH}:${GOPATH}/bin"
 fi
 
-if [ -f "$HOME/.cargo/env" ]; then
+if [[ -f "$HOME/.cargo/env" ]]; then
     source "$HOME/.cargo/env"
 fi
 
-if [ -f "$HOME/.bash_local" ]; then
+if [[ -f "$HOME/.bash_local" ]]; then
     source "$HOME/.bash_local"
 fi

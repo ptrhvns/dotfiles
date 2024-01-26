@@ -27,8 +27,8 @@ shopt -u mailwarn
 
 unset MAILCHECK
 
-export DISPLAY=$(awk '/nameserver/{print $2}' /etc/resolv.conf):0.0
-export EDITOR=$(command -v nvim || command -v vim || command -v vi)
+export DISPLAY="$(awk '/nameserver/{print $2}' /etc/resolv.conf):0.0"
+export EDITOR="$(command -v nvim || command -v vim || command -v vi)"
 export GOENV_ROOT="${HOME}/.goenv"
 export GPG_TTY=$(tty)
 export HISTCONTROL="erasedups:ignoreboth"
@@ -47,8 +47,8 @@ export PAGER="$(command -v less || command -v more)"
 export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32:~/.cargo/bin:${GOENV_ROOT}/bin
 export PROMPT_COMMAND='history -a'
 export REDWOOD_DISABLE_TELEMETRY=1
-export SHELL=$(command -v bash)
-export UNAME=$(uname)
+export SHELL="$(command -v bash)"
+export UNAME="$(uname)"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
@@ -118,11 +118,14 @@ YELLOW="$(color256 '215')"
 
 if [[ -f /usr/lib/git-core/git-sh-prompt ]]; then
     source /usr/lib/git-core/git-sh-prompt
-    export GIT_PROMPT=1
-    export GIT_PS1_SHOWDIRTYSTATE=1
-    export GIT_PS1_SHOWSTASHSTATE=1
-    export GIT_PS1_SHOWUNTRACKEDFILES=1
+elif [[ -f "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
+    source /usr/share/git-core/contrib/completion/git-prompt.sh
 fi
+
+export GIT_PROMPT=1
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 build_prompt() {
     PS1="${PINK}\h ${GREEN}\u ${VIOLET}\w"

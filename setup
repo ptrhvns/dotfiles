@@ -4,20 +4,20 @@ set -Eeuxo pipefail
 
 rm -f ~/.bash_profile
 rm -f ~/.bashrc
-ln -s bashrc ~/.bashrc
+ln -s ~/src/personal/remote/dotfiles/bashrc ~/.bashrc
 rm -f ~/.ctags
-ln -s ctags ~/.ctags
-rm -f ~/.editc
-ln editrc ~/.editrc
+ln -s ~/src/personal/remote/dotfiles/ctags ~/.ctags
+rm -f ~/.editrc
+ln -s ~/src/personal/remote/dotfiles/editrc ~/.editrc
 rm -f ~/.gitconfig
-ln -s gitconfig ~/.gitconfig
+ln -s ~/src/personal/remote/dotfiles/gitconfig ~/.gitconfig
 rm -f ~/.gitignore
-ln -s gitignore ~/.gitignore
+ln -s ~/src/personal/remote/dotfiles/gitignore ~/.gitignore
 rm -f ~/.inputrc
-ln -s inputrc ~/.inputrc
+ln -s ~/src/personal/remote/dotfiles/inputrc ~/.inputrc
 rm -f ~/.nvim
-ln -s nvim ~/.nvim
+ln -s ~/src/personal/remote/dotfiles/nvim ~/.nvim
 rm -f ~/.tmux.conf
-ln -s tmux.conf ~/.tmux.conf
+ln -s ~/src/personal/remote/dotfiles/tmux.conf ~/.tmux.conf
 rm -f ~/.vimrc
-ln -s vimrc ~/.vimrc
+ln -s ~/src/personal/remote/dotfiles/vimrc ~/.vimrc

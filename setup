@@ -2,22 +2,25 @@
 
 set -Eeuxo pipefail
 
+PWD=$(pwd)
+
 rm -f ~/.bash_profile
+ln -s ${PWD}/bash_profile ~/.bash_profile
 rm -f ~/.bashrc
-ln -s ~/src/personal/remote/dotfiles/bashrc ~/.bashrc
+ln -s ${PWD}/bashrc ~/.bashrc
 rm -f ~/.ctags
-ln -s ~/src/personal/remote/dotfiles/ctags ~/.ctags
+ln -s ${PWD}/ctags ~/.ctags
 rm -f ~/.editrc
-ln -s ~/src/personal/remote/dotfiles/editrc ~/.editrc
+ln -s ${PWD}/editrc ~/.editrc
 rm -f ~/.gitconfig
-ln -s ~/src/personal/remote/dotfiles/gitconfig ~/.gitconfig
+ln -s ${PWD}/gitconfig ~/.gitconfig
 rm -f ~/.gitignore
-ln -s ~/src/personal/remote/dotfiles/gitignore ~/.gitignore
+ln -s ${PWD}/gitignore ~/.gitignore
 rm -f ~/.inputrc
-ln -s ~/src/personal/remote/dotfiles/inputrc ~/.inputrc
+ln -s ${PWD}/inputrc ~/.inputrc
 rm -f ~/.nvim
-ln -s ~/src/personal/remote/dotfiles/nvim ~/.nvim
+ln -s ${PWD}/nvim ~/.nvim
 rm -f ~/.tmux.conf
-ln -s ~/src/personal/remote/dotfiles/tmux.conf ~/.tmux.conf
+ln -s ${PWD}/tmux.conf ~/.tmux.conf
 rm -f ~/.vimrc
-ln -s ~/src/personal/remote/dotfiles/vimrc ~/.vimrc
+ln -s ${PWD}/vimrc ~/.vimrc

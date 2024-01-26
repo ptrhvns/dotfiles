@@ -129,7 +129,7 @@ build_prompt() {
 
     local num_jobs=$(jobs 2>/dev/null | wc -l)
 
-    if [ "$num_jobs" -gt 0 ]; then
+    if [ "${num_jobs}" -gt 0 ]; then
         PS1+=" ${ORANGE}[${num_jobs}]"
     fi
 
@@ -137,7 +137,7 @@ build_prompt() {
         PS1+=" ${BLUE}venv"
     fi
 
-    if [ $GIT_PROMPT -gt 0 ]; then
+    if [ "${GIT_PROMPT}" -gt 0 ]; then
         PS1+="${YELLOW}$(__git_ps1 ' %s')"
     fi
 

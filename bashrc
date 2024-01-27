@@ -218,3 +218,7 @@ fi
 if [[ -f "$HOME/.bash_local" ]]; then
     source "$HOME/.bash_local"
 fi
+
+if [[ -e "/home/pete/.nix-profile/etc/profile.d/nix.sh" ]]; then
+    . /home/pete/.nix-profile/etc/profile.d/nix.sh
+fi

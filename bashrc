@@ -27,7 +27,7 @@ shopt -u mailwarn
 
 unset MAILCHECK
 
-export DISPLAY="$(awk '/nameserver/{print $2}' /etc/resolv.conf):0.0"
+# export DISPLAY="$(awk '/nameserver/{print $2}' /etc/resolv.conf):0.0"
 export EDITOR="$(command -v nvim || command -v vim || command -v vi)"
 export GOENV_ROOT="${HOME}/.goenv"
 export GPG_TTY=$(tty)
@@ -90,7 +90,6 @@ truecolor() {
 }
 
 # These colors seem to mess up Windows Terminal:
-#
 # BLUE="$(truecolor '126;156;216')" # 7e 9c d8
 # CYAN="$(truecolor '106;149;137')" # 6a 95 89
 # GREEN="$(truecolor '118;148;106')" # 76 94 6a
@@ -103,17 +102,17 @@ truecolor() {
 # WHITE="$(truecolor '220;215;186')" # dc d7 ba
 # YELLOW="$(truecolor '255;158;59')" # ff 9e 3b
 
-# CYAN="$(color256 '37')"
-# MAGENTA="$(color256 '125')"
-# RED="$(color256 '124')"
-# WHITE="$(color256 '254')"
 BLUE="$(color256 '105')"
+CYAN="$(color256 '37')"
 GREEN="$(color256 '65')"
 GREY="$(color256 '241')"
+MAGENTA="$(color256 '125')"
 NOCOLOR="$(color16 '0')"
 ORANGE="$(color256 '166')"
 PINK="$(color256 '211')"
+RED="$(color256 '124')"
 VIOLET="$(color256 '97')"
+WHITE="$(color256 '254')"
 YELLOW="$(color256 '215')"
 
 if [[ -f /usr/lib/git-core/git-sh-prompt ]]; then

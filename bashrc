@@ -211,14 +211,14 @@ if command -v goenv 1>/dev/null 2>&1; then
     export PATH="${PATH}:${GOPATH}/bin"
 fi
 
-if [[ -f "$HOME/.cargo/env" ]]; then
-    source "$HOME/.cargo/env"
+if [[ -f "${HOME}/.cargo/env" ]]; then
+    source "${HOME}/.cargo/env"
 fi
 
-if [[ -f "$HOME/.bash_local" ]]; then
-    source "$HOME/.bash_local"
+if [[ -f "${HOME}/.bash_local" ]]; then
+    source "${HOME}/.bash_local"
 fi
 
-if [[ -e "/home/pete/.nix-profile/etc/profile.d/nix.sh" ]]; then
-    . /home/pete/.nix-profile/etc/profile.d/nix.sh
+if [[ -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]]; then
+    . ${HOME}/.nix-profile/etc/profile.d/nix.sh
 fi

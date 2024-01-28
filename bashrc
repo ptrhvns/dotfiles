@@ -117,11 +117,12 @@ YELLOW="$(color256 '215')"
 
 if [[ -f /usr/lib/git-core/git-sh-prompt ]]; then
     source /usr/lib/git-core/git-sh-prompt
+    export GIT_PROMPT=1
 elif [[ -f "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
+    export GIT_PROMPT=1
 fi
 
-export GIT_PROMPT=1
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1

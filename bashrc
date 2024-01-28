@@ -219,7 +219,3 @@ fi
 if [[ -f "${HOME}/.bash_local" ]]; then
     source "${HOME}/.bash_local"
 fi
-
-if [[ -e "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]]; then
-    . ${HOME}/.nix-profile/etc/profile.d/nix.sh
-fi

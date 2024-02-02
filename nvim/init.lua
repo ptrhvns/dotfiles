@@ -159,7 +159,6 @@ local plugins = {
   "hrsh7th/cmp-nvim-lua",
   "hrsh7th/cmp-path",
   "hrsh7th/nvim-cmp",
-  -- "huggingface/llm.nvim",
   "kana/vim-smartinput",
   "kyazdani42/nvim-tree.lua",
   "L3MON4D3/LuaSnip",
@@ -560,26 +559,3 @@ require('lualine').setup {
     }
   },
 }
-
--- ///////////////////////////////////////////////////////////////////////
--- llm.nvim
-
--- local llm = require('llm')
---
--- llm.setup({
---   -- https://github.com/huggingface/llm.nvim#models
---   tokens_to_clear = { "<EOT>" },
---   fim = {
---     enabled = true,
---     prefix = "<PRE> ",
---     middle = " <MID>",
---     suffix = " <SUF>",
---   },
---   model = "codellama/CodeLlama-13b-hf",
---   context_window = 4096,
---   tokenizer = {
---     repository = "codellama/CodeLlama-13b-hf",
---   },
---   accept_keymap = "<C-g>",
---   dismiss_keymap = "<C-x>",
--- })

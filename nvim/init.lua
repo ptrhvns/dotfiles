@@ -105,7 +105,6 @@ vim.cmd "filetype plugin on"
 local augroup = vim.api.nvim_create_augroup("all", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd("BufReadPost", { group = augroup, pattern = "*", command = 'silent! normal! g`"zv' })
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2 tabstop=2" })

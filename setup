@@ -18,8 +18,9 @@ rm -f ~/.gitignore
 ln -s ${PWD}/gitignore ~/.gitignore
 rm -f ~/.inputrc
 ln -s ${PWD}/inputrc ~/.inputrc
-rm -f ~/.nvim
-ln -s ${PWD}/nvim ~/.nvim
+mkdir -p ~/.config
+rm -f ~/.config/nvim
+ln -s ${PWD}/nvim ~/.config/nvim
 rm -f ~/.tmux.conf
 ln -s ${PWD}/tmux.conf ~/.tmux.conf
 rm -f ~/.vimrc

@@ -25,6 +25,17 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
+if [[ -f "/etc/os-release" ]]; then
+    UBUNTU=false
+    ROCKY=false
+
+    if [[ "$(grep -c 'Ubuntu' /etc/os-release)" -gt 0 ]]; then
+        UBUNTU=true
+    elif [[ "$(grep -c 'Rocky Linux' /etc/os-release)" -gt 0 ]]; then
+        ROCKY=true
+    fi
+fi
+
 unset MAILCHECK
 
 # export DISPLAY="$(awk '/nameserver/{print $2}' /etc/resolv.conf):0.0"
@@ -57,7 +68,7 @@ else
     export LESS="-FqiRX"
 fi
 
-if command -v rg 1>/dev/null 2>&1; then
+if command -v rg &>/dev/null; then
     export FZF_CTRL_T_COMMAND='rg --files --no-ignore-vcs --hidden'
     export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 fi
@@ -102,25 +113,30 @@ truecolor() {
 # WHITE="$(truecolor '220;215;186')" # dc d7 ba
 # YELLOW="$(truecolor '255;158;59')" # ff 9e 3b
 
+# CYAN="$(color256 '37')"
+# MAGENTA="$(color256 '125')"
+# RED="$(color256 '124')"
+# WHITE="$(color256 '254')"
 BLUE="$(color256 '105')"
-CYAN="$(color256 '37')"
 GREEN="$(color256 '65')"
 GREY="$(color256 '241')"
-MAGENTA="$(color256 '125')"
 NOCOLOR="$(color16 '0')"
 ORANGE="$(color256 '166')"
 PINK="$(color256 '211')"
-RED="$(color256 '124')"
 VIOLET="$(color256 '97')"
-WHITE="$(color256 '254')"
 YELLOW="$(color256 '215')"
 
-if [[ -f /usr/lib/git-core/git-sh-prompt ]]; then
-    source /usr/lib/git-core/git-sh-prompt
-    export GIT_PROMPT=1
-elif [[ -f "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
-    source /usr/share/git-core/contrib/completion/git-prompt.sh
-    export GIT_PROMPT=1
+if command -v git &>/dev/null; then
+    if $UBUNTU; then
+        GIT_SH_PROMPT="/usr/lib/git-core/git-sh-prompt"
+    elif $ROCKY; then
+        GIT_SH_PROMPT="/usr/share/git-core/contrib/completion/git-prompt.sh"
+    fi
+
+    if [[ -f "$GIT_SH_PROMPT" ]]; then
+        source "$GIT_SH_PROMPT"
+        export GIT_PROMPT=1
+    fi
 fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
@@ -170,28 +186,46 @@ alias tl="tmux ls"
 alias tn="tmux-new-session"
 alias ven="python -m venv venv && source venv/bin/activate && pip install --upgrade pip setuptools wheel pip-tools"
 
-if [[ -r ~/.ssh-agent ]]; then
-    source ~/.ssh-agent > /dev/null
+if command -v eza &>/dev/null; then
+    if $ROCKY; then
+        eza_completion="$(rpm -ql eza | grep completions)"
+    fi
+
+    if [[ -f "$eza_completion" ]]; then
+        source "$eza_completion"
+    fi
+
+    alias l="eza"
+    alias la="eza -la"
+    alias ll="eza -l"
 fi
 
-if command -v fzf 1>/dev/null 2>&1; then
-    fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
+if command -v fzf &>/dev/null; then
+    if $UBUNTU; then
+        fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
+        fzf_completion="$(dpkg -L fzf | grep completion.bash)"
+    elif $ROCKY; then
+        fzf_key_bindings="$(rpm -ql fzf | grep key-bindings.bash)"
+        fzf_completion="$(rpm -ql fzf | grep bash_completion.d)"
+    fi
 
     if [[ -f "$fzf_key_bindings" ]]; then
         source "$fzf_key_bindings"
     fi
-
-    fzf_completion="$(dpkg -L fzf | grep completion.bash)"
 
     if [[ -f "$fzf_completion" ]]; then
         source "$fzf_completion"
     fi
 fi
 
+if [[ -r ~/.ssh-agent ]]; then
+    source ~/.ssh-agent > /dev/null
+fi
+
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=${PATH}:${PYENV_ROOT}/bin
 
-if command -v pyenv 1>/dev/null 2>&1; then
+if command -v pyenv &>/dev/null; then
     eval "$(pyenv init -)"
 
     if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
@@ -202,11 +236,11 @@ fi
 export NODENV_ROOT=${HOME}/.nodenv
 export PATH=${PATH}:${NODENV_ROOT}/bin
 
-if command -v nodenv 1>/dev/null 2>&1; then
+if command -v nodenv &>/dev/null; then
     eval "$(nodenv init -)"
 fi
 
-if command -v goenv 1>/dev/null 2>&1; then
+if command -v goenv &>/dev/null; then
     eval "$(goenv init -)"
     export PATH="${GOROOT}/bin:${PATH}"
     export PATH="${PATH}:${GOPATH}/bin"

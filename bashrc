@@ -27,12 +27,14 @@ shopt -u mailwarn
 
 if [[ -f "/etc/os-release" ]]; then
     UBUNTU=false
-    ROCKY=false
+    RED_HAT=false
 
     if [[ "$(grep -c 'Ubuntu' /etc/os-release)" -gt 0 ]]; then
         UBUNTU=true
+    elif [[ "$(grep -c 'Red Hat Enterprise Linux' /etc/os-release)" -gt 0 ]]; then
+        RED_HAT=true
     elif [[ "$(grep -c 'Rocky Linux' /etc/os-release)" -gt 0 ]]; then
-        ROCKY=true
+        RED_HAT=true
     fi
 fi
 
@@ -129,7 +131,7 @@ YELLOW="$(color256 '215')"
 if command -v git &>/dev/null; then
     if $UBUNTU; then
         GIT_SH_PROMPT="/usr/lib/git-core/git-sh-prompt"
-    elif $ROCKY; then
+    elif $RED_HAT; then
         GIT_SH_PROMPT="/usr/share/git-core/contrib/completion/git-prompt.sh"
     fi
 
@@ -196,7 +198,7 @@ if command -v fd &>/dev/null; then
 fi
 
 if command -v eza &>/dev/null; then
-    if $ROCKY; then
+    if $RED_HAT; then
         eza_completion="$(rpm -ql eza | grep completions)"
     fi
 
@@ -213,7 +215,7 @@ if command -v fzf &>/dev/null; then
     if $UBUNTU; then
         fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
         fzf_completion="$(dpkg -L fzf | grep completion.bash)"
-    elif $ROCKY; then
+    elif $RED_HAT; then
         fzf_key_bindings="$(rpm -ql fzf | grep key-bindings.bash)"
         fzf_completion="$(rpm -ql fzf | grep bash_completion.d)"
     fi

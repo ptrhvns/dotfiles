@@ -165,6 +165,10 @@ build_prompt() {
 
 PROMPT_COMMAND=build_prompt
 
+if [[ -r ~/.ssh-agent ]]; then
+    source ~/.ssh-agent > /dev/null
+fi
+
 alias act="source venv/bin/activate"
 alias checkipaws="curl http://checkip.amazonaws.com/"
 alias e="\$EDITOR"
@@ -223,8 +227,8 @@ if command -v fzf &>/dev/null; then
     fi
 fi
 
-if [[ -r ~/.ssh-agent ]]; then
-    source ~/.ssh-agent > /dev/null
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init bash)"
 fi
 
 export PYENV_ROOT="${HOME}/.pyenv"

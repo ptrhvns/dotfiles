@@ -129,9 +129,9 @@ VIOLET="$(color256 '97')"
 YELLOW="$(color256 '215')"
 
 if command -v git &>/dev/null; then
-    if $UBUNTU; then
+    if [[ "$UBUNTU" = true ]]; then
         GIT_SH_PROMPT="/usr/lib/git-core/git-sh-prompt"
-    elif $RED_HAT; then
+    elif [[ "$RED_HAT" = true ]]; then
         GIT_SH_PROMPT="/usr/share/git-core/contrib/completion/git-prompt.sh"
     fi
 
@@ -198,7 +198,7 @@ if command -v fd &>/dev/null; then
 fi
 
 if command -v eza &>/dev/null; then
-    if $RED_HAT; then
+    if [[ "$RED_HAT" = true ]]; then
         eza_completion="$(rpm -ql eza | grep completions)"
     fi
 
@@ -212,10 +212,10 @@ if command -v eza &>/dev/null; then
 fi
 
 if command -v fzf &>/dev/null; then
-    if $UBUNTU; then
+    if [[ "$UBUNTU" = true ]]; then
         fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
         fzf_completion="$(dpkg -L fzf | grep completion.bash)"
-    elif $RED_HAT; then
+    elif [[ "$RED_HAT" = true ]]; then
         fzf_key_bindings="$(rpm -ql fzf | grep key-bindings.bash)"
         fzf_completion="$(rpm -ql fzf | grep bash_completion.d)"
     fi

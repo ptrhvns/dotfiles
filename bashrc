@@ -148,7 +148,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 build_prompt() {
     PS1="${PINK}\h ${GREEN}\u ${VIOLET}\w"
 
-    local num_jobs=$(jobs 2>/dev/null | grep -v zoxide | wc -l)
+    local num_jobs=$(jobs 2>/dev/null | grep -cv zoxide)
 
     if [[ "${num_jobs}" -gt 0 ]]; then
         PS1+=" ${ORANGE}[${num_jobs}]"

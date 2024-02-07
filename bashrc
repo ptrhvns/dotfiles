@@ -169,6 +169,7 @@ alias act="source venv/bin/activate"
 alias checkipaws="curl http://checkip.amazonaws.com/"
 alias e="\$EDITOR"
 alias ep="\$EDITOR -p"
+alias f="find"
 alias firefox='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
 alias foxit="/mnt/c/Program\ Files\ \(x86\)/Foxit\ Software/Foxit\ Reader/FoxitPDFReader.exe"
 alias g="grep -iE"
@@ -178,13 +179,17 @@ alias la="ls -la"
 alias ll="ls -l"
 alias m="\$PAGER"
 alias notepad='/mnt/c/windows/system32/notepad.exe'
-alias pm='python manage.py'
+alias pm="python manage.py"
 alias ta="tmux attach -t"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"
 alias tl="tmux ls"
 alias tn="tmux-new-session"
 alias ven="python -m venv venv && source venv/bin/activate && pip install --upgrade pip setuptools wheel pip-tools"
+
+if command -v fd &>/dev/null; then
+    alias f="fd"
+fi
 
 if command -v eza &>/dev/null; then
     if $ROCKY; then

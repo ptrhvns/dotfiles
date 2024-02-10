@@ -31,6 +31,8 @@ if [[ -f "/etc/os-release" ]]; then
 
     if [[ "$(grep -c 'Ubuntu' /etc/os-release)" -gt 0 ]]; then
         UBUNTU=true
+    elif [[ "$(grep -c 'Fedora Linux' /etc/os-release)" -gt 0 ]]; then
+        RED_HAT=true
     elif [[ "$(grep -c 'Red Hat Enterprise Linux' /etc/os-release)" -gt 0 ]]; then
         RED_HAT=true
     elif [[ "$(grep -c 'Rocky Linux' /etc/os-release)" -gt 0 ]]; then
@@ -264,3 +266,4 @@ fi
 if [[ -f "${HOME}/.bash_local" ]]; then
     source "${HOME}/.bash_local"
 fi
+. "$HOME/.cargo/env"

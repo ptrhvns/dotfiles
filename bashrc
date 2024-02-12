@@ -229,6 +229,7 @@ fi
 
 if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
+    alias cd="echo '### Use zoxide instead!'"
 fi
 
 export PYENV_ROOT="${HOME}/.pyenv"

@@ -1,1 +1,1 @@
-Configuration files.
+Personal configuration files.

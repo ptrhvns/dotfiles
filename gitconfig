@@ -17,12 +17,17 @@
 [branch]
 	autosetupmerge = true
 [alias]
+	a  = add
+	amend  = commit --amend
 	ap = add -p
 	cav = commit -av
+	co = checkout
 	cv = commit -v
 	l = log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
 	ll = log --color --stat --decorate --pretty=medium
 	lll = log --color --stat --decorate --pretty=medium --patch --minimal
+	s = status
+	up = push
 [user]
 	email = peter.havens@gmail.com
 	name = Peter Havens

@@ -72,11 +72,6 @@ else
     export LESS="-FqiRX"
 fi
 
-if command -v rg &>/dev/null; then
-    export FZF_CTRL_T_COMMAND='rg --files --no-ignore-vcs --hidden'
-    export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-fi
-
 if [[ "$(tty)" = "/dev/console" ]]; then
     export TERM=vt100
 elif [[ "$TERM" = screen* && -z "$TMUX" ]]; then
@@ -174,6 +169,7 @@ if [[ -r ~/.ssh-agent ]]; then
 fi
 
 alias a="source venv/bin/activate"
+alias c="cat"
 alias e="\$EDITOR"
 alias ep="\$EDITOR -p"
 alias f="find"
@@ -191,8 +187,8 @@ alias tl="tmux ls"
 alias tn="tmux-new-session"
 alias v="python -m venv venv && source venv/bin/activate && pip install --upgrade pip setuptools wheel pip-tools"
 
-if command -v fd &>/dev/null; then
-    alias f="fd"
+if command -v bat &>/dev/null; then
+    alias c='bat'
 fi
 
 if command -v eza &>/dev/null; then
@@ -207,6 +203,10 @@ if command -v eza &>/dev/null; then
     alias l="eza"
     alias la="eza -la"
     alias ll="eza -l"
+fi
+
+if command -v fd &>/dev/null; then
+    alias f="fd"
 fi
 
 if command -v fzf &>/dev/null; then
@@ -225,11 +225,28 @@ if command -v fzf &>/dev/null; then
     if [[ -f "$fzf_completion" ]]; then
         source "$fzf_completion"
     fi
+
+    if command -v rg &>/dev/null; then
+        export FZF_CTRL_T_COMMAND='rg --files --no-ignore-vcs --hidden'
+        export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+    fi
+
+    if command -v bat &>/dev/null; then
+        alias ef="fzf --multi --preview='bat --style=numbers --color=always {}' | xargs \$EDITOR -p"
+    else
+        alias ef="fzf --multi --preview='cat {}' | xargs \$EDITOR -p"
+    fi
 fi
 
 if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
     alias cd="echo '### Use zoxide instead!'"
+fi
+
+if command -v goenv &>/dev/null; then
+    eval "$(goenv init -)"
+    export PATH="${GOROOT}/bin:${PATH}"
+    export PATH="${PATH}:${GOPATH}/bin"
 fi
 
 export PYENV_ROOT="${HOME}/.pyenv"
@@ -248,12 +265,6 @@ export PATH=${PATH}:${NODENV_ROOT}/bin
 
 if command -v nodenv &>/dev/null; then
     eval "$(nodenv init -)"
-fi
-
-if command -v goenv &>/dev/null; then
-    eval "$(goenv init -)"
-    export PATH="${GOROOT}/bin:${PATH}"
-    export PATH="${PATH}:${GOPATH}/bin"
 fi
 
 if [[ -f "${HOME}/.cargo/env" ]]; then

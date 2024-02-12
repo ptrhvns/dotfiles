@@ -42,7 +42,6 @@ fi
 
 unset MAILCHECK
 
-# export DISPLAY="$(awk '/nameserver/{print $2}' /etc/resolv.conf):0.0"
 export EDITOR="$(command -v nvim || command -v vim || command -v vi)"
 export GOENV_ROOT="${HOME}/.goenv"
 export GPG_TTY=$(tty)
@@ -95,27 +94,6 @@ color256() {
     echo -ne "\[\033[38;5;${1}m\]";
 }
 
-truecolor() {
-    echo -ne "\033[38;2;${1}m";
-}
-
-# These colors seem to mess up Windows Terminal:
-# BLUE="$(truecolor '126;156;216')" # 7e 9c d8
-# CYAN="$(truecolor '106;149;137')" # 6a 95 89
-# GREEN="$(truecolor '118;148;106')" # 76 94 6a
-# GREY="$(truecolor '114;113;105')" # 72 71 69
-# MAGENTA="$(truecolor '149;127;184')" # 95 7f b8
-# ORANGE="$(truecolor '255;160;102')" # ff a0 66
-# PINK="$(truecolor '210;115;153')" # d2 7e 99
-# RED="$(truecolor '255;93;98')" # ff 5d 62
-# VIOLET="$(truecolor '149;127;184')" # 95 7f b8
-# WHITE="$(truecolor '220;215;186')" # dc d7 ba
-# YELLOW="$(truecolor '255;158;59')" # ff 9e 3b
-
-# CYAN="$(color256 '37')"
-# MAGENTA="$(color256 '125')"
-# RED="$(color256 '124')"
-# WHITE="$(color256 '254')"
 BLUE="$(color256 '105')"
 GREEN="$(color256 '65')"
 GREY="$(color256 '241')"

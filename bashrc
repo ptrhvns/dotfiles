@@ -210,7 +210,7 @@ if command -v fzf &>/dev/null; then
     fi
 
     if command -v bat &>/dev/null; then
-        alias ef="fzf --multi --preview='bat --color=always {}' | xargs \$EDITOR -p"
+        alias ef="fzf --multi --preview='bat --color=always --style=plain {}' | xargs \$EDITOR -p"
     else
         alias ef="fzf --multi --preview='cat {}' | xargs \$EDITOR -p"
     fi

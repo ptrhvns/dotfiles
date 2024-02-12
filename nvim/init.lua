@@ -153,17 +153,18 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
+  "L3MON4D3/LuaSnip",
+  "MarcWeber/vim-addon-mw-utils",
   "bkad/CamelCaseMotion",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-nvim-lua",
   "hrsh7th/cmp-path",
   "hrsh7th/nvim-cmp",
+  "j-hui/fidget.nvim",
   "kana/vim-smartinput",
   "kyazdani42/nvim-tree.lua",
-  "L3MON4D3/LuaSnip",
   "lewis6991/gitsigns.nvim",
-  "MarcWeber/vim-addon-mw-utils",
   "mattn/emmet-vim",
   "neovim/nvim-lspconfig",
   "numToStr/Comment.nvim",
@@ -181,7 +182,6 @@ local plugins = {
   "tpope/vim-surround",
   "williamboman/mason-lspconfig.nvim",
   "williamboman/mason.nvim",
-  { "j-hui/fidget.nvim", tag = "legacy", event = "LspAttach" },
 
 }
 

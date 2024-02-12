@@ -27,7 +27,7 @@
 	ll = log --color --stat --decorate --pretty=medium
 	lll = log --color --stat --decorate --pretty=medium --patch --minimal
 	s = status
-	up = push
+	u = push
 [user]
 	email = peter.havens@gmail.com
 	name = Peter Havens

@@ -166,7 +166,7 @@ alias tn="tmux-new-session"
 alias v="python -m venv venv && source venv/bin/activate && pip install --upgrade pip setuptools wheel pip-tools"
 
 if command -v bat &>/dev/null; then
-    alias c='bat'
+    alias c='bat --style=plain'
 fi
 
 if command -v eza &>/dev/null; then

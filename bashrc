@@ -226,6 +226,8 @@ if command -v fzf &>/dev/null; then
         alias ef="fzf --multi --preview='cat {}' | xargs \$EDITOR -p"
     fi
 
+    alias gaf="git ls-files --modified --others --exclude-standard | fzf --multi --print0 | xargs -0 git add"
+
     cs() {
         local SELECTED=$(curl -s cht.sh/:list | fzf)
         curl -s "cht.sh/${SELECTED}?style=paraiso-light" | $PAGER

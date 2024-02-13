@@ -146,24 +146,34 @@ if [[ -r ~/.ssh-agent ]]; then
     source ~/.ssh-agent > /dev/null
 fi
 
-alias a="source venv/bin/activate"
 alias c="cat"
 alias e="\$EDITOR"
 alias ep="\$EDITOR -p"
 alias f="find"
 alias g="egrep -iE"
+alias ga="git add"
+alias gamend="git commit --amend"
+alias gap="git add -p"
+alias gcav="git commit -av"
+alias gco="git checkout"
+alias gcv="git commit -v"
+alias gl="git log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '"
+alias gll="git log --color --stat --decorate --pretty=medium"
+alias glll="git log --color --stat --decorate --pretty=medium --patch --minimal"
+alias gs="git status"
+alias gu="git push"
 alias gv="egrep -iEv"
 alias l="ls"
 alias la="ls -la"
 alias ll="ls -l"
 alias m="\$PAGER"
-alias pm="python manage.py"
+alias pa="source venv/bin/activate"
+alias pv="python -m venv venv && source venv/bin/activate && pip install --upgrade pip setuptools wheel pip-tools"
 alias ta="tmux attach -t"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"
 alias tl="tmux ls"
 alias tn="tmux-new-session"
-alias v="python -m venv venv && source venv/bin/activate && pip install --upgrade pip setuptools wheel pip-tools"
 
 if command -v bat &>/dev/null; then
     alias c='bat --style=plain'

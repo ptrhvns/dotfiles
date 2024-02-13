@@ -174,6 +174,7 @@ alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"
 alias tl="tmux ls"
 alias tn="tmux-new-session"
+alias wt="curl wttr.in/?1Fn"
 
 if command -v bat &>/dev/null; then
     alias c='bat --style=plain'
@@ -224,6 +225,17 @@ if command -v fzf &>/dev/null; then
     else
         alias ef="fzf --multi --preview='cat {}' | xargs \$EDITOR -p"
     fi
+
+    cs() {
+        local SELECTED=$(curl -s cht.sh/:list | fzf)
+        curl -s "cht.sh/${SELECTED}?style=paraiso-light" | $PAGER
+    }
+
+    tf() {
+        local SELECTED=$(compgen -c | fzf)
+        tldr "$SELECTED" | $PAGER
+    }
+
 fi
 
 if command -v zoxide &>/dev/null; then

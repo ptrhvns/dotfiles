@@ -10,9 +10,6 @@
 	excludesFile = ~/.gitignore
 	whitespace = blank-at-eol,space-before-tab
 
-[diff]
-	tool = kdiff3
-
 [difftool]
 	prompt = false
 
@@ -21,7 +18,6 @@
 
 [merge]
 	conflictstyle = diff3
-	tool = kdiff3
 
 [push]
 	default = current

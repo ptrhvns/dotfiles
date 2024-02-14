@@ -1,23 +1,31 @@
+[branch]
+	autosetupmerge = true
+
+[color]
+	ui = auto
+
 [core]
 	autocrlf = input
 	editor = "if command -v nvim; then E=nvim; else E=vim; fi; $E"
 	excludesFile = ~/.gitignore
 	whitespace = blank-at-eol,space-before-tab
+
+[diff]
+	tool = kdiff3
+
+[difftool]
+	prompt = false
+
+[init]
+	defaultBranch = main
+
 [merge]
 	conflictstyle = diff3
 	tool = kdiff3
-[color]
-	ui = auto
-[diff]
-	tool = kdiff3
-[difftool]
-	prompt = false
+
 [push]
 	default = current
-[branch]
-	autosetupmerge = true
+
 [user]
 	email = peter.havens@gmail.com
 	name = Peter Havens
-[init]
-	defaultBranch = main

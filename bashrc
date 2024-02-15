@@ -137,7 +137,7 @@ build_prompt() {
         PS1+="${YELLOW}$(__git_ps1 ' %s')"
     fi
 
-    PS1+=" ${GREY}\$${NOCOLOR} "
+    PS1+="\n${GREY}\$${NOCOLOR} "
 }
 
 PROMPT_COMMAND=build_prompt

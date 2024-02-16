@@ -233,7 +233,7 @@ if command -v fzf &>/dev/null; then
 
     cs() {
         local SELECTED=$(curl -s cht.sh/:list | fzf)
-        curl -s "cht.sh/${SELECTED}?style=paraiso-light" | $PAGER
+        curl -s "cht.sh/${SELECTED}?style=paraiso-dark" | $PAGER
     }
 
     tf() {

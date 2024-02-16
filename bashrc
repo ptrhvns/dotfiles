@@ -25,10 +25,10 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
-if [[ -f "/etc/os-release" ]]; then
-    UBUNTU=false
-    RED_HAT=false
+UBUNTU=false
+RED_HAT=false
 
+if [[ -f "/etc/os-release" ]]; then
     if [[ "$(grep -c 'Ubuntu' /etc/os-release)" -gt 0 ]]; then
         UBUNTU=true
     elif [[ "$(grep -c 'Fedora Linux' /etc/os-release)" -gt 0 ]]; then

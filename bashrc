@@ -71,21 +71,6 @@ else
     export LESS="-FqiRX"
 fi
 
-if [[ "$(tty)" = "/dev/console" ]]; then
-    export TERM=vt100
-elif [[ "$TERM" = screen* && -z "$TMUX" ]]; then
-    infocmp screen > /dev/null 2>&1 && export TERM=screen
-    infocmp screen-256color > /dev/null 2>&1 && export TERM=screen-256color
-elif [[ -n "$TMUX" ]]; then
-    infocmp screen > /dev/null 2>&1 && export TERM=screen
-    infocmp screen-256color > /dev/null 2>&1 && export TERM=screen-256color
-else
-    infocmp vt100 > /dev/null 2>&1 && export TERM=vt100
-    infocmp xterm > /dev/null 2>&1 && export TERM=xterm
-    infocmp xterm-color > /dev/null 2>&1 && export TERM=xterm-color
-    infocmp xterm-256color > /dev/null 2>&1 && export TERM=xterm-256color
-fi
-
 color16() {
     echo -ne "\[\033[${1}m\]";
 }

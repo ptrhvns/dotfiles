@@ -245,7 +245,10 @@ fi
 
 if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
-    alias cd="echo '### Use zoxide instead!'"
+
+    cd() {
+        echo '### Use zoxide instead!'
+    }
 fi
 
 if command -v goenv &>/dev/null; then

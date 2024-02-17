@@ -153,9 +153,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 
-  "L3MON4D3/LuaSnip",
-  "MarcWeber/vim-addon-mw-utils",
   "bkad/CamelCaseMotion",
+  "folke/todo-comments.nvim",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-nvim-lua",
@@ -164,7 +163,9 @@ local plugins = {
   "j-hui/fidget.nvim",
   "kana/vim-smartinput",
   "kyazdani42/nvim-tree.lua",
+  "L3MON4D3/LuaSnip",
   "lewis6991/gitsigns.nvim",
+  "MarcWeber/vim-addon-mw-utils",
   "mattn/emmet-vim",
   "neovim/nvim-lspconfig",
   "numToStr/Comment.nvim",
@@ -190,7 +191,7 @@ require("lazy").setup(plugins, {})
 -- ///////////////////////////////////////////////////////////////////////
 -- nvim-treesitter
 
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
   ensure_installed = {
     "bash",
     "css",
@@ -209,7 +210,7 @@ require('nvim-treesitter.configs').setup {
     enable = true,
   },
   sync_install = false,
-}
+})
 
 -- ///////////////////////////////////////////////////////////////////////
 -- kanagawa.nvim
@@ -290,6 +291,13 @@ vim.cmd "snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>"
 
 map("", ",b", "<Plug>CamelCaseMotion_b", { silent = true })
 map("", ",w", "<Plug>CamelCaseMotion_w", { silent = true })
+
+-- ///////////////////////////////////////////////////////////////////////
+-- todo-comments.nvim
+
+require("todo-comments").setup({
+  signs = false,
+})
 
 -- ///////////////////////////////////////////////////////////////////////
 -- fugitive

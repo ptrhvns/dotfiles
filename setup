@@ -9,7 +9,6 @@ mkdir -p ~/.config
 rm -f ~/.bash_profile
 rm -f ~/.bashrc
 rm -f ~/.config/nvim
-rm -f ~/.config/starship.toml
 rm -f ~/.ctags
 rm -f ~/.editrc
 rm -f ~/.gitconfig
@@ -26,6 +25,5 @@ ln -s "${PWD}/gitconfig" ~/.gitconfig
 ln -s "${PWD}/gitignore" ~/.gitignore
 ln -s "${PWD}/inputrc" ~/.inputrc
 ln -s "${PWD}/nvim" ~/.config/nvim
-ln -s "${PWD}/starship.toml" ~/.config/startship.toml
 ln -s "${PWD}/tmux.conf" ~/.tmux.conf
 ln -s "${PWD}/vimrc" ~/.vimrc

@@ -4,24 +4,28 @@ set -Eeuxo pipefail
 
 PWD=$(pwd)
 
-rm -f ~/.bash_profile
-ln -s ${PWD}/bash_profile ~/.bash_profile
-rm -f ~/.bashrc
-ln -s ${PWD}/bashrc ~/.bashrc
-rm -f ~/.ctags
-ln -s ${PWD}/ctags ~/.ctags
-rm -f ~/.editrc
-ln -s ${PWD}/editrc ~/.editrc
-rm -f ~/.gitconfig
-ln -s ${PWD}/gitconfig ~/.gitconfig
-rm -f ~/.gitignore
-ln -s ${PWD}/gitignore ~/.gitignore
-rm -f ~/.inputrc
-ln -s ${PWD}/inputrc ~/.inputrc
 mkdir -p ~/.config
+
+rm -f ~/.bash_profile
+rm -f ~/.bashrc
 rm -f ~/.config/nvim
-ln -s ${PWD}/nvim ~/.config/nvim
+rm -f ~/.config/starship.toml
+rm -f ~/.ctags
+rm -f ~/.editrc
+rm -f ~/.gitconfig
+rm -f ~/.gitignore
+rm -f ~/.inputrc
 rm -f ~/.tmux.conf
-ln -s ${PWD}/tmux.conf ~/.tmux.conf
 rm -f ~/.vimrc
-ln -s ${PWD}/vimrc ~/.vimrc
+
+ln -s "${PWD}/bash_profile" ~/.bash_profile
+ln -s "${PWD}/bashrc" ~/.bashrc
+ln -s "${PWD}/ctags" ~/.ctags
+ln -s "${PWD}/editrc" ~/.editrc
+ln -s "${PWD}/gitconfig" ~/.gitconfig
+ln -s "${PWD}/gitignore" ~/.gitignore
+ln -s "${PWD}/inputrc" ~/.inputrc
+ln -s "${PWD}/nvim" ~/.config/nvim
+ln -s "${PWD}/starship.toml" ~/.config/startship.toml
+ln -s "${PWD}/tmux.conf" ~/.tmux.conf
+ln -s "${PWD}/vimrc" ~/.vimrc

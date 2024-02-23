@@ -159,7 +159,6 @@ alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"
 alias tl="tmux ls"
 alias tn="tmux-new-session"
-alias wt="curl wttr.in/?1Fn"
 
 if command -v bat &>/dev/null; then
     alias c='bat --style=plain'

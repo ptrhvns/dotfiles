@@ -154,6 +154,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 
   "bkad/CamelCaseMotion",
+  "catppuccin/nvim",
   "folke/todo-comments.nvim",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-nvim-lsp",
@@ -174,7 +175,6 @@ local plugins = {
   "nvim-telescope/telescope-ui-select.nvim",
   "nvim-telescope/telescope.nvim",
   "nvim-treesitter/nvim-treesitter",
-  "rebelot/kanagawa.nvim",
   "saadparwaiz1/cmp_luasnip",
   "sheerun/vim-polyglot",
   "tomtom/tlib_vim",
@@ -213,19 +213,13 @@ require('nvim-treesitter.configs').setup({
 })
 
 -- ///////////////////////////////////////////////////////////////////////
--- kanagawa.nvim
+-- catppuccin/nvim,
 
-require('kanagawa').setup({
-    transparent = true,
+require("catppuccin").setup({
+    transparent_background = true,
 })
 
-vim.cmd "colorscheme kanagawa"
-
-vim.cmd "highlight LineNr guibg=NONE guifg=#ffa066"
-vim.cmd "highlight LineNrAbove guibg=NONE guifg=#54546d"
-vim.cmd "highlight LineNrBelow guibg=NONE guifg=#54546d"
-vim.cmd "highlight Normal guibg=NONE guifg=#c5c9c5"
-vim.cmd "highlight SignColumn guibg=NONE"
+vim.cmd.colorscheme "catppuccin"
 
 -- ///////////////////////////////////////////////////////////////////////
 -- telescope.nvim

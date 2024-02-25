@@ -92,7 +92,7 @@ hexto256() {
 
 BLUE=$(color256 "$(hexto256 '#89b4fa')")
 GREEN=$(color256 "$(hexto256 '#a6e3a1')")
-GREY=$(color256 "$(hexto256 '#cdd6f4')")
+GREY=$(color256 "$(hexto256 '#7f849c')")
 NOCOLOR="$(color16 '0')"
 ORANGE=$(color256 "$(hexto256 '#fab387')" )
 VIOLET=$(color256 "$(hexto256 '#b4befe')")

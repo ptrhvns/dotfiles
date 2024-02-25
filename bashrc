@@ -90,14 +90,6 @@ hexto256() {
   echo -ne "$color"
 }
 
-BLUE=$(color256 "$(hexto256 '#89b4fa')")
-GREEN=$(color256 "$(hexto256 '#a6e3a1')")
-GREY=$(color256 "$(hexto256 '#7f849c')")
-NOCOLOR="$(color16 '0')"
-ORANGE=$(color256 "$(hexto256 '#fab387')" )
-VIOLET=$(color256 "$(hexto256 '#b4befe')")
-YELLOW=$(color256 "$(hexto256 '#f9e2af')")
-
 if command -v git &>/dev/null; then
     if [[ "$UBUNTU" = true ]]; then
         GIT_SH_PROMPT="/usr/lib/git-core/git-sh-prompt"
@@ -115,13 +107,21 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
+BLUE=$(color256 "$(hexto256 '#89b4fa')")
+GREEN=$(color256 "$(hexto256 '#a6e3a1')")
+GREY=$(color256 "$(hexto256 '#7f849c')")
+NOCOLOR="$(color16 '0')"
+RED=$(color256 "$(hexto256 '#f38ba8')")
+VIOLET=$(color256 "$(hexto256 '#b4befe')")
+YELLOW=$(color256 "$(hexto256 '#f9e2af')")
+
 build_prompt() {
     PS1="${GREY}\h ${GREEN}\u ${VIOLET}\w"
 
     local num_jobs=$(jobs 2>/dev/null | grep -cv zoxide)
 
     if [[ "${num_jobs}" -gt 0 ]]; then
-        PS1+=" ${ORANGE}[${num_jobs}]"
+        PS1+=" ${RED}[${num_jobs}]"
     fi
 
     if [[ -n "${VIRTUAL_ENV}" ]]; then

@@ -76,14 +76,28 @@ color256() {
     echo -ne "\[\033[38;5;${1}m\]";
 }
 
-BLUE="$(color256 '105')"
-GREEN="$(color256 '65')"
-GREY="$(color256 '241')"
+hexto256() {
+  local hex=$1
+
+  if [[ $hex == "#"* ]]; then
+    hex=$(echo "$1" | awk '{print substr($0,2)}')
+  fi
+
+  local r=$(printf '0x%0.2s' "$hex")
+  local g=$(printf '0x%0.2s' "${hex#??}")
+  local b=$(printf '0x%0.2s' "${hex#????}")
+  local color=$(printf "%03d" "$(((r<75?0:(r-35)/40)*6*6+(g<75?0:(g-35)/40)*6+(b<75?0:(b-35)/40)+16))")
+  echo -ne "$color"
+}
+
+BLUE=$(color256 "$(hexto256 '#89b4fa')")
+GREEN=$(color256 "$(hexto256 '#a6e3a1')")
+GREY=$(color256 "$(hexto256 '#a6adc8')")
 NOCOLOR="$(color16 '0')"
-ORANGE="$(color256 '166')"
-PINK="$(color256 '211')"
-VIOLET="$(color256 '97')"
-YELLOW="$(color256 '215')"
+ORANGE=$(color256 "$(hexto256 '#fab387')" )
+PINK=$(color256 "$(hexto256 '#f5c2e7')")
+VIOLET=$(color256 "$(hexto256 '#b4befe')")
+YELLOW=$(color256 "$(hexto256 '#f9e2af')")
 
 if command -v git &>/dev/null; then
     if [[ "$UBUNTU" = true ]]; then

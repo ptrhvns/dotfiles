@@ -92,10 +92,9 @@ hexto256() {
 
 BLUE=$(color256 "$(hexto256 '#89b4fa')")
 GREEN=$(color256 "$(hexto256 '#a6e3a1')")
-GREY=$(color256 "$(hexto256 '#a6adc8')")
+GREY=$(color256 "$(hexto256 '#cdd6f4')")
 NOCOLOR="$(color16 '0')"
 ORANGE=$(color256 "$(hexto256 '#fab387')" )
-PINK=$(color256 "$(hexto256 '#f5c2e7')")
 VIOLET=$(color256 "$(hexto256 '#b4befe')")
 YELLOW=$(color256 "$(hexto256 '#f9e2af')")
 
@@ -117,7 +116,7 @@ export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 build_prompt() {
-    PS1="${PINK}\h ${GREEN}\u ${VIOLET}\w"
+    PS1="${GREY}\h ${GREEN}\u ${VIOLET}\w"
 
     local num_jobs=$(jobs 2>/dev/null | grep -cv zoxide)
 

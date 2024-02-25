@@ -4,8 +4,6 @@ set -Eeuxo pipefail
 
 PWD=$(pwd)
 
-mkdir -p ~/.config
-
 rm -f ~/.bash_profile
 rm -f ~/.bashrc
 rm -f ~/.config/nvim
@@ -15,7 +13,13 @@ rm -f ~/.gitconfig
 rm -f ~/.gitignore
 rm -f ~/.inputrc
 rm -f ~/.tmux.conf
+rm -f ~/.tmux/plugins/tpm
 rm -f ~/.vimrc
+
+mkdir -p ~/.config 
+mkdir -p ~/.tmux/plugins
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ln -s "${PWD}/bash_profile" ~/.bash_profile
 ln -s "${PWD}/bashrc" ~/.bashrc

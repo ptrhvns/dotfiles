@@ -195,6 +195,7 @@ require('nvim-treesitter.configs').setup({
   ensure_installed = {
     "bash",
     "css",
+    "dockerfile",
     "go",
     "html",
     "javascript",
@@ -386,6 +387,11 @@ lspconfig.cssls.setup {
   on_attach = on_attach,
 }
 
+lspconfig.dockerls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 lspconfig.gopls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -474,6 +480,7 @@ local filetype = cmp.setup.filetype
 
 filetype("bash", cmp_setup_config)
 filetype("css", cmp_setup_config)
+filetype("dockerfile", cmp_setup_config)
 filetype("go", cmp_setup_config)
 filetype("html", cmp_setup_config)
 filetype("javascript", cmp_setup_config)

@@ -241,7 +241,7 @@ if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
 
     cd() {
-        echo '### Use zoxide instead!'
+        echo '### Use zoxide'
     }
 fi
 

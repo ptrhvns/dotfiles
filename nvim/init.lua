@@ -202,10 +202,11 @@ require('nvim-treesitter.configs').setup({
     "json",
     "lua",
     "python",
-    -- "rust",
     "scss",
     "typescript",
     "vim",
+    "yaml",
+    -- "rust",
   },
   highlight = {
     enable = true,
@@ -397,7 +398,17 @@ lspconfig.gopls.setup {
   on_attach = on_attach,
 }
 
+lspconfig.jsonls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 lspconfig.html.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+lspconfig.lua_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 }
@@ -431,6 +442,11 @@ lspconfig.pylsp.setup {
 -- }
 
 lspconfig.tsserver.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+lspconfig.yamlls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 }
@@ -478,6 +494,7 @@ local cmp_setup_config = {
 
 local filetype = cmp.setup.filetype
 
+-- filetype("rust", cmp_setup_config)
 filetype("bash", cmp_setup_config)
 filetype("css", cmp_setup_config)
 filetype("dockerfile", cmp_setup_config)
@@ -487,12 +504,12 @@ filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
 filetype("lua", cmp_setup_config)
 filetype("python", cmp_setup_config)
--- filetype("rust", cmp_setup_config)
 filetype("scss", cmp_setup_config)
 filetype("sh", cmp_setup_config)
 filetype("toml", cmp_setup_config)
 filetype("typescript", cmp_setup_config)
 filetype("typescriptreact", cmp_setup_config)
+filetype("yaml", cmp_setup_config)
 
 -- ///////////////////////////////////////////////////////////////////////
 -- gitsigns.nvim

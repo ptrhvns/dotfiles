@@ -13,8 +13,8 @@ rm -f ~/.gitconfig
 rm -f ~/.gitignore
 rm -f ~/.inputrc
 rm -f ~/.tmux.conf
-rm -f ~/.tmux/plugins/tpm
 rm -f ~/.vimrc
+rm -rf ~/.tmux/plugins/tpm
 
 mkdir -p ~/.config 
 mkdir -p ~/.tmux/plugins

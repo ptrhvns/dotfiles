@@ -4,6 +4,7 @@ vim.g.maplocalleader = "\\"
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "preview" }
+vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.fillchars = { diff = "⣿", vert = "|" }
 vim.opt.foldenable = false
@@ -48,8 +49,6 @@ end
 map("n", "<Leader>ip", ":set invpaste paste?<CR>")
 
 map("n", "<Leader>iw", ":set invwrap wrap?<CR>")
-
-map("n", "<Leader>u", ":setlocal cursorcolumn! cursorline!<CR><C-l>")
 
 map("v", "<Leader>sd", ":sort! n<CR>")
 map("v", "<Leader>ss", ":sort iu<CR>")

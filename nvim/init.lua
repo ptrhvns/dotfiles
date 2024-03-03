@@ -408,11 +408,6 @@ lspconfig.html.setup {
   on_attach = on_attach,
 }
 
-lspconfig.lua_ls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
 lspconfig.pylsp.setup {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -502,7 +497,6 @@ filetype("go", cmp_setup_config)
 filetype("html", cmp_setup_config)
 filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
-filetype("lua", cmp_setup_config)
 filetype("python", cmp_setup_config)
 filetype("scss", cmp_setup_config)
 filetype("sh", cmp_setup_config)

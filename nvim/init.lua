@@ -99,6 +99,8 @@ map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 map("v", "J", ":move '>+1<CR>gv=gv")
 map("v", "K", ":move '<-2<CR>gv=gv")
 
+map("v", "<Leader>ct", ":'<,'>!column -o ' ' -t<CR>")
+
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
 

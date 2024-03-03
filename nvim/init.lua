@@ -1,17 +1,20 @@
 vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
 
 vim.opt.breakindent = true
+vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "preview" }
 vim.opt.expandtab = true
 vim.opt.fillchars = { diff = "⣿", vert = "|" }
 vim.opt.foldenable = false
 vim.opt.ignorecase = true
+vim.opt.inccommand = "split"
 vim.opt.joinspaces = false
 vim.opt.lazyredraw = true
 vim.opt.linebreak = true
 vim.opt.list = true
-vim.opt.listchars = { extends = "❯", nbsp = "~", precedes = "❮", tab = "▸ ", trail = "⋅" }
-vim.opt.mouse = ""
+vim.opt.listchars = { extends = "❯", nbsp = "␣", precedes = "❮", tab = "» ", trail = "⋅" }
+vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shell = "/bin/bash"
@@ -26,7 +29,10 @@ vim.opt.startofline = false
 vim.opt.tabstop = 4
 vim.opt.textwidth = 80
 vim.opt.timeout = false
+vim.opt.timeoutlen = 300
+vim.opt.undofile = true
 vim.opt.undolevels = 1000
+vim.opt.updatetime = 250
 vim.opt.virtualedit = "all"
 
 function map(mode, lhs, rhs, opts)
@@ -107,6 +113,7 @@ vim.cmd "filetype plugin on"
 local augroup = vim.api.nvim_create_augroup("all", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
+-- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2 tabstop=2" })
@@ -124,7 +131,6 @@ autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "s
 autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4 tabstop=4" })
--- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "sass", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "sass", command = "setlocal softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "EmmetInstall" })

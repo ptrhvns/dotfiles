@@ -173,6 +173,11 @@ alias tk="tmux-kill-session"
 alias tl="tmux ls"
 alias tn="tmux-new-session"
 
+# What type is that file?
+function wt {
+    test -n "$1" && stat --printf "%F\n" "$1";
+}
+
 if command -v bat &>/dev/null; then
     alias c='bat --style=plain'
 fi

@@ -232,11 +232,21 @@ if command -v fzf &>/dev/null; then
 
     cs() {
         local SELECTED=$(curl -s cht.sh/:list | fzf)
+
+        if [[ -z "${SELECTED}" ]]; then
+            return
+        fi
+
         curl -s "cht.sh/${SELECTED}?style=paraiso-dark" | $PAGER
     }
 
     tf() {
         local SELECTED=$(compgen -c | fzf)
+
+        if [[ -z "${SELECTED}" ]]; then
+            return
+        fi
+
         tldr "$SELECTED" | $PAGER
     }
 

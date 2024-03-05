@@ -15,6 +15,7 @@ vim.opt.lazyredraw = true
 vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = { extends = "❯", nbsp = "␣", precedes = "❮", tab = "» ", trail = "⋅" }
+vim.opt.mouse = ""
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shell = "/bin/bash"

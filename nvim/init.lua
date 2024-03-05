@@ -2,7 +2,6 @@ vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
 vim.opt.breakindent = true
-vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "preview" }
 vim.opt.cursorline = true
 vim.opt.expandtab = true

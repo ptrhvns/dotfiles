@@ -69,11 +69,11 @@ else
 fi
 
 color16() {
-    echo -ne "\[\033[${1}m\]";
+    echo -ne "\033[${1}m";
 }
 
 color256() {
-    echo -ne "\[\033[38;5;${1}m\]";
+    echo -ne "\033[38;5;${1}m";
 }
 
 hexto256() {
@@ -256,7 +256,7 @@ if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
 
     cd() {
-        echo '### Use zoxide'
+        echo "${RED}### ERROR: Use zoxide${NOCOLOR}"
     }
 fi
 

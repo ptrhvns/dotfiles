@@ -2,6 +2,7 @@ vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
 vim.opt.breakindent = true
+vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "preview" }
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -14,7 +15,6 @@ vim.opt.lazyredraw = true
 vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = { extends = "❯", nbsp = "␣", precedes = "❮", tab = "» ", trail = "⋅" }
-vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shell = "/bin/bash"

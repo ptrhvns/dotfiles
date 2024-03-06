@@ -385,10 +385,10 @@ vim.diagnostic.config{
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require("lspconfig")
 
-lspconfig.bashls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+-- lspconfig.bashls.setup {
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- }
 
 lspconfig.cssls.setup {
   capabilities = capabilities,
@@ -496,8 +496,9 @@ local cmp_setup_config = {
 
 local filetype = cmp.setup.filetype
 
+-- filetype("bash", cmp_setup_config)
 -- filetype("rust", cmp_setup_config)
-filetype("bash", cmp_setup_config)
+-- filetype("sh", cmp_setup_config)
 filetype("css", cmp_setup_config)
 filetype("dockerfile", cmp_setup_config)
 filetype("go", cmp_setup_config)
@@ -506,7 +507,6 @@ filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
 filetype("python", cmp_setup_config)
 filetype("scss", cmp_setup_config)
-filetype("sh", cmp_setup_config)
 filetype("toml", cmp_setup_config)
 filetype("typescript", cmp_setup_config)
 filetype("typescriptreact", cmp_setup_config)

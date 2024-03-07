@@ -10,6 +10,7 @@ set belloff=all
 set breakindent
 set clipboard="unnamed"
 set completeopt=menu,preview
+set cursorline
 set expandtab
 set hidden
 set history=10000
@@ -69,8 +70,6 @@ inoremap <C-l> <C-o>:nohlsearch<CR>
 nmap <Leader>ip :set invpaste paste?<CR>
 
 nmap <Leader>iw :set invwrap wrap?<CR>
-
-nmap <Leader>u :setlocal cursorcolumn! cursorline!<CR><C-l>
 
 vmap <Leader>sd :sort! n<CR>
 vmap <Leader>ss :sort iu<CR>

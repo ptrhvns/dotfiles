@@ -25,18 +25,18 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
+REDHAT=false
 UBUNTU=false
-RED_HAT=false
 
 if [[ -f "/etc/os-release" ]]; then
-    if [[ "$(grep -c 'Ubuntu' /etc/os-release)" -gt 0 ]]; then
-        UBUNTU=true
-    elif [[ "$(grep -c 'Fedora Linux' /etc/os-release)" -gt 0 ]]; then
-        RED_HAT=true
+    if [[ "$(grep -c 'Fedora Linux' /etc/os-release)" -gt 0 ]]; then
+        REDHAT=true
     elif [[ "$(grep -c 'Red Hat Enterprise Linux' /etc/os-release)" -gt 0 ]]; then
-        RED_HAT=true
+        REDHAT=true
     elif [[ "$(grep -c 'Rocky Linux' /etc/os-release)" -gt 0 ]]; then
-        RED_HAT=true
+        REDHAT=true
+    elif [[ "$(grep -c 'Ubuntu' /etc/os-release)" -gt 0 ]]; then
+        UBUNTU=true
     fi
 fi
 
@@ -93,7 +93,7 @@ hexto256() {
 if command -v git &>/dev/null; then
     if [[ "$UBUNTU" = true ]]; then
         GIT_SH_PROMPT="/usr/lib/git-core/git-sh-prompt"
-    elif [[ "$RED_HAT" = true ]]; then
+    elif [[ "$REDHAT" = true ]]; then
         GIT_SH_PROMPT="/usr/share/git-core/contrib/completion/git-prompt.sh"
     fi
 
@@ -183,7 +183,7 @@ if command -v bat &>/dev/null; then
 fi
 
 if command -v eza &>/dev/null; then
-    if [[ "$RED_HAT" = true ]]; then
+    if [[ "$REDHAT" = true ]]; then
         eza_completion="$(rpm -ql eza | grep completions)"
     fi
 
@@ -204,7 +204,7 @@ if command -v fzf &>/dev/null; then
     if [[ "$UBUNTU" = true ]]; then
         fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
         fzf_completion="$(dpkg -L fzf | grep completion.bash)"
-    elif [[ "$RED_HAT" = true ]]; then
+    elif [[ "$REDHAT" = true ]]; then
         fzf_key_bindings="$(rpm -ql fzf | grep key-bindings.bash)"
         fzf_completion="$(rpm -ql fzf | grep bash_completion.d)"
     fi

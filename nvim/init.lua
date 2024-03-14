@@ -46,10 +46,6 @@ function map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
-map("n", "<Leader>ip", ":set invpaste paste?<CR>")
-
-map("n", "<Leader>iw", ":set invwrap wrap?<CR>")
-
 map("v", "<Leader>sd", ":sort! n<CR>")
 map("v", "<Leader>ss", ":sort iu<CR>")
 
@@ -59,9 +55,6 @@ map("n", "<Down>", ":tabmove -1<CR><C-l>")
 map("n", "<Up>", ":tabmove +1<CR><C-l>")
 
 map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
-map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
-
-map("n", "<Leader>bdc", ":wall | bufdo bdelete<CR><C-l>")
 
 map("n", "<Leader>$", function ()
  vim.cmd("set list! number! relativenumber!")

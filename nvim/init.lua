@@ -105,7 +105,6 @@ vim.cmd "filetype plugin on"
 local augroup = vim.api.nvim_create_augroup("all", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
--- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2 tabstop=2" })
@@ -123,6 +122,7 @@ autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "s
 autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4 tabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "sass", command = "EmmetInstall" })
 autocmd("FileType", { group = augroup, pattern = "sass", command = "setlocal softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "scss", command = "EmmetInstall" })
@@ -202,11 +202,11 @@ require('nvim-treesitter.configs').setup({
     "json",
     "lua",
     "python",
+    "rust",
     "scss",
     "typescript",
     "vim",
     "yaml",
-    -- "rust",
   },
   highlight = {
     enable = true,
@@ -431,10 +431,10 @@ lspconfig.pylsp.setup {
   },
 }
 
--- lspconfig.rust_analyzer.setup {
---   capabilities = capabilities,
---   on_attach = on_attach,
--- }
+lspconfig.rust_analyzer.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
 
 lspconfig.tsserver.setup {
   capabilities = capabilities,
@@ -490,7 +490,6 @@ local cmp_setup_config = {
 local filetype = cmp.setup.filetype
 
 -- filetype("bash", cmp_setup_config)
--- filetype("rust", cmp_setup_config)
 -- filetype("sh", cmp_setup_config)
 filetype("css", cmp_setup_config)
 filetype("dockerfile", cmp_setup_config)
@@ -499,6 +498,7 @@ filetype("html", cmp_setup_config)
 filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
 filetype("python", cmp_setup_config)
+filetype("rust", cmp_setup_config)
 filetype("scss", cmp_setup_config)
 filetype("toml", cmp_setup_config)
 filetype("typescript", cmp_setup_config)

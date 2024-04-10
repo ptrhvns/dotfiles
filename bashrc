@@ -68,6 +68,23 @@ else
     export LESS="-FqiRX"
 fi
 
+if command -v git &>/dev/null; then
+    if [[ "$UBUNTU" = true ]]; then
+        GIT_SH_PROMPT="/usr/lib/git-core/git-sh-prompt"
+    elif [[ "$REDHAT" = true ]]; then
+        GIT_SH_PROMPT="/usr/share/git-core/contrib/completion/git-prompt.sh"
+    fi
+
+    if [[ -f "$GIT_SH_PROMPT" ]]; then
+        source "$GIT_SH_PROMPT"
+        export GIT_PROMPT=1
+    fi
+fi
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+
 color16() {
     echo -ne "\033[${1}m";
 }
@@ -89,23 +106,6 @@ hexto256() {
   local color=$(printf "%03d" "$(((r<75?0:(r-35)/40)*6*6+(g<75?0:(g-35)/40)*6+(b<75?0:(b-35)/40)+16))")
   echo -ne "$color"
 }
-
-if command -v git &>/dev/null; then
-    if [[ "$UBUNTU" = true ]]; then
-        GIT_SH_PROMPT="/usr/lib/git-core/git-sh-prompt"
-    elif [[ "$REDHAT" = true ]]; then
-        GIT_SH_PROMPT="/usr/share/git-core/contrib/completion/git-prompt.sh"
-    fi
-
-    if [[ -f "$GIT_SH_PROMPT" ]]; then
-        source "$GIT_SH_PROMPT"
-        export GIT_PROMPT=1
-    fi
-fi
-
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 BLUE=$(color256 "$(hexto256 '#89b4fa')")
 GREEN=$(color256 "$(hexto256 '#a6e3a1')")

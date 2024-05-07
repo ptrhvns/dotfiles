@@ -87,7 +87,7 @@ end
 map("n", "<Leader>rc", ":lua run_code_commands()<CR>")
 map("n", "<Leader>rf", ":lua run_code_commands_format_only()<CR>")
 
-map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
+-- map("n", "<Leader>dt", "O{# Django template #}<Esc>:set ft=htmldjango<CR>")
 
 local diagnostic_opts = { silent = true }
 map("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)
@@ -106,33 +106,33 @@ local augroup = vim.api.nvim_create_augroup("all", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
-autocmd("FileType", { group = augroup, pattern = "css", command = "EmmetInstall" })
-autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2 tabstop=2" })
+-- autocmd("FileType", { group = augroup, pattern = "css", command = "EmmetInstall" })
+-- autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
 autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4 noexpandtab nolist softtabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "html", command = "EmmetInstall" })
-autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "EmmetInstall" })
-autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal commentstring={#\\ %s\\ #} softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "javascript", command = "EmmetInstall" })
-autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "EmmetInstall" })
-autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "setlocal expandtab softtabstop=2 tabstop=2" })
+-- autocmd("FileType", { group = augroup, pattern = "html", command = "EmmetInstall" })
+-- autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2 tabstop=2" })
+-- autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "EmmetInstall" })
+-- autocmd("FileType", { group = augroup, pattern = "htmldjango", command = "setlocal commentstring={#\\ %s\\ #} softtabstop=2 tabstop=2" })
+-- autocmd("FileType", { group = augroup, pattern = "javascript", command = "EmmetInstall" })
+-- autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
+-- autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "EmmetInstall" })
+-- autocmd("FileType", { group = augroup, pattern = "javascriptreact", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4 tabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "sass", command = "EmmetInstall" })
-autocmd("FileType", { group = augroup, pattern = "sass", command = "setlocal softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "scss", command = "EmmetInstall" })
-autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal softtabstop=2 tabstop=2" })
+-- autocmd("FileType", { group = augroup, pattern = "rust", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
+-- autocmd("FileType", { group = augroup, pattern = "sass", command = "EmmetInstall" })
+-- autocmd("FileType", { group = augroup, pattern = "sass", command = "setlocal softtabstop=2 tabstop=2" })
+-- autocmd("FileType", { group = augroup, pattern = "scss", command = "EmmetInstall" })
+-- autocmd("FileType", { group = augroup, pattern = "scss", command = "setlocal softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "sh", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "text", command = "setlocal commentstring=//\\ %s" })
-autocmd("FileType", { group = augroup, pattern = "typescript", command = "EmmetInstall" })
-autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "EmmetInstall" })
-autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "setlocal expandtab softtabstop=2 tabstop=2" })
+-- autocmd("FileType", { group = augroup, pattern = "typescript", command = "EmmetInstall" })
+-- autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
+-- autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "EmmetInstall" })
+-- autocmd("FileType", { group = augroup, pattern = "typescriptreact", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "yaml", command = "setlocal expandtab" })
 autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
@@ -194,17 +194,17 @@ require("lazy").setup(plugins, {})
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     "bash",
-    "css",
+    -- "css",
     "dockerfile",
     "go",
-    "html",
-    "javascript",
+    -- "html",
+    -- "javascript",
     "json",
     "lua",
     "python",
-    "rust",
-    "scss",
-    "typescript",
+    -- "rust",
+    -- "scss",
+    -- "typescript",
     "vim",
     "yaml",
   },
@@ -383,10 +383,10 @@ local lspconfig = require("lspconfig")
 --   on_attach = on_attach,
 -- }
 
-lspconfig.cssls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+-- lspconfig.cssls.setup {
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- }
 
 lspconfig.dockerls.setup {
   capabilities = capabilities,
@@ -403,10 +403,10 @@ lspconfig.jsonls.setup {
   on_attach = on_attach,
 }
 
-lspconfig.html.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+-- lspconfig.html.setup {
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- }
 
 lspconfig.pylsp.setup {
   capabilities = capabilities,
@@ -431,10 +431,10 @@ lspconfig.pylsp.setup {
   },
 }
 
-lspconfig.rust_analyzer.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+-- lspconfig.rust_analyzer.setup {
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- }
 
 lspconfig.tsserver.setup {
   capabilities = capabilities,
@@ -491,18 +491,18 @@ local filetype = cmp.setup.filetype
 
 -- filetype("bash", cmp_setup_config)
 -- filetype("sh", cmp_setup_config)
-filetype("css", cmp_setup_config)
+-- filetype("css", cmp_setup_config)
 filetype("dockerfile", cmp_setup_config)
 filetype("go", cmp_setup_config)
-filetype("html", cmp_setup_config)
-filetype("javascript", cmp_setup_config)
+-- filetype("html", cmp_setup_config)
+-- filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)
 filetype("python", cmp_setup_config)
-filetype("rust", cmp_setup_config)
-filetype("scss", cmp_setup_config)
+-- filetype("rust", cmp_setup_config)
+-- filetype("scss", cmp_setup_config)
 filetype("toml", cmp_setup_config)
-filetype("typescript", cmp_setup_config)
-filetype("typescriptreact", cmp_setup_config)
+-- filetype("typescript", cmp_setup_config)
+-- filetype("typescriptreact", cmp_setup_config)
 filetype("yaml", cmp_setup_config)
 
 -- ///////////////////////////////////////////////////////////////////////

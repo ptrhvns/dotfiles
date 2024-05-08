@@ -57,7 +57,7 @@ export LSCOLORS="Hxfxcxdxbxegedabagacad"
 export MANPAGER=$(command -v less || command -v more)
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 export PAGER="$(command -v less || command -v more)"
-export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32:${GOENV_ROOT}/bin:~/.cargo/bin
+export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32:${GOENV_ROOT}/bin
 export SHELL="$(command -v bash)"
 export UNAME="$(uname)"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -284,11 +284,6 @@ if command -v nodenv &>/dev/null; then
     eval "$(nodenv init -)"
 fi
 
-if [[ -f "${HOME}/.cargo/env" ]]; then
-    source "${HOME}/.cargo/env"
-fi
-
 if [[ -f "${HOME}/.bash_local" ]]; then
     source "${HOME}/.bash_local"
 fi
-. "$HOME/.cargo/env"

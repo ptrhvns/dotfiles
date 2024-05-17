@@ -174,7 +174,7 @@ local plugins = {
   "nvim-lualine/lualine.nvim",
   "nvim-telescope/telescope-ui-select.nvim",
   "nvim-telescope/telescope.nvim",
-  "nvim-treesitter/nvim-treesitter",
+  -- "nvim-treesitter/nvim-treesitter",
   "saadparwaiz1/cmp_luasnip",
   "sheerun/vim-polyglot",
   "tomtom/tlib_vim",
@@ -191,28 +191,28 @@ require("lazy").setup(plugins, {})
 -- ///////////////////////////////////////////////////////////////////////
 -- nvim-treesitter
 
-require('nvim-treesitter.configs').setup({
-  ensure_installed = {
-    "bash",
-    -- "css",
-    "dockerfile",
-    "go",
-    -- "html",
-    -- "javascript",
-    "json",
-    "lua",
-    "python",
-    -- "rust",
-    -- "scss",
-    -- "typescript",
-    "vim",
-    "yaml",
-  },
-  highlight = {
-    enable = true,
-  },
-  sync_install = false,
-})
+-- require('nvim-treesitter.configs').setup({
+--   ensure_installed = {
+--     "bash",
+--     -- "css",
+--     "dockerfile",
+--     "go",
+--     -- "html",
+--     -- "javascript",
+--     "json",
+--     "lua",
+--     "python",
+--     -- "rust",
+--     -- "scss",
+--     -- "typescript",
+--     "vim",
+--     "yaml",
+--   },
+--   highlight = {
+--     enable = true,
+--   },
+--   sync_install = false,
+-- })
 
 -- ///////////////////////////////////////////////////////////////////////
 -- catppuccin/nvim,

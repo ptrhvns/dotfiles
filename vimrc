@@ -104,22 +104,6 @@ vmap <Leader>cu :call Uncomment()<CR>
 
 nmap <Leader>ct :!ctags -R .<CR>
 
-function! RunCodeCommands()
-    write
-    execute "!clear && run-code-commands " . @%
-    checktime
-endfunction
-
-nmap <Leader>rc :call RunCodeCommands()<CR>
-
-function! RunCodeCommandsFormatOnly()
-    write
-    execute "!clear && run-code-commands -f " . @%
-    checktime
-endfunction
-
-nmap <Leader>rf :call RunCodeCommandsFormatOnly()<CR>
-
 if &t_Co > 1 || has("gui_running")
     syntax on
 endif

@@ -55,6 +55,8 @@ map("n", "<Down>", ":tabmove -1<CR><C-l>")
 map("n", "<Up>", ":tabmove +1<CR><C-l>")
 
 map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
+-- This is not supported with lazy.nvim:
+-- map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
 
 map("n", "<Leader>$", function ()
  vim.cmd("set list! number! relativenumber!")
@@ -110,6 +112,7 @@ autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexp
 autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4 noexpandtab nolist softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
+autocmd("FileType", { group = augroup, pattern = "Jenkinsfile", command = "setlocal commentstring=//\\ %s" })
 autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4 tabstop=4" })

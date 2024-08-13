@@ -260,10 +260,10 @@ if command -v zoxide &>/dev/null; then
     }
 fi
 
+export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
+
 if command -v goenv &>/dev/null; then
     eval "$(goenv init -)"
-    export PATH="${GOROOT}/bin:${PATH}"
-    export PATH="${PATH}:${GOPATH}/bin"
 fi
 
 export PYENV_ROOT="${HOME}/.pyenv"

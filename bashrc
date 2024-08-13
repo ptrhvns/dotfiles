@@ -273,6 +273,21 @@ if command -v nodenv &>/dev/null; then
     eval "$(nodenv init -)"
 fi
 
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH=${PATH}:${PYENV_ROOT}/bin
+
+if command -v pyenv &>/dev/null; then
+    eval "$(pyenv init -)"
+
+    if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
+        eval "$(pyenv virtualenv-init -)"
+    fi
+fi
+
+if [[ -d "${HOME}/.rye" ]]; then
+    source "${HOME}/.rye/env"
+fi
+
 if [[ -f "${HOME}/.bash_local" ]]; then
     source "${HOME}/.bash_local"
 fi

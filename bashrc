@@ -266,17 +266,6 @@ if command -v goenv &>/dev/null; then
     eval "$(goenv init -)"
 fi
 
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH=${PATH}:${PYENV_ROOT}/bin
-
-if command -v pyenv &>/dev/null; then
-    eval "$(pyenv init -)"
-
-    if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
-        eval "$(pyenv virtualenv-init -)"
-    fi
-fi
-
 export NODENV_ROOT=${HOME}/.nodenv
 export PATH=${PATH}:${NODENV_ROOT}/bin
 

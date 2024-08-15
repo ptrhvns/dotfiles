@@ -5,7 +5,7 @@ snippet #t
 snippet #x
 	# XXX${1}
 snippet adef
-	async def ${1:name}(${2}) -> None:
+	async def ${1:name}(${2}):
 	    ${3:pass  # FIXME}
 snippet afor
 	async for ${1:name} in ${2:iterable}:
@@ -27,13 +27,13 @@ snippet cla
 	class ${1:Name}:
 	    ${2:pass  # FIXME}
 snippet def
-	def ${1:name}(${2}) -> None:
+	def ${1:name}(${2}):
 	    ${3:pass  # FIXME}
 snippet ded
-	def __${1:name}__(self${2}) -> None:
+	def __${1:name}__(self${2}):
 	    ${3:pass  # FIXME}
 snippet dem
-	def ${1:name}(self${2}) -> None:
+	def ${1:name}(self${2}):
 	    ${3:pass  # FIXME}
 snippet det
 	# FIXME
@@ -41,7 +41,7 @@ snippet det
 	import pytest # isort: skip # noqa: E402
 	# fmt: on
 	@pytest.mark.skip(reason="TODO")
-	def test_${1:something}() -> None:
+	def test_${1:something}():
 	    ${2:pass  # FIXME}
 snippet doc
 	```
@@ -83,7 +83,7 @@ snippet ipd
 snippet ipy
 	import IPython; IPython.embed()  # FIXME
 snippet main
-	def main(${1}) -> None:
+	def main(${1}):
 	    ${2:pass  # FIXME}
 	
 	

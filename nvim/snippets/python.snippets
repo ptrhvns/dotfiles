@@ -7,6 +7,15 @@ snippet #x
 snippet adef
 	async def ${1:name}(${2}) -> None:
 	    ${3:pass  # FIXME}
+snippet afor
+	async for ${1:name} in ${2:iterable}:
+	    ${3:pass  # FIXME}
+snippet awit
+	async with ${1:expression}:
+	    ${2:pass  # FIXME}
+snippet awita
+	async with ${1:expression} as ${2:target}:
+	    ${3:pass  # FIXME}
 snippet asf
 	assert False  # FIXME
 snippet bre

@@ -85,35 +85,42 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-color16() {
-    echo -ne "\033[${1}m";
+select_ansi_graphic_rendition() {
+    echo -ne "\033[${1}m"
 }
 
-color256() {
-    echo -ne "\033[38;5;${1}m";
+select_font_effect_reset() {
+    echo -ne "$(select_ansi_graphic_rendition 0)"
 }
 
-hexto256() {
-  local hex=$1
-
-  if [[ $hex == "#"* ]]; then
-    hex=$(echo "$1" | awk '{print substr($0,2)}')
-  fi
-
-  local r=$(printf '0x%0.2s' "$hex")
-  local g=$(printf '0x%0.2s' "${hex#??}")
-  local b=$(printf '0x%0.2s' "${hex#????}")
-  local color=$(printf "%03d" "$(((r<75?0:(r-35)/40)*6*6+(g<75?0:(g-35)/40)*6+(b<75?0:(b-35)/40)+16))")
-  echo -ne "$color"
+select_4bit_color() { # 16 colors
+  echo -ne "$(select_ansi_graphic_rendition "${1}")"
 }
 
-BLUE=$(color256 "$(hexto256 '#89b4fa')")
-GREEN=$(color256 "$(hexto256 '#a6e3a1')")
-GREY=$(color256 "$(hexto256 '#7f849c')")
-NOCOLOR="$(color16 '0')"
-RED=$(color256 "$(hexto256 '#f38ba8')")
-VIOLET=$(color256 "$(hexto256 '#b4befe')")
-YELLOW=$(color256 "$(hexto256 '#f9e2af')")
+select_8bit_foreground_color() { # 256 colors
+  echo -ne "$(select_ansi_graphic_rendition "38;5;${1}")"
+}
+
+select_rgb_foreground_color() { # true colors
+  echo -ne "$(select_ansi_graphic_rendition "38;2;${1};${2};${3}")" # 1=R, 2=B, 3=G
+}
+
+# FIXME: turn off prompt colors due to terminal issues.
+#
+# BLUE=$(select_8bit_foreground_color 111) # 89b4fa
+# GREEN=$(select_8bit_foreground_color 151) # a6e3a1
+# GREY=$(select_8bit_foreground_color 103) # 7f849c
+# RED=$(select_8bit_foreground_color 211) # f38ba8
+# RESET=$(select_font_effect_reset 0)
+# VIOLET=$(select_8bit_foreground_color 147) # b4befe
+# YELLOW=$(select_8bit_foreground_color 223) # f9e2af
+BLUE=""
+GREEN=""
+GREY=""
+RED=""
+RESET=""
+VIOLET=""
+YELLOW=""
 
 build_prompt() {
     PS1="${GREY}\h ${GREEN}\u ${VIOLET}\w"
@@ -132,7 +139,7 @@ build_prompt() {
         PS1+="${YELLOW}$(__git_ps1 ' %s')"
     fi
 
-    PS1+=" ${GREY}\$${NOCOLOR} "
+    PS1+=" ${GREY}\$${RESET} "
 }
 
 PROMPT_COMMAND=build_prompt
@@ -256,7 +263,7 @@ if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
 
     cd() {
-        echo "${RED}### ERROR: Use zoxide${NOCOLOR}"
+        echo "${RED}### ERROR: Use zoxide${RESET}"
     }
 fi
 

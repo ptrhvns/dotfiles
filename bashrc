@@ -291,6 +291,10 @@ if command -v pyenv &>/dev/null; then
     fi
 fi
 
+if [[ -d "${HOME}/.cargo/env" ]]; then
+    source "${HOME}/.cargo/env"
+fi
+
 if [[ -f "${HOME}/.bash_local" ]]; then
     source "${HOME}/.bash_local"
 fi

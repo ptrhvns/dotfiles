@@ -108,8 +108,6 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
-autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4 noexpandtab nolist softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "Jenkinsfile", command = "setlocal commentstring=//\\ %s" })
@@ -182,7 +180,6 @@ require('nvim-treesitter.configs').setup({
     "bash",
     "css",
     "dockerfile",
-    "go",
     "html",
     "javascript",
     "json",
@@ -377,11 +374,6 @@ lspconfig.dockerls.setup {
   on_attach = on_attach,
 }
 
-lspconfig.gopls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
 lspconfig.html.setup {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -471,7 +463,6 @@ local filetype = cmp.setup.filetype
 filetype("bash", cmp_setup_config)
 filetype("css", cmp_setup_config)
 filetype("dockerfile", cmp_setup_config)
-filetype("go", cmp_setup_config)
 filetype("html", cmp_setup_config)
 filetype("javascript", cmp_setup_config)
 filetype("json", cmp_setup_config)

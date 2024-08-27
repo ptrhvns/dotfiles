@@ -237,6 +237,7 @@ if command -v fzf &>/dev/null; then
 
     alias gaf="git ls-files --modified --others --exclude-standard | fzf --multi --print0 | xargs -0 git add"
 
+    # Access cheatsheet with curl.
     cs() {
         local SELECTED=$(curl -s cht.sh/:list | fzf)
 
@@ -247,6 +248,7 @@ if command -v fzf &>/dev/null; then
         curl -s "cht.sh/${SELECTED}?style=paraiso-dark" | $PAGER
     }
 
+    # Use tldr command with fzf.
     tf() {
         local SELECTED=$(compgen -c | fzf)
 
@@ -262,6 +264,7 @@ fi
 if command -v zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
 
+    # Override cd command.
     cd() {
         echo "${RED}### ERROR: Use zoxide${RESET}"
     }
@@ -289,10 +292,6 @@ if command -v pyenv &>/dev/null; then
     if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
         eval "$(pyenv virtualenv-init -)"
     fi
-fi
-
-if [[ -f "${HOME}/.cargo/env" ]]; then
-    source "${HOME}/.cargo/env"
 fi
 
 if [[ -f "${HOME}/.bash_local" ]]; then

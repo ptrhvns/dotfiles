@@ -116,7 +116,6 @@ autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal
 autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4 tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "sh", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "text", command = "setlocal commentstring=//\\ %s" })
-autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "yaml", command = "setlocal expandtab" })
 autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
@@ -185,7 +184,6 @@ require('nvim-treesitter.configs').setup({
     "json",
     "lua",
     "python",
-    "typescript",
     "vim",
     "yaml",
   },
@@ -469,7 +467,6 @@ filetype("json", cmp_setup_config)
 filetype("python", cmp_setup_config)
 filetype("sh", cmp_setup_config)
 filetype("toml", cmp_setup_config)
-filetype("typescript", cmp_setup_config)
 filetype("yaml", cmp_setup_config)
 
 -- ///////////////////////////////////////////////////////////////////////

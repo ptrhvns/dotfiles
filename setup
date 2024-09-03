@@ -4,16 +4,16 @@ set -Eeuxo pipefail
 
 PWD=$(pwd)
 
-rm -f ~/.bash_profile
-rm -f ~/.bashrc
-rm -f ~/.config/nvim
-rm -f ~/.ctags
-rm -f ~/.editrc
-rm -f ~/.gitconfig
-rm -f ~/.gitignore
-rm -f ~/.inputrc
-rm -f ~/.tmux.conf
-rm -f ~/.vimrc
+rm -rf ~/.bash_profile
+rm -rf ~/.bashrc
+rm -rf ~/.config/nvim
+rm -rf ~/.ctags
+rm -rf ~/.editrc
+rm -rf ~/.gitconfig
+rm -rf ~/.gitignore
+rm -rf ~/.inputrc
+rm -rf ~/.tmux.conf
+rm -rf ~/.vimrc
 rm -rf ~/.tmux/plugins/tpm
 
 mkdir -p ~/.config 

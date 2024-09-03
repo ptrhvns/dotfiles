@@ -66,6 +66,7 @@ endif
 
 nnoremap <C-l> :nohlsearch<CR><C-l>
 inoremap <C-l> <C-o>:nohlsearch<CR>
+inoremap <special> <C-d> <C-r>=strftime("%Y-%m-%d")<CR>
 
 nmap <Leader>ip :set invpaste paste?<CR>
 

@@ -21,6 +21,7 @@ set laststatus=2
 set lazyredraw
 set linebreak
 set list
+set listchars=extends:>,nbsp:+,precedes:<,tab:>,trail:-
 set nofoldenable
 set nojoinspaces
 set noshowmode
@@ -57,12 +58,6 @@ if exists("+undoreload")
     set undoreload=10000
 endif
 
-if has("multi_byte") && &t_Co > 255
-    set fillchars=diff:⣿,vert:\|
-    set listchars=extends:❯,nbsp:~,precedes:❮,tab:▸\ ,trail:⋅
-else
-    set listchars=extends:>,nbsp:+,precedes:<,tab:>\ ,trail:-
-endif
 
 nnoremap <C-l> :nohlsearch<CR><C-l>
 inoremap <C-l> <C-o>:nohlsearch<CR>

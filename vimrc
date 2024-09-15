@@ -21,7 +21,7 @@ set laststatus=2
 set lazyredraw
 set linebreak
 set list
-set listchars=extends:>,nbsp:+,precedes:<,tab:>,trail:-
+set listchars=extends:>,nbsp:+,precedes:<,tab:>\ ,trail:-
 set nofoldenable
 set nojoinspaces
 set noshowmode

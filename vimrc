@@ -12,6 +12,7 @@ set clipboard="unnamed"
 set completeopt=menu,preview
 set cursorline
 set expandtab
+set foldmethod=indent
 set hidden
 set history=10000
 set hlsearch
@@ -30,6 +31,7 @@ set notimeout
 set number
 set path+=**
 set relativenumber
+set scrolloff=0
 set shell=/bin/bash
 set shiftwidth=0
 set showcmd
@@ -39,6 +41,7 @@ set smarttab
 set softtabstop=4
 set splitbelow
 set splitright
+set statusline=\ %f\ %m%=%y\ [%{&fileformat}]\ %l:%c\ %p%%\ 
 set tabstop=4
 set textwidth=80
 set ttyfast

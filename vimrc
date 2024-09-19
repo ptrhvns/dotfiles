@@ -64,7 +64,7 @@ endif
 
 nnoremap <C-l> :nohlsearch<CR><C-l>
 inoremap <C-l> <C-o>:nohlsearch<CR>
-inoremap <special> <F3> <C-r>=strftime("%Y-%m-%d")<CR>
+inoremap <special> <F3> <C-r>=strftime("%c")<CR>
 
 nmap <Leader>ip :set invpaste paste?<CR>
 
@@ -96,6 +96,7 @@ vmap <Leader>cc :call Comment()<CR>
 
 function! Uncomment()
     execute 's:' . substitute(&commentstring, "%s", '\\(.*\\)', "") . ':\1:'
+    execute 's:^\(\s*\)\(.*\):\=submatch(1) . printf(&commentstring, submatch(2)):'
 endfunction
 
 nmap <Leader>cu :call Uncomment()<CR>
@@ -122,6 +123,9 @@ if &t_Co > 1 || has("gui_running")
     syntax on
 endif
 
+
+nmap <Leader>u :set cursorline! cursorcolumn!<CR><C-l>
+
 colorscheme slate
 
 highlight LineNr ctermfg=yellow
@@ -144,3 +148,9 @@ augroup ag_all
     autocmd InsertLeave * setlocal nopaste
 
 augroup end
+
+let vimrc_local = $HOME . "/.vimrc_local"
+
+if filereadable(vimrc_local)
+    execute "source " . vimrc_local
+endif

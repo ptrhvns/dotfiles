@@ -87,7 +87,7 @@ nmap <Right> gt
 nmap <Up> :tabmove +1<CR><C-l>
 
 function! Comment()
-    execute 's:\(.*\):\=printf(&commentstring, submatch(1)):'
+    execute 's:^\(\s*\)\(.*\):\=submatch(1) . printf(&commentstring, submatch(2)):'
 endfunction
 
 nmap <Leader>cc :call Comment()<CR>
@@ -95,7 +95,6 @@ vmap <Leader>cc :call Comment()<CR>
 
 function! Uncomment()
     execute 's:' . substitute(&commentstring, "%s", '\\(.*\\)', "") . ':\1:'
-    execute 's:^\(\s*\)\(.*\):\=submatch(1) . printf(&commentstring, submatch(2)):'
 endfunction
 
 nmap <Leader>cu :call Uncomment()<CR>

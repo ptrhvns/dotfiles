@@ -10,7 +10,6 @@ set belloff=all
 set breakindent
 set clipboard="unnamed"
 set completeopt=menu,preview
-set cursorline
 set expandtab
 set foldmethod=indent
 set hidden

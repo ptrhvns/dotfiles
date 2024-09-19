@@ -123,7 +123,6 @@ if &t_Co > 1 || has("gui_running")
     syntax on
 endif
 
-
 nmap <Leader>u :set cursorline! cursorcolumn!<CR><C-l>
 
 colorscheme slate

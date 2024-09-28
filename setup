@@ -6,28 +6,30 @@ PWD=$(pwd)
 
 rm -rf ~/.bash_profile
 rm -rf ~/.bashrc
+rm -rf ~/.config/git/config
+rm -rf ~/.config/git/ignore
 rm -rf ~/.config/nvim
-rm -rf ~/.ctags
+rm -rf ~/.ctags.d
 rm -rf ~/.editrc
-rm -rf ~/.gitconfig
-rm -rf ~/.gitignore
 rm -rf ~/.inputrc
 rm -rf ~/.tmux.conf
-rm -rf ~/.vimrc
 rm -rf ~/.tmux/plugins/tpm
+rm -rf ~/.vimrc
 
-mkdir -p ~/.config 
+mkdir -p ~/.config/git
+mkdir -p ~/.ctags.d
 mkdir -p ~/.tmux/plugins
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ln -s "${PWD}/bash_profile" ~/.bash_profile
 ln -s "${PWD}/bashrc" ~/.bashrc
-ln -s "${PWD}/ctags" ~/.ctags
 ln -s "${PWD}/editrc" ~/.editrc
-ln -s "${PWD}/gitconfig" ~/.gitconfig
+ln -s "${PWD}/gitconfig" ~/.config/git/config
+ln -s "${PWD}/gitignore" ~/.config/git/ignore
 ln -s "${PWD}/gitignore" ~/.gitignore
 ln -s "${PWD}/inputrc" ~/.inputrc
+ln -s "${PWD}/main.ctags" ~/.ctags.d/main.ctags
 ln -s "${PWD}/nvim" ~/.config/nvim
 ln -s "${PWD}/tmux.conf" ~/.tmux.conf
 ln -s "${PWD}/vimrc" ~/.vimrc

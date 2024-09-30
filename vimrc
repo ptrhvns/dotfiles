@@ -146,6 +146,9 @@ augroup ag_all
 
 augroup end
 
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_symbols_ascii = 1
+
 let vimrc_local = $HOME . "/.vimrc_local"
 
 if filereadable(vimrc_local)

@@ -25,21 +25,6 @@ shopt -s extglob
 shopt -s histappend
 shopt -u mailwarn
 
-REDHAT=false
-UBUNTU=false
-
-if [[ -f "/etc/os-release" ]]; then
-    if [[ "$(grep -c 'Fedora Linux' /etc/os-release)" -gt 0 ]]; then
-        REDHAT=true
-    elif [[ "$(grep -c 'Red Hat Enterprise Linux' /etc/os-release)" -gt 0 ]]; then
-        REDHAT=true
-    elif [[ "$(grep -c 'Rocky Linux' /etc/os-release)" -gt 0 ]]; then
-        REDHAT=true
-    elif [[ "$(grep -c 'Ubuntu' /etc/os-release)" -gt 0 ]]; then
-        UBUNTU=true
-    fi
-fi
-
 unset MAILCHECK
 
 export EDITOR="$(command -v nvim || command -v vim || command -v vi)"
@@ -69,14 +54,11 @@ else
 fi
 
 if command -v git &>/dev/null; then
-    if [[ "$UBUNTU" = true ]]; then
-        GIT_SH_PROMPT="/usr/lib/git-core/git-sh-prompt"
-    elif [[ "$REDHAT" = true ]]; then
-        GIT_SH_PROMPT="/usr/share/git-core/contrib/completion/git-prompt.sh"
-    fi
-
-    if [[ -f "$GIT_SH_PROMPT" ]]; then
-        source "$GIT_SH_PROMPT"
+    if [[ -f "/usr/lib/git-core/git-sh-prompt" ]]; then
+        source "/usr/lib/git-core/git-sh-prompt"
+        export GIT_PROMPT=1
+    elif [[ -f "/usr/share/git-core/contrib/completion/git-prompt.sh" ]]; then
+        source "/usr/share/git-core/contrib/completion/git-prompt.sh"
         export GIT_PROMPT=1
     fi
 fi
@@ -105,8 +87,6 @@ select_rgb_foreground_color() { # true colors
   echo -ne "$(select_ansi_graphic_rendition "38;2;${1};${2};${3}")" # 1=R, 2=B, 3=G
 }
 
-# FIXME: turn off prompt colors due to terminal issues.
-#
 # BLUE=$(select_8bit_foreground_color 111) # 89b4fa
 # GREEN=$(select_8bit_foreground_color 151) # a6e3a1
 # GREY=$(select_8bit_foreground_color 103) # 7f849c
@@ -202,17 +182,16 @@ if command -v bat &>/dev/null; then
 fi
 
 if command -v eza &>/dev/null; then
-    if [[ "$REDHAT" = true ]]; then
+    if command -v rpm &> /dev/null; then
         eza_completion="$(rpm -ql eza | grep completions)"
     fi
 
     if [[ -f "$eza_completion" ]]; then
         source "$eza_completion"
+        alias l="eza"
+        alias la="eza -la"
+        alias ll="eza -l"
     fi
-
-    alias l="eza"
-    alias la="eza -la"
-    alias ll="eza -l"
 fi
 
 if command -v fd &>/dev/null; then
@@ -220,12 +199,12 @@ if command -v fd &>/dev/null; then
 fi
 
 if command -v fzf &>/dev/null; then
-    if [[ "$UBUNTU" = true ]]; then
-        fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
-        fzf_completion="$(dpkg -L fzf | grep completion.bash)"
-    elif [[ "$REDHAT" = true ]]; then
+    if command -v rpm &> /dev/null; then
         fzf_key_bindings="$(rpm -ql fzf | grep key-bindings.bash)"
         fzf_completion="$(rpm -ql fzf | grep bash_completion.d)"
+    elif command -v dpkg &> /dev/null; then
+        fzf_key_bindings="$(dpkg -L fzf | grep key-bindings.bash)"
+        fzf_completion="$(dpkg -L fzf | grep completion.bash)"
     fi
 
     if [[ -f "$fzf_key_bindings" ]]; then

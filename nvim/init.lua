@@ -150,7 +150,6 @@ local plugins = {
   "L3MON4D3/LuaSnip",
   "lewis6991/gitsigns.nvim",
   "MarcWeber/vim-addon-mw-utils",
-  "mattn/emmet-vim",
   "neovim/nvim-lspconfig",
   "numToStr/Comment.nvim",
   "nvim-lua/plenary.nvim",
@@ -281,11 +280,6 @@ map("n", "<Leader>gb", ":Git blame<CR>")
 map("n", "<Leader>gc", ":Git commit --verbose<CR>")
 map("n", "<Leader>gp", ":Git push --verbose<CR>")
 map("n", "<Leader>gw", ":Gwrite<CR>")
-
--- ///////////////////////////////////////////////////////////////////////
--- emmet-vim
-
-vim.g.user_emmet_install_global = 0
 
 -- ///////////////////////////////////////////////////////////////////////
 -- mason.nvim

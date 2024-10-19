@@ -194,7 +194,7 @@ require('nvim-treesitter.configs').setup({
 })
 
 -- ///////////////////////////////////////////////////////////////////////
--- catppuccin/nvim,
+-- catppuccin/nvim
 
 require("catppuccin").setup({
     transparent_background = true,

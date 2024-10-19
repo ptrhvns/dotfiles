@@ -113,7 +113,7 @@ autocmd("FileType", { group = augroup, pattern = "javascript", command = "setloc
 autocmd("FileType", { group = augroup, pattern = "Jenkinsfile", command = "setlocal commentstring=//\\ %s" })
 autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal expandtab softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal softtabstop=4 tabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal expandtab softtabstop=4 tabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "sh", command = "setlocal softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "text", command = "setlocal commentstring=//\\ %s" })
 autocmd("FileType", { group = augroup, pattern = "yaml", command = "setlocal expandtab" })

@@ -28,7 +28,6 @@ shopt -u mailwarn
 unset MAILCHECK
 
 export EDITOR="$(command -v nvim || command -v vim || command -v vi)"
-export GOENV_ROOT="${HOME}/.goenv"
 export GPG_TTY=$(tty)
 export HISTCONTROL="erasedups:ignoreboth"
 export HISTFILESIZE=5000
@@ -42,7 +41,7 @@ export LSCOLORS="Hxfxcxdxbxegedabagacad"
 export MANPAGER=$(command -v less || command -v more)
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 export PAGER="$(command -v less || command -v more)"
-export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32:${GOENV_ROOT}/bin
+export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
 export SHELL="$(command -v bash)"
 export UNAME="$(uname)"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -133,32 +132,9 @@ alias e="\$EDITOR"
 alias ep="\$EDITOR -p"
 alias f="find"
 alias g="grep -iE"
-alias ga="git add"
-alias gap="git add --patch"
-alias gbv="git branch --version"
-alias gchb="git checkout -b"
-alias gcho="git checkout"
-alias gcoalv="git commit --all --verbose"
-alias gcoalvr="git commit --all --verbos --reedit-message=ORIG_HEAD"
-alias gcoam="git commit --amend"
-alias gcoamn="git commit --amend --no-edit"
-alias gcov="git commit --verbose"
-alias gd="git diff"
-alias gdc="git diff --cached"
-alias gfp="git fetch --prune"
 alias gl="git log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '"
 alias gll="git log --color --stat --decorate --pretty=medium"
 alias glll="git log --color --stat --decorate --pretty=medium --patch --minimal"
-alias gm="git merge"
-alias gpl="git pull"
-alias gplrom="git pull --rebase origin master"
-alias gps="git push"
-alias gpsod="git push origin --delete"
-alias grmv="git remote --verbose"
-alias grss="git reset --soft"
-alias gstsa="git stash --all"
-alias gstt="git status"
-alias gsusu="git submodule sync --recursive && git submodule update --recursive --init"
 alias gv="grep -iEv"
 alias l="ls"
 alias la="ls -la"
@@ -171,11 +147,6 @@ alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"
 alias tl="tmux ls"
 alias tn="tmux-new-session"
-
-# What type is that file?
-function wt {
-    test -n "$1" && stat --printf "%F\n" "$1";
-}
 
 if command -v bat &>/dev/null; then
     alias c='bat --style=plain'
@@ -225,31 +196,6 @@ if command -v fzf &>/dev/null; then
     else
         alias ef="fzf --multi --preview='cat {}' | xargs \$EDITOR -p"
     fi
-
-    alias gaf="git ls-files --modified --others --exclude-standard | fzf --multi --print0 | xargs -0 git add"
-
-    # Access cheatsheet with curl.
-    cs() {
-        local SELECTED=$(curl -s cht.sh/:list | fzf)
-
-        if [[ -z "${SELECTED}" ]]; then
-            return
-        fi
-
-        curl -s "cht.sh/${SELECTED}?style=paraiso-dark" | $PAGER
-    }
-
-    # Use tldr command with fzf.
-    tf() {
-        local SELECTED=$(compgen -c | fzf)
-
-        if [[ -z "${SELECTED}" ]]; then
-            return
-        fi
-
-        tldr "$SELECTED" | $PAGER
-    }
-
 fi
 
 if command -v zoxide &>/dev/null; then
@@ -259,12 +205,6 @@ if command -v zoxide &>/dev/null; then
     cd() {
         echo "${RED}### ERROR: Use zoxide${RESET}"
     }
-fi
-
-export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
-
-if command -v goenv &>/dev/null; then
-    eval "$(goenv init -)"
 fi
 
 export NODENV_ROOT=${HOME}/.nodenv
@@ -283,11 +223,6 @@ if command -v pyenv &>/dev/null; then
     if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
         eval "$(pyenv virtualenv-init -)"
     fi
-fi
-
-# Support uv command for Python.
-if [[ -f "${HOME}/.cargo/env" ]]; then
-    source "${HOME}/.cargo/env"
 fi
 
 if [[ -f "${HOME}/.bash_local" ]]; then

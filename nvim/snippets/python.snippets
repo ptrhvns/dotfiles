@@ -44,21 +44,44 @@ snippet det
 	def test_${1:something}():
 	    ${2:pass  # FIXME}
 snippet doc
-	```
-	Document behavior, important attributes, and subclass behavior. Omit type
-	annotation information if used.
-	```
+	"""FIXME: A one-line summary.
+	
+	Describe details.
+	
+	Attributes:
+	    attr: Describe attribute.
+	"""
 snippet dof
-	```
-	Document every argument, returned value, raised exception, side effects, and
-	other behaviors. Omit type annotation information if used.
-	```
+	"""FIXME: A one-line summary.
+	
+	Describe details.
+	
+	Args:
+	    arg: Descxrib arg.
+	
+	Returns:
+	    Describe return value.
+	
+	Side Effects:
+	    Describe side effects.
+	
+	Raises:
+	    Exception: Describe when this exception is raised.
+	"""
 snippet dom
-	```
-	Introduce the contents of the module and any important classes, functions or
-	variables the user should know about. Omit type annotation information if
-	used.
-	```
+	"""FIXME: A one-line summary.
+	
+	Describe details.
+	
+	Classes:
+	    Class: Describe class.
+	
+	Functions:
+	    function: Describe function.
+	
+	Variables:
+	    variable: Describe variable.
+	"""
 snippet eli
 	elif ${1:condition}:
 	    ${2:pass  # FIXME}

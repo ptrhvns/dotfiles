@@ -8,6 +8,7 @@ vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.fillchars = { diff = "⣿", vert = "|" }
 vim.opt.foldenable = false
+vim.opt.foldmethod = "indent"
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.joinspaces = false

@@ -67,7 +67,7 @@ export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 select_ansi_graphic_rendition() {
-    echo -ne "\033[${1}m"
+    echo -ne "\[\033[${1}m\]"
 }
 
 select_font_effect_reset() {
@@ -86,20 +86,13 @@ select_rgb_foreground_color() { # true colors
   echo -ne "$(select_ansi_graphic_rendition "38;2;${1};${2};${3}")" # 1=R, 2=B, 3=G
 }
 
-# BLUE=$(select_8bit_foreground_color 111) # 89b4fa
-# GREEN=$(select_8bit_foreground_color 151) # a6e3a1
-# GREY=$(select_8bit_foreground_color 103) # 7f849c
-# RED=$(select_8bit_foreground_color 211) # f38ba8
-# RESET=$(select_font_effect_reset 0)
-# VIOLET=$(select_8bit_foreground_color 147) # b4befe
-# YELLOW=$(select_8bit_foreground_color 223) # f9e2af
-BLUE=""
-GREEN=""
-GREY=""
-RED=""
-RESET=""
-VIOLET=""
-YELLOW=""
+BLUE=$(select_8bit_foreground_color 111) # 89b4fa
+GREEN=$(select_8bit_foreground_color 151) # a6e3a1
+GREY=$(select_8bit_foreground_color 103) # 7f849c
+RED=$(select_8bit_foreground_color 211) # f38ba8
+RESET=$(select_font_effect_reset 0)
+VIOLET=$(select_8bit_foreground_color 147) # b4befe
+YELLOW=$(select_8bit_foreground_color 223) # f9e2af
 
 build_prompt() {
     PS1="${GREY}\h ${GREEN}\u ${VIOLET}\w"

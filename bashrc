@@ -141,6 +141,10 @@ alias tk="tmux-kill-session"
 alias tl="tmux ls"
 alias tn="tmux-new-session"
 
+prettypath() {
+    printenv PATH | tr ":" "\n"
+}
+
 if command -v bat &>/dev/null; then
     alias c='bat --style=plain'
 fi

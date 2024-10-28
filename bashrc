@@ -121,9 +121,6 @@ if [[ -r ~/.ssh-agent ]]; then
 fi
 
 alias c="cat"
-alias e="\$EDITOR"
-alias ep="\$EDITOR -p"
-alias f="find"
 alias g="grep -iE"
 alias gl="git log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '"
 alias gll="git log --color --stat --decorate --pretty=medium"
@@ -133,8 +130,6 @@ alias l="ls"
 alias la="ls -la"
 alias ll="ls -l"
 alias m="\$PAGER"
-alias pa="source venv/bin/activate"
-alias pv="python -m venv venv && source venv/bin/activate && pip install --upgrade pip setuptools wheel pip-tools"
 alias ta="tmux attach -t"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"

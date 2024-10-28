@@ -195,7 +195,7 @@ if command -v zoxide &>/dev/null; then
 
     # Override cd command.
     cd() {
-        echo "${RED}### ERROR: Use zoxide${RESET}"
+        echo -e "### ERROR: Use zoxide"
     }
 fi
 

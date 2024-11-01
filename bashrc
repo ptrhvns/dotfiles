@@ -217,6 +217,10 @@ if command -v pyenv &>/dev/null; then
     fi
 fi
 
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
 if [[ -f "${HOME}/.bash_local" ]]; then
     source "${HOME}/.bash_local"
 fi

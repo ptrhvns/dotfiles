@@ -120,7 +120,6 @@ if [[ -r ~/.ssh-agent ]]; then
     source ~/.ssh-agent > /dev/null
 fi
 
-alias c="cat"
 alias g="grep -iE"
 alias gl="git log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '"
 alias gll="git log --color --stat --decorate --pretty=medium"

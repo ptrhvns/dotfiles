@@ -204,17 +204,6 @@ if command -v nodenv &>/dev/null; then
     eval "$(nodenv init -)"
 fi
 
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH=${PATH}:${PYENV_ROOT}/bin
-
-if command -v pyenv &>/dev/null; then
-    eval "$(pyenv init -)"
-
-    if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
-        eval "$(pyenv virtualenv-init -)"
-    fi
-fi
-
 if command -v direnv &>/dev/null; then
     eval "$(direnv hook bash)"
 fi

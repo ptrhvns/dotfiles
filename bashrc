@@ -204,6 +204,14 @@ if command -v nodenv &>/dev/null; then
     eval "$(nodenv init -)"
 fi
 
+if command -v uv &>/dev/null; then
+    eval "$(uv generate-shell-completion bash)"
+fi
+
+if [[ -f "${HOME}/.cargo/env" ]]; then
+    source "${HOME}/.cargo/env"
+fi
+
 if command -v direnv &>/dev/null; then
     eval "$(direnv hook bash)"
 fi

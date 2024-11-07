@@ -377,33 +377,26 @@ vim.diagnostic.config{
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require("lspconfig")
+local mason_registry = require("mason-registry")
 
-lspconfig.bashls.setup {
+local function setup_lsp_server(package_name, lsp_name, config)
+    if mason_registry.is_installed(package_name) then
+        lspconfig[lsp_name].setup(config)
+    end
+end
+
+local default_lsp_config = {
   capabilities = capabilities,
   on_attach = on_attach,
 }
 
-lspconfig.cssls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+setup_lsp_server("bash-language-server", "bashls", default_lsp_config)
+setup_lsp_server("css-lsp", "cssls", default_lsp_config)
+setup_lsp_server("dockerfile-language-server", "dockerls", default_lsp_config)
+setup_lsp_server("html-lsp", "html", default_lsp_config)
+setup_lsp_server("json-lsp", "jsonls", default_lsp_config)
 
-lspconfig.dockerls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
-lspconfig.html.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
-lspconfig.jsonls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
-lspconfig.pylsp.setup {
+setup_lsp_server("python-lsp-server", "pylsp", {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
@@ -412,6 +405,7 @@ lspconfig.pylsp.setup {
         -- Commands to run:
         -- :PylspInstall pylsp-mypy
         -- :PylspInstall pylsp-rope
+        --   HACK: touch ~/.local/share/nvim/mason/packages/python-lsp-server/venv/lib/<python-version>/site-packages/pylsp/plugins/rope_rename.py
         -- :PylspInstall python-lsp-ruff
 
         autopep8 = { enabled = false },
@@ -424,17 +418,10 @@ lspconfig.pylsp.setup {
       },
     },
   },
-}
+})
 
-lspconfig.ts_ls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
-lspconfig.yamlls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+setup_lsp_server("typescript-language-server", "ts_ls", default_lsp_config)
+setup_lsp_server("yaml-language-server", "yamlls", default_lsp_config)
 
 -- ///////////////////////////////////////////////////////////////////////
 -- nvim-cmp

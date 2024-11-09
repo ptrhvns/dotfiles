@@ -37,29 +37,19 @@ vim.opt.undolevels = 1000
 vim.opt.updatetime = 250
 vim.opt.virtualedit = "all"
 
-function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
+vim.keymap.set("v", "<Leader>sd", ":sort! n<CR>")
+vim.keymap.set("v", "<Leader>ss", ":sort iu<CR>")
 
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
+vim.keymap.set("n", "<Left>", "gT")
+vim.keymap.set("n", "<Right>", "gt")
+vim.keymap.set("n", "<Down>", ":tabmove -1<CR><C-l>")
+vim.keymap.set("n", "<Up>", ":tabmove +1<CR><C-l>")
 
-  vim.keymap.set(mode, lhs, rhs, options)
-end
-
-map("v", "<Leader>sd", ":sort! n<CR>")
-map("v", "<Leader>ss", ":sort iu<CR>")
-
-map("n", "<Left>", "gT")
-map("n", "<Right>", "gt")
-map("n", "<Down>", ":tabmove -1<CR><C-l>")
-map("n", "<Up>", ":tabmove +1<CR><C-l>")
-
-map("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
+vim.keymap.set("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
 -- This is not supported with lazy.nvim:
--- map("n", "<Leader>vs", ":source $MYVIMRC<CR>")
+-- vim.keymap.set("n", "<Leader>vs", ":source $MYVIMRC<CR>")
 
-map("n", "<Leader>$", function ()
+vim.keymap.set("n", "<Leader>$", function ()
  vim.cmd("set list! number! relativenumber!")
 
  if vim.opt.signcolumn:get() == "no" then
@@ -69,7 +59,7 @@ map("n", "<Leader>$", function ()
  end
 end)
 
-map("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
+vim.keymap.set("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 
 function run_code_commands()
   vim.cmd [[
@@ -87,18 +77,18 @@ function run_code_commands_format_only()
   ]]
 end
 
-map("n", "<Leader>rc", ":lua run_code_commands()<CR>")
-map("n", "<Leader>rf", ":lua run_code_commands_format_only()<CR>")
+vim.keymap.set("n", "<Leader>rc", ":lua run_code_commands()<CR>")
+vim.keymap.set("n", "<Leader>rf", ":lua run_code_commands_format_only()<CR>")
 
 local diagnostic_opts = { silent = true }
-map("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)
-map("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
-map('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
+vim.keymap.set("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)
+vim.keymap.set("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
+vim.keymap.set('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
 
-map("v", "J", ":move '>+1<CR>gv=gv")
-map("v", "K", ":move '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":move '<-2<CR>gv=gv")
 
-map("v", "<Leader>ct", ":'<,'>!column -o ' ' -t<CR>")
+vim.keymap.set("v", "<Leader>ct", ":'<,'>!column -o ' ' -t<CR>")
 
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
@@ -361,25 +351,25 @@ require("lazy").setup(
         function on_attach(client, bufnr)
           local on_attach_opts = { silent = true, buffer = bufnr }
 
-          map("n", "<Leader>tc", ":Telescope lsp_incoming_calls<CR>", on_attach_opts)
-          map("n", "<Leader>tC", ":Telescope lsp_outgoing_calls<CR>", on_attach_opts)
-          map("n", "<Leader>tD", ":Telescope lsp_definitions<CR>", on_attach_opts)
-          map("n", "<Leader>ti", ":Telescope lsp_implementations<CR>", on_attach_opts)
-          map("n", "<Leader>tr", ":Telescope lsp_references<CR>", on_attach_opts)
-          map("n", "<Leader>ts", ":Telescope lsp_document_symbols<CR>", on_attach_opts)
-          map("n", "<Leader>tt", ":Telescope lsp_type_definitions<CR>", on_attach_opts)
+          vim.keymap.set("n", "<Leader>tc", ":Telescope lsp_incoming_calls<CR>", on_attach_opts)
+          vim.keymap.set("n", "<Leader>tC", ":Telescope lsp_outgoing_calls<CR>", on_attach_opts)
+          vim.keymap.set("n", "<Leader>tD", ":Telescope lsp_definitions<CR>", on_attach_opts)
+          vim.keymap.set("n", "<Leader>ti", ":Telescope lsp_implementations<CR>", on_attach_opts)
+          vim.keymap.set("n", "<Leader>tr", ":Telescope lsp_references<CR>", on_attach_opts)
+          vim.keymap.set("n", "<Leader>ts", ":Telescope lsp_document_symbols<CR>", on_attach_opts)
+          vim.keymap.set("n", "<Leader>tt", ":Telescope lsp_type_definitions<CR>", on_attach_opts)
 
-          map('n', '<C-k>', vim.lsp.buf.signature_help, on_attach_opts)
-          map('n', '<Leader>lb', ":LspRestart<CR>", on_attach_opts)
-          map('n', '<Leader>lc', vim.lsp.buf.code_action, on_attach_opts)
-          map('n', '<Leader>lD', vim.lsp.buf.declaration, on_attach_opts)
-          map('n', '<Leader>ld', vim.lsp.buf.definition, on_attach_opts)
-          map('n', '<Leader>lf', vim.lsp.buf.format, on_attach_opts)
-          map('n', '<Leader>li', vim.lsp.buf.implementation, on_attach_opts)
-          map('n', '<Leader>lr', vim.lsp.buf.references, on_attach_opts)
-          map('n', '<Leader>lR', vim.lsp.buf.rename, on_attach_opts)
-          map('n', '<Leader>lt', vim.lsp.buf.type_definition, on_attach_opts)
-          map('n', 'K', vim.lsp.buf.hover, on_attach_opts)
+          vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, on_attach_opts)
+          vim.keymap.set('n', '<Leader>lb', ":LspRestart<CR>", on_attach_opts)
+          vim.keymap.set('n', '<Leader>lc', vim.lsp.buf.code_action, on_attach_opts)
+          vim.keymap.set('n', '<Leader>lD', vim.lsp.buf.declaration, on_attach_opts)
+          vim.keymap.set('n', '<Leader>ld', vim.lsp.buf.definition, on_attach_opts)
+          vim.keymap.set('n', '<Leader>lf', vim.lsp.buf.format, on_attach_opts)
+          vim.keymap.set('n', '<Leader>li', vim.lsp.buf.implementation, on_attach_opts)
+          vim.keymap.set('n', '<Leader>lr', vim.lsp.buf.references, on_attach_opts)
+          vim.keymap.set('n', '<Leader>lR', vim.lsp.buf.rename, on_attach_opts)
+          vim.keymap.set('n', '<Leader>lt', vim.lsp.buf.type_definition, on_attach_opts)
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, on_attach_opts)
 
         end
 

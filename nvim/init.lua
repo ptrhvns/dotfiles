@@ -295,7 +295,7 @@ require("lazy").setup(
           mode = "n",
         },
         {
-          "<Tab>",
+          "<C-k>",
           function()
             require("luasnip").expand()
           end,

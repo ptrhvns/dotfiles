@@ -99,6 +99,8 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
 autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
+autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
+autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4 noexpandtab nolist softtabstop=4" })
 autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
 autocmd("FileType", { group = augroup, pattern = "Jenkinsfile", command = "setlocal commentstring=//\\ %s" })
@@ -217,6 +219,7 @@ require("lazy").setup(
         filetype("bash", cmp_setup_config)
         filetype("css", cmp_setup_config)
         filetype("dockerfile", cmp_setup_config)
+        filetype("go", cmp_setup_config)
         filetype("html", cmp_setup_config)
         filetype("javascript", cmp_setup_config)
         filetype("json", cmp_setup_config)
@@ -417,6 +420,7 @@ require("lazy").setup(
         setup_lsp_server("bash-language-server", "bashls", default_lsp_config)
         setup_lsp_server("css-lsp", "cssls", default_lsp_config)
         setup_lsp_server("dockerfile-language-server", "dockerls", default_lsp_config)
+        setup_lsp_server("gopls", "gopls", default_lsp_config)
         setup_lsp_server("html-lsp", "html", default_lsp_config)
         setup_lsp_server("json-lsp", "jsonls", default_lsp_config)
 
@@ -607,6 +611,7 @@ require("lazy").setup(
               "css",
               "diff",
               "dockerfile",
+              "go",
               "html",
               "javascript",
               "jsdoc",

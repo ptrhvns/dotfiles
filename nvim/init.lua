@@ -603,6 +603,9 @@ require("lazy").setup(
 
     {
       "nvim-treesitter/nvim-treesitter",
+      keys = {
+        { "<Leader>tu", ":TSUpdate<CR>", mode = "n" },
+      },
       config = function()
         require('nvim-treesitter.configs').setup({
             ensure_installed = {
@@ -667,7 +670,7 @@ require("lazy").setup(
       "williamboman/mason.nvim",
       keys = {
         {
-          "<Leader>lm",
+          "<Leader>ms",
           ":Mason<CR>",
           mode = "n",
         },
@@ -680,3 +683,5 @@ require("lazy").setup(
   },
   {}
 )
+
+vim.keymap.set("n", "<Leader>lz", ":Lazy<CR>")

@@ -42,6 +42,7 @@ export MANPAGER=$(command -v less || command -v more)
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 export PAGER="$(command -v less || command -v more)"
 export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
+
 export SHELL="$(command -v bash)"
 export UNAME="$(uname)"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -221,6 +222,15 @@ if command -v pyenv &>/dev/null; then
     if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
         eval "$(pyenv virtualenv-init -)"
     fi
+fi
+
+export GOENV_ROOT="${HOME}/.goenv"
+export PATH="${GOENV_ROOT}/bin:${PATH}"
+
+if command -v goenv &>/dev/null; then
+    eval "$(goenv init -)"
+    export PATH="${GOROOT}/bin:${PATH}"
+    export PATH="${PATH}:${GOPATH}/bin"
 fi
 
 if command -v direnv &>/dev/null; then

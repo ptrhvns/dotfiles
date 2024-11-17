@@ -61,24 +61,21 @@ end)
 
 vim.keymap.set("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
 
-function run_code_commands()
+vim.keymap.set("n", "<Leader>rc", function ()
   vim.cmd [[
     write
     execute "!run-code-commands " . @%
     checktime
   ]]
-end
+end)
 
-function run_code_commands_format_only()
+vim.keymap.set("n", "<Leader>rf", function ()
   vim.cmd [[
     write
     execute "!run-code-commands -f " . @%
     checktime
   ]]
-end
-
-vim.keymap.set("n", "<Leader>rc", ":lua run_code_commands()<CR>")
-vim.keymap.set("n", "<Leader>rf", ":lua run_code_commands_format_only()<CR>")
+end)
 
 local diagnostic_opts = { silent = true }
 vim.keymap.set("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)

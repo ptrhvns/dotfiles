@@ -46,8 +46,6 @@ vim.keymap.set("n", "<Down>", ":tabmove -1<CR><C-l>")
 vim.keymap.set("n", "<Up>", ":tabmove +1<CR><C-l>")
 
 vim.keymap.set("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
--- This is not supported with lazy.nvim:
--- vim.keymap.set("n", "<Leader>vs", ":source $MYVIMRC<CR>")
 
 vim.keymap.set("n", "<Leader>$", function ()
  vim.cmd("set list! number! relativenumber!")
@@ -382,9 +380,9 @@ require("lazy").setup(
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
           vim.lsp.diagnostic.on_publish_diagnostics,
           {
-            -- Disable hints for signs and virtual_text (but leave underline) since
-            -- Neovim LSP seems to treat hints as diagnostics. Also, hints are
-            -- sometimes not useful.
+            -- HACK: Disable hints for signs and virtual_text (but leave
+            -- underline) since Neovim LSP seems to treat hints as diagnostics.
+            -- Also, hints are sometimes not useful.
             signs = { severity = { min = vim.diagnostic.severity.INFO } },
             virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
           }

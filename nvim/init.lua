@@ -664,7 +664,7 @@ require("lazy").setup(
       "williamboman/mason.nvim",
       keys = {
         {
-          "<Leader>ms",
+          "<Leader>mn",
           ":Mason<CR>",
           mode = "n",
         },
@@ -678,4 +678,4 @@ require("lazy").setup(
   {}
 )
 
-vim.keymap.set("n", "<Leader>lz", ":Lazy<CR>")
+vim.keymap.set("n", "<Leader>ly", ":Lazy<CR>")

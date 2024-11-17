@@ -48,13 +48,13 @@ vim.keymap.set("n", "<Up>", ":tabmove +1<CR><C-l>")
 vim.keymap.set("n", "<Leader>ve", ":tabedit $MYVIMRC<CR>")
 
 vim.keymap.set("n", "<Leader>$", function ()
- vim.cmd("set list! number! relativenumber!")
+  vim.cmd("set list! number! relativenumber!")
 
- if vim.opt.signcolumn:get() == "no" then
-   vim.cmd("set signcolumn=yes")
- else
-   vim.cmd("set signcolumn=no")
- end
+  if vim.opt.signcolumn:get() == "no" then
+    vim.cmd("set signcolumn=yes")
+  else
+    vim.cmd("set signcolumn=no")
+  end
 end)
 
 vim.keymap.set("n", "<Leader>W", ":%s/\\s\\+$//<CR>:let @/=''<CR>")
@@ -75,10 +75,9 @@ vim.keymap.set("n", "<Leader>rf", function ()
   ]]
 end)
 
-local diagnostic_opts = { silent = true }
-vim.keymap.set("n", "<Leader>dn", vim.diagnostic.goto_next, diagnostic_opts)
-vim.keymap.set("n", "<Leader>dp", vim.diagnostic.goto_prev, diagnostic_opts)
-vim.keymap.set('n', '<Leader>do', vim.diagnostic.open_float, diagnostic_opts)
+vim.keymap.set("n", "<Leader>dn", vim.diagnostic.goto_next, { silent = true })
+vim.keymap.set("n", "<Leader>dp", vim.diagnostic.goto_prev, { silent = true })
+vim.keymap.set('n', '<Leader>do', vim.diagnostic.open_float, { silent = true })
 
 vim.keymap.set("v", "J", ":move '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":move '<-2<CR>gv=gv")

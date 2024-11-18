@@ -121,27 +121,9 @@ if [[ -r ~/.ssh-agent ]]; then
     source ~/.ssh-agent > /dev/null
 fi
 
-alias g="grep -iE"
-alias gl="git log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '"
-alias gll="git log --color --stat --decorate --pretty=medium"
-alias glll="git log --color --stat --decorate --pretty=medium --patch --minimal"
-alias gv="grep -iEv"
-alias l="ls"
-alias la="ls -la"
-alias ll="ls -l"
-alias ta="tmux attach -t"
-alias td="tmux-new-session-pwd"
-alias tk="tmux-kill-session"
-alias tl="tmux ls"
-alias tn="tmux-new-session"
-
-prettypath() {
+pretty-path() {
     printenv PATH | tr ":" "\n"
 }
-
-if command -v bat &>/dev/null; then
-    alias c='bat --style=plain'
-fi
 
 if command -v eza &>/dev/null; then
     if command -v rpm &> /dev/null; then
@@ -150,14 +132,7 @@ if command -v eza &>/dev/null; then
 
     if [[ -f "$eza_completion" ]]; then
         source "$eza_completion"
-        alias l="eza"
-        alias la="eza -la"
-        alias ll="eza -l"
     fi
-fi
-
-if command -v fd &>/dev/null; then
-    alias f="fd"
 fi
 
 if command -v fzf &>/dev/null; then
@@ -180,12 +155,6 @@ if command -v fzf &>/dev/null; then
     if command -v rg &>/dev/null; then
         export FZF_CTRL_T_COMMAND='rg --files --no-ignore-vcs --hidden'
         export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-    fi
-
-    if command -v bat &>/dev/null; then
-        alias ef="fzf --multi --preview='bat --color=always --style=plain {}' | xargs \$EDITOR -p"
-    else
-        alias ef="fzf --multi --preview='cat {}' | xargs \$EDITOR -p"
     fi
 fi
 

@@ -341,115 +341,7 @@ require("lazy").setup(
     },
 
     "MarcWeber/vim-addon-mw-utils",
-
-    {
-      "neovim/nvim-lspconfig",
-      config = function()
-        function on_attach(client, bufnr)
-          local on_attach_opts = { silent = true, buffer = bufnr }
-
-          vim.keymap.set("n", "<Leader>tc", ":Telescope lsp_incoming_calls<CR>", on_attach_opts)
-          vim.keymap.set("n", "<Leader>tC", ":Telescope lsp_outgoing_calls<CR>", on_attach_opts)
-          vim.keymap.set("n", "<Leader>tD", ":Telescope lsp_definitions<CR>", on_attach_opts)
-          vim.keymap.set("n", "<Leader>ti", ":Telescope lsp_implementations<CR>", on_attach_opts)
-          vim.keymap.set("n", "<Leader>tr", ":Telescope lsp_references<CR>", on_attach_opts)
-          vim.keymap.set("n", "<Leader>ts", ":Telescope lsp_document_symbols<CR>", on_attach_opts)
-          vim.keymap.set("n", "<Leader>tt", ":Telescope lsp_type_definitions<CR>", on_attach_opts)
-
-          vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, on_attach_opts)
-          vim.keymap.set('n', '<Leader>lb', ":LspRestart<CR>", on_attach_opts)
-          vim.keymap.set('n', '<Leader>lc', vim.lsp.buf.code_action, on_attach_opts)
-          vim.keymap.set('n', '<Leader>lD', vim.lsp.buf.declaration, on_attach_opts)
-          vim.keymap.set('n', '<Leader>ld', vim.lsp.buf.definition, on_attach_opts)
-          vim.keymap.set('n', '<Leader>lf', vim.lsp.buf.format, on_attach_opts)
-          vim.keymap.set('n', '<Leader>li', vim.lsp.buf.implementation, on_attach_opts)
-          vim.keymap.set('n', '<Leader>lr', vim.lsp.buf.references, on_attach_opts)
-          vim.keymap.set('n', '<Leader>lR', vim.lsp.buf.rename, on_attach_opts)
-          vim.keymap.set('n', '<Leader>lt', vim.lsp.buf.type_definition, on_attach_opts)
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, on_attach_opts)
-
-        end
-
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-          vim.lsp.handlers.hover, {
-            border = "single"
-          }
-          )
-
-        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-          vim.lsp.diagnostic.on_publish_diagnostics,
-          {
-            -- HACK: Disable hints for signs and virtual_text (but leave
-            -- underline) since Neovim LSP seems to treat hints as diagnostics.
-            -- Also, hints are sometimes not useful.
-            signs = { severity = { min = vim.diagnostic.severity.INFO } },
-            virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
-          }
-          )
-
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-          vim.lsp.handlers.signature_help,
-          { border = "single" }
-        )
-
-        vim.diagnostic.config({
-          float={border="single"}
-        })
-
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        local lspconfig = require("lspconfig")
-        local mason_registry = require("mason-registry")
-
-        local function setup_lsp_server(package_name, lsp_name, config)
-          if mason_registry.is_installed(package_name) then
-            lspconfig[lsp_name].setup(config)
-          end
-        end
-
-        local default_lsp_config = {
-          capabilities = capabilities,
-          on_attach = on_attach,
-        }
-
-        setup_lsp_server("bash-language-server", "bashls", default_lsp_config)
-        setup_lsp_server("css-lsp", "cssls", default_lsp_config)
-        setup_lsp_server("dockerfile-language-server", "dockerls", default_lsp_config)
-        setup_lsp_server("gopls", "gopls", default_lsp_config)
-        setup_lsp_server("html-lsp", "html", default_lsp_config)
-        setup_lsp_server("json-lsp", "jsonls", default_lsp_config)
-
-        setup_lsp_server("python-lsp-server", "pylsp", {
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = {
-            pylsp = {
-              plugins = {
-                -- Commands to run:
-                -- :PylspInstall pylsp-mypy
-                -- :PylspInstall pylsp-rope
-                --   HACK: fix rope bug:
-                --    touch ~/.local/share/nvim/mason/packages/python-lsp-server/venv/lib/<python-version>/site-packages/pylsp/plugins/rope_rename.py
-                -- :PylspInstall python-lsp-ruff
-
-                autopep8 = { enabled = false },
-                mccabe = { enabled = false },
-                pycodestyle = { enabled = false },
-                pydocstyle = { enabled = false },
-                pyflakes = { enabled = false },
-                pylint = { enabled = false },
-                yapf = { enabled = false },
-
-              },
-            },
-          },
-        })
-
-        setup_lsp_server("typescript-language-server", "ts_ls", default_lsp_config)
-        setup_lsp_server("taplo", "taplo", default_lsp_config)
-        setup_lsp_server("yaml-language-server", "yamlls", default_lsp_config)
-
-      end
-    },
+    "neovim/nvim-lspconfig",
 
     {
       "numToStr/Comment.nvim",
@@ -664,3 +556,109 @@ require("lazy").setup(
   },
   {}
 )
+
+-- HACK: Setup LSP servers outside of lazy setup to avoid some issues (e.g.
+-- :PylspInstall not being available).
+
+local function on_attach(client, bufnr)
+  local on_attach_opts = { silent = true, buffer = bufnr }
+
+  vim.keymap.set("n", "<Leader>tc", ":Telescope lsp_incoming_calls<CR>", on_attach_opts)
+  vim.keymap.set("n", "<Leader>tC", ":Telescope lsp_outgoing_calls<CR>", on_attach_opts)
+  vim.keymap.set("n", "<Leader>tD", ":Telescope lsp_definitions<CR>", on_attach_opts)
+  vim.keymap.set("n", "<Leader>ti", ":Telescope lsp_implementations<CR>", on_attach_opts)
+  vim.keymap.set("n", "<Leader>tr", ":Telescope lsp_references<CR>", on_attach_opts)
+  vim.keymap.set("n", "<Leader>ts", ":Telescope lsp_document_symbols<CR>", on_attach_opts)
+  vim.keymap.set("n", "<Leader>tt", ":Telescope lsp_type_definitions<CR>", on_attach_opts)
+
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, on_attach_opts)
+  vim.keymap.set('n', '<Leader>lb', ":LspRestart<CR>", on_attach_opts)
+  vim.keymap.set('n', '<Leader>lc', vim.lsp.buf.code_action, on_attach_opts)
+  vim.keymap.set('n', '<Leader>lD', vim.lsp.buf.declaration, on_attach_opts)
+  vim.keymap.set('n', '<Leader>ld', vim.lsp.buf.definition, on_attach_opts)
+  vim.keymap.set('n', '<Leader>lf', vim.lsp.buf.format, on_attach_opts)
+  vim.keymap.set('n', '<Leader>li', vim.lsp.buf.implementation, on_attach_opts)
+  vim.keymap.set('n', '<Leader>lr', vim.lsp.buf.references, on_attach_opts)
+  vim.keymap.set('n', '<Leader>lR', vim.lsp.buf.rename, on_attach_opts)
+  vim.keymap.set('n', '<Leader>lt', vim.lsp.buf.type_definition, on_attach_opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, on_attach_opts)
+
+end
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "single"
+  }
+)
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    -- HACK: Disable hints for signs and virtual_text (but leave
+    -- underline) since Neovim LSP seems to treat hints as diagnostics.
+    -- Also, hints are sometimes not useful.
+    signs = { severity = { min = vim.diagnostic.severity.INFO } },
+    virtual_text = { severity = { min = vim.diagnostic.severity.INFO } },
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  { border = "single" }
+)
+
+vim.diagnostic.config({
+  float={border="single"}
+})
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require("lspconfig")
+local mason_registry = require("mason-registry")
+
+local function setup_lsp_server(package_name, lsp_name, config)
+  if mason_registry.is_installed(package_name) then
+    lspconfig[lsp_name].setup(config)
+  end
+end
+
+local default_lsp_config = {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+setup_lsp_server("bash-language-server", "bashls", default_lsp_config)
+setup_lsp_server("css-lsp", "cssls", default_lsp_config)
+setup_lsp_server("dockerfile-language-server", "dockerls", default_lsp_config)
+setup_lsp_server("gopls", "gopls", default_lsp_config)
+setup_lsp_server("html-lsp", "html", default_lsp_config)
+setup_lsp_server("json-lsp", "jsonls", default_lsp_config)
+
+setup_lsp_server("python-lsp-server", "pylsp", {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    pylsp = {
+      plugins = {
+        -- Commands to run:
+        -- :PylspInstall pylsp-mypy
+        -- :PylspInstall pylsp-rope
+        --   HACK: fix rope bug:
+        --    touch ~/.local/share/nvim/mason/packages/python-lsp-server/venv/lib/<python-version>/site-packages/pylsp/plugins/rope_rename.py
+        -- :PylspInstall python-lsp-ruff
+
+        autopep8 = { enabled = false },
+        mccabe = { enabled = false },
+        pycodestyle = { enabled = false },
+        pydocstyle = { enabled = false },
+        pyflakes = { enabled = false },
+        pylint = { enabled = false },
+        yapf = { enabled = false },
+
+      },
+    },
+  },
+})
+
+setup_lsp_server("typescript-language-server", "ts_ls", default_lsp_config)
+setup_lsp_server("taplo", "taplo", default_lsp_config)
+setup_lsp_server("yaml-language-server", "yamlls", default_lsp_config)

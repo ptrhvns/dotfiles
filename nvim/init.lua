@@ -444,8 +444,10 @@ require("lazy").setup(
             },
           })
 
+        setup_lsp_server("taplo", "taplo", default_lsp_config)
         setup_lsp_server("typescript-language-server", "ts_ls", default_lsp_config)
         setup_lsp_server("yaml-language-server", "yamlls", default_lsp_config)
+
       end
     },
 

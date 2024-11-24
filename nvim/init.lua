@@ -419,33 +419,33 @@ require("lazy").setup(
         setup_lsp_server("json-lsp", "jsonls", default_lsp_config)
 
         setup_lsp_server("python-lsp-server", "pylsp", {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = {
-              pylsp = {
-                plugins = {
-                  -- Commands to run:
-                  -- :PylspInstall pylsp-mypy
-                  -- :PylspInstall pylsp-rope
-                  --   HACK: fix rope bug:
-                  --    touch ~/.local/share/nvim/mason/packages/python-lsp-server/venv/lib/<python-version>/site-packages/pylsp/plugins/rope_rename.py
-                  -- :PylspInstall python-lsp-ruff
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = {
+            pylsp = {
+              plugins = {
+                -- Commands to run:
+                -- :PylspInstall pylsp-mypy
+                -- :PylspInstall pylsp-rope
+                --   HACK: fix rope bug:
+                --    touch ~/.local/share/nvim/mason/packages/python-lsp-server/venv/lib/<python-version>/site-packages/pylsp/plugins/rope_rename.py
+                -- :PylspInstall python-lsp-ruff
 
-                  autopep8 = { enabled = false },
-                  mccabe = { enabled = false },
-                  pycodestyle = { enabled = false },
-                  pydocstyle = { enabled = false },
-                  pyflakes = { enabled = false },
-                  pylint = { enabled = false },
-                  yapf = { enabled = false },
+                autopep8 = { enabled = false },
+                mccabe = { enabled = false },
+                pycodestyle = { enabled = false },
+                pydocstyle = { enabled = false },
+                pyflakes = { enabled = false },
+                pylint = { enabled = false },
+                yapf = { enabled = false },
 
-                },
               },
             },
-          })
+          },
+        })
 
-        setup_lsp_server("taplo", "taplo", default_lsp_config)
         setup_lsp_server("typescript-language-server", "ts_ls", default_lsp_config)
+        setup_lsp_server("taplo", "taplo", default_lsp_config)
         setup_lsp_server("yaml-language-server", "yamlls", default_lsp_config)
 
       end
@@ -599,9 +599,6 @@ require("lazy").setup(
 
     {
       "nvim-treesitter/nvim-treesitter",
-      keys = {
-        { "<Leader>tu", ":TSUpdate<CR>", mode = "n" },
-      },
       config = function()
         require('nvim-treesitter.configs').setup({
             ensure_installed = {
@@ -659,13 +656,6 @@ require("lazy").setup(
 
     {
       "williamboman/mason.nvim",
-      keys = {
-        {
-          "<Leader>mn",
-          ":Mason<CR>",
-          mode = "n",
-        },
-      },
       config = function()
         require("mason").setup({})
       end,
@@ -674,5 +664,3 @@ require("lazy").setup(
   },
   {}
 )
-
-vim.keymap.set("n", "<Leader>ly", ":Lazy<CR>")

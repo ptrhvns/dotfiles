@@ -108,6 +108,14 @@ autocmd("FileType", { group = augroup, pattern = "typescript", command = "setloc
 autocmd("FileType", { group = augroup, pattern = "yaml", command = "setlocal expandtab" })
 autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
 
+autocmd({"BufNewFile", "BufRead"}, { group = augroup, pattern = "*", callback = function()
+  vim.cmd [[
+    if getline(1) =~ '^#!.*/bin/env\s\+-S\s\+uv\>'
+      setfiletype python
+    endif
+  ]]
+end})
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

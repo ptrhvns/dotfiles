@@ -1,8 +1,10 @@
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
+-- TODO: uncomment when flickering terminal titlebar stops.
+-- vim.opt.clipboard = "unnamedplus"
+
 vim.opt.breakindent = true
-vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "preview" }
 vim.opt.cursorline = true
 vim.opt.expandtab = true

@@ -125,6 +125,8 @@ pretty-path() {
     printenv PATH | tr ":" "\n"
 }
 
+alias grep="grep -E"
+
 if command -v eza &>/dev/null; then
     if command -v rpm &> /dev/null; then
         eza_completion="$(rpm -ql eza | grep completions)"

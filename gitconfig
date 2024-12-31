@@ -9,6 +9,9 @@
 [color]
 	ui = auto
 
+[commit]
+	verbose = true
+
 [core]
 	autocrlf = input
 	editor = "if command -v nvim; then E=nvim; else E=vim; fi; $E"

@@ -30,21 +30,17 @@ unset MAILCHECK
 export EDITOR="$(command -v nvim || command -v vim || command -v vi)"
 export GPG_TTY=$(tty)
 export HISTCONTROL="erasedups:ignoreboth"
-export HISTFILESIZE=5000
-export HISTSIZE=5000
+export HISTFILESIZE=10000
+export HISTSIZE=10000
 export HISTTIMEFORMAT="%D %T "
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export INPUTRC=~/.inputrc
 export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
-export LS_COLORS="di=1;37;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
-export LSCOLORS="Hxfxcxdxbxegedabagacad"
 export MANPAGER=$(command -v less || command -v more)
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
 export PAGER="$(command -v less || command -v more)"
 export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
-
 export SHELL="$(command -v bash)"
-export UNAME="$(uname)"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
@@ -180,10 +176,6 @@ if command -v uv &>/dev/null; then
     eval "$(uv generate-shell-completion bash)"
 fi
 
-if [[ -f "${HOME}/.cargo/env" ]]; then
-    source "${HOME}/.cargo/env"
-fi
-
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH=${PATH}:${PYENV_ROOT}/bin
 
@@ -193,15 +185,6 @@ if command -v pyenv &>/dev/null; then
     if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
         eval "$(pyenv virtualenv-init -)"
     fi
-fi
-
-export GOENV_ROOT="${HOME}/.goenv"
-export PATH="${GOENV_ROOT}/bin:${PATH}"
-
-if command -v goenv &>/dev/null; then
-    eval "$(goenv init -)"
-    export PATH="${GOROOT}/bin:${PATH}"
-    export PATH="${PATH}:${GOPATH}/bin"
 fi
 
 if command -v direnv &>/dev/null; then

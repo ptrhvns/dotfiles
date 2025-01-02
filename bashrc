@@ -94,7 +94,7 @@ YELLOW=$(select_8bit_foreground_color 223) # f9e2af
 build_prompt() {
     PS1="${GREY}\h ${GREEN}\u ${VIOLET}\w"
 
-    local num_jobs=$(jobs 2>/dev/null | grep -cv zoxide)
+    local num_jobs=$(jobs 2>/dev/null)
 
     if [[ "${num_jobs}" -gt 0 ]]; then
         PS1+=" ${RED}[${num_jobs}]"
@@ -154,15 +154,6 @@ if command -v fzf &>/dev/null; then
         export FZF_CTRL_T_COMMAND='rg --files --no-ignore-vcs --hidden'
         export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
     fi
-fi
-
-if command -v zoxide &>/dev/null; then
-    eval "$(zoxide init bash)"
-
-    # Override cd command.
-    cd() {
-        echo -e "### ERROR: Use zoxide"
-    }
 fi
 
 export NODENV_ROOT=${HOME}/.nodenv

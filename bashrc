@@ -122,6 +122,10 @@ pretty-path() {
 }
 
 alias grep="grep -E"
+alias td="tmux-new-session-pwd"
+alias tk="tmux-kill-session"
+alias tl="tmux ls"
+alias tn="tmux-new-session"
 
 if command -v eza &>/dev/null; then
     if command -v rpm &> /dev/null; then

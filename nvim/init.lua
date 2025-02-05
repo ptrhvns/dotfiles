@@ -14,7 +14,6 @@ vim.opt.foldmethod = "indent"
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.joinspaces = false
-vim.opt.laststatus = 3
 vim.opt.lazyredraw = true
 vim.opt.linebreak = true
 vim.opt.list = true

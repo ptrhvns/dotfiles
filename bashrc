@@ -182,6 +182,15 @@ if command -v pyenv &>/dev/null; then
     fi
 fi
 
+export GOENV_ROOT="${HOME}/.goenv"
+export PATH="${GOENV_ROOT}/bin:${PATH}"
+
+if command -v goenv &>/dev/null; then
+    eval "$(goenv init -)"
+    export PATH="${GOROOT}/bin:${PATH}"
+    export PATH="${PATH}:${GOPATH}/bin"
+fi
+
 if command -v direnv &>/dev/null; then
     eval "$(direnv hook bash)"
 fi

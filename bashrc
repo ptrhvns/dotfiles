@@ -117,10 +117,6 @@ if [[ -r ~/.ssh-agent ]]; then
     source ~/.ssh-agent > /dev/null
 fi
 
-pretty-path() {
-    printenv PATH | tr ":" "\n"
-}
-
 alias grep="grep -E"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"

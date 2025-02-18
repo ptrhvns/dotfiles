@@ -18,14 +18,28 @@
 	excludesFile = ~/.gitignore
 	whitespace = blank-at-eol,space-before-tab
 
+[diff]
+	tool = nvimdiff
+
 [difftool]
 	prompt = false
+
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 [init]
 	defaultBranch = main
 
 [merge]
 	conflictstyle = diff3
+	tool = nvimdiff
+
+[mergetool]
+	keepBackup = false
+	prompt = true
+
+[mergetool "nvimdiff"]
+	cmd = "nvim -d -c \"wincmd l\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
 
 [push]
 	default = current

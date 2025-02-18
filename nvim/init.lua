@@ -88,6 +88,9 @@ vim.keymap.set("v", "<Leader>ct", ":'<,'>!column -o ' ' -t<CR>")
 
 vim.keymap.set("n", "<Leader>gs", ":lua require('gitsigns').next_hunk()<CR>")
 
+vim.keymap.set("n", "<Leader>ml", ":diffget LO<CR>")
+vim.keymap.set("n", "<Leader>mr", ":diffget RE<CR>")
+
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
 

@@ -25,7 +25,7 @@
 	prompt = false
 
 [difftool "nvimdiff"]
-	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+	cmd = "nvim -d -o -c \"wincmd j\" -c \"/< HEAD\" -c \":normal zt\" \"$LOCAL\" \"$REMOTE\""
 
 [init]
 	defaultBranch = main
@@ -39,7 +39,7 @@
 	prompt = true
 
 [mergetool "nvimdiff"]
-	cmd = "nvim -d -c \"wincmd l\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+	cmd = "nvim -d -c \"wincmd l\" -c \"/< HEAD\" -c \":normal zt\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
 
 [push]
 	default = current

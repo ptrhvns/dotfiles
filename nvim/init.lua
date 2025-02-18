@@ -86,6 +86,8 @@ vim.keymap.set("v", "K", ":move '<-2<CR>gv=gv")
 
 vim.keymap.set("v", "<Leader>ct", ":'<,'>!column -o ' ' -t<CR>")
 
+vim.keymap.set("n", "<Leader>gs", ":lua require('gitsigns').next_hunk()<CR>")
+
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
 

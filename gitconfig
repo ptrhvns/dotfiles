@@ -1,10 +1,11 @@
 [alias]
-	l = "log --color --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '"
+	l = "log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '"
 	ll = "log --color --stat --decorate --pretty=medium"
 	lll = "log --color --stat --decorate --pretty=medium --patch --minimal"
 
 [branch]
 	autosetupmerge = true
+	sort = -committerdate
 
 [color]
 	ui = auto
@@ -19,19 +20,22 @@
 	whitespace = blank-at-eol,space-before-tab
 
 [diff]
+	algorithm = histogram
+	colorMoved = plain
+	renames = true
 	tool = nvimdiff
 
 [difftool]
 	prompt = false
 
 [difftool "nvimdiff"]
-	cmd = "nvim -d -o -c \"wincmd j\" -c \"/< HEAD\" -c \":normal zt\" \"$LOCAL\" \"$REMOTE\""
+	cmd = nvim -d $LOCAL $REMOTE
 
 [init]
 	defaultBranch = main
 
 [merge]
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 	tool = nvimdiff
 
 [mergetool]
@@ -39,11 +43,20 @@
 	prompt = true
 
 [mergetool "nvimdiff"]
-	cmd = "nvim -d -c \"wincmd l\" -c \"/< HEAD\" -c \":normal zt\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+	; cmd = "nvim -d -c \"wincmd l\" -c \"/< HEAD\" -c \":normal zt\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+	cmd = nvim -d -c 'wincmd w' -c 'wincmd J' -c '/< HEAD' -c ':normal zt' $BASE $LOCAL $REMOTE $MERGED
 
 [push]
 	default = current
+	followTags = true
+
+[rerere]
+	autoupdate = true
+	enabled = true
 
 [user]
 	email = peter.havens@gmail.com
 	name = Peter Havens
+
+[tag]
+	sort = version:refname

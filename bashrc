@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1090,SC2155,SC1091
+# shellcheck disable=SC1090,SC1091
 
 ulimit -c unlimited
 umask 022
@@ -27,16 +27,21 @@ shopt -u mailwarn
 
 unset MAILCHECK
 
-export EDITOR=$(command -v nvim || command -v vim || command -v vi)
-export GPG_TTY=$(tty)
+EDITOR=$(command -v nvim || command -v vim || command -v vi)
+GPG_TTY=$(tty)
+MANPAGER=$(command -v less || command -v more)
+PAGER=$(command -v less || command -v more)
+
+export EDITOR
+export GPG_TTY
 export HISTCONTROL="erasedups:ignoreboth"
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 export INPUTRC=~/.inputrc
 export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
-export MANPAGER=$(command -v less || command -v more)
-export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
-export PAGER=$(command -v less || command -v more)
+export MANPAGER
+export MANPATH
+export PAGER
 export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin
 
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
@@ -90,7 +95,8 @@ YELLOW=$(select_8bit_foreground_color 223) # f9e2af
 build_prompt() {
     PS1="${GREY}\h ${GREEN}\u ${VIOLET}\w"
 
-    local num_jobs=$(jobs 2>/dev/null)
+    local num_jobs
+    num_jobs=$(jobs 2>/dev/null)
 
     if [[ "${num_jobs}" -gt 0 ]]; then
         PS1+=" ${RED}[${num_jobs}]"

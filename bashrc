@@ -27,21 +27,17 @@ shopt -u mailwarn
 
 unset MAILCHECK
 
-export EDITOR="$(command -v nvim || command -v vim || command -v vi)"
+export EDITOR=$(command -v nvim || command -v vim || command -v vi)
 export GPG_TTY=$(tty)
 export HISTCONTROL="erasedups:ignoreboth"
 export HISTFILESIZE=10000
 export HISTSIZE=10000
-export HISTTIMEFORMAT="%D %T "
-export HISTTIMEFORMAT="%d/%m/%y %T "
 export INPUTRC=~/.inputrc
 export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
 export MANPAGER=$(command -v less || command -v more)
 export MANPATH=~/sys/man:/usr/local/man:/opt/local/man:/usr/man:/usr/share/man:/usr/local/share/man
-export PAGER="$(command -v less || command -v more)"
-export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin:/mnt/c/Windows/System32
-export SHELL="$(command -v bash)"
-export VIRTUAL_ENV_DISABLE_PROMPT=1
+export PAGER=$(command -v less || command -v more)
+export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin
 
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
     export LESS="-qiX"
@@ -122,16 +118,6 @@ alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"
 alias tl="tmux ls"
 alias tn="tmux-new-session"
-
-if command -v eza &>/dev/null; then
-    if command -v rpm &> /dev/null; then
-        eza_completion="$(rpm -ql eza | grep completions)"
-    fi
-
-    if [[ -f "$eza_completion" ]]; then
-        source "$eza_completion"
-    fi
-fi
 
 if command -v fzf &>/dev/null; then
     if command -v rpm &> /dev/null; then

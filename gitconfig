@@ -15,8 +15,6 @@
 
 [core]
 	autocrlf = input
-	editor = "if command -v nvim; then E=nvim; else E=vim; fi; $E"
-	excludesFile = ~/.gitignore
 	whitespace = blank-at-eol,space-before-tab
 
 [diff]
@@ -43,8 +41,7 @@
 	prompt = true
 
 [mergetool "nvimdiff"]
-	; cmd = "nvim -d -c \"wincmd l\" -c \"/< HEAD\" -c \":normal zt\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
-	cmd = nvim -d -c 'wincmd w' -c 'wincmd J' -c '/< HEAD' -c ':normal zt' $BASE $LOCAL $REMOTE $MERGED
+	cmd = nvim -d -c 'wincmd w' -c 'wincmd J' $LOCAL $MERGED $BASE $REMOTE
 
 [push]
 	default = current

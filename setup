@@ -27,7 +27,6 @@ ln -s "${PWD}/bashrc" ~/.bashrc
 ln -s "${PWD}/editrc" ~/.editrc
 ln -s "${PWD}/gitconfig" ~/.config/git/config
 ln -s "${PWD}/gitignore" ~/.config/git/ignore
-ln -s "${PWD}/gitignore" ~/.gitignore
 ln -s "${PWD}/inputrc" ~/.inputrc
 ln -s "${PWD}/main.ctags" ~/.ctags.d/main.ctags
 ln -s "${PWD}/nvim" ~/.config/nvim

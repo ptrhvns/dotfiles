@@ -120,6 +120,7 @@ if [[ -r ~/.ssh-agent ]]; then
 fi
 
 alias grep="grep -E"
+alias ta="tmux attach"
 alias td="tmux-new-session-pwd"
 alias tk="tmux-kill-session"
 alias tl="tmux ls"

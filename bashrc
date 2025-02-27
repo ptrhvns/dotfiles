@@ -96,7 +96,7 @@ build_prompt() {
     PS1="${GREY}\h ${GREEN}\u ${VIOLET}\w"
 
     local num_jobs
-    num_jobs=$(jobs 2>/dev/null)
+    num_jobs=$(jobs 2>/dev/null | wc -l)
 
     if [[ "${num_jobs}" -gt 0 ]]; then
         PS1+=" ${RED}[${num_jobs}]"

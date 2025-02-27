@@ -37,6 +37,7 @@ export GPG_TTY
 export HISTCONTROL="erasedups:ignoreboth"
 export HISTFILESIZE=10000
 export HISTSIZE=10000
+export HISTTIMEFORMAT="%d/%m/%y %T "
 export INPUTRC=~/.inputrc
 export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
 export MANPAGER

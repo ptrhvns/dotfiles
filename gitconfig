@@ -2,58 +2,42 @@
 	l = "log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '"
 	ll = "log --color --stat --decorate --pretty=medium"
 	lll = "log --color --stat --decorate --pretty=medium --patch --minimal"
-
 [branch]
-	autosetupmerge = true
 	sort = -committerdate
-
 [color]
 	ui = auto
-
 [commit]
 	verbose = true
-
 [core]
 	autocrlf = input
-	whitespace = blank-at-eol,space-before-tab
-
+	edit = nvim
 [diff]
 	algorithm = histogram
 	colorMoved = plain
 	renames = true
-	tool = nvimdiff
-
+	tool = nvim
 [difftool]
 	prompt = false
-
-[difftool "nvimdiff"]
+[difftool "nvim"]
 	cmd = nvim -d $LOCAL $REMOTE
-
 [init]
 	defaultBranch = main
-
 [merge]
 	conflictstyle = zdiff3
-	tool = nvimdiff
-
+	tool = nvim
 [mergetool]
 	keepBackup = false
 	prompt = true
-
-[mergetool "nvimdiff"]
+[mergetool "nvim"]
 	cmd = nvim -d -c 'wincmd w' -c 'wincmd J' $LOCAL $MERGED $BASE $REMOTE
-
 [push]
-	default = current
+	autoSetupRemote = true
 	followTags = true
-
 [rerere]
 	autoupdate = true
 	enabled = true
-
+[tag]
+	sort = version:refname
 [user]
 	email = peter.havens@gmail.com
 	name = Peter Havens
-
-[tag]
-	sort = version:refname

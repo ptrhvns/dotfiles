@@ -5,8 +5,6 @@
 	lla = !git log --color --stat --decorate --pretty=medium --author=\"$(git config --get user.name)\" 
 	lll = log --color --stat --decorate --pretty=medium --patch --minimal
 	llla = !git log --color --stat --decorate --pretty=medium --patch --minimal --author=\"$(git config --get user.name)\" 
-[branch]
-	sort = -committerdate
 [color]
 	ui = auto
 [commit]

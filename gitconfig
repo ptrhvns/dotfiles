@@ -1,7 +1,10 @@
 [alias]
-	l = "log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '"
-	ll = "log --color --stat --decorate --pretty=medium"
-	lll = "log --color --stat --decorate --pretty=medium --patch --minimal"
+	l = log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset '
+	la = !git log --color --graph --pretty=format:'%C(yellow)%h%Creset %s %C(bold green)%ar%Creset %C(bold blue)%an%Creset%C(bold red)%d%Creset ' --author=\"$(git config --get user.name)\"
+	ll = log --color --stat --decorate --pretty=medium
+	lla = !git log --color --stat --decorate --pretty=medium --author=\"$(git config --get user.name)\" 
+	lll = log --color --stat --decorate --pretty=medium --patch --minimal
+	llla = !git log --color --stat --decorate --pretty=medium --patch --minimal --author=\"$(git config --get user.name)\" 
 [branch]
 	sort = -committerdate
 [color]

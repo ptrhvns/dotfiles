@@ -34,9 +34,6 @@
 [push]
 	autoSetupRemote = true
 	followTags = true
-[rerere]
-	autoupdate = true
-	enabled = true
 [tag]
 	sort = version:refname
 [user]

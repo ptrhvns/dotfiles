@@ -111,7 +111,7 @@ build_prompt() {
         PS1+="${YELLOW}$(__git_ps1 ' %s')"
     fi
 
-    PS1+=" ${GREY}\n\$${RESET} "
+    PS1+="\n${GREY}\$${RESET} "
 }
 
 PROMPT_COMMAND=build_prompt

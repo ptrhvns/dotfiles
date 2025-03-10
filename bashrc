@@ -162,10 +162,10 @@ if command -v uv &>/dev/null; then
 fi
 
 export PYENV_ROOT="${HOME}/.pyenv"
-export PATH=${PATH}:${PYENV_ROOT}/bin
+[[ -d "$PYENV_ROOT/bin" ]] && export PATH="${PATH}:${PYENV_ROOT}/bin"
 
 if command -v pyenv &>/dev/null; then
-    eval "$(pyenv init -)"
+    eval "$(pyenv init - bash)"
 
     if [[ -d "$(pyenv root)/plugins/pyenv-virtualenv" ]]; then
         eval "$(pyenv virtualenv-init -)"

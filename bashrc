@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1090,SC1091
+# shellcheck disable=SC1090,SC1091,SC2312
 
 ulimit -c unlimited
 umask 022
@@ -136,12 +136,12 @@ if command -v fzf &>/dev/null; then
         fzf_completion="$(dpkg -L fzf | grep completion.bash)"
     fi
 
-    if [[ -f "$fzf_key_bindings" ]]; then
-        source "$fzf_key_bindings"
+    if [[ -f "${fzf_key_bindings}" ]]; then
+        source "${fzf_key_bindings}"
     fi
 
-    if [[ -f "$fzf_completion" ]]; then
-        source "$fzf_completion"
+    if [[ -f "${fzf_completion}" ]]; then
+        source "${fzf_completion}"
     fi
 
     if command -v rg &>/dev/null; then
@@ -162,7 +162,7 @@ if command -v uv &>/dev/null; then
 fi
 
 export PYENV_ROOT="${HOME}/.pyenv"
-[[ -d "$PYENV_ROOT/bin" ]] && export PATH="${PATH}:${PYENV_ROOT}/bin"
+[[ -d "${PYENV_ROOT}/bin" ]] && export PATH="${PATH}:${PYENV_ROOT}/bin"
 
 if command -v pyenv &>/dev/null; then
     eval "$(pyenv init - bash)"

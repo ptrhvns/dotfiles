@@ -94,7 +94,7 @@ nmap <Leader>cc :call Comment()<CR>
 vmap <Leader>cc :call Comment()<CR>
 
 function! Uncomment()
-    execute 's:' . substitute(&commentstring, "\\s*%s", ' \\(.*\\)', "") . ':\1:'
+    execute 's:' . substitute(&commentstring, "\\s*%s", ' \\?\\(.*\\)', "") . ':\1:'
 endfunction
 
 nmap <Leader>cu :call Uncomment()<CR>

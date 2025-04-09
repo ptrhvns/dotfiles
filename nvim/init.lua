@@ -13,6 +13,7 @@ vim.opt.foldenable = false
 vim.opt.foldmethod = "indent"
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
+vim.opt.incsearch = false
 vim.opt.joinspaces = false
 vim.opt.lazyredraw = true
 vim.opt.linebreak = true
@@ -92,6 +93,8 @@ vim.keymap.set("n", "<Leader>ml", ":diffget LO<CR>")
 vim.keymap.set("n", "<Leader>mr", ":diffget RE<CR>")
 
 vim.keymap.set("n", "<Leader>nf", ":lua vim.opt.foldenable = false")
+
+vim.keymap.set("n", "*", ":keepjumps normal! mi*`i<CR>", { noremap = true })
 
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"

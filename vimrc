@@ -23,6 +23,7 @@ set linebreak
 set list
 set listchars=extends:>,nbsp:+,precedes:<,tab:>\ ,trail:-
 set nofoldenable
+set noincsearch
 set nojoinspaces
 set noshowmode
 set nostartofline
@@ -85,6 +86,8 @@ nmap <Down> :tabmove -1<CR><C-l>
 nmap <Left> gT
 nmap <Right> gt
 nmap <Up> :tabmove +1<CR><C-l>
+
+nnoremap * :keepjumps normal! mi*`i<CR>
 
 function! Comment()
     execute 's:^\(\s*\)\(.*\):\=submatch(1) . printf(substitute(&commentstring, "\\s*%s", " %s", ""), submatch(2)):'

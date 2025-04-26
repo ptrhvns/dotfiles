@@ -40,7 +40,7 @@ vim.opt.undolevels = 1000
 vim.opt.updatetime = 250
 vim.opt.virtualedit = "all"
 
-vim.keymap.set("v", "<Leader>sd", ":sort! n<CR>")
+vim.keymap.set("v", "<Leader>sd", ":sort! n<CR>:sort! n<CR>")
 vim.keymap.set("v", "<Leader>ss", ":sort iu<CR>")
 
 vim.keymap.set("n", "<Left>", "gT")

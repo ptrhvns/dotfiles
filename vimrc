@@ -131,6 +131,7 @@ colorscheme slate
 highlight LineNr ctermfg=yellow
 highlight LineNrAbove ctermfg=darkgrey
 highlight LineNrBelow ctermfg=darkgrey
+highlight SignColumn ctermbg=black
 
 filetype indent on
 filetype plugin on
@@ -148,6 +149,17 @@ augroup ag_all
     autocmd InsertLeave * setlocal nopaste
 
 augroup end
+
+" Useful plugins:
+"   ctrlp
+"   fugitive
+"   nerdtree
+"   surround
+"   vim-airline
+"   vim-gitgutter
+"   vim-polyglot
+
+let g:ctrlp_clear_cache_on_exit = 0
 
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_symbols_ascii = 1

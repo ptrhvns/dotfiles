@@ -15,6 +15,7 @@ vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.incsearch = false
 vim.opt.joinspaces = false
+vim.opt.laststatus = 3
 vim.opt.lazyredraw = true
 vim.opt.linebreak = true
 vim.opt.list = true

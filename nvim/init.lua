@@ -1,10 +1,8 @@
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
--- TODO: uncomment when flickering terminal titlebar stops.
--- vim.opt.clipboard = "unnamedplus"
-
 vim.opt.breakindent = true
+vim.opt.clipboard = "unnamedplus" -- Comment when flickering terminal title bar occurs.
 vim.opt.completeopt = { "menu", "preview" }
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -103,30 +101,166 @@ vim.cmd "filetype plugin on"
 local augroup = vim.api.nvim_create_augroup("all", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd("BufReadPost", { group = augroup, pattern = "fugitive://*" , command = "setlocal bufhidden=delete" })
-autocmd("FileType", { group = augroup, pattern = "css", command = "setlocal softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "gitcommit", command = "setlocal nolist" })
-autocmd("FileType", { group = augroup, pattern = "go", command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "gomod", command = "setlocal tabstop=4 noexpandtab nolist softtabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "html", command = "setlocal softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "javascript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "Jenkinsfile", command = "setlocal commentstring=//\\ %s" })
-autocmd("FileType", { group = augroup, pattern = "lua", command = "setlocal expandtab softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "markdown", command = "setlocal expandtab softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "python", command = "setlocal expandtab softtabstop=4 tabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "sh", command = "setlocal softtabstop=4" })
-autocmd("FileType", { group = augroup, pattern = "text", command = "setlocal commentstring=//\\ %s" })
-autocmd("FileType", { group = augroup, pattern = "typescript", command = "setlocal expandtab softtabstop=2 tabstop=2" })
-autocmd("FileType", { group = augroup, pattern = "yaml", command = "setlocal expandtab" })
-autocmd("InsertLeave", { group = augroup, command = "setlocal nopaste" })
+autocmd(
+  {
+    "BufNewFile",
+    "BufRead",
+  },
+  {
+    callback = function()
+      vim.cmd [[
+        if getline(1) =~ '^#!.*/bin/env\s\+-S\s\+uv\>'
+          setfiletype python
+        endif
+      ]]
+    end,
+    group = augroup,
+    pattern = "*",
+  }
+)
 
-autocmd({"BufNewFile", "BufRead"}, { group = augroup, pattern = "*", callback = function()
-  vim.cmd [[
-    if getline(1) =~ '^#!.*/bin/env\s\+-S\s\+uv\>'
-      setfiletype python
-    endif
-  ]]
-end})
+autocmd(
+  "BufReadPost",
+  {
+    command = "setlocal bufhidden=delete",
+    group = augroup,
+    pattern = "fugitive://*" ,
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal softtabstop=2 tabstop=2",
+    group = augroup,
+    pattern = "css",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal nolist",
+    group = augroup,
+    pattern = "gitcommit",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal noexpandtab nolist softtabstop=4 tabstop=4",
+    group = augroup,
+    pattern = "go",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal tabstop=4 noexpandtab nolist softtabstop=4",
+    group = augroup,
+    pattern = "gomod",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal softtabstop=2 tabstop=2",
+    group = augroup,
+    pattern = "html",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal expandtab softtabstop=2 tabstop=2",
+    group = augroup,
+    pattern = "javascript",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal commentstring=//\\ %s",
+    group = augroup,
+    pattern = "Jenkinsfile",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal expandtab softtabstop=2 tabstop=2",
+    group = augroup,
+    pattern = "lua",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal expandtab softtabstop=2 tabstop=2",
+    group = augroup,
+    pattern = "markdown",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal expandtab softtabstop=4 tabstop=4",
+    group = augroup,
+    pattern = "python",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal softtabstop=4",
+    group = augroup,
+    pattern = "sh",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal commentstring=//\\ %s",
+    group = augroup,
+    pattern = "text",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal expandtab softtabstop=2 tabstop=2",
+    group = augroup,
+    pattern = "typescript",
+  }
+)
+
+autocmd(
+  "FileType",
+  {
+    command = "setlocal expandtab",
+    group = augroup,
+    pattern = "yaml",
+  }
+)
+
+autocmd(
+  "InsertLeave",
+  {
+    command = "setlocal nopaste",
+    group = augroup,
+  }
+)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 

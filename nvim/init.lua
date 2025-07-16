@@ -2,7 +2,7 @@ vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
 vim.opt.breakindent = true
-vim.opt.clipboard = "unnamedplus" -- Comment when flickering terminal title bar occurs.
+vim.opt.clipboard:append("unnamedplus") -- Comment when flickering terminal title bar occurs.
 vim.opt.completeopt = { "menu", "preview" }
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -12,13 +12,14 @@ vim.opt.foldmethod = "indent"
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.incsearch = false
+vim.opt.iskeyword:append("-")
 vim.opt.joinspaces = false
 vim.opt.laststatus = 3
 vim.opt.lazyredraw = true
 vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = { extends = "❯", nbsp = "␣", precedes = "❮", tab = "» ", trail = "⋅" }
-vim.opt.mouse = ""
+vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shell = "/bin/bash"
@@ -26,6 +27,7 @@ vim.opt.shiftwidth = 0
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
+vim.opt.smartindent = true
 vim.opt.softtabstop = 4
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -81,8 +83,10 @@ vim.keymap.set("n", "<Leader>dn", vim.diagnostic.goto_next, { silent = true })
 vim.keymap.set("n", "<Leader>dp", vim.diagnostic.goto_prev, { silent = true })
 vim.keymap.set('n', '<Leader>do', vim.diagnostic.open_float, { silent = true })
 
-vim.keymap.set("v", "J", ":move '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":move '<-2<CR>gv=gv")
+vim.keymap.set("n", "<A-j>", ":move .+1<CR>==")
+vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
+vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-j>", ":move '>-2<CR>gv=gv")
 
 vim.keymap.set("v", "<Leader>ct", ":'<,'>!column -o ' ' -t<CR>")
 
@@ -94,6 +98,14 @@ vim.keymap.set("n", "<Leader>mr", ":diffget RE<CR>")
 vim.keymap.set("n", "<Leader>nf", ":lua vim.opt.foldenable = false")
 
 vim.keymap.set("n", "*", ":keepjumps normal! mi*`i<CR>", { noremap = true })
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
+vim.keymap.set("n", "J", "mzJ`z")
 
 vim.cmd "filetype indent on"
 vim.cmd "filetype plugin on"
@@ -258,6 +270,16 @@ autocmd(
   "InsertLeave",
   {
     command = "setlocal nopaste",
+    group = augroup,
+  }
+)
+
+autocmd(
+  "VimResized",
+  {
+    callback = function()
+      vim.cmd("tabdo wincmd =")
+    end,
     group = augroup,
   }
 )

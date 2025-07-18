@@ -83,11 +83,6 @@ vim.keymap.set("n", "<Leader>dn", vim.diagnostic.goto_next, { silent = true })
 vim.keymap.set("n", "<Leader>dp", vim.diagnostic.goto_prev, { silent = true })
 vim.keymap.set('n', '<Leader>do', vim.diagnostic.open_float, { silent = true })
 
-vim.keymap.set("n", "<A-j>", ":move .+1<CR>==")
-vim.keymap.set("n", "<A-k>", ":move .-2<CR>==")
-vim.keymap.set("v", "<A-j>", ":move '>+1<CR>gv=gv")
-vim.keymap.set("v", "<A-j>", ":move '>-2<CR>gv=gv")
-
 vim.keymap.set("v", "<Leader>ct", ":'<,'>!column -o ' ' -t<CR>")
 
 vim.keymap.set("n", "<Leader>gs", ":lua require('gitsigns').next_hunk()<CR>")

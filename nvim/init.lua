@@ -127,15 +127,6 @@ autocmd(
 )
 
 autocmd(
-  "BufReadPost",
-  {
-    command = "setlocal bufhidden=delete",
-    group = augroup,
-    pattern = "fugitive://*" ,
-  }
-)
-
-autocmd(
   "FileType",
   {
     command = "setlocal softtabstop=2 tabstop=2",
@@ -691,16 +682,6 @@ require("lazy").setup(
     "sheerun/vim-polyglot",
     "tomtom/tlib_vim",
     "tpope/vim-eunuch",
-
-    {
-      "tpope/vim-fugitive",
-      keys = {
-        { "<Leader>gb", ":Git blame<CR>", mode = "n" },
-        { "<Leader>gc", ":Git commit --verbose<CR>", mode = "n" },
-        { "<Leader>gp", ":Git push --verbose<CR>", mode = "n" },
-        { "<Leader>gw", ":Gwrite<CR>", mode = "n" }
-      },
-    },
 
     "tpope/vim-surround",
 

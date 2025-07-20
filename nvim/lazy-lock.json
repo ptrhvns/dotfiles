@@ -24,7 +24,6 @@
   "tlib_vim": { "branch": "master", "commit": "d3bdad7b5e4253dc7ce6793342d7b8755c67ff0c" },
   "vim-addon-mw-utils": { "branch": "master", "commit": "6aaf4fee472db7cbec6d2c8eea69fdf3a8f8a75d" },
   "vim-eunuch": { "branch": "master", "commit": "e86bb794a1c10a2edac130feb0ea590a00d03f1e" },
-  "vim-fugitive": { "branch": "master", "commit": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4" },
   "vim-polyglot": { "branch": "master", "commit": "f5393cfee07aeb666f4d75f9b3a83163862fb094" },
   "vim-smartinput": { "branch": "master", "commit": "7b4c79803d773b9ab8184c070a22bc782e8fb424" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" }

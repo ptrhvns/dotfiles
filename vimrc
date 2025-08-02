@@ -61,7 +61,6 @@ if exists("+undoreload")
     set undoreload=10000
 endif
 
-
 nnoremap <C-l> :nohlsearch<CR><C-l>
 inoremap <C-l> <C-o>:nohlsearch<CR>
 inoremap <special> <F3> <C-r>=strftime("%c")<CR>

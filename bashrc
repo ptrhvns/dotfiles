@@ -181,6 +181,10 @@ if command -v goenv &>/dev/null; then
     export PATH="${PATH}:${GOPATH}/bin"
 fi
 
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
 if [[ -f "${HOME}/.bash_local" ]]; then
     source "${HOME}/.bash_local"
 fi

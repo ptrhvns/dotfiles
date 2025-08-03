@@ -20,13 +20,11 @@ mkdir -p ~/.config/git
 mkdir -p ~/.ctags.d
 mkdir -p ~/.tmux/plugins
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 ln -s "${PWD}/bash_profile" ~/.bash_profile
 ln -s "${PWD}/bashrc" ~/.bashrc
+ln -s "${PWD}/config/git/config" ~/.config/git/config
+ln -s "${PWD}/config/git/ignore" ~/.config/git/ignore
 ln -s "${PWD}/editrc" ~/.editrc
-ln -s "${PWD}/gitconfig" ~/.config/git/config
-ln -s "${PWD}/gitignore" ~/.config/git/ignore
 ln -s "${PWD}/inputrc" ~/.inputrc
 ln -s "${PWD}/main.ctags" ~/.ctags.d/main.ctags
 ln -s "${PWD}/nvim" ~/.config/nvim

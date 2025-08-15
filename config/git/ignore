@@ -1,3 +1,5 @@
 .envrc
 pyrightconfig.json
 tags
+
+**/.claude/settings.local.json

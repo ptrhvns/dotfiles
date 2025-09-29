@@ -805,12 +805,11 @@ vim.diagnostic.config({
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require("lspconfig")
 local mason_registry = require("mason-registry")
 
 local function setup_lsp_server(package_name, lsp_name, config)
   if mason_registry.is_installed(package_name) then
-    lspconfig[lsp_name].setup(config)
+    vim.lsp.config(lsp_name, config)
   end
 end
 

@@ -11,26 +11,26 @@
 	verbose = true
 [core]
 	autocrlf = input
-	edit = nvim
+	edit = vim
 [diff]
 	algorithm = histogram
 	colorMoved = plain
 	renames = true
-	tool = nvim
+	tool = vim
 [difftool]
 	prompt = false
-[difftool "nvim"]
-	cmd = nvim -d $LOCAL $REMOTE
+[difftool "vim"]
+	cmd = vim -d $LOCAL $REMOTE
 [init]
 	defaultBranch = main
 [merge]
 	conflictstyle = zdiff3
-	tool = nvim
+	tool = vim
 [mergetool]
 	keepBackup = false
 	prompt = true
-[mergetool "nvim"]
-	cmd = nvim -d -c 'wincmd w' -c 'wincmd J' $LOCAL $MERGED $BASE $REMOTE
+[mergetool "vim"]
+	cmd = vim -d -c 'wincmd w' -c 'wincmd J' $LOCAL $MERGED $BASE $REMOTE
 [push]
 	autoSetupRemote = true
 	followTags = true

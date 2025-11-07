@@ -91,6 +91,11 @@ nmap <Up> :tabmove +1<CR><C-l>
 
 nnoremap * :keepjumps normal! mi*`i<CR>
 
+nmap <Leader>gb :Git blame<CR>
+nmap <Leader>gc :Git commit --verbose<CR>
+nmap <Leader>gp :Git push --verbose<CR>
+nmap <Leader>gw :Gwrite<CR>
+
 function! Comment()
     execute 's:^\(\s*\)\(.*\):\=submatch(1) . printf(substitute(&commentstring, "\\s*%s", " %s", ""), submatch(2)):'
 endfunction

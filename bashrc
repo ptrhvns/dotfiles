@@ -43,7 +43,25 @@ export LD_LIBRARY_PATH=/usr/local/lib:/lib:/usr/lib:/usr/share/lib
 export MANPAGER
 export MANPATH
 export PAGER
-export PATH=~/bin:~/.local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/games:/bin:/sbin:/usr/bin:/usr/sbin:/usr/proc/bin:/usr/ucb:/snap/bin
+
+paths=(
+    "~/bin"
+    "~/.local/bin"
+    "/usr/local/bin"
+    "/usr/local/sbin"
+    "/opt/local/bin"
+    "/opt/local/sbin"
+    "/usr/games"
+    "/bin"
+    "/sbin"
+    "/usr/bin"
+    "/usr/sbin"
+    "/usr/proc/bin"
+    "/usr/ucb"
+    "/snap/bin"
+)
+
+export PATH=$(IFS=:; echo "${paths[*]}")
 
 if [[ $(less -V 2>/dev/null | awk '/less [0-9]/{print $2}') -lt 346 ]]; then
     export LESS="-qiX"

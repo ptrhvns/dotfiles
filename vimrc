@@ -72,7 +72,7 @@ nmap <Leader>ip :set invpaste paste?<CR>
 
 nmap <Leader>iw :set invwrap wrap?<CR>
 
-vmap <Leader>sd :sort! n<CR>
+vmap <Leader>sd :sort! n<CR>:sort !n<CR>
 vmap <Leader>ss :sort iu<CR>
 
 nmap K <Nop>
@@ -157,21 +157,21 @@ augroup ag_all
 augroup end
 
 " Useful plugins to clone into ~/.vim/pack/plugins/start:
-"   catppucin
+"   catppuccin
 "   ctrlp
+"   fugitive
 "   nerdtree
+"   surround
 "   vim-airline
-"   vim-fugitive
 "   vim-gitgutter
 "   vim-polyglot
-"   vim-surround
 
 let g:ctrlp_clear_cache_on_exit = 0
 
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_symbols_ascii = 1
 
-if isdirectory(expand('~/.vim/pack/plugins/start/catpuccin'))
+if isdirectory(expand('~/.vim/pack/plugins/start/catppuccin'))
     " Force Vim to use true colors evne if the TERM type doesn't cause Vim to
     " enable them (e.g., if TERM=tmux-256color).
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"

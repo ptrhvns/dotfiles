@@ -96,20 +96,6 @@ nmap <Leader>gc :Git commit --verbose<CR>
 nmap <Leader>gp :Git push --verbose<CR>
 nmap <Leader>gw :Gwrite<CR>
 
-function! Comment()
-    execute 's:^\(\s*\)\(.*\):\=submatch(1) . printf(substitute(&commentstring, "\\s*%s", " %s", ""), submatch(2)):'
-endfunction
-
-nmap <Leader>cc :call Comment()<CR>
-vmap <Leader>cc :call Comment()<CR>
-
-function! Uncomment()
-    execute 's:' . substitute(&commentstring, "\\s*%s", ' \\?\\(.*\\)', "") . ':\1:'
-endfunction
-
-nmap <Leader>cu :call Uncomment()<CR>
-vmap <Leader>cu :call Uncomment()<CR>
-
 nmap <Leader>ct :!ctags -R .<CR>
 
 function! RunCodeCommands()
@@ -160,6 +146,7 @@ augroup end
 "   catppuccin
 "   ctrlp
 "   fugitive
+"   nerdcommenter
 "   nerdtree
 "   surround
 "   vim-airline
